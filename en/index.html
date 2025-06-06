@@ -7,14 +7,165 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>GF Innovative Solutions</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
+        
+        <style>
+            /* Prevent content overflow */
+            body {
+                overflow-x: hidden;
+            }
+            
+            /* Ensure all content stays within bounds */
+            * {
+                box-sizing: border-box;
+            }
+            
+            /* Hide any stray content */
+            .portfolio-modal .modal-body img + p {
+                margin-top: 20px;
+            }
+            
+            /* Masthead Background Fix */
+            .masthead {
+                background-image: url('../assets/img/Header-2.webp') !important;
+                background-size: cover !important;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                min-height: 100vh !important;
+            }
+            
+            /* Growth Journey Section Styles */
+            .growth-journey-section {
+                position: relative;
+                min-height: 100vh;
+                background: linear-gradient(135deg, #87CEEB 0%, #1e3c72 100%);
+                overflow: hidden;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .growth-container {
+                position: relative;
+                width: 100vw;
+                height: 100vh;
+                margin-left: calc(-50vw + 50%);
+                background-image: url('../assets/img/portfolio/background_consulting_3.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            
+            .growth-title {
+                color: #fff;
+                font-size: 3rem;
+                font-weight: bold;
+                text-align: center;
+                text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 1px 1px 3px rgba(0,0,0,0.9);
+                margin-bottom: 1rem;
+                padding-top: 4rem;
+                background: none;
+                position: relative;
+                z-index: 10;
+            }
+            
+            .growth-subtitle {
+                color: #fff;
+                font-size: 1.2rem;
+                text-align: center;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+                margin-bottom: 3rem;
+                background: none;
+                font-weight: 300;
+                letter-spacing: 1px;
+            }
+            
+            .growth-box {
+                position: absolute;
+                background: rgba(30,60,114,0.95);
+                color: #fff;
+                padding: 15px;
+                border-radius: 10px;
+                cursor: pointer;
+                border: 2px solid #00FFFF;
+                transition: all 0.3s;
+                font-size: 13px;
+                min-width: 140px;
+                text-align: center;
+                box-shadow: 0 0 15px rgba(0,255,255,0.3);
+                z-index: 5;
+                font-weight: 500;
+            }
+            
+            .growth-box:hover {
+                background: rgba(30,60,114,1);
+                transform: scale(1.05);
+                box-shadow: 0 0 25px rgba(0,255,255,0.6);
+            }
+            
+            .growth-modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+            }
+            
+            .growth-modal-content {
+                background: linear-gradient(135deg,#1e3c72,#2a5298);
+                color: #fff;
+                margin: 10% auto;
+                padding: 25px;
+                border-radius: 15px;
+                width: 85%;
+                max-width: 450px;
+                border: 2px solid #00FFFF;
+                box-shadow: 0 0 30px rgba(0,255,255,0.5);
+            }
+            
+            .growth-close {
+                color: #00FFFF;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            
+            .growth-close:hover {
+                color: #fff;
+                text-shadow: 0 0 10px #00FFFF;
+            }
+            
+                @media(max-width:768px) {
+                .growth-box {
+                    font-size: 11px;
+                    padding: 10px;
+                    min-width: 110px;
+                }
+                .growth-title {
+                    font-size: 2.2rem;
+                    padding-top: 2rem;
+                }
+                .growth-subtitle {
+                    font-size: 1rem;
+                    margin-bottom: 2rem;
+                }
+                .growth-container {
+                    height: 100vh;
+                    margin-left: calc(-50vw + 50%);
+                }
+            }
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -27,12 +178,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">More</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Learn More</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#growth-journey">Growth Journey</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About Us</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
-                            <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="../index.html">DE</a>                      
+                            <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="../index.html">DE</a>
                     </ul>
                 </div>
             </div>
@@ -42,8 +194,8 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <img src="assets/img/logos/Logo_GF_B_N.png" style="width:350px;height:75px;"> <br><br><br>
-                <a class="btn btn-success btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+                <img src="../assets/img/logos/Logo_GF_B_N.png" style="width:350px;height:75px;"> <br><br><br>
+                <a class="btn btn-success btn-xl text-uppercase js-scroll-trigger" href="#services">Learn More</a>
             </div>
         </header>
         <!-- Services-->
@@ -52,7 +204,7 @@
         <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">More</h2>
+                    <h2 class="section-heading text-uppercase">Learn More</h2>
                     <h3 class="section-subheading text-muted">What makes us different</h3>
                 </div>
                 <div class="row text-center">
@@ -62,7 +214,7 @@
                             <i class="fas fa-shield-alt fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="my-3">Trust</h4>
-                        <p class="text-muted">Trust is key to building valuable solutions for our clients. We prioritize respect, integrity, and reliability in our partnerships.</p>
+                        <p class="text-muted">Trust is the key to building valuable solutions for our customers. We value respect, integrity, and reliability in our partnerships.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
@@ -70,16 +222,15 @@
                             <i class="fas fas fa-laptop fa-stack-1x fa-inverse"></i>
                         </span>
                         <h4 class="my-3">Digital Transformation</h4>
-                        <p class="text-muted">We lead digital transformation causing changes in work and social settings.</p>
+                        <p class="text-muted">We shape digital transformation that leads to changes in the workplace and social environment.</p>
                     </div>
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-success"></i>
                             <i class="fas fa-brain fa-stack-1x fa-inverse"></i>
                         </span>
-                        <h4 class="my-3"> Innovation Drive</h4>
-                        <p class="text-muted">We partner with strategic partnerships that enable us to innovate and offer our clients digital solutions.
-                        </p>
+                        <h4 class="my-3">Innovation Drive</h4>
+                        <p class="text-muted">We enter into strategic partnerships that enable us to develop innovations and offer digital solutions to our customers.</p>
                     </div>
                 </div>
             </div>
@@ -92,107 +243,155 @@
                     <h3 class="section-subheading text-muted">&#160</h3>
                 </div>
                 <div class="row">
+                    <!-- Collaboration-->
                     <div class="col-lg-6 col-sm-4 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/01-Portfolio2.jpg" alt="..." />
+                                <img class="img-fluid" src="../assets/img/portfolio/01-Portfolio2.jpg" alt="Collaboration" />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Collaboration </div>
-                                <div class="portfolio-caption-heading">&#160</div>                               
+                                <div class="portfolio-caption-heading">Collaboration</div>
                             </div>
                         </div>
                     </div>
+                    <!-- Digital Twins -->
                     <div class="col-lg-6 col-sm-4 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/04-Portfolio2.jpg" alt="..." />
+                                <img class="img-fluid" src="../assets/img/portfolio/04-Portfolio2.jpg" alt="Digital Twins & Technologies" />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Digital Twin I VR I AR I</div>
-                                <div class="portfolio-caption-heading">MR I Remote Support</div>    
+                                <div class="portfolio-caption-heading">Digital Twins & Technologies</div>
                             </div>
                         </div>
-
                     </div>
+                    <!-- Startup Consulting-->
                     <div class="col-lg-6 col-sm-4 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/02-Portfolio2.jpg" alt="..." />
+                                <img class="img-fluid" src="../assets/img/portfolio/consulting.webp" alt="Startup Consulting" />
                             </a>
                             <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Developing digital twins</div>
-                                <div class="portfolio-caption-heading">&#160</div>                               
+                                <div class="portfolio-caption-heading">Startup Consulting</div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
+                    <!-- Network-->
                     <div class="col-lg-6 col-sm-4 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/portfolio/03-Portfolio2.jpg" alt="..." />
+                                <img class="img-fluid" src="../assets/img/portfolio/03-Portfolio2.jpg" alt="Network" />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Network</div>
-                                <div class="portfolio-caption-heading">&#160</div>                                                              
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Growth Journey Section -->
+        <section class="page-section growth-journey-section" id="growth-journey">
+            <div class="growth-container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase growth-title">Growth Journey</h2>
+                    <h3 class="growth-subtitle">Our strategic growth solutions</h3>
+                </div>
+                
+                <div class="growth-box" style="left:30%;top:40%" onclick="openGrowthModal('market')">
+                    Market Entry<br>Strategies
+                </div>
+                
+                <div class="growth-box" style="left:40%;top:50%" onclick="openGrowthModal('implement')">
+                    Implementation<br>Strategy  
+                </div>
+                
+                <div class="growth-box" style="left:40%;top:65%" onclick="openGrowthModal('deep1')">
+                    Deep<br>Understanding
+                </div>
+                
+                <div class="growth-box" style="left:55%;top:55%" onclick="openGrowthModal('packages')">
+                    Packages for<br>Startups & Founders
+                </div>
+                
+                <div class="growth-box" style="left:55%;top:35%" onclick="openGrowthModal('deep2')">
+                    Deep<br>Understanding
+                </div>
+                
+                <div class="growth-box" style="left:70%;top:25%" onclick="openGrowthModal('growth')">
+                    Growth<br>Hacking
+                </div>
+                
+                <div class="growth-box" style="left:75%;top:45%" onclick="openGrowthModal('sales')">
+                    Sales Funnel<br>Development
+                </div>
+                
+                <div class="growth-box" style="left:85%;top:15%" onclick="openGrowthModal('stakeholder')">
+                    Stakeholder<br>Identification
+                </div>
+            </div>
+        </section>
+
+        <!-- Growth Journey Modal -->
+        <div id="growthModal" class="growth-modal">
+            <div class="growth-modal-content">
+                <span class="growth-close" onclick="closeGrowthModal()">&times;</span>
+                <h2 id="growth-modal-title" style="color:#00FFFF;margin-bottom:15px"></h2>
+                <p id="growth-modal-text" style="line-height:1.6"></p>
+            </div>
+        </div>
+
         <!-- About-->
         <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
+                    <h2 class="section-heading text-uppercase">About Us</h2>
                     <h3 class="section-subheading text-muted">GF Innovative Solutions</h3>
                 </div>
                 <ul class="timeline">
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../assets/img/about/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>January 2023</h4>
                                 <h4 class="subheading">Foundation</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">At GF Innovative Solutions, our aim is to use innovation and engineering to help bridge the gap in digital transformation. We strive to create proactive solutions that can have a positive impact on people's lives by accelerating digitalization in industries. Our focus is on using data-driven approaches to develop innovative solutions that can drive digital industry strategies forward.
-                            </p></div>
+                            <div class="timeline-body"><p class="text-muted">Our goal at GF Innovative Solutions is to shape digital transformation through innovation and technology. We develop proactive solutions that positively impact people's lives by accelerating digitalization across industries. Our focus is on using data-driven approaches that can advance digital industry strategies.</p></div>
                         </div>
                     </li>
 
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2_Heversand.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../assets/img/about/2_Heversand.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>June 2023</h4>
                                 <h4 class="subheading">AWS Startup Loft</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">AWS Startup Loft accelerates our algorithms development and deployment.
-                                
-                            </p></div>
+                            <div class="timeline-body"><p class="text-muted">AWS Startup Loft accelerates the development and deployment of our algorithms.</p></div>
                         </div>
                     </li>
 
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/frontline_logo3.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../assets/img/about/frontline_logo3.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>September 2023</h4>
                                 <h4 class="subheading">Partner of frontline.io</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">GF Innovative Solutions becomes official partner of frontline.io for the DACH region.</p></div>
+                            <div class="timeline-body"><p class="text-muted">GF Innovative Solutions becomes an official partner of frontline.io for the DACH region.</p></div>
                         </div>
                     </li>
                 </ul>
@@ -210,25 +409,25 @@
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/Omar.jpg" alt="..." />
+                            <img class="mx-auto rounded-circle" src="../assets/img/team/Omar.jpg" alt="..." />
                             <h4>Omar Garcia Urdiales</h4>
-                            <p class="text-muted">Founder CEO</p>
+                            <p class="text-muted">Founder and CEO</p>
                             <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/omar-garc%C3%ADa-urdiales-mba-0a96b822/"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/Martin A.jpg" alt="..." />
+                            <img class="mx-auto rounded-circle" src="../assets/img/team/Martin A.jpg" alt="..." />
                             <h4>Martin Arias Fornara</h4>
-                            <p class="text-muted">Founder CTO</p>
+                            <p class="text-muted">Founder and CTO</p>
                             <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/martin-arias-136b91b9/"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/Martin H.jpg" alt="..." />
-                            <h4>Dr. Martin Hueppauff</h4>
-                            <p class="text-muted">Strategist</p>
+                            <img class="mx-auto rounded-circle" src="../assets/img/team/Martin H.jpg" alt="..." />
+                            <h4>Dr. Martin Hüppauff</h4>
+                            <p class="text-muted">Strategy</p>
                             <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/dr-martin-h%C3%BCppauff-2b88941a2/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Bm9S6L5ujRzSmk%2BXZUeYk3w%3D%3D"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
@@ -242,8 +441,8 @@
         <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Contact Us</h2>
-                    <h3 class="section-subheading text-muted"><p style="color: #efedf3">Empower your business ideas  with GF Innovative Solutions</p></h3>
+                    <h2 class="section-heading text-uppercase">Contact</h2>
+                    <h3 class="section-subheading text-muted"><p style="color: #efedf3">Strengthen your business ideas with innovative solutions from GF</p></h3>
        
                     <a class="btn-success btn-xl">info@gfinnov.com</a>
      
@@ -263,26 +462,20 @@
                             document.write(new Date().getFullYear());
                         </script>
                     </div>
-                    <!--
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    -->
                     <div class="col-lg-4 text-lg-right">
-                        <a style="color: #010007" class="mr-3" href="privacy.html">Privacy</a>
-                        <a style="color: #010007" class="mr-3"href="imprint.html">Imprint</a>
+                        <a style="color: #010007" class="mr-3" href="../privacy.html">Privacy</a>
+                        <a style="color: #010007" class="mr-3" href="../imprint.html">Imprint</a>
                     </div>
                 </div>
             </div>
         </footer>
         <!-- Portfolio Modals-->
-        <!-- Modal 1-->
+        
+        <!-- Modal 1 - Collaboration -->
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-dismiss="modal"><img src="../assets/img/close-icon.svg" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -290,12 +483,8 @@
                                     <!-- Project Details Go Here-->
                                     <h2 class="text-uppercase">Collaboration</h2>
                                     <p class="item-intro text-muted">&#160</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/01-Portfolio2.jpg" alt="..." />
-                                    <p>We take great pride in serving our partners with tailor-made data-driven ecosystems and cutting-edge digital business models that cater to their unique requirements. Our unwavering commitment to customer satisfaction drives us to constantly enhance our solutions and exceed expectations.
-                                    </p>
+                                    <p class="text-lg-left">Our aspiration is to provide our partners with customized data-driven ecosystems and innovative digital business models that meet their individual requirements. Our relentless commitment to customer satisfaction drives us to continuously improve our solutions and exceed expectations.</p>
                                     <ul class="list-inline">
-                                        <li>&#160</li>
-                                        <li>&#160</li>
                                         <li>&#160</li>
                                     </ul>
                                     <button class="btn btn-success" data-dismiss="modal" type="button">
@@ -309,28 +498,28 @@
                 </div>
             </div>
         </div>
-        <!-- Modal 2-->
+
+        <!-- Modal 2 - Startup Consulting -->
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-dismiss="modal"><img src="../assets/img/close-icon.svg" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase">We develop digital twins</h2>
+                                    <h2 class="text-uppercase">Startup Consulting</h2>
                                     <p class="item-intro text-muted">&#160</p>
-
-                                    <!-- Custom Digital Twin Development -->
-                                    <p class="text-lg-left">In addition to the frontline.io platform, we also offer the option of customised<b>Digital twins</b> for your company. These can be customised to your specific needs, be it for the technical training of your staff or for the presentation of complex machines and systems to potential customers. A digital twin allows you to precisely map real systems in a virtual environment and simulate them in an intuitive way.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/frontline/AR.gif" alt="Customised digital twins" />
-                                    <p class="text-lg-left">Find out how we can develop customised digital twins for you to meet your technical requirements and objectives. Contact us for more information!</p>
-                                    <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="VR_Messe.html">More about VR and AR at trade fairs</a>
-
+                                    <p class="text-lg-left">We offer customized consulting services for startups to help you with your market entry and pitch preparation. Our expert team supports you in refining your business ideas, creating compelling presentations, and optimizing your market entry strategy.</p>
+                                    <ul class="text-lg-left">
+                                        <li>Market entry strategies</li>
+                                        <li>Pitch preparation and optimization</li>
+                                        <li>Business model development</li>
+                                        <li>And more...</li>
+                                    </ul>
+                                    <p class="text-lg-left">Contact us to learn how we can accompany your startup on the path to success!</p>
                                     <ul class="list-inline">
-                                        <li>&#160</li>
-                                        <li>&#160</li>
                                         <li>&#160</li>
                                     </ul>
                                     <button class="btn btn-success" data-dismiss="modal" type="button">
@@ -344,11 +533,12 @@
                 </div>
             </div>
         </div>
-        <!-- Network Modal 3-->
+
+        <!-- Modal 3 - Network -->
         <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-dismiss="modal"><img src="../assets/img/close-icon.svg" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -356,12 +546,8 @@
                                     <!-- Project Details Go Here-->
                                     <h2 class="text-uppercase">Network</h2>
                                     <p class="item-intro text-muted">&#160</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/03-Portfolio2.jpg" alt="..." />
-                                    <p>Thanks to our invaluable partnerships with AWS and the Baden Würtemberg network, our customers enjoy swift access to valuable resources, leading to exceptional benefits for our clientele.
-                                    </p>
+                                    <p class="text-lg-left">Thanks to our excellent partnerships with AWS and the Baden-Württemberg network, our customers have quick access to valuable resources, which leads to outstanding benefits for our clientele.</p>
                                     <ul class="list-inline">
-                                        <li>&#160</li>
-                                        <li>&#160</li>
                                         <li>&#160</li>
                                     </ul>
                                     <button class="btn btn-success" data-dismiss="modal" type="button">
@@ -375,23 +561,28 @@
                 </div>
             </div>
         </div>
-        <!-- frontline Modal 4-->
+
+        <!-- Modal 4 - Digital Twins & Technologies -->
         <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-dismiss="modal"><img src="../assets/img/close-icon.svg" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="modal-body">
                                     <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase">Official Partners with frontline.io</h2>
+                                    <h2 class="text-uppercase">Digital Twins & Technologies</h2>
                                     <p class="item-intro text-muted">&#160</p>
-
-                                    <p class="text-lg-left">Frontline.io is a cutting-edge platform that revolutionizes the way organizations deliver training and support. We harness the power of AR, VR, and Digital Twin technology to simplify the learning experience and improve support efficiency. Our goal is to help businesses focus on what really matters: getting work done. Join us in our mission to revolutionize training and support.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/frontline/frontline.io - digital Twin gif .gif" alt="..." />
-                                    <p></p>  
-                                    <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="frontline.html">Learn more about frontline.io</a>   
+                                    <img class="img-fluid d-block mx-auto" src="../assets/img/portfolio/frontline/frontline.io - digital Twin gif .gif" alt="frontline.io platform" />
+                                    <p class="text-lg-left">If you would like to learn more about the frontline.io platform, visit the link below:</p>
+                                    <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="../frontline.html">Learn more about frontline.io</a>
+                                    <hr />
+                                    <h4>Customized Digital Twins</h4>
+                                    <p class="text-lg-left">In addition to the frontline.io platform, we also offer the possibility to develop customized <b>Digital Twins</b> for your company. These can be specifically tailored to your needs, whether for technical training of your staff or for presenting complex machines and systems to potential customers. A digital twin allows you to precisely map real systems in a virtual environment and simulate them intuitively.</p>
+                                    <img class="img-fluid d-block mx-auto" src="../assets/img/portfolio/frontline/AR.gif" alt="Custom digital twins" />
+                                    <p class="text-lg-left">Learn how we can develop individual Digital Twins for you to meet your technical requirements and goals. Contact us for more information!</p>
+                                    <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="../VR_Messe.html">More about VR and AR at trade fairs</a>
                                     <ul class="list-inline">
                                         <li>&#160</li>
                                     </ul>
@@ -406,76 +597,74 @@
                 </div>
             </div>
         </div>
-        <!-- Modal 5-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/05-full.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>Date: January 2021</li>
-                                        <li>Client: Southwest</li>
-                                        <li>Category: Website Design</li>
-                                    </ul>
-                                    <button class="btn btn-success" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal 6-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/06-full.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>Date: January 2021</li>
-                                        <li>Client: Window</li>
-                                        <li>Category: Photography</li>
-                                    </ul>
-                                    <button class="btn btn-success" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <!-- Bootstrap core JS-->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
         <!-- Contact form JS-->
-        <script src="assets/mail/jqBootstrapValidation.js"></script>
-        <script src="assets/mail/contact_me.js"></script>
+        <script src="../assets/mail/jqBootstrapValidation.js"></script>
+        <script src="../assets/mail/contact_me.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script src="js/language-switcher.js"></script>
+        <script src="../js/scripts.js"></script>
+        <script src="../js/language-switcher.js"></script>
+        
+        <!-- Growth Journey JavaScript -->
+        <script>
+            const growthContent = {
+                market: {
+                    title: "Market Entry Strategies",
+                    text: "• Test Product MVP and USP\n• Value Proposition Canvas\n• Competitive Analysis\n• Target Market Research\n• Go-to-Market Planning"
+                },
+                implement: {
+                    title: "Implementation Strategy",
+                    text: "• KPI Assessment\n• Resource Allocation\n• Timeline Planning\n• Risk Assessment\n• Performance Monitoring"
+                },
+                deep1: {
+                    title: "Deep Understanding",
+                    text: "• Customer Journey Mapping\n• Pain Point Analysis\n• Market Segmentation\n• User Persona Development\n• Behavioral Insights"
+                },
+                packages: {
+                    title: "Packages for Startups & Founders",
+                    text: "• Startup Acceleration Programs\n• Founder Mentoring\n• Business Model Validation\n• Pitch Deck Development\n• Investor Readiness"
+                },
+                deep2: {
+                    title: "Deep Understanding",
+                    text: "• Data-Driven Insights\n• Customer Feedback Analysis\n• Market Trend Research\n• Competitive Intelligence\n• Strategic Planning"
+                },
+                growth: {
+                    title: "Growth Hacking",
+                    text: "• Product-Market Fit Optimization\n• Viral Marketing Strategies\n• A/B Testing Framework\n• Customer Acquisition\n• Retention Strategies"
+                },
+                sales: {
+                    title: "Sales Funnel Development",
+                    text: "• Lead Generation\n• Conversion Optimization\n• Customer Lifecycle Management\n• Sales Process Automation\n• Revenue Growth Planning"
+                },
+                stakeholder: {
+                    title: "Stakeholder Identification",
+                    text: "• Key Decision Maker Mapping\n• Influence Analysis\n• Communication Strategy\n• Relationship Building\n• Stakeholder Engagement"
+                }
+            };
+            
+            function openGrowthModal(key) {
+                const modal = document.getElementById('growthModal');
+                document.getElementById('growth-modal-title').textContent = growthContent[key].title;
+                document.getElementById('growth-modal-text').style.whiteSpace = 'pre-line';
+                document.getElementById('growth-modal-text').textContent = growthContent[key].text;
+                modal.style.display = 'block';
+            }
+            
+            function closeGrowthModal() {
+                document.getElementById('growthModal').style.display = 'none';
+            }
+            
+            window.onclick = function(event) {
+                const modal = document.getElementById('growthModal');
+                if (event.target === modal) {
+                    closeGrowthModal();
+                }
+            }
+        </script>
     </body>
 </html>
