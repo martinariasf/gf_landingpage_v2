@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="VR Solutions for Training and Marketing" />
+    <meta name="author" content="GF Innovative Solutions" />
+    <title>GF Innovative Solutions - VR Solutions</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons -->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    
+    <style>
+        :root {
+            --primary-blue: #1e3c72;
+            --secondary-blue: #2a5298;
+            --success-green: #28a745;
+            --light-green: #34ce57;
+            --accent-green: #20c997;
+            --dark-green: #1e7e34;
+            --dark: #212529;
+            --light: #f8f9fa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(30, 60, 114, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: var(--success-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-link:hover {
+            color: var(--success-green);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .back-btn {
+            background: var(--success-green);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #1e7e34;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--success-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, var(--success-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 0 0 30px rgba(40,167,69,0.7); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Packages Grid */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-color: var(--accent-green);
+        }
+
+        .package-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-blue), var(--success-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .package-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .package-description {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .package-features li {
+            padding: 0.5rem 0;
+            color: #495057;
+            display: flex;
+            align-items: center;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .package-btn {
+            background: linear-gradient(45deg, var(--primary-blue), var(--success-green));
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .package-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Gallery Styles */
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .gallery-image {
+            overflow: hidden;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .gallery-image img {
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image img {
+            transform: scale(1.05);
+        }
+
+        /* VR in Messe Section */
+        .vr-messe {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .messe-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .messe-text h3 {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .messe-image {
+            text-align: center;
+        }
+
+        .messe-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Frontline Section */
+        .frontline {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .frontline .section-title {
+            color: white;
+        }
+
+        .frontline-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .frontline-feature {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .frontline-feature i {
+            font-size: 3rem;
+            color: var(--success-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--success-green), var(--primary-blue));
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-btn {
+            background: var(--dark-green);
+            color: white;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--success-green);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .messe-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="assets/img/logos/Logo_GF_B_N.png" style="height: 40px; margin-right: 10px;" alt="GF Logo">
+            </a>
+            <div class="nav-links">
+                <a href="#packages" class="nav-link">Packages</a>
+                <a href="#gallery" class="nav-link">Galerie</a>
+                <a href="#messe" class="nav-link">VR in Messen</a>
+                <a href="#frontline" class="nav-link">Frontline.io</a>
+                <a href="#contact" class="nav-link">Kontakt</a>
+                <a href="en/vr_website_en.html" class="nav-link" style="border: 1px solid rgba(255,255,255,0.3); border-radius: 20px;">EN</a>
+                <a href="index.html" class="back-btn">← Zurück zur Hauptseite</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>Begeistern Sie Ihr Publikum mit VR/AR</h1>
+            <p>Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI</p>
+            <a href="#packages" class="cta-button">Entdecken Sie unsere VR-Pakete</a>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="section" id="packages">
+        <div class="container">
+            <h2 class="section-title fade-in">VR Solutions Packages</h2>
+            <p class="section-subtitle fade-in">Maßgeschneiderte VR-Lösungen für maximale Effizienz und ROI</p>
+            
+            <div class="packages-grid">
+                <div class="package-card fade-in">
+                    <div class="package-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="package-title">Package 1: Digital Twin Entwicklung</h3>
+                    <p class="package-description">Professionelle Entwicklung maßgeschneiderter digitaler Zwillinge für Training und Messepräsentationen</p>
+                    <ul class="package-features">
+                        <li>Custom Digital Twin Entwicklungsservice</li>
+                        <li>Vielseitig für Training UND Messen einsetzbar</li>
+                        <li>Vollständiges Eigentum an allen Assets</li>
+                        <li>Umfassende Implementierungsbetreuung inklusive</li>
+                        <li>Basierend auf Ihren CAD-Daten</li>
+                    </ul>
+                    <button class="package-btn" onclick="contactUs('Digital Twin Entwicklung Package')">Angebot anfordern</button>
+                </div>
+
+                <div class="package-card fade-in">
+                    <div class="package-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="package-title">Package 2: 3D Visualisierung</h3>
+                    <p class="package-description">Fotorealistische 3D-Renderings für Marketing und Produktpräsentation</p>
+                    <ul class="package-features">
+                        <li>Hochauflösende 3D-Produktbilder</li>
+                        <li>Professionelle Beleuchtung & Materialien</li>
+                        <li>Schnellere Markteinführung</li>
+                        <li>Reduzierte Fotografie-Kosten</li>
+                        <li>Vielseitig einsetzbar (Web, Print, Social Media)</li>
+                    </ul>
+                    <button class="package-btn" onclick="contactUs('3D Visualisierung Package')">Angebot anfordern</button>
+                </div>
+
+                <div class="package-card fade-in">
+                    <div class="package-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="package-title">Package 3: Frontline.io Plattform</h3>
+                    <p class="package-description">Unbegrenzte Eigenentwicklungsplattform für maximale Flexibilität und kontinuierliche Innovation</p>
+                    <ul class="package-features">
+                        <li>Unbegrenzte Eigenentwicklungsplattform</li>
+                        <li>Keine Projektlimitierungen</li>
+                        <li>Enterprise-Grade Features</li>
+                        <li>Flexibles monatliches Abonnement-Modell</li>
+                        <li>Vollständige kreative Kontrolle</li>
+                    </ul>
+                    <button class="package-btn" onclick="contactUs('Frontline.io Plattform Package')">Angebot anfordern</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="container">
+            <h2 class="section-title fade-in">VR & AR in Aktion</h2>
+            <p class="section-subtitle fade-in">Erleben Sie die Vielfalt unserer VR-Lösungen in verschiedenen Anwendungsbereichen</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Digital Twin -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="assets/img/portfolio/frontline/frontline.io - digital Twin gif .gif" alt="Digital Twin" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Digitale Zwillinge</h4>
+                        <p style="color: #6c757d;">Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Helicopter -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="assets/img/portfolio/frontline/frontline. io - Robbins Helicopter GIF .gif" alt="Interactive Helicopter" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Interaktive Teilekataloge</h4>
+                        <p style="color: #6c757d;">Vollständige 3D-Darstellung mit Metadaten für schnelle Teileidentifikation</p>
+                    </div>
+                </div>
+
+                <!-- Remote Support -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="assets/img/portfolio/frontline/frontline.io-Remote-Support-high.gif" alt="Remote Support" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">AR Remote Support</h4>
+                        <p style="color: #6c757d;">Expertenhilfe in Echtzeit durch AR-gestützte Fernwartung</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Flows -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="assets/img/portfolio/frontline/frontline.io Interactive-Flows-high.gif" alt="Interactive Flows" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Interaktive Prozesse</h4>
+                        <p style="color: #6c757d;">Schritt-für-Schritt 3D-Anleitungen für optimale Schulungsergebnisse</p>
+                    </div>
+                </div>
+
+                <!-- Analytics -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="assets/img/portfolio/frontline/frontline.io - analytics2.jpg" alt="Analytics" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Echtzeit Analytics</h4>
+                        <p style="color: #6c757d;">Datenerfassung und Analyse für kontinuierliche Verbesserung</p>
+                    </div>
+                </div>
+
+                <!-- AR Custom -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="assets/img/portfolio/frontline/AR.gif" alt="AR Custom Solutions" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                    <div style="padding: 1.5rem; text-align: center;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Maßgeschneiderte AR</h4>
+                        <p style="color: #6c757d;">Individuelle AR-Lösungen für Ihre spezifischen Anforderungen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VR in Messe Section -->
+    <section class="section vr-messe" id="messe">
+        <div class="container">
+            <div class="messe-content">
+                <div class="messe-text fade-in">
+                    <h3>VR auf Messen: Der Publikumsmagnet</h3>
+                    <p style="color: #6c757d; margin-bottom: 2rem;">Nutzen Sie die Kraft der Virtual Reality auf Messen und Events, um Besucher zu begeistern und bleibende Eindrücke zu hinterlassen.</p>
+                    <ul class="package-features" style="margin-bottom: 2rem;">
+                        <li>Bis zu 10x länger Standbesuch</li>
+                        <li>Interaktive Produkterlebnisse</li>
+                        <li>Messbare Lead-Generierung</li>
+                        <li>Einzigartige Markenerlebnisse</li>
+                        <li>Social Media-worthy Content</li>
+                    </ul>
+                    <p style="color: #495057;"><strong>Anwendung unserer VR-Pakete:</strong> Alle drei Pakete können nahtlos für Messepräsentationen adaptiert werden - von interaktiven VR-Demos bis hin zu beeindruckenden Video-Präsentationen.</p>
+                </div>
+                <div class="messe-image fade-in">
+                    <img src="assets/img/portfolio/02-Portfolio2.jpg" alt="VR auf Messen" style="width: 100%; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frontline Section -->
+    <section class="section frontline" id="frontline">
+        <div class="container">
+            <h2 class="section-title fade-in">Powered by frontline.io</h2>
+            <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);">Die führende Plattform für industrielle VR-Anwendungen und digitale Zwillinge</p>
+            
+            <div class="frontline-features">
+                <div class="frontline-feature fade-in">
+                    <i class="fas fa-cube"></i>
+                    <h4>Digitale Zwillinge</h4>
+                    <p>Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden</p>
+                </div>
+                <div class="frontline-feature fade-in">
+                    <i class="fas fa-headset"></i>
+                    <h4>Remote Support</h4>
+                    <p>Expertenhilfe in Echtzeit durch AR/VR-gestützte Fernwartung</p>
+                </div>
+                <div class="frontline-feature fade-in">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Analytics</h4>
+                    <p>Echtzeit-Überwachung und KI-kompatible Datenerfassung für kontinuierliche Verbesserung</p>
+                </div>
+                <div class="frontline-feature fade-in">
+                    <i class="fas fa-play-circle"></i>
+                    <h4>Interaktive Abläufe</h4>
+                    <p>Schritt-für-Schritt 3D-Anleitungen für Training und Fehlerbehebung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container fade-in">
+            <h2 class="section-title">Bereit für die VR-Revolution?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Kontaktieren Sie uns für eine kostenlose Beratung und erfahren Sie, wie VR Ihr Business transformieren kann</p>
+            <a href="mailto:info@gfinnov.com" class="contact-btn">info@gfinnov.com</a>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact function
+        function contactUs(packageType) {
+            const subject = encodeURIComponent(`Anfrage für ${packageType}`);
+            const body = encodeURIComponent(`Hallo,\n\nich interessiere mich für das ${packageType} und würde gerne weitere Informationen sowie ein Angebot erhalten.\n\nVielen Dank!`);
+            window.location.href = `mailto:info@gfinnov.com?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>
