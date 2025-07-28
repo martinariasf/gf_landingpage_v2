@@ -10149,7 +10149,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/Header-2.webp");
+  background-image: url("../assets/img/Header-2.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -10165,7 +10165,7 @@ header.masthead::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Grey shadow effect */
+  background-color: rgba(0, 0, 0, 0.1); /* Grey shadow effect */
   z-index: 1; /* Ensures the shadow stays behind the content */
   pointer-events: none; /* Prevent interaction with the overlay */
 }

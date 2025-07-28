@@ -110,6 +110,273 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
+        /* Email Capture Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #6c757d;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #f8f9fa;
+            color: #495057;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .modal-benefits {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .modal-benefits li {
+            padding: 0.5rem 0;
+            color: #495057;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-benefits li::before {
+            content: '🚀';
+            margin-right: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .email-input {
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--success-green);
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+        }
+
+        .email-submit {
+            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .email-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+        }
+
+        .privacy-note {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="newsletter-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23newsletter-grid)"/></svg>');
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .newsletter-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .newsletter-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .newsletter-benefits {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-benefit {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .newsletter-benefit::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: bold;
+            margin-right: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .newsletter-form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .newsletter-input {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+        }
+
+        .newsletter-submit {
+            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .success-message {
+            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -452,6 +719,20 @@
                 gap: 2rem;
             }
             
+            .newsletter-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .newsletter-benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
             .nav-links {
                 display: none;
             }
@@ -476,6 +757,31 @@
 </head>
 
 <body>
+    <!-- Email Capture Modal -->
+    <div class="modal-overlay" id="emailModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title">🚀 Revolutionieren Sie Ihre Messepräsenz!</h3>
+            <p class="modal-subtitle">Erhalten Sie unseren exklusiven <strong>"VR/AR/MR Messe-Erfolgs-Guide"</strong> mit bewährten Strategien für 10x mehr Standbesucher.</p>
+            
+            <ul class="modal-benefits">
+                <li>15+ erfolgreiche VR-Messe-Projekte analysiert</li>
+                <li>ROI-Steigerung von durchschnittlich 340%</li>
+                <li>Schritt-für-Schritt Implementierung</li>
+                <li>Kostenlose Erstberatung inklusive</li>
+            </ul>
+            
+            <form class="email-form" id="modalForm">
+                <input type="email" class="email-input" placeholder="Ihre E-Mail-Adresse" required id="modalEmail">
+                <button type="submit" class="email-submit">📧 Kostenlosen Guide erhalten</button>
+            </form>
+            
+            <p class="privacy-note">
+                <i class="fas fa-lock"></i> 100% sicher - keine Weitergabe Ihrer Daten
+            </p>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -485,6 +791,7 @@
             <div class="nav-links">
                 <a href="#packages" class="nav-link">Packages</a>
                 <a href="#gallery" class="nav-link">Galerie</a>
+                <a href="#newsletter" class="nav-link">Free Guide</a>
                 <a href="#messe" class="nav-link">VR in Messen</a>
                 <a href="#frontline" class="nav-link">Frontline.io</a>
                 <a href="#contact" class="nav-link">Kontakt</a>
@@ -522,38 +829,6 @@
                         <li>Vollständiges Eigentum an allen Assets</li>
                         <li>Umfassende Implementierungsbetreuung inklusive</li>
                         <li>Basierend auf Ihren CAD-Daten</li>
-                    </ul>
-                    <button class="package-btn" onclick="contactUs('Digital Twin Entwicklung Package')">Angebot anfordern</button>
-                </div>
-
-                <div class="package-card fade-in">
-                    <div class="package-icon">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <h3 class="package-title">Package 2: 3D Visualisierung</h3>
-                    <p class="package-description">Fotorealistische 3D-Renderings für Marketing und Produktpräsentation</p>
-                    <ul class="package-features">
-                        <li>Hochauflösende 3D-Produktbilder</li>
-                        <li>Professionelle Beleuchtung & Materialien</li>
-                        <li>Schnellere Markteinführung</li>
-                        <li>Reduzierte Fotografie-Kosten</li>
-                        <li>Vielseitig einsetzbar (Web, Print, Social Media)</li>
-                    </ul>
-                    <button class="package-btn" onclick="contactUs('3D Visualisierung Package')">Angebot anfordern</button>
-                </div>
-
-                <div class="package-card fade-in">
-                    <div class="package-icon">
-                        <i class="fas fa-infinity"></i>
-                    </div>
-                    <h3 class="package-title">Package 3: Frontline.io Plattform</h3>
-                    <p class="package-description">Unbegrenzte Eigenentwicklungsplattform für maximale Flexibilität und kontinuierliche Innovation</p>
-                    <ul class="package-features">
-                        <li>Unbegrenzte Eigenentwicklungsplattform</li>
-                        <li>Keine Projektlimitierungen</li>
-                        <li>Enterprise-Grade Features</li>
-                        <li>Flexibles monatliches Abonnement-Modell</li>
-                        <li>Vollständige kreative Kontrolle</li>
                     </ul>
                     <button class="package-btn" onclick="contactUs('Frontline.io Plattform Package')">Angebot anfordern</button>
                 </div>
@@ -637,6 +912,46 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="section newsletter-section" id="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text fade-in">
+                    <h3>🎯 Ihr VR-Erfolg auf Messen startet hier</h3>
+                    <p>Erhalten Sie den exklusiven <strong>"VR/AR/MR Messe-Guide"</strong> mit bewährten Strategien, ROI-Berechnungen und praktischen Tipps für maximalen Messeerfolg.</p>
+                    
+                    <div class="newsletter-benefits">
+                        <div class="newsletter-benefit">15+ Praxisbeispiele</div>
+                        <div class="newsletter-benefit">ROI-Kalkulatoren</div>
+                        <div class="newsletter-benefit">Setup-Checklisten</div>
+                        <div class="newsletter-benefit">Technologie-Vergleiche</div>
+                        <div class="newsletter-benefit">Kosten-Optimierung</div>
+                        <div class="newsletter-benefit">Erfolgs-Metriken</div>
+                    </div>
+                    
+                    <p style="font-size: 0.9rem; opacity: 0.8;"><strong>Bonus:</strong> Monatliche Updates zu VR-Trends und neue Case Studies direkt in Ihr Postfach.</p>
+                </div>
+                
+                <div class="newsletter-form-container fade-in">
+                    <h4 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.3rem;">Kostenlosen Guide herunterladen</h4>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="text" class="newsletter-input" placeholder="Ihr Name" required id="nameInput">
+                        <input type="email" class="newsletter-input" placeholder="Ihre E-Mail-Adresse" required id="emailInput">
+                        <input type="text" class="newsletter-input" placeholder="Unternehmen (optional)" id="companyInput">
+                        <button type="submit" class="newsletter-submit">📧 Guide kostenlos erhalten</button>
+                    </form>
+                    <div class="success-message" id="successMessage">
+                        <strong>🎉 Vielen Dank!</strong><br>
+                        Ihr VR-Messe-Guide wird in den nächsten Minuten in Ihrem Postfach sein.
+                    </div>
+                    <p class="privacy-note">
+                        <i class="fas fa-lock"></i> Ihre Daten sind sicher. Keine Weitergabe an Dritte. Abmeldung jederzeit möglich.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- VR in Messe Section -->
     <section class="section vr-messe" id="messe">
         <div class="container">
@@ -701,6 +1016,130 @@
     </section>
 
     <script>
+        // Modal and Email Capture Functionality
+        let modalShown = false;
+        let emailCaptured = false;
+        
+        // Show modal after 30 seconds or 50% scroll
+        function initializeEmailCapture() {
+            // Timer-based popup (30 seconds)
+            setTimeout(() => {
+                if (!modalShown && !emailCaptured) {
+                    showModal();
+                }
+            }, 30000);
+            
+            // Scroll-based popup (50% of page)
+            let scrollTriggered = false;
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+                if (scrollPercent > 50 && !scrollTriggered && !modalShown && !emailCaptured) {
+                    scrollTriggered = true;
+                    setTimeout(() => {
+                        if (!modalShown && !emailCaptured) {
+                            showModal();
+                        }
+                    }, 2000);
+                }
+            });
+            
+            // Exit intent (when mouse moves to top of page)
+            document.addEventListener('mouseleave', (e) => {
+                if (e.clientY <= 0 && !modalShown && !emailCaptured) {
+                    showModal();
+                }
+            });
+        }
+        
+        function showModal() {
+            const modal = document.getElementById('emailModal');
+            modal.classList.add('show');
+            modalShown = true;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('emailModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('emailModal').addEventListener('click', (e) => {
+            if (e.target.id === 'emailModal') {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Handle modal form submission
+        document.getElementById('modalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('modalEmail').value;
+            handleEmailSubmission(email, 'popup');
+            closeModal();
+        });
+        
+        // Handle newsletter form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const company = document.getElementById('companyInput').value;
+            handleEmailSubmission(email, 'newsletter', name, company);
+        });
+        
+        function handleEmailSubmission(email, source, name = '', company = '') {
+            // Here you would typically send the data to your email marketing service
+            // For demonstration, we'll just show a success message
+            
+            emailCaptured = true;
+            
+            if (source === 'newsletter') {
+                // Hide form and show success message
+                document.getElementById('newsletterForm').style.display = 'none';
+                document.getElementById('successMessage').classList.add('show');
+                
+                // Simulate email sending (replace with actual integration)
+                console.log('Email captured:', { email, name, company, source });
+                
+                // You would integrate with services like:
+                // - Mailchimp
+                // - ConvertKit
+                // - ActiveCampaign
+                // - Your own backend API
+                
+                // Example Mailchimp integration (pseudo-code):
+                // sendToMailchimp({
+                //     email: email,
+                //     name: name,
+                //     company: company,
+                //     tags: ['vr-messe-guide', 'website-lead']
+                // });
+            } else {
+                // For popup, you might want to redirect or show a different message
+                alert('Vielen Dank! Der VR-Messe-Guide wird in Kürze an ' + email + ' gesendet.');
+            }
+            
+            // Track conversion (Google Analytics, Facebook Pixel, etc.)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_capture', {
+                    'event_category': 'lead_generation',
+                    'event_label': source,
+                    'value': 1
+                });
+            }
+        }
+        
+        // Initialize email capture when page loads
+        window.addEventListener('load', initializeEmailCapture);
+
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

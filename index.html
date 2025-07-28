@@ -110,10 +110,38 @@
                 box-shadow: 0 0 25px rgba(0,255,255,0.6);
             }
             
+            /* Mobile List Style */
+            .growth-list {
+                display: none;
+                padding: 2rem;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            
+            .growth-list-item {
+                background: rgba(30,60,114,0.95);
+                color: #fff;
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                cursor: pointer;
+                border: 2px solid #00FFFF;
+                transition: all 0.3s;
+                box-shadow: 0 0 15px rgba(0,255,255,0.3);
+                font-weight: 500;
+                text-align: center;
+            }
+            
+            .growth-list-item:hover {
+                background: rgba(30,60,114,1);
+                transform: translateY(-2px);
+                box-shadow: 0 0 25px rgba(0,255,255,0.6);
+            }
+            
             .growth-modal {
                 display: none;
                 position: fixed;
-                z-index: 1000;
+                z-index: 9999;
                 left: 0;
                 top: 0;
                 width: 100%;
@@ -124,13 +152,17 @@
             .growth-modal-content {
                 background: linear-gradient(135deg,#1e3c72,#2a5298);
                 color: #fff;
-                margin: 10% auto;
+                margin: 5% auto;
                 padding: 25px;
                 border-radius: 15px;
-                width: 85%;
-                max-width: 450px;
+                width: 90%;
+                max-width: 600px;
                 border: 2px solid #00FFFF;
                 box-shadow: 0 0 30px rgba(0,255,255,0.5);
+                max-height: 85vh;
+                overflow-y: auto;
+                position: relative;
+                z-index: 10000;
             }
             
             .growth-close {
@@ -139,6 +171,10 @@
                 font-size: 28px;
                 font-weight: bold;
                 cursor: pointer;
+                position: relative;
+                z-index: 10001;
+                line-height: 1;
+                padding: 5px;
             }
             
             .growth-close:hover {
@@ -146,23 +182,73 @@
                 text-shadow: 0 0 10px #00FFFF;
             }
             
-                @media(max-width:768px) {
+            .modal-text {
+                line-height: 1.6;
+                white-space: pre-line;
+            }
+            
+            /* Desktop responsive adjustments */
+            @media(max-width:1200px) {
                 .growth-box {
-                    font-size: 11px;
-                    padding: 10px;
-                    min-width: 110px;
+                    font-size: 12px;
+                    padding: 12px;
+                    min-width: 120px;
                 }
+            }
+            
+            /* Mobile responsive */
+            @media(max-width:768px) {
+                .growth-container {
+                    height: auto;
+                    min-height: 100vh;
+                    margin-left: calc(-50vw + 50%);
+                    background-attachment: scroll;
+                    padding-bottom: 2rem;
+                }
+                
+                .growth-box {
+                    display: none !important;
+                }
+                
+                .growth-list {
+                    display: block;
+                }
+                
                 .growth-title {
                     font-size: 2.2rem;
                     padding-top: 2rem;
                 }
+                
                 .growth-subtitle {
                     font-size: 1rem;
                     margin-bottom: 2rem;
                 }
-                .growth-container {
-                    height: 100vh;
-                    margin-left: calc(-50vw + 50%);
+                
+                .growth-modal-content {
+                    width: 95%;
+                    margin: 2% auto;
+                    max-height: 90vh;
+                    padding: 20px;
+                }
+            }
+            
+            /* Very small mobile devices */
+            @media(max-width:480px) {
+                .growth-list {
+                    padding: 1rem;
+                }
+                
+                .growth-list-item {
+                    padding: 15px;
+                    font-size: 14px;
+                }
+                
+                .growth-title {
+                    font-size: 1.8rem;
+                }
+                
+                .growth-subtitle {
+                    font-size: 0.9rem;
                 }
             }
         </style>
@@ -184,7 +270,7 @@
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Über uns</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Kontakt</a></li>
-                            <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="en/index.html">EN</a>
+                            <a class="nav-link" href="en/index.html" style="border: 1px solid rgba(255,255,255,0.3); border-radius: 20px;">EN</a>
                     </ul>
                 </div>
             </div>
@@ -243,36 +329,8 @@
                     <h3 class="section-subheading text-muted">&#160</h3>
                 </div>
                 <div class="row">
-                    <!-- Zusammenarbeit-->
-                    <div class="col-lg-6 col-sm-4 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/01-Portfolio2.jpg" alt="Zusammenarbeit" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Zusammenarbeit</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Frontline -->
-                    <div class="col-lg-6 col-sm-4 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/04-Portfolio2.jpg" alt="Digitale Zwillinge & Technologien" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Digitale Zwillinge & Technologien</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Beratung-->
-                    <div class="col-lg-6 col-sm-4 mb-4">
+                    <!-- Beratung für Startups (moved to top) -->
+                    <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
                                 <div class="portfolio-hover">
@@ -285,8 +343,24 @@
                             </div>
                         </div>
                     </div>
-                    <!-- AWS & Others-->
-                    <div class="col-lg-6 col-sm-4 mb-4">
+                    
+                    <!-- Digitale Zwillinge & Technologien -->
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/04-Portfolio2.jpg" alt="Digitale Zwillinge & Technologien" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Digitale Zwillinge & Technologien</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Netzwerk -->
+                    <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
                             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
                                 <div class="portfolio-hover">
@@ -311,32 +385,44 @@
                     <h3 class="growth-subtitle">Unsere strategischen Wachstumslösungen</h3>
                 </div>
                 
-                <div class="growth-box" style="left:30%;top:40%" onclick="openGrowthModal('market')">
-                    Market Entry<br>Strategies
+                <!-- Desktop Layout -->
+                <div class="growth-box" style="left:20%;top:35%" onclick="openGrowthModal('startup-clarity')">
+                    1. Startup<br>Clarity
                 </div>
                 
-                <div class="growth-box" style="left:40%;top:50%" onclick="openGrowthModal('implement')">
-                    Implementation<br>Strategy  
+                <div class="growth-box" style="left:35%;top:50%" onclick="openGrowthModal('revenue-engine')">
+                    2. Revenue<br>Engine
                 </div>
                 
-                <div class="growth-box" style="left:40%;top:65%" onclick="openGrowthModal('deep1')">
-                    Deep<br>Understanding
+                <div class="growth-box" style="left:50%;top:30%" onclick="openGrowthModal('sales-boost')">
+                    3. Sales<br>Boost
                 </div>
                 
-                <div class="growth-box" style="left:55%;top:55%" onclick="openGrowthModal('packages')">
-                    Packages for<br>Startups & Founders
+                <div class="growth-box" style="left:65%;top:45%" onclick="openGrowthModal('growth-capabilities')">
+                    4. Growth<br>Capabilities
                 </div>
                 
-                <div class="growth-box" style="left:60%;top:30%" onclick="openGrowthModal('growth')">
-                    Growth<br>Hacking
+                <div class="growth-box" style="left:75%;top:25%" onclick="openGrowthModal('scale-strategy')">
+                    5. Scale<br>Strategy
                 </div>
                 
-                <div class="growth-box" style="left:75%;top:45%" onclick="openGrowthModal('sales')">
-                    Sales Funnel<br>Development
-                </div>
-                
-                <div class="growth-box" style="left:75%;top:20%" onclick="openGrowthModal('stakeholder')">
-                    Stakeholder<br>Identification
+                <!-- Mobile List Layout -->
+                <div class="growth-list">
+                    <div class="growth-list-item" onclick="openGrowthModal('startup-clarity')">
+                        1. Startup Clarity
+                    </div>
+                    <div class="growth-list-item" onclick="openGrowthModal('revenue-engine')">
+                        2. Revenue Engine
+                    </div>
+                    <div class="growth-list-item" onclick="openGrowthModal('sales-boost')">
+                        3. Sales Boost
+                    </div>
+                    <div class="growth-list-item" onclick="openGrowthModal('growth-capabilities')">
+                        4. Growth Capabilities
+                    </div>
+                    <div class="growth-list-item" onclick="openGrowthModal('scale-strategy')">
+                        5. Scale Strategy
+                    </div>
                 </div>
             </div>
         </section>
@@ -346,7 +432,7 @@
             <div class="growth-modal-content">
                 <span class="growth-close" onclick="closeGrowthModal()">&times;</span>
                 <h2 id="growth-modal-title" style="color:#00FFFF;margin-bottom:15px"></h2>
-                <p id="growth-modal-text" style="line-height:1.6"></p>
+                <p id="growth-modal-text" class="modal-text"></p>
             </div>
         </div>
 
@@ -442,34 +528,6 @@
             </div>
         </footer>
         <!-- Portfolio Modals-->
-        
-        <!-- Modal 1 - Zusammenarbeit -->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase">Zusammenarbeit</h2>
-                                    <p class="item-intro text-muted">&#160</p>
-                                    <p class="text-lg-left">Unser Anspruch ist, unseren Partnern maßgeschneiderte datengesteuerte Ökosysteme und innovative digitale Geschäftsmodelle zu bieten, die ihren individuellen Anforderungen gerecht werden. Unser unermüdliches Engagement für Kundenzufriedenheit treibt uns an, unsere Lösungen ständig zu verbessern und die Erwartungen zu übertreffen.</p>
-                                    <ul class="list-inline">
-                                        <li>&#160</li>
-                                    </ul>
-                                    <button class="btn btn-success" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Schließen
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Modal 2 - Beratung für Startups -->
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
@@ -483,13 +541,6 @@
                                     <!-- Project Details Go Here-->
                                     <h2 class="text-uppercase">Beratung für Startups</h2>
                                     <p class="item-intro text-muted">&#160</p>
-                                    <p class="text-lg-left">Wir bieten maßgeschneiderte Beratungsdienste für Startups, um Ihnen bei Ihrem Markteintritt und Ihrer Pitch-Vorbereitung zu helfen. Unser Expertenteam unterstützt Sie dabei, Ihre Geschäftsideen zu verfeinern, überzeugende Präsentationen zu erstellen und Ihre Markteintrittsstrategie zu optimieren.</p>
-                                    <ul class="text-lg-left">
-                                        <li>Markteintrittsstrategien</li>
-                                        <li>Pitch-Vorbereitung und -Optimierung</li>
-                                        <li>Geschäftsmodellentwicklung</li>
-                                        <li>Und mehr...</li>
-                                    </ul>
                                     <p class="text-lg-left">Kontaktieren Sie uns, um zu erfahren, wie wir Ihr Startup auf dem Weg zum Erfolg begleiten können!</p>
                                     <ul class="list-inline">
                                         <li>&#160</li>
@@ -585,45 +636,36 @@
         <!-- Growth Journey JavaScript -->
         <script>
             const growthContent = {
-                market: {
-                    title: "Market Entry Strategies",
-                    text: "• Test Product MVP und USP\n• Value Proposition Canvas\n• Wettbewerbsanalyse\n• Zielmarktforschung\n• Go-to-Market Planung"
+                'startup-clarity': {
+                    title: "1. Startup Clarity – Aufbau auf solider Basis",
+                    text: "Für Startups in der Frühphase, die ihre Idee validieren und das Spielfeld verstehen möchten.\n\nInhalt:\n🔍 Markteinblicke: Identifizieren Sie das richtige Segment, bewerten Sie die Opportunity und erkennen Sie aufkommende Trends.\n⚔️ Wettbewerbslandschaft: Verstehen Sie Ihre Konkurrenten und schaffen Sie Ihren einzigartigen Raum.\n💎 Wertversprechen: Werden Sie kristallklar darüber, was Sie für Ihre Zielkunden unwiderstehlich macht.\n\nWarum es wichtig ist: Ohne Klarheit haben selbst die besten Ideen Schwierigkeiten. Dieses Paket hilft Ihnen, Ihre Vision zu validieren, sich smart zu positionieren und sich auf schnelle, selbstbewusste Umsetzung vorzubereiten."
                 },
-                implement: {
-                    title: "Implementation Strategy",
-                    text: "• Bewertung von KPIs\n• Ressourcenallokation\n• Zeitplanung\n• Risikobewertung\n• Leistungsüberwachung"
+                'revenue-engine': {
+                    title: "2. Revenue Engine – Bringen Sie Ihr Geschäftsmodell zum Laufen",
+                    text: "Für Startups, die bereit sind, Traktion in Geld umzuwandeln.\n\nInhalt:\n💰 Umsatzstrategie: Definieren Sie skalierbare Einkommensströme und erschließen Sie intelligente Monetarisierungswege.\n🤝 Strategische Partnerschaften: Entdecken Sie, wer Türen öffnen und Ihr Wachstum fördern kann.\n\nWarum es wichtig ist: Eine großartige Idee ist nur die halbe Reise. Dieses Paket hilft Ihnen dabei, schneller Geld zu verdienen – mit den richtigen Partnern und einem Umsatzmodell, das funktioniert."
                 },
-                deep1: {
-                    title: "Deep Understanding",
-                    text: "• Customer Journey Mapping\n• Schmerzpunkt-Analyse\n• Marktsegmentierung\n• User Persona Entwicklung\n• Verhaltenseinblicke"
+                'sales-boost': {
+                    title: "3. Sales Boost – Verwandeln Sie Interesse in Einkommen",
+                    text: "Für wachsende Startups, die bereit sind, die Kundenakquisition zu skalieren.\n\nInhalt:\n🔄 Sales Acceleration: Optimieren Sie Ihre Kanäle und schärfen Sie Ihre Pitch-to-Close-Journey.\n💬 Pitch Readiness: Erstellen Sie ein überzeugendes Deck und eine Botschaft, die bei Investoren und Kunden gleichermaßen ankommt.\n\nWarum es wichtig ist: Sie haben Aufmerksamkeit – jetzt konvertieren Sie sie. Dieses Paket gibt Ihnen die Tools und das Vertrauen zum Verkaufen, Abschließen und Wachsen."
                 },
-                packages: {
-                    title: "Packages für Startups & Gründer",
-                    text: "• Startup-Beschleunigungsprogramme\n• Gründer-Mentoring\n• Geschäftsmodellvalidierung\n• Pitch Deck Entwicklung\n• Investor Readiness"
+                'growth-capabilities': {
+                    title: "4. Growth Capabilities – Bauen Sie auf, was Sie unaufhaltsam macht",
+                    text: "Für skalierende Startups, die in langfristige Stärke investieren.\n\nInhalt:\n🛠️ Strategische Fähigkeiten: Identifizieren und bauen Sie die Talente, Systeme und Technologien auf, die Ihre Mission antreiben.\n📉 Kosteneffizienz: Verbessern Sie Margen durch intelligenteres, nicht nur härteres Arbeiten.\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden – es bedeutet stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben."
                 },
-                deep2: {
-                    title: "Deep Understanding",
-                    text: "• Datengesteuerte Einblicke\n• Kundenfeedback-Analyse\n• Markttrend-Forschung\n• Wettbewerbsintelligenz\n• Strategische Planung"
-                },
-                growth: {
-                    title: "Growth Hacking",
-                    text: "• Product-Market Fit Optimierung\n• Virale Marketingstrategien\n• A/B Testing Framework\n• Kundenakquise\n• Retention-Strategien"
-                },
-                sales: {
-                    title: "Sales Funnel Development",
-                    text: "• Lead-Generierung\n• Konversionsoptimierung\n• Customer Lifecycle Management\n• Verkaufsprozess-Automatisierung\n• Umsatzwachstumsplanung"
-                },
-                stakeholder: {
-                    title: "Stakeholder Identification",
-                    text: "• Mapping wichtiger Entscheidungsträger\n• Einflussanalyse\n• Kommunikationsstrategie\n• Beziehungsaufbau\n• Stakeholder Engagement"
+                'scale-strategy': {
+                    title: "5. Scale Strategy – Werden Sie zum Kategorie-Leader",
+                    text: "Für reife Startups, die bereit sind zu führen, größere Finanzierungsrunden zu starten oder global zu expandieren.\n\nInhalt:\n🎯 Alles oben Genannte – vollständig auf Ihre aktuellen Skalierungsherausforderungen zugeschnitten\n🧭 Maßgeschneiderte Workshops und Strategiesitzungen mit Senior-Beratern\n\nWarum es wichtig ist: Wenn Sie bereit sind aufzusteigen, brauchen Sie mehr als nur Ratschläge – Sie brauchen strategische Schlagkraft. Dieses Flaggschiff-Paket verwandelt Ambitionen in Umsetzung."
                 }
             };
             
             function openGrowthModal(key) {
                 const modal = document.getElementById('growthModal');
                 document.getElementById('growth-modal-title').textContent = growthContent[key].title;
-                document.getElementById('growth-modal-text').style.whiteSpace = 'pre-line';
-                document.getElementById('growth-modal-text').textContent = growthContent[key].text;
+                if(key === 'growth') {
+                    document.getElementById('growth-modal-text').innerHTML = growthContent[key].text + "<br><span style='color:green'>• KI Tools für Startups</span>";
+                } else {
+                    document.getElementById('growth-modal-text').textContent = growthContent[key].text;
+                }
                 modal.style.display = 'block';
             }
             
