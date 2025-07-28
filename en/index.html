@@ -657,7 +657,7 @@
                 },
                 'growth-capabilities': {
                     title: "4. Growth Capabilities – Build what makes you unstoppable",
-                    text: "For scaling startups investing in long-term strength.\n\nContent:\n🛠️ Strategic capabilities: Identify and build the talents, systems, and technologies that power your mission.\n📉 Cost efficiency: Improve margins by working smarter, not just harder.\n\nWhy it matters: Scaling isn't just about more customers – it's about stronger systems. This package helps you grow sustainably while staying agile."
+                    text: "For scaling startups investing in long-term strength.\n\n🛠️ Strategic capabilities: Identify and build the talents, systems, and technologies that power your mission.\n📉 Cost efficiency: Improve margins by working smarter, not just harder.\n<span style='color:#7CFC00;font-weight:bold'>🧠 AI Tools workshops: Equip your team with practical know-how to leverage cutting-edge AI tools for productivity and innovation.</span>\n\nWhy it matters: Scaling isn't just about more customers – it's about stronger systems. This package helps you grow sustainably while staying agile."
                 },
                 'scale-strategy': {
                     title: "5. Scale Strategy – Become the category leader",
@@ -668,7 +668,7 @@
             function openGrowthModal(key) {
                 const modal = document.getElementById('growthModal');
                 document.getElementById('growth-modal-title').textContent = growthContent[key].title;
-                document.getElementById('growth-modal-text').textContent = growthContent[key].text + "\n<span style='color:green'>• AI Tools for Startups</span>";
+                document.getElementById('growth-modal-text').innerHTML = growthContent[key].text;
                 modal.style.display = 'block';
             }
             

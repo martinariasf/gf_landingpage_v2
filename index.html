@@ -650,7 +650,7 @@
                 },
                 'growth-capabilities': {
                     title: "4. Growth Capabilities – Bauen Sie auf, was Sie unaufhaltsam macht",
-                    text: "Für skalierende Startups, die in langfristige Stärke investieren.\n\nInhalt:\n🛠️ Strategische Fähigkeiten: Identifizieren und bauen Sie die Talente, Systeme und Technologien auf, die Ihre Mission antreiben.\n📉 Kosteneffizienz: Verbessern Sie Margen durch intelligenteres, nicht nur härteres Arbeiten.\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden – es bedeutet stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben."
+                    text: "Für skalierende Startups, die in langfristige Stärke investieren.\n\n🛠️ Strategische Fähigkeiten: Identifizieren und bauen Sie die Talente, Systeme und Technologien auf, die Ihre Mission antreiben.\n📉 Kosteneffizienz: Verbessern Sie Margen durch intelligenteres, nicht nur härteres Arbeiten.\n<span style='color:#7CFC00;font-weight:bold'>🧠 KI Tools Workshops: Statten Sie Ihr Team mit praktischem Know-how aus, um modernste KI-Tools für Produktivität und Innovation zu nutzen.</span>\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden – es bedeutet stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben."
                 },
                 'scale-strategy': {
                     title: "5. Scale Strategy – Werden Sie zum Kategorie-Leader",
@@ -663,6 +663,11 @@
                 document.getElementById('growth-modal-title').textContent = growthContent[key].title;
                 if(key === 'growth') {
                     document.getElementById('growth-modal-text').innerHTML = growthContent[key].text + "<br><span style='color:green'>• KI Tools für Startups</span>";
+                } else if(key === 'growth-capabilities') {
+                    document.getElementById('growth-modal-text').innerHTML = growthContent[key].text.replace(
+                        /<span style='color:[^;]+;font-weight:bold'>(.*?)<\/span>/,
+                        "<span style='color:#7CFC00;font-weight:bold'>$1</span>"
+                    );
                 } else {
                     document.getElementById('growth-modal-text').textContent = growthContent[key].text;
                 }
