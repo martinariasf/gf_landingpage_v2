@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GF Innovative Solutions - Startup Growth Journey</title>
+    <link rel="stylesheet" href="startup-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
+                <a href="#growth-journey" class="nav-link" data-en="Growth Journey" data-de="Wachstumsreise">Growth Journey</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Contact</a>
+                <button class="language-toggle" type="button" aria-label="Toggle Language">
+                    <span id="current-lang">EN</span> | <span id="alt-lang">DE</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-en="From Idea to Scale-Up" data-de="Von der Idee zum Scale-Up">
+                    From Idea to Scale-Up
+                </h1>
+                <p class="hero-subtitle" data-en="Navigate your startup journey with AI-powered insights and German engineering precision." data-de="Navigieren Sie Ihre Startup-Reise mit KI-gestützten Erkenntnissen und deutscher Ingenieursgenauigkeit.">
+                    Navigate your startup journey with AI-powered insights and German engineering precision.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#growth-journey" class="btn btn-primary" data-en="Start Your Journey" data-de="Beginnen Sie Ihre Reise">
+                        Start Your Journey
+                    </a>
+                    <a href="#contact" class="btn btn-secondary" data-en="Book Consultation" data-de="Beratung buchen">
+                        Book Consultation
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="startup-graphic">
+                    <div class="rocket-element"></div>
+                    <div class="orbit-element orbit-1"></div>
+                    <div class="orbit-element orbit-2"></div>
+                    <div class="orbit-element orbit-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Growth Journey Section -->
+    <section id="growth-journey" class="section-primary" style="background: url('images/background_consulting_4.png') no-repeat center center/cover;">
+        <div class="container">
+            <h2 class="section-title" data-en="Your Startup Growth Journey" data-de="Ihre Startup-Wachstumsreise" style="margin-bottom: 24px;">Your Startup Growth Journey</h2>
+            <p class="section-description" data-en="Click on each stage to explore the strategic elements that will accelerate your startup's growth." data-de="Klicken Sie auf jede Phase, um die strategischen Elemente zu erkunden, die das Wachstum Ihres Startups beschleunigen werden." style="margin-bottom: 40px; font-size: 1.2rem;">
+                Click on each stage to explore the strategic elements that will accelerate your startup's growth.
+            </p>
+
+            <!-- Growth Journey Packages floating over the background, no white box -->
+            <div style="position:relative; min-height: 700px; width:100%;">
+                <div class="growth-box" data-step="competitive" style="position:absolute;left:5%;top:600px;width:220px;cursor:pointer;">
+                    <strong data-en="Competitive Landscape" data-de="Wettbewerbslandschaft">Competitive Landscape</strong>
+                </div>
+                <div class="growth-box" data-step="market" style="position:absolute;left:15%;top:530px;width:220px;cursor:pointer;">
+                    <strong data-en="Market Insights" data-de="Markteinblicke">Market Insights</strong>
+                </div>
+                <div class="growth-box" data-step="revenue" style="position:absolute;left:25%;top:460px;width:220px;cursor:pointer;">
+                    <strong data-en="Revenue Strategy" data-de="Umsatzstrategie">Revenue Strategy</strong>
+                </div>
+                <div class="growth-box" data-step="sales" style="position:absolute;left:35%;top:390px;width:220px;cursor:pointer;">
+                    <strong data-en="Sales Acceleration" data-de="Vertriebsbeschleunigung">Sales Acceleration</strong>
+                </div>
+                <div class="growth-box" data-step="capabilities" style="position:absolute;left:45%;top:320px;width:220px;cursor:pointer;">
+                    <strong data-en="Strategic Capabilities" data-de="Strategische Fähigkeiten">Strategic Capabilities</strong>
+                </div>
+                <div class="growth-box" data-step="cost" style="position:absolute;left:55%;top:250px;width:220px;cursor:pointer;">
+                    <strong data-en="Cost Efficiency" data-de="Kosteneffizienz">Cost Efficiency</strong>
+                </div>
+                <div class="growth-box" data-step="partner" style="position:absolute;left:65%;top:180px;width:220px;cursor:pointer;">
+                    <strong data-en="Strategic Partnerships" data-de="Strategische Partnerschaften">Strategic Partnerships</strong>
+                </div>
+                <div class="growth-box" data-step="usp" style="position:absolute;left:75%;top:110px;width:220px;cursor:pointer;">
+                    <strong data-en="Value Proposition" data-de="Wertversprechen">Value Proposition</strong>
+                </div>
+                <div class="growth-box" data-step="pitch" style="position:absolute;left:85%;top:40px;width:220px;cursor:pointer;">
+                    <strong data-en="Pitch Readiness" data-de="Pitch-Bereitschaft">Pitch Readiness</strong>
+                </div>
+                <div class="growth-box" data-step="ai" style="position:absolute;left:95%;top:-30px;width:220px;transform:translateX(-100%);cursor:pointer;">
+                    <strong data-en="AI for Startups" data-de="KI für Startups">AI for Startups</strong>
+                </div>
+            </div>
+
+            <!-- Growth Journey Modal -->
+            <div id="growth-modal" class="growth-modal">
+                <div class="growth-modal-content">
+                    <span class="growth-close">&times;</span>
+                    <h3 id="growth-modal-title"></h3>
+                    <p id="growth-modal-text"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose GF Section -->
+    <section class="section-secondary">
+        <div class="container">
+            <h2 class="section-title" data-en="Why Startups Choose GF" data-de="Warum Startups GF wählen">Why Startups Choose GF</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Rapid Prototyping" data-de="Rapid Prototyping">Rapid Prototyping</h3>
+                    <p data-en="From concept to MVP in weeks, not months." data-de="Vom Konzept zum MVP in Wochen, nicht Monaten.">From concept to MVP in weeks, not months.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="AI Integration" data-de="KI-Integration">AI Integration</h3>
+                    <p data-en="Smart automation from day one." data-de="Intelligente Automatisierung von Tag eins.">Smart automation from day one.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Investor Ready" data-de="Investor-bereit">Investor Ready</h3>
+                    <p data-en="Pitch decks that secure funding." data-de="Pitch Decks, die Finanzierung sichern.">Pitch decks that secure funding.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-cta">
+        <div class="container">
+            <h2 class="section-title" data-en="Ready to Scale Your Startup?" data-de="Bereit, Ihr Startup zu skalieren?">Ready to Scale Your Startup?</h2>
+            <p class="cta-description" data-en="Let's discuss your vision and create a roadmap for success." data-de="Lassen Sie uns über Ihre Vision sprechen und eine Roadmap für den Erfolg erstellen.">
+                Let's discuss your vision and create a roadmap for success.
+            </p>
+            
+            <div class="calendly-container">
+                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary btn-large" target="_blank" data-en="Book Your Strategy Call" data-de="Buchen Sie Ihr Strategiegespräch">
+                    Book Your Strategy Call
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./images/gf-logo-white.png" alt="GF Innovative Solutions" class="footer-logo">
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="For Startups" data-de="Für Startups">For Startups</h4>
+                    <ul>
+                        <li><a href="#" data-en="MVP Development" data-de="MVP-Entwicklung">MVP Development</a></li>
+                        <li><a href="#" data-en="AI Integration" data-de="KI-Integration">AI Integration</a></li>
+                        <li><a href="#" data-en="Investor Preparation" data-de="Investor-Vorbereitung">Investor Preparation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Contact" data-de="Kontakt">Contact</h4>
+                    <p>info@gfinnov.com</p>
+                    <p>+49 172 95 123 76</p>
+                    <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+                <div class="footer-links">
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Imprint</a> | 
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="startup-script.js"></script>
+</body>
+</html>

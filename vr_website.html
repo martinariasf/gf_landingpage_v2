@@ -7,753 +7,15 @@
     <meta name="author" content="GF Innovative Solutions" />
     <title>GF Innovative Solutions - VR Solutions</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    
     <!-- Font Awesome icons -->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     
-    <style>
-        :root {
-            --primary-blue: #1e3c72;
-            --secondary-blue: #2a5298;
-            --success-green: #28a745;
-            --light-green: #34ce57;
-            --accent-green: #20c997;
-            --dark-green: #1e7e34;
-            --dark: #212529;
-            --light: #f8f9fa;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #212529;
-            background-color: #fff;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(30, 60, 114, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 0.5rem 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            color: var(--success-green);
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        .nav-link:hover {
-            color: var(--success-green);
-            background: rgba(255,255,255,0.1);
-        }
-
-        .back-btn {
-            background: var(--success-green);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn:hover {
-            background: #1e7e34;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Email Capture Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-overlay.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            transform: translateY(50px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .modal-overlay.show .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #6c757d;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: #f8f9fa;
-            color: #495057;
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .modal-subtitle {
-            color: #6c757d;
-            text-align: center;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .modal-benefits {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2rem;
-        }
-
-        .modal-benefits li {
-            padding: 0.5rem 0;
-            color: #495057;
-            display: flex;
-            align-items: center;
-        }
-
-        .modal-benefits li::before {
-            content: '🚀';
-            margin-right: 0.8rem;
-            font-size: 1.1rem;
-        }
-
-        .email-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .email-input {
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .email-input:focus {
-            outline: none;
-            border-color: var(--success-green);
-            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
-        }
-
-        .email-submit {
-            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .email-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
-        }
-
-        .privacy-note {
-            font-size: 0.8rem;
-            color: #6c757d;
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        /* Newsletter Section */
-        .newsletter-section {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .newsletter-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="newsletter-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23newsletter-grid)"/></svg>');
-        }
-
-        .newsletter-content {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .newsletter-text h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .newsletter-text p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .newsletter-benefits {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .newsletter-benefit {
-            display: flex;
-            align-items: center;
-            padding: 0.5rem 0;
-        }
-
-        .newsletter-benefit::before {
-            content: '✓';
-            color: var(--success-green);
-            font-weight: bold;
-            margin-right: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .newsletter-form-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .newsletter-input {
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 15px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-input:focus {
-            outline: none;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
-        }
-
-        .newsletter-submit {
-            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 15px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .success-message {
-            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
-            color: white;
-            padding: 1rem;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 1rem;
-            display: none;
-        }
-
-        .success-message.show {
-            display: block;
-            animation: slideIn 0.5s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--success-green) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #fff, var(--success-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-            to { text-shadow: 0 0 30px rgba(40,167,69,0.7); }
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
-            color: white;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-            text-decoration: none;
-            color: white;
-        }
-
-        /* Sections */
-        .section {
-            padding: 6rem 0;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-blue);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #6c757d;
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Packages Grid */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .package-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .package-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, var(--success-green), var(--accent-green));
-        }
-
-        .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            border-color: var(--accent-green);
-        }
-
-        .package-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary-blue), var(--success-green));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .package-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-        }
-
-        .package-description {
-            color: #6c757d;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .package-features {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2rem;
-        }
-
-        .package-features li {
-            padding: 0.5rem 0;
-            color: #495057;
-            display: flex;
-            align-items: center;
-        }
-
-        .package-features li::before {
-            content: '✓';
-            color: var(--success-green);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        .package-btn {
-            background: linear-gradient(45deg, var(--primary-blue), var(--success-green));
-            color: white;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .package-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Gallery Styles */
-        .gallery-item {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        .gallery-image {
-            overflow: hidden;
-            border-radius: 15px 15px 0 0;
-        }
-
-        .gallery-image img {
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-image img {
-            transform: scale(1.05);
-        }
-
-        /* VR in Messe Section */
-        .vr-messe {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            position: relative;
-        }
-
-        .messe-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .messe-text h3 {
-            font-size: 2rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-        }
-
-        .messe-image {
-            text-align: center;
-        }
-
-        .messe-image img {
-            max-width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-
-        /* Frontline Section */
-        .frontline {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .frontline .section-title {
-            color: white;
-        }
-
-        .frontline-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .frontline-feature {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .frontline-feature i {
-            font-size: 3rem;
-            color: var(--success-green);
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--success-green), var(--primary-blue));
-            color: white;
-            text-align: center;
-        }
-
-        .contact .section-title {
-            color: white;
-        }
-
-        .contact-btn {
-            background: var(--dark-green);
-            color: white;
-            padding: 1rem 3rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-btn:hover {
-            background: var(--success-green);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            text-decoration: none;
-            color: white;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .packages-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .messe-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .newsletter-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .newsletter-benefits {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-content {
-                padding: 2rem;
-                margin: 1rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .nav-container {
-                padding: 0 1rem;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <!-- Google fonts - Matching main website -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- VR Website Specific Styles -->
+    <link rel="stylesheet" href="styles-vr.css">
 </head>
 
 <body>
@@ -761,22 +23,22 @@
     <div class="modal-overlay" id="emailModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h3 class="modal-title">🚀 Revolutionieren Sie Ihre Messepräsenz!</h3>
-            <p class="modal-subtitle">Erhalten Sie unseren exklusiven <strong>"VR/AR/MR Messe-Erfolgs-Guide"</strong> mit bewährten Strategien für 10x mehr Standbesucher.</p>
+            <h3 class="modal-title" data-en="🚀 Revolutionize Your Trade Show Presence!" data-de="🚀 Revolutionieren Sie Ihre Messepräsenz!">🚀 Revolutionieren Sie Ihre Messepräsenz!</h3>
+            <p class="modal-subtitle" data-en="Get our exclusive 'VR/AR/MR Trade Show Success Guide' with proven strategies for 10x more booth visitors." data-de="Erhalten Sie unseren exklusiven 'VR/AR/MR Messe-Erfolgs-Guide' mit bewährten Strategien für 10x mehr Standbesucher.">Erhalten Sie unseren exklusiven <strong>"VR/AR/MR Messe-Erfolgs-Guide"</strong> mit bewährten Strategien für 10x mehr Standbesucher.</p>
             
             <ul class="modal-benefits">
-                <li>15+ erfolgreiche VR-Messe-Projekte analysiert</li>
-                <li>ROI-Steigerung von durchschnittlich 340%</li>
-                <li>Schritt-für-Schritt Implementierung</li>
-                <li>Kostenlose Erstberatung inklusive</li>
+                <li data-en="15+ successful VR trade show projects analyzed" data-de="15+ erfolgreiche VR-Messe-Projekte analysiert">15+ erfolgreiche VR-Messe-Projekte analysiert</li>
+                <li data-en="Average ROI increase of 340%" data-de="ROI-Steigerung von durchschnittlich 340%">ROI-Steigerung von durchschnittlich 340%</li>
+                <li data-en="Step-by-step implementation guide" data-de="Schritt-für-Schritt Implementierung">Schritt-für-Schritt Implementierung</li>
+                <li data-en="Free initial consultation included" data-de="Kostenlose Erstberatung inklusive">Kostenlose Erstberatung inklusive</li>
             </ul>
             
             <form class="email-form" id="modalForm">
-                <input type="email" class="email-input" placeholder="Ihre E-Mail-Adresse" required id="modalEmail">
-                <button type="submit" class="email-submit">📧 Kostenlosen Guide erhalten</button>
+                <input type="email" class="email-input" placeholder="Ihre E-Mail-Adresse" required id="modalEmail" data-en="Your email address" data-de="Ihre E-Mail-Adresse">
+                <button type="submit" class="email-submit" data-en="📧 Get Free Guide" data-de="📧 Kostenlosen Guide erhalten">📧 Kostenlosen Guide erhalten</button>
             </form>
             
-            <p class="privacy-note">
+            <p class="privacy-note" data-en="🔒 100% secure - no data sharing" data-de="🔒 100% sicher - keine Weitergabe Ihrer Daten">
                 <i class="fas fa-lock"></i> 100% sicher - keine Weitergabe Ihrer Daten
             </p>
         </div>
@@ -785,18 +47,25 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="assets/img/logos/Logo_GF_B_N.png" style="height: 40px; margin-right: 10px;" alt="GF Logo">
-            </a>
-            <div class="nav-links">
-                <a href="#packages" class="nav-link">Packages</a>
-                <a href="#gallery" class="nav-link">Galerie</a>
-                <a href="#newsletter" class="nav-link">Free Guide</a>
-                <a href="#messe" class="nav-link">VR in Messen</a>
-                <a href="#frontline" class="nav-link">Frontline.io</a>
-                <a href="#contact" class="nav-link">Kontakt</a>
-                <a href="en/vr_website_en.html" class="nav-link" style="border: 1px solid rgba(255,255,255,0.3); border-radius: 20px;">EN</a>
-                <a href="index.html" class="back-btn">← Zurück zur Hauptseite</a>
+            <div class="nav-logo">
+                <img src="images/gf-logo.png" alt="GF Innovative Solutions" style="height: 40px;">
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Startseite</a>
+                <a href="#packages" class="nav-link" data-en="Packages" data-de="Packages">Packages</a>
+                <a href="#gallery" class="nav-link" data-en="Gallery" data-de="Galerie">Galerie</a>
+                <a href="#newsletter" class="nav-link" data-en="Free Guide" data-de="Free Guide">Free Guide</a>
+                <a href="#messe" class="nav-link" data-en="VR in Trade Shows" data-de="VR in Messen">VR in Messen</a>
+                <a href="#frontline" class="nav-link" data-en="Frontline.io" data-de="Frontline.io">Frontline.io</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Kontakt</a>
+                <button class="language-toggle" type="button" aria-label="Toggle Language">
+                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
+                </button>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
@@ -804,33 +73,65 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content fade-in">
-            <h1>Begeistern Sie Ihr Publikum mit VR/AR</h1>
-            <p>Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI</p>
-            <a href="#packages" class="cta-button">Entdecken Sie unsere VR-Pakete</a>
+            <h1 data-en="Captivate Your Audience with VR/AR" data-de="Begeistern Sie Ihr Publikum mit VR/AR">Begeistern Sie Ihr Publikum mit VR/AR</h1>
+            <p data-en="Innovative Virtual & Augmented Reality solutions for unforgettable trade show experiences, efficient training and maximum ROI" data-de="Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI">Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI</p>
+            <a href="#packages" class="cta-button" data-en="Discover Our VR Packages" data-de="Entdecken Sie unsere VR-Pakete">Entdecken Sie unsere VR-Pakete</a>
         </div>
     </section>
 
     <!-- Packages Section -->
     <section class="section" id="packages">
         <div class="container">
-            <h2 class="section-title fade-in">VR Solutions Packages</h2>
-            <p class="section-subtitle fade-in">Maßgeschneiderte VR-Lösungen für maximale Effizienz und ROI</p>
+            <h2 class="section-title fade-in" data-en="VR Solutions Packages" data-de="VR Solutions Packages">VR Solutions Packages</h2>
+            <p class="section-subtitle fade-in" data-en="Tailored VR solutions for maximum efficiency and ROI" data-de="Maßgeschneiderte VR-Lösungen für maximale Effizienz und ROI">Maßgeschneiderte VR-Lösungen für maximale Effizienz und ROI</p>
             
             <div class="packages-grid">
                 <div class="package-card fade-in">
                     <div class="package-icon">
                         <i class="fas fa-cube"></i>
                     </div>
-                    <h3 class="package-title">Package 1: Digital Twin Entwicklung</h3>
-                    <p class="package-description">Professionelle Entwicklung maßgeschneiderter digitaler Zwillinge für Training und Messepräsentationen</p>
+                    <h3 class="package-title" data-en="Package 1: Digital Twin Development" data-de="Package 1: Digital Twin Entwicklung">Package 1: Digital Twin Entwicklung</h3>
+                    <p class="package-description" data-en="Professional development of customized digital twins for training and trade show presentations" data-de="Professionelle Entwicklung maßgeschneiderter digitaler Zwillinge für Training und Messepräsentationen">Professionelle Entwicklung maßgeschneiderter digitaler Zwillinge für Training und Messepräsentationen</p>
                     <ul class="package-features">
-                        <li>Custom Digital Twin Entwicklungsservice</li>
-                        <li>Vielseitig für Training UND Messen einsetzbar</li>
-                        <li>Vollständiges Eigentum an allen Assets</li>
-                        <li>Umfassende Implementierungsbetreuung inklusive</li>
-                        <li>Basierend auf Ihren CAD-Daten</li>
+                        <li data-en="Custom Digital Twin development service" data-de="Custom Digital Twin Entwicklungsservice">Custom Digital Twin Entwicklungsservice</li>
+                        <li data-en="Versatile for training AND trade shows" data-de="Vielseitig für Training UND Messen einsetzbar">Vielseitig für Training UND Messen einsetzbar</li>
+                        <li data-en="Complete ownership of all assets" data-de="Vollständiges Eigentum an allen Assets">Vollständiges Eigentum an allen Assets</li>
+                        <li data-en="Comprehensive implementation support included" data-de="Umfassende Implementierungsbetreuung inklusive">Umfassende Implementierungsbetreuung inklusive</li>
+                        <li data-en="Based on your CAD data" data-de="Basierend auf Ihren CAD-Daten">Basierend auf Ihren CAD-Daten</li>
                     </ul>
-                    <button class="package-btn" onclick="contactUs('Frontline.io Plattform Package')">Angebot anfordern</button>
+                    <button class="package-btn" onclick="contactUs('Digital Twin Development Package')" data-en="Request Quote" data-de="Angebot anfordern">Angebot anfordern</button>
+                </div>
+
+                <div class="package-card fade-in">
+                    <div class="package-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="package-title" data-en="Package 2: VR Video Production" data-de="Package 2: VR Video Produktion">Package 2: VR Video Produktion</h3>
+                    <p class="package-description" data-en="High-quality VR video content for immersive product presentations and virtual tours" data-de="Hochwertige VR-Video-Inhalte für immersive Produktpräsentationen und virtuelle Rundgänge">Hochwertige VR-Video-Inhalte für immersive Produktpräsentationen und virtuelle Rundgänge</p>
+                    <ul class="package-features">
+                        <li data-en="360° video production" data-de="360°-Video-Produktion">360°-Video-Produktion</li>
+                        <li data-en="Professional editing and post-production" data-de="Professionelle Bearbeitung und Nachbearbeitung">Professionelle Bearbeitung und Nachbearbeitung</li>
+                        <li data-en="Multi-platform compatibility" data-de="Multi-Plattform-Kompatibilität">Multi-Plattform-Kompatibilität</li>
+                        <li data-en="Interactive hotspots and annotations" data-de="Interaktive Hotspots und Annotationen">Interaktive Hotspots und Annotationen</li>
+                        <li data-en="Trade show ready formats" data-de="Messefertige Formate">Messefertige Formate</li>
+                    </ul>
+                    <button class="package-btn" onclick="contactUs('VR Video Production Package')" data-en="Request Quote" data-de="Angebot anfordern">Angebot anfordern</button>
+                </div>
+
+                <div class="package-card fade-in">
+                    <div class="package-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="package-title" data-en="Package 3: frontline.io Platform" data-de="Package 3: frontline.io Plattform">Package 3: frontline.io Plattform</h3>
+                    <p class="package-description" data-en="Complete access to the frontline.io platform with enterprise-grade VR/AR solutions" data-de="Vollständiger Zugang zur frontline.io-Plattform mit VR/AR-Lösungen auf Unternehmensebene">Vollständiger Zugang zur frontline.io-Plattform mit VR/AR-Lösungen auf Unternehmensebene</p>
+                    <ul class="package-features">
+                        <li data-en="Full platform access and licensing" data-de="Vollständiger Plattformzugang und Lizenzierung">Vollständiger Plattformzugang und Lizenzierung</li>
+                        <li data-en="Remote support capabilities" data-de="Remote-Support-Funktionen">Remote-Support-Funktionen</li>
+                        <li data-en="Real-time analytics and reporting" data-de="Echtzeit-Analytik und Berichterstattung">Echtzeit-Analytik und Berichterstattung</li>
+                        <li data-en="Multi-user collaboration tools" data-de="Multi-User-Kollaborationstools">Multi-User-Kollaborationstools</li>
+                        <li data-en="Ongoing support and updates" data-de="Laufender Support und Updates">Laufender Support und Updates</li>
+                    </ul>
+                    <button class="package-btn" onclick="contactUs('frontline.io Platform Package')" data-en="Request Quote" data-de="Angebot anfordern">Angebot anfordern</button>
                 </div>
             </div>
         </div>
@@ -839,73 +140,73 @@
     <!-- Gallery Section -->
     <section class="section" id="gallery" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
-            <h2 class="section-title fade-in">VR & AR in Aktion</h2>
-            <p class="section-subtitle fade-in">Erleben Sie die Vielfalt unserer VR-Lösungen in verschiedenen Anwendungsbereichen</p>
+            <h2 class="section-title fade-in" data-en="VR & AR in Action" data-de="VR & AR in Aktion">VR & AR in Aktion</h2>
+            <p class="section-subtitle fade-in" data-en="Experience the diversity of our VR solutions in various application areas" data-de="Erleben Sie die Vielfalt unserer VR-Lösungen in verschiedenen Anwendungsbereichen">Erleben Sie die Vielfalt unserer VR-Lösungen in verschiedenen Anwendungsbereichen</p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 <!-- Digital Twin -->
                 <div class="gallery-item fade-in">
                     <div class="gallery-image">
-                        <img src="assets/img/portfolio/frontline/frontline.io - digital Twin gif .gif" alt="Digital Twin" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <img src="images/frontline/frontline.io - digital Twin gif .gif" alt="Digital Twin" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Digitale Zwillinge</h4>
-                        <p style="color: #6c757d;">Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation</p>
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;" data-en="Digital Twins" data-de="Digitale Zwillinge">Digitale Zwillinge</h4>
+                        <p style="color: #6c757d;" data-en="Virtual replicas of your machines for immersive training and simulation" data-de="Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation">Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation</p>
                     </div>
                 </div>
 
                 <!-- Interactive Helicopter -->
                 <div class="gallery-item fade-in">
                     <div class="gallery-image">
-                        <img src="assets/img/portfolio/frontline/frontline. io - Robbins Helicopter GIF .gif" alt="Interactive Helicopter" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <img src="images/frontline/frontline. io - Robbins Helicopter GIF .gif" alt="Interactive Helicopter" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Interaktive Teilekataloge</h4>
-                        <p style="color: #6c757d;">Vollständige 3D-Darstellung mit Metadaten für schnelle Teileidentifikation</p>
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;" data-en="Interactive Parts Catalogs" data-de="Interaktive Teilekataloge">Interaktive Teilekataloge</h4>
+                        <p style="color: #6c757d;" data-en="Complete 3D representation with metadata for quick part identification" data-de="Vollständige 3D-Darstellung mit Metadaten für schnelle Teileidentifikation">Vollständige 3D-Darstellung mit Metadaten für schnelle Teileidentifikation</p>
                     </div>
                 </div>
 
                 <!-- Remote Support -->
                 <div class="gallery-item fade-in">
                     <div class="gallery-image">
-                        <img src="assets/img/portfolio/frontline/frontline.io-Remote-Support-high.gif" alt="Remote Support" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <img src="images/frontline/frontline.io-Remote-Support-high.gif" alt="Remote Support" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">AR Remote Support</h4>
-                        <p style="color: #6c757d;">Expertenhilfe in Echtzeit durch AR-gestützte Fernwartung</p>
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;" data-en="AR Remote Support" data-de="AR Remote Support">AR Remote Support</h4>
+                        <p style="color: #6c757d;" data-en="Real-time expert assistance through AR-supported remote maintenance" data-de="Expertenhilfe in Echtzeit durch AR-gestützte Fernwartung">Expertenhilfe in Echtzeit durch AR-gestützte Fernwartung</p>
                     </div>
                 </div>
 
                 <!-- Interactive Flows -->
                 <div class="gallery-item fade-in">
                     <div class="gallery-image">
-                        <img src="assets/img/portfolio/frontline/frontline.io Interactive-Flows-high.gif" alt="Interactive Flows" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <img src="images/frontline/frontline.io Interactive-Flows-high.gif" alt="Interactive Flows" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Interaktive Prozesse</h4>
-                        <p style="color: #6c757d;">Schritt-für-Schritt 3D-Anleitungen für optimale Schulungsergebnisse</p>
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;" data-en="Interactive Processes" data-de="Interaktive Prozesse">Interaktive Prozesse</h4>
+                        <p style="color: #6c757d;" data-en="Step-by-step 3D instructions for optimal training results" data-de="Schritt-für-Schritt 3D-Anleitungen für optimale Schulungsergebnisse">Schritt-für-Schritt 3D-Anleitungen für optimale Schulungsergebnisse</p>
                     </div>
                 </div>
 
                 <!-- Analytics -->
                 <div class="gallery-item fade-in">
                     <div class="gallery-image">
-                        <img src="assets/img/portfolio/frontline/frontline.io - analytics2.jpg" alt="Analytics" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <img src="images/frontline/frontline.io - analytics2.jpg" alt="Analytics" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Echtzeit Analytics</h4>
-                        <p style="color: #6c757d;">Datenerfassung und Analyse für kontinuierliche Verbesserung</p>
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;" data-en="Real-time Analytics" data-de="Echtzeit Analytics">Echtzeit Analytics</h4>
+                        <p style="color: #6c757d;" data-en="Data collection and analysis for continuous improvement" data-de="Datenerfassung und Analyse für kontinuierliche Verbesserung">Datenerfassung und Analyse für kontinuierliche Verbesserung</p>
                     </div>
                 </div>
 
                 <!-- AR Custom -->
                 <div class="gallery-item fade-in">
                     <div class="gallery-image">
-                        <img src="assets/img/portfolio/frontline/AR.gif" alt="AR Custom Solutions" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <img src="images/frontline/AR.gif" alt="AR Custom Solutions" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Maßgeschneiderte AR</h4>
-                        <p style="color: #6c757d;">Individuelle AR-Lösungen für Ihre spezifischen Anforderungen</p>
+                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;" data-en="Custom AR Solutions" data-de="Maßgeschneiderte AR">Maßgeschneiderte AR</h4>
+                        <p style="color: #6c757d;" data-en="Individual AR solutions for your specific requirements" data-de="Individuelle AR-Lösungen für Ihre spezifischen Anforderungen">Individuelle AR-Lösungen für Ihre spezifischen Anforderungen</p>
                     </div>
                 </div>
             </div>
@@ -917,34 +218,34 @@
         <div class="container">
             <div class="newsletter-content">
                 <div class="newsletter-text fade-in">
-                    <h3>🎯 Ihr VR-Erfolg auf Messen startet hier</h3>
-                    <p>Erhalten Sie den exklusiven <strong>"VR/AR/MR Messe-Guide"</strong> mit bewährten Strategien, ROI-Berechnungen und praktischen Tipps für maximalen Messeerfolg.</p>
+                    <h3 data-en="🎯 Your VR success at trade shows starts here" data-de="🎯 Ihr VR-Erfolg auf Messen startet hier">🎯 Ihr VR-Erfolg auf Messen startet hier</h3>
+                    <p data-en="Get the exclusive 'VR/AR/MR Trade Show Guide' with proven strategies, ROI calculations and practical tips for maximum trade show success." data-de="Erhalten Sie den exklusiven 'VR/AR/MR Messe-Guide' mit bewährten Strategien, ROI-Berechnungen und praktischen Tipps für maximalen Messeerfolg.">Erhalten Sie den exklusiven <strong>"VR/AR/MR Messe-Guide"</strong> mit bewährten Strategien, ROI-Berechnungen und praktischen Tipps für maximalen Messeerfolg.</p>
                     
                     <div class="newsletter-benefits">
-                        <div class="newsletter-benefit">15+ Praxisbeispiele</div>
-                        <div class="newsletter-benefit">ROI-Kalkulatoren</div>
-                        <div class="newsletter-benefit">Setup-Checklisten</div>
-                        <div class="newsletter-benefit">Technologie-Vergleiche</div>
-                        <div class="newsletter-benefit">Kosten-Optimierung</div>
-                        <div class="newsletter-benefit">Erfolgs-Metriken</div>
+                        <div class="newsletter-benefit" data-en="15+ practical examples" data-de="15+ Praxisbeispiele">15+ Praxisbeispiele</div>
+                        <div class="newsletter-benefit" data-en="ROI calculators" data-de="ROI-Kalkulatoren">ROI-Kalkulatoren</div>
+                        <div class="newsletter-benefit" data-en="Setup checklists" data-de="Setup-Checklisten">Setup-Checklisten</div>
+                        <div class="newsletter-benefit" data-en="Technology comparisons" data-de="Technologie-Vergleiche">Technologie-Vergleiche</div>
+                        <div class="newsletter-benefit" data-en="Cost optimization" data-de="Kosten-Optimierung">Kosten-Optimierung</div>
+                        <div class="newsletter-benefit" data-en="Success metrics" data-de="Erfolgs-Metriken">Erfolgs-Metriken</div>
                     </div>
                     
-                    <p style="font-size: 0.9rem; opacity: 0.8;"><strong>Bonus:</strong> Monatliche Updates zu VR-Trends und neue Case Studies direkt in Ihr Postfach.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;" data-en="Bonus: Monthly updates on VR trends and new case studies directly to your inbox." data-de="Bonus: Monatliche Updates zu VR-Trends und neue Case Studies direkt in Ihr Postfach."><strong>Bonus:</strong> Monatliche Updates zu VR-Trends und neue Case Studies direkt in Ihr Postfach.</p>
                 </div>
                 
                 <div class="newsletter-form-container fade-in">
-                    <h4 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.3rem;">Kostenlosen Guide herunterladen</h4>
+                    <h4 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.3rem;" data-en="Download Free Guide" data-de="Kostenlosen Guide herunterladen">Kostenlosen Guide herunterladen</h4>
                     <form class="newsletter-form" id="newsletterForm">
-                        <input type="text" class="newsletter-input" placeholder="Ihr Name" required id="nameInput">
-                        <input type="email" class="newsletter-input" placeholder="Ihre E-Mail-Adresse" required id="emailInput">
-                        <input type="text" class="newsletter-input" placeholder="Unternehmen (optional)" id="companyInput">
-                        <button type="submit" class="newsletter-submit">📧 Guide kostenlos erhalten</button>
+                        <input type="text" class="newsletter-input" placeholder="Ihr Name" required id="nameInput" data-en="Your Name" data-de="Ihr Name">
+                        <input type="email" class="newsletter-input" placeholder="Ihre E-Mail-Adresse" required id="emailInput" data-en="Your Email Address" data-de="Ihre E-Mail-Adresse">
+                        <input type="text" class="newsletter-input" placeholder="Unternehmen (optional)" id="companyInput" data-en="Company (optional)" data-de="Unternehmen (optional)">
+                        <button type="submit" class="newsletter-submit" data-en="📧 Get Free Guide" data-de="📧 Guide kostenlos erhalten">📧 Guide kostenlos erhalten</button>
                     </form>
                     <div class="success-message" id="successMessage">
-                        <strong>🎉 Vielen Dank!</strong><br>
-                        Ihr VR-Messe-Guide wird in den nächsten Minuten in Ihrem Postfach sein.
+                        <strong data-en="🎉 Thank you!" data-de="🎉 Vielen Dank!">🎉 Vielen Dank!</strong><br>
+                        <span data-en="Your VR Trade Show Guide will be in your inbox within the next few minutes." data-de="Ihr VR-Messe-Guide wird in den nächsten Minuten in Ihrem Postfach sein.">Ihr VR-Messe-Guide wird in den nächsten Minuten in Ihrem Postfach sein.</span>
                     </div>
-                    <p class="privacy-note">
+                    <p class="privacy-note" data-en="🔒 Your data is secure. No sharing with third parties. Unsubscribe anytime." data-de="🔒 Ihre Daten sind sicher. Keine Weitergabe an Dritte. Abmeldung jederzeit möglich.">
                         <i class="fas fa-lock"></i> Ihre Daten sind sicher. Keine Weitergabe an Dritte. Abmeldung jederzeit möglich.
                     </p>
                 </div>
@@ -957,19 +258,19 @@
         <div class="container">
             <div class="messe-content">
                 <div class="messe-text fade-in">
-                    <h3>VR auf Messen: Der Publikumsmagnet</h3>
-                    <p style="color: #6c757d; margin-bottom: 2rem;">Nutzen Sie die Kraft der Virtual Reality auf Messen und Events, um Besucher zu begeistern und bleibende Eindrücke zu hinterlassen.</p>
+                    <h3 data-en="VR at Trade Shows: The Crowd Magnet" data-de="VR auf Messen: Der Publikumsmagnet">VR auf Messen: Der Publikumsmagnet</h3>
+                    <p style="color: #6c757d; margin-bottom: 2rem;" data-en="Harness the power of Virtual Reality at trade shows and events to captivate visitors and create lasting impressions." data-de="Nutzen Sie die Kraft der Virtual Reality auf Messen und Events, um Besucher zu begeistern und bleibende Eindrücke zu hinterlassen.">Nutzen Sie die Kraft der Virtual Reality auf Messen und Events, um Besucher zu begeistern und bleibende Eindrücke zu hinterlassen.</p>
                     <ul class="package-features" style="margin-bottom: 2rem;">
-                        <li>Bis zu 10x länger Standbesuch</li>
-                        <li>Interaktive Produkterlebnisse</li>
-                        <li>Messbare Lead-Generierung</li>
-                        <li>Einzigartige Markenerlebnisse</li>
-                        <li>Social Media-worthy Content</li>
+                        <li data-en="Up to 10x longer booth visits" data-de="Bis zu 10x länger Standbesuch">Bis zu 10x länger Standbesuch</li>
+                        <li data-en="Interactive product experiences" data-de="Interaktive Produkterlebnisse">Interaktive Produkterlebnisse</li>
+                        <li data-en="Measurable lead generation" data-de="Messbare Lead-Generierung">Messbare Lead-Generierung</li>
+                        <li data-en="Unique brand experiences" data-de="Einzigartige Markenerlebnisse">Einzigartige Markenerlebnisse</li>
+                        <li data-en="Social media-worthy content" data-de="Social Media-worthy Content">Social Media-worthy Content</li>
                     </ul>
-                    <p style="color: #495057;"><strong>Anwendung unserer VR-Pakete:</strong> Alle drei Pakete können nahtlos für Messepräsentationen adaptiert werden - von interaktiven VR-Demos bis hin zu beeindruckenden Video-Präsentationen.</p>
+                    <p style="color: #495057;" data-en="Application of our VR packages: All three packages can be seamlessly adapted for trade show presentations - from interactive VR demos to impressive video presentations." data-de="Anwendung unserer VR-Pakete: Alle drei Pakete können nahtlos für Messepräsentationen adaptiert werden - von interaktiven VR-Demos bis hin zu beeindruckenden Video-Präsentationen."><strong>Anwendung unserer VR-Pakete:</strong> Alle drei Pakete können nahtlos für Messepräsentationen adaptiert werden - von interaktiven VR-Demos bis hin zu beeindruckenden Video-Präsentationen.</p>
                 </div>
                 <div class="messe-image fade-in">
-                    <img src="assets/img/portfolio/02-Portfolio2.jpg" alt="VR auf Messen" style="width: 100%; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                    <img src="images/frontline/02-Portfolio2.jpg" alt="VR auf Messen" style="width: 100%; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
                 </div>
             </div>
         </div>
@@ -978,29 +279,29 @@
     <!-- Frontline Section -->
     <section class="section frontline" id="frontline">
         <div class="container">
-            <h2 class="section-title fade-in">Powered by frontline.io</h2>
-            <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);">Die führende Plattform für industrielle VR-Anwendungen und digitale Zwillinge</p>
+            <h2 class="section-title fade-in" data-en="Powered by frontline.io" data-de="Powered by frontline.io">Powered by frontline.io</h2>
+            <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);" data-en="The leading platform for industrial VR applications and digital twins" data-de="Die führende Plattform für industrielle VR-Anwendungen und digitale Zwillinge">Die führende Plattform für industrielle VR-Anwendungen und digitale Zwillinge</p>
             
             <div class="frontline-features">
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-cube"></i>
-                    <h4>Digitale Zwillinge</h4>
-                    <p>Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden</p>
+                    <h4 data-en="Digital Twins" data-de="Digitale Zwillinge">Digitale Zwillinge</h4>
+                    <p data-en="Create virtual replicas of your machines and processes in hours" data-de="Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden">Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden</p>
                 </div>
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-headset"></i>
-                    <h4>Remote Support</h4>
-                    <p>Expertenhilfe in Echtzeit durch AR/VR-gestützte Fernwartung</p>
+                    <h4 data-en="Remote Support" data-de="Remote Support">Remote Support</h4>
+                    <p data-en="Real-time expert assistance through AR/VR-supported remote maintenance" data-de="Expertenhilfe in Echtzeit durch AR/VR-gestützte Fernwartung">Expertenhilfe in Echtzeit durch AR/VR-gestützte Fernwartung</p>
                 </div>
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-chart-line"></i>
-                    <h4>Analytics</h4>
-                    <p>Echtzeit-Überwachung und KI-kompatible Datenerfassung für kontinuierliche Verbesserung</p>
+                    <h4 data-en="Analytics" data-de="Analytics">Analytics</h4>
+                    <p data-en="Real-time monitoring and AI-compatible data collection for continuous improvement" data-de="Echtzeit-Überwachung und KI-kompatible Datenerfassung für kontinuierliche Verbesserung">Echtzeit-Überwachung und KI-kompatible Datenerfassung für kontinuierliche Verbesserung</p>
                 </div>
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-play-circle"></i>
-                    <h4>Interaktive Abläufe</h4>
-                    <p>Schritt-für-Schritt 3D-Anleitungen für Training und Fehlerbehebung</p>
+                    <h4 data-en="Interactive Workflows" data-de="Interaktive Abläufe">Interaktive Abläufe</h4>
+                    <p data-en="Step-by-step 3D instructions for training and troubleshooting" data-de="Schritt-für-Schritt 3D-Anleitungen für Training und Fehlerbehebung">Schritt-für-Schritt 3D-Anleitungen für Training und Fehlerbehebung</p>
                 </div>
             </div>
         </div>
@@ -1009,185 +310,42 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container fade-in">
-            <h2 class="section-title">Bereit für die VR-Revolution?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Kontaktieren Sie uns für eine kostenlose Beratung und erfahren Sie, wie VR Ihr Business transformieren kann</p>
+            <h2 class="section-title" data-en="Ready for the VR Revolution?" data-de="Bereit für die VR-Revolution?">Bereit für die VR-Revolution?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;" data-en="Contact us for a free consultation and discover how VR can transform your business" data-de="Kontaktieren Sie uns für eine kostenlose Beratung und erfahren Sie, wie VR Ihr Business transformieren kann">Kontaktieren Sie uns für eine kostenlose Beratung und erfahren Sie, wie VR Ihr Business transformieren kann</p>
             <a href="mailto:info@gfinnov.com" class="contact-btn">info@gfinnov.com</a>
         </div>
     </section>
 
-    <script>
-        // Modal and Email Capture Functionality
-        let modalShown = false;
-        let emailCaptured = false;
-        
-        // Show modal after 30 seconds or 50% scroll
-        function initializeEmailCapture() {
-            // Timer-based popup (30 seconds)
-            setTimeout(() => {
-                if (!modalShown && !emailCaptured) {
-                    showModal();
-                }
-            }, 30000);
-            
-            // Scroll-based popup (50% of page)
-            let scrollTriggered = false;
-            window.addEventListener('scroll', () => {
-                const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-                if (scrollPercent > 50 && !scrollTriggered && !modalShown && !emailCaptured) {
-                    scrollTriggered = true;
-                    setTimeout(() => {
-                        if (!modalShown && !emailCaptured) {
-                            showModal();
-                        }
-                    }, 2000);
-                }
-            });
-            
-            // Exit intent (when mouse moves to top of page)
-            document.addEventListener('mouseleave', (e) => {
-                if (e.clientY <= 0 && !modalShown && !emailCaptured) {
-                    showModal();
-                }
-            });
-        }
-        
-        function showModal() {
-            const modal = document.getElementById('emailModal');
-            modal.classList.add('show');
-            modalShown = true;
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('emailModal');
-            modal.classList.remove('show');
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Close modal when clicking outside
-        document.getElementById('emailModal').addEventListener('click', (e) => {
-            if (e.target.id === 'emailModal') {
-                closeModal();
-            }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-        
-        // Handle modal form submission
-        document.getElementById('modalForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('modalEmail').value;
-            handleEmailSubmission(email, 'popup');
-            closeModal();
-        });
-        
-        // Handle newsletter form submission
-        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('nameInput').value;
-            const email = document.getElementById('emailInput').value;
-            const company = document.getElementById('companyInput').value;
-            handleEmailSubmission(email, 'newsletter', name, company);
-        });
-        
-        function handleEmailSubmission(email, source, name = '', company = '') {
-            // Here you would typically send the data to your email marketing service
-            // For demonstration, we'll just show a success message
-            
-            emailCaptured = true;
-            
-            if (source === 'newsletter') {
-                // Hide form and show success message
-                document.getElementById('newsletterForm').style.display = 'none';
-                document.getElementById('successMessage').classList.add('show');
-                
-                // Simulate email sending (replace with actual integration)
-                console.log('Email captured:', { email, name, company, source });
-                
-                // You would integrate with services like:
-                // - Mailchimp
-                // - ConvertKit
-                // - ActiveCampaign
-                // - Your own backend API
-                
-                // Example Mailchimp integration (pseudo-code):
-                // sendToMailchimp({
-                //     email: email,
-                //     name: name,
-                //     company: company,
-                //     tags: ['vr-messe-guide', 'website-lead']
-                // });
-            } else {
-                // For popup, you might want to redirect or show a different message
-                alert('Vielen Dank! Der VR-Messe-Guide wird in Kürze an ' + email + ' gesendet.');
-            }
-            
-            // Track conversion (Google Analytics, Facebook Pixel, etc.)
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'email_capture', {
-                    'event_category': 'lead_generation',
-                    'event_label': source,
-                    'value': 1
-                });
-            }
-        }
-        
-        // Initialize email capture when page loads
-        window.addEventListener('load', initializeEmailCapture);
+    <!-- Contact Info Section -->
+    <section class="contact-info">
+        <div class="container">
+            <h3 data-en="Get in Touch" data-de="Kontakt">Kontakt</h3>
+            <div class="contact-details">
+                <div class="contact-detail">
+                    <h4 data-en="Email" data-de="E-Mail">E-Mail</h4>
+                    <p>info@gfinnov.com</p>
+                </div>
+                <div class="contact-detail">
+                    <h4 data-en="Phone" data-de="Telefon">Telefon</h4>
+                    <p>+49 172 95 123 76</p>
+                </div>
+                <div class="contact-detail">
+                    <h4 data-en="Address" data-de="Adresse">Adresse</h4>
+                    <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
+                </div>
+                <div class="contact-detail">
+                    <h4 data-en="Consultation" data-de="Beratung">Beratung</h4>
+                    <p>
+                        <a href="https://calendly.com/gfinnov-info/30min" target="_blank" style="color: var(--innovation-green); text-decoration: none; font-weight: 600;">
+                            <span data-en="Schedule a Call" data-de="Termin vereinbaren">Termin vereinbaren</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Contact function
-        function contactUs(packageType) {
-            const subject = encodeURIComponent(`Anfrage für ${packageType}`);
-            const body = encodeURIComponent(`Hallo,\n\nich interessiere mich für das ${packageType} und würde gerne weitere Informationen sowie ein Angebot erhalten.\n\nVielen Dank!`);
-            window.location.href = `mailto:info@gfinnov.com?subject=${subject}&body=${body}`;
-        }
-    </script>
+    <!-- Scripts -->
+    <script src="script-vr.js"></script>
 </body>
 </html>

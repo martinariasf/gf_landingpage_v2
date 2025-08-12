@@ -1,689 +1,339 @@
-<!-- GERMAN VERSION -->
 <!DOCTYPE html>
-<html lang="de">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>GF Innovative Solutions</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        
-        <style>
-            /* Prevent content overflow */
-            body {
-                overflow-x: hidden;
-            }
-            
-            /* Ensure all content stays within bounds */
-            * {
-                box-sizing: border-box;
-            }
-            
-            /* Hide any stray content */
-            .portfolio-modal .modal-body img + p {
-                margin-top: 20px;
-            }
-            
-            /* Masthead Background Fix */
-            .masthead {
-                background-image: url('assets/img/Header-2.webp') !important;
-                background-size: cover !important;
-                background-position: center !important;
-                background-repeat: no-repeat !important;
-                min-height: 100vh !important;
-            }
-            
-            /* Growth Journey Section Styles */
-            .growth-journey-section {
-                position: relative;
-                min-height: 100vh;
-                background: linear-gradient(135deg, #87CEEB 0%, #1e3c72 100%);
-                overflow: hidden;
-                padding: 0;
-                margin: 0;
-            }
-            
-            .growth-container {
-                position: relative;
-                width: 100vw;
-                height: 100vh;
-                margin-left: calc(-50vw + 50%);
-                background-image: url('assets/img/portfolio/background_consulting_3.png');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-            }
-            
-            .growth-title {
-                color: #fff;
-                font-size: 3rem;
-                font-weight: bold;
-                text-align: center;
-                text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 1px 1px 3px rgba(0,0,0,0.9);
-                margin-bottom: 1rem;
-                padding-top: 4rem;
-                background: none;
-                position: relative;
-                z-index: 10;
-            }
-            
-            .growth-subtitle {
-                color: #fff;
-                font-size: 1.2rem;
-                text-align: center;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-                margin-bottom: 3rem;
-                background: none;
-                font-weight: 300;
-                letter-spacing: 1px;
-            }
-            
-            .growth-box {
-                position: absolute;
-                background: rgba(30,60,114,0.95);
-                color: #fff;
-                padding: 15px;
-                border-radius: 10px;
-                cursor: pointer;
-                border: 2px solid #00FFFF;
-                transition: all 0.3s;
-                font-size: 13px;
-                min-width: 140px;
-                text-align: center;
-                box-shadow: 0 0 15px rgba(0,255,255,0.3);
-                z-index: 5;
-                font-weight: 500;
-            }
-            
-            .growth-box:hover {
-                background: rgba(30,60,114,1);
-                transform: scale(1.05);
-                box-shadow: 0 0 25px rgba(0,255,255,0.6);
-            }
-            
-            /* Mobile List Style */
-            .growth-list {
-                display: none;
-                padding: 2rem;
-                max-width: 800px;
-                margin: 0 auto;
-            }
-            
-            .growth-list-item {
-                background: rgba(30,60,114,0.95);
-                color: #fff;
-                padding: 20px;
-                margin-bottom: 15px;
-                border-radius: 10px;
-                cursor: pointer;
-                border: 2px solid #00FFFF;
-                transition: all 0.3s;
-                box-shadow: 0 0 15px rgba(0,255,255,0.3);
-                font-weight: 500;
-                text-align: center;
-            }
-            
-            .growth-list-item:hover {
-                background: rgba(30,60,114,1);
-                transform: translateY(-2px);
-                box-shadow: 0 0 25px rgba(0,255,255,0.6);
-            }
-            
-            .growth-modal {
-                display: none;
-                position: fixed;
-                z-index: 9999;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.8);
-            }
-            
-            .growth-modal-content {
-                background: linear-gradient(135deg,#1e3c72,#2a5298);
-                color: #fff;
-                margin: 5% auto;
-                padding: 25px;
-                border-radius: 15px;
-                width: 90%;
-                max-width: 600px;
-                border: 2px solid #00FFFF;
-                box-shadow: 0 0 30px rgba(0,255,255,0.5);
-                max-height: 85vh;
-                overflow-y: auto;
-                position: relative;
-                z-index: 10000;
-            }
-            
-            .growth-close {
-                color: #00FFFF;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-                cursor: pointer;
-                position: relative;
-                z-index: 10001;
-                line-height: 1;
-                padding: 5px;
-            }
-            
-            .growth-close:hover {
-                color: #fff;
-                text-shadow: 0 0 10px #00FFFF;
-            }
-            
-            .modal-text {
-                line-height: 1.6;
-                white-space: pre-line;
-            }
-            
-            /* Desktop responsive adjustments */
-            @media(max-width:1200px) {
-                .growth-box {
-                    font-size: 12px;
-                    padding: 12px;
-                    min-width: 120px;
-                }
-            }
-            
-            /* Mobile responsive */
-            @media(max-width:768px) {
-                .growth-container {
-                    height: auto;
-                    min-height: 100vh;
-                    margin-left: calc(-50vw + 50%);
-                    background-attachment: scroll;
-                    padding-bottom: 2rem;
-                }
-                
-                .growth-box {
-                    display: none !important;
-                }
-                
-                .growth-list {
-                    display: block;
-                }
-                
-                .growth-title {
-                    font-size: 2.2rem;
-                    padding-top: 2rem;
-                }
-                
-                .growth-subtitle {
-                    font-size: 1rem;
-                    margin-bottom: 2rem;
-                }
-                
-                .growth-modal-content {
-                    width: 95%;
-                    margin: 2% auto;
-                    max-height: 90vh;
-                    padding: 20px;
-                }
-            }
-            
-            /* Very small mobile devices */
-            @media(max-width:480px) {
-                .growth-list {
-                    padding: 1rem;
-                }
-                
-                .growth-list-item {
-                    padding: 15px;
-                    font-size: 14px;
-                }
-                
-                .growth-title {
-                    font-size: 1.8rem;
-                }
-                
-                .growth-subtitle {
-                    font-size: 0.9rem;
-                }
-            }
-        </style>
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ml-1"></i>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GF Innovative Solutions - Tech Innovation for Startups & Mittelstand</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#team" class="nav-link">Team</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="language-toggle" type="button" aria-label="Toggle Language">
+                    <span id="current-lang">EN</span> | <span id="alt-lang">DE</span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ml-auto">
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Mehr</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#growth-journey">Growth Journey</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Über uns</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Kontakt</a></li>
-                            <a class="nav-link" href="en/index.html" style="border: 1px solid rgba(255,255,255,0.3); border-radius: 20px;">EN</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-en="Guided by tech, powered by people — innovation and AI for startups and SMEs" data-de="Von Technologie geleitet, von Menschen angetrieben — Innovation und KI für Startups und KMU">
+                    Guided by tech, powered by people — innovation and AI for startups and SMEs
+                </h1>
+                <p class="hero-subtitle" data-en="From MVP design to immersive fairs, we empower founders and SMEs with digital solutions." data-de="Von MVP-Design bis zu immersiven Messen befähigen wir Gründer und KMU mit digitalen Lösungen.">
+                    From MVP design to immersive fairs, we empower founders and SMEs with digital solutions.
+                </p>
+                <div class="hero-buttons">
+                    <a href="vr_website.html" class="btn btn-primary" data-en="Discover Our VR Solutions" data-de="Entdecken Sie unsere VR-Lösungen">
+                        Discover Our VR Solutions
+                    </a>
+                    <a href="startups.html" class="btn btn-secondary" data-en="Startup Growth Journey" data-de="Startup-Wachstumsreise">
+                        Startup Growth Journey
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-graphic">
+                    <!-- Tech-inspired geometric shapes -->
+                    <div class="floating-element element-1"></div>
+                    <div class="floating-element element-2"></div>
+                    <div class="floating-element element-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-secondary">
+        <div class="container">
+            <h2 class="section-title" data-en="About Us" data-de="Über Uns">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-en="GF Innovative Solutions is a German-based consultancy and technology enabler specializing in high-tech, AI, immersive VR, AR, and digital twin solutions for German companies." data-de="GF Innovative Solutions ist eine in Deutschland ansässige Beratung und Technologie-Enabler, spezialisiert auf High-Tech, KI, immersive VR, AR und Digital Twin-Lösungen für deutsche Unternehmen.">
+                        <strong>GF Innovative Solutions</strong> is a German-based consultancy and technology enabler specializing in high-tech, AI, immersive VR, AR, and digital twin solutions for German companies.
+                    </p>
+                    <p data-en="We support both early-stage startups looking to transform bold ideas into scalable solutions, and established companies ready to integrate next-generation technologies into their operations." data-de="Wir unterstützen sowohl Startups in der Frühphase, die kühne Ideen in skalierbare Lösungen umwandeln möchten, als auch etablierte Unternehmen, die bereit sind, Technologien der nächsten Generation in ihre Abläufe zu integrieren.">
+                        We support both <strong>early-stage startups</strong> looking to transform bold ideas into scalable solutions, and <strong>established companies</strong> ready to integrate next-generation technologies into their operations.
+                    </p>
+                    <p data-en="With a deep understanding of the German market and access to cutting-edge platforms like frontline.io, we help businesses move fast — without breaking what already works." data-de="Mit einem tiefen Verständnis für den deutschen Markt und Zugang zu modernsten Plattformen wie frontline.io helfen wir Unternehmen, schnell voranzukommen — ohne zu zerstören, was bereits funktioniert.">
+                        With a deep understanding of the German market and access to cutting-edge platforms like <strong>frontline.io</strong>, we help businesses move fast — without breaking what already works.
+                    </p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">🤝</div>
+                        <h3 data-en="Trusted partner for industrial digitalization" data-de="Vertrauenspartner für industrielle Digitalisierung">Trusted partner for industrial digitalization</h3>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🚀</div>
+                        <h3 data-en="Startup-friendly tech strategy" data-de="Startup-freundliche Tech-Strategie">Startup-friendly tech strategy</h3>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🥽</div>
+                        <h3 data-en="High-end VR development & deployment" data-de="High-End VR-Entwicklung & -Einsatz">High-end VR development & deployment</h3>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🌍</div>
+                        <h3 data-en="German precision with global perspective" data-de="Deutsche Präzision mit globaler Perspektive">German precision with global perspective</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Us Different -->
+    <section id="services" class="section-primary">
+        <div class="container">
+            <h2 class="section-title" data-en="What Makes Us Different" data-de="Was uns unterscheidet">What Makes Us Different</h2>
+            <p class="section-subtitle" data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+            
+            <div class="differences-grid">
+                <div class="difference-item">
+                    <div class="difference-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="We speak startup — and scale-up" data-de="Wir sprechen Startup — und Scale-up">We speak startup — and scale-up</h3>
+                    <p data-en="Our team blends deep technical expertise with real-world experience helping early-stage founders launch functional MVPs. Whether you're building your first prototype or preparing for Series A, we guide you with clarity, speed and precision." data-de="Unser Team verbindet tiefes technisches Fachwissen mit echter Erfahrung beim Helfen von Gründern in der Frühphase, funktionale MVPs zu lancieren. Ob Sie Ihren ersten Prototyp bauen oder sich auf Series A vorbereiten, wir führen Sie mit Klarheit, Geschwindigkeit und Präzision.">
+                        Our team blends deep technical expertise with real-world experience helping early-stage founders launch functional MVPs. Whether you're building your first prototype or preparing for Series A, we guide you with clarity, speed and precision.
+                    </p>
+                </div>
+                
+                <div class="difference-item">
+                    <div class="difference-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="AI, but grounded" data-de="KI, aber fundiert">AI, but grounded</h3>
+                    <p data-en="We don't just implement trendy tools — we build intelligent systems that are secure, compliant, and aligned with your goals. From prompting strategies to vibe coding, our team ensures you're building responsibly from day one." data-de="Wir implementieren nicht nur trendige Tools — wir bauen intelligente Systeme, die sicher, konform und auf Ihre Ziele ausgerichtet sind. Von Prompting-Strategien bis zu Vibe-Coding sorgt unser Team dafür, dass Sie von Tag eins an verantwortlich bauen.">
+                        We don't just implement trendy tools — we build intelligent systems that are secure, compliant, and aligned with your goals. From prompting strategies to vibe coding, our team ensures you're building responsibly from day one.
+                    </p>
+                </div>
+                
+                <div class="difference-item">
+                    <div class="difference-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="German-grade rigor, global mindset" data-de="Deutsche Gründlichkeit, globale Denkweise">German-grade rigor, global mindset</h3>
+                    <p data-en="We know how to navigate complexity. From SME family businesses to international startups, we help clients digitize their operations, modernize product demos, and innovate without friction. All with the quality, clarity and structure expected in the German-speaking business world." data-de="Wir wissen, wie man Komplexität navigiert. Von KMU-Familienunternehmen bis zu internationalen Startups helfen wir Kunden, ihre Abläufe zu digitalisieren, Produktdemos zu modernisieren und reibungslos zu innovieren. Alles mit der Qualität, Klarheit und Struktur, die in der deutschsprachigen Geschäftswelt erwartet wird.">
+                        We know how to navigate complexity. From SME family businesses to international startups, we help clients digitize their operations, modernize product demos, and innovate without friction. All with the quality, clarity and structure expected in the German-speaking business world.
+                    </p>
+                </div>
+                
+                <div class="difference-item">
+                    <div class="difference-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Product meets people" data-de="Produkt trifft Menschen">Product meets people</h3>
+                    <p data-en="Our edge is human. First we see what's possible; and then we make it work. One thinks in blueprints, the other in building blocks. Together, they transform creative vision into scalable solutions." data-de="Unser Vorteil ist menschlich. Zuerst sehen wir, was möglich ist; dann machen wir es funktionieren. Einer denkt in Bauplänen, der andere in Bausteinen. Zusammen verwandeln sie kreative Vision in skalierbare Lösungen.">
+                        Our edge is human. First we see what's possible; and then we make it work. One thinks in blueprints, the other in building blocks. Together, they transform creative vision into scalable solutions.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h3 data-en="From concept to continuity." data-de="Vom Konzept zur Kontinuität.">From concept to continuity.</h3>
+                <p data-en="We don't just 'launch and leave.' We accompany your journey — iterating, testing and scaling — until your ideas generate measurable impact. Whether you need a technical advisor, VR design, or go-to-market support, we're here for the long game." data-de="Wir 'starten und verlassen' nicht einfach. Wir begleiten Ihre Reise — iterieren, testen und skalieren — bis Ihre Ideen messbaren Einfluss generieren. Ob Sie einen technischen Berater, VR-Design oder Go-to-Market-Support benötigen, wir sind für das lange Spiel da.">
+                    We don't just "launch and leave." We accompany your journey — iterating, testing and scaling — until your ideas generate measurable impact. Whether you need a technical advisor, VR design, or go-to-market support, we're here for the long game.
+                </p>
+                <a href="#contact" class="btn btn-primary" data-en="Let's build something that lasts" data-de="Lassen Sie uns etwas Dauerhaftes bauen">Let's build something that lasts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section-primary">
+        <div class="container">
+            <h2 class="section-title" data-en="Our Team" data-de="Unser Team">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/team/team-martin-arias.png" alt="Martín Arias" class="team-photo" />
+                    </div>
+                    <h3>Martín Arias</h3>
+                    <p class="member-role" data-en="Coordinator, AI Expert" data-de="Koordinator, KI-Experte">Coordinator, AI Expert</p>
+                    <ul class="member-skills">
+                        <li data-en="🤖 AI-driven ROI optimization" data-de="🤖 KI-gesteuerte ROI-Optimierung">🤖 AI-driven ROI optimization</li>
+                        <li data-en="📊 Strategic planning & execution" data-de="📊 Strategische Planung & Umsetzung">📊 Strategic planning & execution</li>
+                        <li data-en="⚡ Rapid prototyping" data-de="⚡ Rapid Prototyping">⚡ Rapid prototyping</li>
+                    </ul>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/team/team-omar-garcia.png" alt="Omar García" class="team-photo" />
+                    </div>
+                    <h3>Omar García</h3>
+                    <p class="member-role" data-en="Business Innovation" data-de="Business Innovation">Business Innovation</p>
+                    <ul class="member-skills">
+                        <li data-en="🤖 AI-infused business solutions" data-de="🤖 KI-durchdrungene Geschäftslösungen">🤖 AI-infused business solutions</li>
+                        <li data-en="🚀 Market strategy & positioning" data-de="🚀 Marktstrategie & Positionierung">🚀 Market strategy & positioning</li>
+                        <li data-en="💡 Innovation consulting" data-de="💡 Innovationsberatung">💡 Innovation consulting</li>
+                    </ul>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/team/team-martin-hueppauf.png" alt="Dr. Martin Hüppauf" class="team-photo" />
+                    </div>
+                    <h3>Dr. Martin Hüppauf</h3>
+                    <p class="member-role" data-en="Strategy" data-de="Strategie">Strategy</p>
+                    <ul class="member-skills">
+                        <li data-en="🎯 Strategic planning" data-de="🎯 Strategische Planung">🎯 Strategic planning</li>
+                        <li data-en="📈 Business development" data-de="📈 Geschäftsentwicklung">📈 Business development</li>
+                        <li data-en="🔬 Research & analysis" data-de="🔬 Forschung & Analyse">🔬 Research & analysis</li>
+                    </ul>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/team/team-pilar-arias.png" alt="Pilar Arias" class="team-photo" />
+                    </div>
+                    <h3>Pilar Arias</h3>
+                    <p class="member-role" data-en="Marketing, Branding & Sales" data-de="Marketing, Branding & Vertrieb">Marketing, Branding & Sales</p>
+                    <ul class="member-skills">
+                        <li data-en="🎨 Brand strategy & design" data-de="🎨 Markenstrategie & Design">🎨 Brand strategy & design</li>
+                        <li data-en="📢 Marketing automation" data-de="📢 Marketing-Automatisierung">📢 Marketing automation</li>
+                        <li data-en="💼 Sales optimization" data-de="💼 Vertriebsoptimierung">💼 Sales optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="images/team/team-wasilios.png" alt="Wasilios" class="team-photo" />
+                    </div>
+                    <h3>Wasilios</h3>
+                    <p class="member-role" data-en="VR/AR/XR Expert" data-de="VR/AR/XR-Experte">VR/AR/XR Expert</p>
+                    <ul class="member-skills">
+                        <li data-en="🥽 Immersive technology development" data-de="🥽 Entwicklung immersiver Technologien">🥽 Immersive technology development</li>
+                        <li data-en="🎮 Interactive experience design" data-de="🎮 Design interaktiver Erlebnisse">🎮 Interactive experience design</li>
+                        <li data-en="⚡ Real-time 3D solutions" data-de="⚡ Echtzeit-3D-Lösungen">⚡ Real-time 3D solutions</li>
                     </ul>
                 </div>
             </div>
-        </nav>
-
-        
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container">
-                <img src="assets/img/logos/Logo_GF_B_N.png" style="width:350px;height:75px;"> <br><br><br>
-                <a class="btn btn-success btn-xl text-uppercase js-scroll-trigger" href="#services">Mehr erfahren</a>
-            </div>
-        </header>
-        <!-- Services-->
-
-        <!--find possible Icons on this web page "Font Awesome 5"   https://www.w3schools.com/icons/fontawesome5_icons_science.asp-->
-        <section class="page-section" id="services">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Mehr erfahren</h2>
-                    <h3 class="section-subheading text-muted">Was uns anders macht</h3>
-                </div>
-                <div class="row text-center">
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-success"></i>
-                            <i class="fas fa-shield-alt fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Vertrauen</h4>
-                        <p class="text-muted">Vertrauen ist der Schlüssel zum Aufbau wertvoller Lösungen für unsere Kunden. Wir legen Wert auf Respekt, Integrität und Zuverlässigkeit in unseren Partnerschaften.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-success"></i>
-                            <i class="fas fas fa-laptop fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3">Digitale Transformation</h4>
-                        <p class="text-muted">Wir gestalten den digitalen Wandel, der zu Veränderungen in der Arbeitswelt und im sozialen Umfeld führt.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <span class="fa-stack fa-4x">
-                            <i class="fas fa-circle fa-stack-2x text-success"></i>
-                            <i class="fas fa-brain fa-stack-1x fa-inverse"></i>
-                        </span>
-                        <h4 class="my-3"> Innovation Drive</h4>
-                        <p class="text-muted">Wir gehen strategische Partnerschaften ein, die es uns ermöglichen, Innovationen zu entwickeln und unseren Kunden digitale Lösungen anzubieten.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">&#160</h3>
-                </div>
-                <div class="row">
-                    <!-- Beratung für Startups (moved to top) -->
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/consulting.webp" alt="Beratung für Startups" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Beratung für Startups</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Digitale Zwillinge & Technologien -->
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/04-Portfolio2.jpg" alt="Digitale Zwillinge & Technologien" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Digitale Zwillinge & Technologien</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Netzwerk -->
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/03-Portfolio2.jpg" alt="Netzwerk" />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Netzwerk</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Growth Journey Section -->
-        <section class="page-section growth-journey-section" id="growth-journey">
-            <div class="growth-container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase growth-title">Growth Journey</h2>
-                    <h3 class="growth-subtitle">Unsere strategischen Wachstumslösungen</h3>
-                </div>
-                
-                <!-- Desktop Layout -->
-                <div class="growth-box" style="left:20%;top:35%" onclick="openGrowthModal('startup-clarity')">
-                    1. Startup<br>Clarity
-                </div>
-                
-                <div class="growth-box" style="left:35%;top:50%" onclick="openGrowthModal('revenue-engine')">
-                    2. Revenue<br>Engine
-                </div>
-                
-                <div class="growth-box" style="left:50%;top:30%" onclick="openGrowthModal('sales-boost')">
-                    3. Sales<br>Boost
-                </div>
-                
-                <div class="growth-box" style="left:65%;top:45%" onclick="openGrowthModal('growth-capabilities')">
-                    4. Growth<br>Capabilities
-                </div>
-                
-                <div class="growth-box" style="left:75%;top:25%" onclick="openGrowthModal('scale-strategy')">
-                    5. Scale<br>Strategy
-                </div>
-                
-                <!-- Mobile List Layout -->
-                <div class="growth-list">
-                    <div class="growth-list-item" onclick="openGrowthModal('startup-clarity')">
-                        1. Startup Clarity
-                    </div>
-                    <div class="growth-list-item" onclick="openGrowthModal('revenue-engine')">
-                        2. Revenue Engine
-                    </div>
-                    <div class="growth-list-item" onclick="openGrowthModal('sales-boost')">
-                        3. Sales Boost
-                    </div>
-                    <div class="growth-list-item" onclick="openGrowthModal('growth-capabilities')">
-                        4. Growth Capabilities
-                    </div>
-                    <div class="growth-list-item" onclick="openGrowthModal('scale-strategy')">
-                        5. Scale Strategy
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Growth Journey Modal -->
-        <div id="growthModal" class="growth-modal">
-            <div class="growth-modal-content">
-                <span class="growth-close" onclick="closeGrowthModal()">&times;</span>
-                <h2 id="growth-modal-title" style="color:#00FFFF;margin-bottom:15px"></h2>
-                <p id="growth-modal-text" class="modal-text"></p>
-            </div>
         </div>
+    </section>
 
-        <!-- About - Simplified-->
-        <section class="page-section" id="about">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Über uns</h2>
-                    <h3 class="section-subheading text-muted">GF Innovative Solutions</h3>
+    <!-- Testimonials Section -->
+    <section class="testimonials section-secondary">
+        <div class="container">
+            <h2 class="section-title" data-en="What Our Clients Say" data-de="Was unsere Kunden sagen">What Our Clients Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial active">
+                    <blockquote data-en="They challenged our assumptions and helped us build something real." data-de="Sie stellten unsere Annahmen in Frage und halfen uns, etwas Echtes zu bauen.">
+                        "They challenged our assumptions and helped us build something real."
+                    </blockquote>
+                    <cite data-en="— Ira, Startup Founder" data-de="— Ira, Startup-Gründer">— Ira, Startup Founder</cite>
                 </div>
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <div class="text-center">
-                            <h4><strong>Januar 2023</strong></h4>
-                            <h4 class="text-success"><strong>Gründung</strong></h4>
-                            <p class="large text-muted">Unser Ziel bei GF Innovative Solutions ist es, mit Innovationen und Technik die digitale Transformation zu gestalten. Wir entwickeln proaktive Lösungen, die das Leben der Menschen positiv beeinflussen, indem sie die Digitalisierung in den Branchen beschleunigen. Unser Schwerpunkt liegt auf der Verwendung datengesteuerter Ansätze, die digitale Industriestrategien vorantreiben können.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Team-->
-        <section class="page-section bg-light" id="team">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Unser Team</h2>
-                    <!--
-                    <h3 class="section-subheading text-muted">&#160</h3>
-                    -->
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/Omar.jpg" alt="..." />
-                            <h4>Omar Garcia Urdiales</h4>
-                            <p class="text-muted">Gründer und CEO</p>
-                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/omar-garc%C3%ADa-urdiales-mba-0a96b822/"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/Martin A.jpg" alt="..." />
-                            <h4>Martin Arias Fornara</h4>
-                            <p class="text-muted">Gründer und CTO</p>
-                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/martin-arias-136b91b9/"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/Martin H.jpg" alt="..." />
-                            <h4>Dr. Martin Hüppauff</h4>
-                            <p class="text-muted">Strategie</p>
-                            <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/dr-martin-h%C3%BCppauff-2b88941a2/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Bm9S6L5ujRzSmk%2BXZUeYk3w%3D%3D"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">&#160</p></div>
-                </div>
-            </div>
-        </section>
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Kontakt</h2>
-                    <h3 class="section-subheading text-muted"><p style="color: #efedf3">Stärken Sie Ihre Geschäftsideen mit innovativen Lösungen von GF</p></h3>
-       
-                    <a class="btn-success btn-xl">info@gfinnov.com</a>
-     
-                </div>
-            </div>
-        </section>
- 
-        <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-left">
-                        Copyright &copy; GF Innovative Solutions, all rights reserved
-                        <!-- This script automatically adds the current year to your website footer-->
-                        <!-- (credit: https://updateyourfooter.com/)-->
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                    </div>
-                    <div class="col-lg-4 text-lg-right">
-                        <a style="color: #010007" class="mr-3" href="privacy.html">Privacy</a>
-                        <a style="color: #010007" class="mr-3" href="imprint.html">Imprint</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Portfolio Modals-->
-
-        <!-- Modal 2 - Beratung für Startups -->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase">Beratung für Startups</h2>
-                                    <p class="item-intro text-muted">&#160</p>
-                                    <p class="text-lg-left">Kontaktieren Sie uns, um zu erfahren, wie wir Ihr Startup auf dem Weg zum Erfolg begleiten können!</p>
-                                    <ul class="list-inline">
-                                        <li>&#160</li>
-                                    </ul>
-                                    <button class="btn btn-success" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Schließen
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="testimonial">
+                    <blockquote data-en="GF helped us turn a highly manual process into a visual, scalable VR experience." data-de="GF half uns, einen hochgradig manuellen Prozess in ein visuelles, skalierbares VR-Erlebnis zu verwandeln.">
+                        "GF helped us turn a highly manual process into a visual, scalable VR experience."
+                    </blockquote>
+                    <cite data-en="— Client from Manufacturing Sector" data-de="— Kunde aus dem Fertigungssektor">— Client from Manufacturing Sector</cite>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Modal 3 - Netzwerk -->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase">Netzwerk</h2>
-                                    <p class="item-intro text-muted">&#160</p>
-                                    <p class="text-lg-left">Dank unserer exzellenten Partnerschaften mit AWS und dem Netzwerk Baden Württemberg haben unsere Kunden schnellen Zugang zu wertvollen Ressourcen, was zu hervorragenden Vorteilen für unsere Kundschaft führt.</p>
-                                    <ul class="list-inline">
-                                        <li>&#160</li>
-                                    </ul>
-                                    <button class="btn btn-success" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Schließen
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Contact Section -->
+    <section id="contact" class="section-cta">
+        <div class="container">
+            <h2 class="section-title" data-en="Let's Start Your Journey" data-de="Lassen Sie uns Ihre Reise beginnen">Let's Start Your Journey</h2>
+            <div class="contact-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="switchTab('startup')" data-en="I'm a startup" data-de="Ich bin ein Startup">I'm a startup</button>
+                    <button class="tab-btn" onclick="switchTab('business')" data-en="I'm an established business" data-de="Ich bin ein etabliertes Unternehmen">I'm an established business</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="startup-tab" class="tab-pane active">
+                        <h3 data-en="Ready to transform your idea into reality?" data-de="Bereit, Ihre Idee in die Realität umzusetzen?">Ready to transform your idea into reality?</h3>
+                        <p data-en="Let's discuss your MVP, funding strategy, and tech roadmap." data-de="Lassen Sie uns über Ihr MVP, Ihre Finanzierungsstrategie und Ihre Tech-Roadmap sprechen.">Let's discuss your MVP, funding strategy, and tech roadmap.</p>
                     </div>
+                    <div id="business-tab" class="tab-pane">
+                        <h3 data-en="Ready to digitalize your operations?" data-de="Bereit, Ihre Abläufe zu digitalisieren?">Ready to digitalize your operations?</h3>
+                        <p data-en="Let's explore AI integration, VR solutions, and digital transformation for your company." data-de="Lassen Sie uns KI-Integration, VR-Lösungen und digitale Transformation für Ihr Unternehmen erkunden.">Let's explore AI integration, VR solutions, and digital transformation for your company.</p>
+                    </div>
+                </div>
+                
+                <div class="calendly-container">
+                    <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary btn-large" target="_blank" data-en="Schedule Your Intro Call" data-de="Planen Sie Ihr Einführungsgespräch">Schedule Your Intro Call</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Modal 4 - Digitale Zwillinge & Technologien -->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project Details Go Here-->
-                                    <h2 class="text-uppercase">Digitale Zwillinge & Technologien</h2>
-                                    <p class="item-intro text-muted">&#160</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/frontline/frontline.io - digital Twin gif .gif" alt="frontline.io platform" />
-                                    <p class="text-lg-left">Wenn Sie mehr über die frontline.io Plattform erfahren möchten, besuchen Sie den unten stehenden Link:</p>
-                                    <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="frontline.html">Erfahren Sie mehr über frontline.io</a>
-                                    <hr />
-                                    <h4>Maßgeschneiderte Digitale Zwillinge</h4>
-                                    <p class="text-lg-left">Neben der frontline.io Plattform bieten wir auch die Möglichkeit, maßgeschneiderte <b>Digitale Zwillinge</b> für Ihr Unternehmen zu entwickeln. Diese können speziell auf Ihre Bedürfnisse zugeschnitten werden, sei es für die technische Schulung Ihres Personals oder zur Präsentation von komplexen Maschinen und Systemen an potenzielle Kunden. Ein digitaler Zwilling ermöglicht es Ihnen, reale Systeme in einer virtuellen Umgebung präzise abzubilden und auf intuitive Weise zu simulieren.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/frontline/AR.gif" alt="Benutzerdefinierte digitale Zwillinge" />
-                                    <p class="text-lg-left">Erfahren Sie, wie wir für Sie individuelle Digitale Zwillinge entwickeln können, um Ihre technischen Anforderungen und Ziele zu erfüllen. Kontaktieren Sie uns für weitere Informationen!</p>
-                                    <a class="btn btn-success btn-sm text-uppercase js-scroll-trigger" href="VR_Messe.html">Mehr über VR und AR auf Messen</a>
-                                    <ul class="list-inline">
-                                        <li>&#160</li>
-                                    </ul>
-                                    <button class="btn btn-success" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times mr-1"></i>
-                                        Schließen
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./images/gf-logo-white.png" alt="GF Innovative Solutions" class="footer-logo">
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Services" data-de="Dienstleistungen">Services</h4>
+                    <ul>
+                        <li><a href="#" data-en="AI Consulting" data-de="KI-Beratung">AI Consulting</a></li>
+                        <li><a href="#" data-en="VR/AR Development" data-de="VR/AR-Entwicklung">VR/AR Development</a></li>
+                        <li><a href="#" data-en="Digital Transformation" data-de="Digitale Transformation">Digital Transformation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-en="Contact" data-de="Kontakt">Contact</h4>
+                    <p>info@gfinnov.com</p>
+                    <p>+49 172 95 123 76</p>
+                    <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+                <div class="footer-links">
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Imprint</a> | 
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
                 </div>
             </div>
         </div>
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Third party plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-        <!-- Contact form JS-->
-        <script src="assets/mail/jqBootstrapValidation.js"></script>
-        <script src="assets/mail/contact_me.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <script src="js/language-switcher.js"></script>
-        
-        <!-- Growth Journey JavaScript -->
-        <script>
-            const growthContent = {
-                'startup-clarity': {
-                    title: "1. Startup Clarity – Aufbau auf solider Basis",
-                    text: "Für Startups in der Frühphase, die ihre Idee validieren und das Spielfeld verstehen möchten.\n\nInhalt:\n🔍 Markteinblicke: Identifizieren Sie das richtige Segment, bewerten Sie die Opportunity und erkennen Sie aufkommende Trends.\n⚔️ Wettbewerbslandschaft: Verstehen Sie Ihre Konkurrenten und schaffen Sie Ihren einzigartigen Raum.\n💎 Wertversprechen: Werden Sie kristallklar darüber, was Sie für Ihre Zielkunden unwiderstehlich macht.\n\nWarum es wichtig ist: Ohne Klarheit haben selbst die besten Ideen Schwierigkeiten. Dieses Paket hilft Ihnen, Ihre Vision zu validieren, sich smart zu positionieren und sich auf schnelle, selbstbewusste Umsetzung vorzubereiten."
-                },
-                'revenue-engine': {
-                    title: "2. Revenue Engine – Bringen Sie Ihr Geschäftsmodell zum Laufen",
-                    text: "Für Startups, die bereit sind, Traktion in Geld umzuwandeln.\n\nInhalt:\n💰 Umsatzstrategie: Definieren Sie skalierbare Einkommensströme und erschließen Sie intelligente Monetarisierungswege.\n🤝 Strategische Partnerschaften: Entdecken Sie, wer Türen öffnen und Ihr Wachstum fördern kann.\n\nWarum es wichtig ist: Eine großartige Idee ist nur die halbe Reise. Dieses Paket hilft Ihnen dabei, schneller Geld zu verdienen – mit den richtigen Partnern und einem Umsatzmodell, das funktioniert."
-                },
-                'sales-boost': {
-                    title: "3. Sales Boost – Verwandeln Sie Interesse in Einkommen",
-                    text: "Für wachsende Startups, die bereit sind, die Kundenakquisition zu skalieren.\n\nInhalt:\n🔄 Sales Acceleration: Optimieren Sie Ihre Kanäle und schärfen Sie Ihre Pitch-to-Close-Journey.\n💬 Pitch Readiness: Erstellen Sie ein überzeugendes Deck und eine Botschaft, die bei Investoren und Kunden gleichermaßen ankommt.\n\nWarum es wichtig ist: Sie haben Aufmerksamkeit – jetzt konvertieren Sie sie. Dieses Paket gibt Ihnen die Tools und das Vertrauen zum Verkaufen, Abschließen und Wachsen."
-                },
-                'growth-capabilities': {
-                    title: "4. Growth Capabilities – Bauen Sie auf, was Sie unaufhaltsam macht",
-                    text: "Für skalierende Startups, die in langfristige Stärke investieren.\n\n🛠️ Strategische Fähigkeiten: Identifizieren und bauen Sie die Talente, Systeme und Technologien auf, die Ihre Mission antreiben.\n📉 Kosteneffizienz: Verbessern Sie Margen durch intelligenteres, nicht nur härteres Arbeiten.\n<span style='color:#7CFC00;font-weight:bold'>🧠 KI Tools Workshops: Statten Sie Ihr Team mit praktischem Know-how aus, um modernste KI-Tools für Produktivität und Innovation zu nutzen.</span>\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden – es bedeutet stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben."
-                },
-                'scale-strategy': {
-                    title: "5. Scale Strategy – Werden Sie zum Kategorie-Leader",
-                    text: "Für reife Startups, die bereit sind zu führen, größere Finanzierungsrunden zu starten oder global zu expandieren.\n\nInhalt:\n🎯 Alles oben Genannte – vollständig auf Ihre aktuellen Skalierungsherausforderungen zugeschnitten\n🧭 Maßgeschneiderte Workshops und Strategiesitzungen mit Senior-Beratern\n\nWarum es wichtig ist: Wenn Sie bereit sind aufzusteigen, brauchen Sie mehr als nur Ratschläge – Sie brauchen strategische Schlagkraft. Dieses Flaggschiff-Paket verwandelt Ambitionen in Umsetzung."
-                }
-            };
-            
-            function openGrowthModal(key) {
-                const modal = document.getElementById('growthModal');
-                document.getElementById('growth-modal-title').textContent = growthContent[key].title;
-                if(key === 'growth') {
-                    document.getElementById('growth-modal-text').innerHTML = growthContent[key].text + "<br><span style='color:green'>• KI Tools für Startups</span>";
-                } else if(key === 'growth-capabilities') {
-                    document.getElementById('growth-modal-text').innerHTML = growthContent[key].text.replace(
-                        /<span style='color:[^;]+;font-weight:bold'>(.*?)<\/span>/,
-                        "<span style='color:#7CFC00;font-weight:bold'>$1</span>"
-                    );
-                } else {
-                    document.getElementById('growth-modal-text').textContent = growthContent[key].text;
-                }
-                modal.style.display = 'block';
-            }
-            
-            function closeGrowthModal() {
-                document.getElementById('growthModal').style.display = 'none';
-            }
-            
-            window.onclick = function(event) {
-                const modal = document.getElementById('growthModal');
-                if (event.target === modal) {
-                    closeGrowthModal();
-                }
-            }
-        </script>
-    </body>
+    </footer>
+
+    <!-- Growth Journey Modal -->
+    <div id="growth-modal" class="growth-modal">
+        <div class="growth-modal-content">
+            <span class="growth-close">&times;</span>
+            <h3 id="growth-modal-title"></h3>
+            <p id="growth-modal-text"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
