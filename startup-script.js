@@ -3,74 +3,54 @@ let currentLanguage = 'en';
 
 // Startup-focused Growth Journey Content
 const growthContent = {
-    competitive: {
-        title: { en: "Competitive Landscape", de: "Wettbewerbslandschaft" },
+    'startup-clarity': {
+        title: { 
+            en: "1. Startup Clarity — Building on solid foundation", 
+            de: "1. Startup Klarheit — Aufbau auf solidem Fundament" 
+        },
         text: { 
-            en: "Understand your competitive landscape and find your unique positioning.\n\n• Competitor Mapping\n• SWOT Analysis\n• Competitive Advantage Definition\n• Market Gap Identification\n• Differentiation Strategy",
-            de: "Verstehen Sie Ihre Wettbewerbslandschaft und finden Sie Ihre einzigartige Positionierung.\n\n• Wettbewerber-Mapping\n• SWOT-Analyse\n• Definition von Wettbewerbsvorteilen\n• Marktlücken-Identifikation\n• Differenzierungsstrategie"
+            en: "For early-stage startups looking to validate their idea and understand the playing field.\n\nKey Areas:\n• Market insights: Identify the right segment, assess the opportunity, and spot emerging trends\n• Competitive landscape: Understand your competitors and carve out your unique space\n• Value proposition: Get crystal clear on what makes you irresistible to your target customers\n• Strategic positioning: Position your startup for maximum market impact\n\nWhy it matters: Without clarity, even the best ideas struggle. This package helps you validate your vision, position smartly, and prepare for fast, confident execution.",
+            de: "Für Start-ups in der Frühphase, die ihre Idee validieren und das Umfeld verstehen möchten.\n\nKernbereiche:\n• Marktanalysen: Erkennen Sie das richtige Segment, schätzen Sie die Chancen ein und entdecken Sie aufkommende Trends\n• Wettbewerbslandschaft: Verstehen Sie Ihre Konkurrenten und positionieren Sie sich einzigartig\n• Wertangebot: Erkennen Sie klar, was Sie für Ihre Zielkunden unwiderstehlich macht\n• Strategische Positionierung: Positionieren Sie Ihr Start-up für maximale Marktauswirkung\n\nWarum es wichtig ist: Ohne Klarheit können auch die besten Ideen scheitern. Dieses Paket hilft Ihnen, Ihre Vision zu validieren, sich smart zu positionieren und sich auf eine schnelle, selbstbewusste Umsetzung vorzubereiten."
         }
     },
-    market: {
-        title: { en: "Market Insights", de: "Markteinblicke" },
+    'revenue-engine': {
+        title: { 
+            en: "2. Revenue Engine — Get your business model running", 
+            de: "2. Umsatzmotor — Ihr Geschäftsmodell in Gang bringen" 
+        },
         text: { 
-            en: "Explore key market segments and emerging trends to identify growth opportunities.\n\n• Market Segmentation Analysis\n• Customer Research\n• Market Size Assessment\n• Trend Identification\n• Opportunity Mapping",
-            de: "Erkunden Sie wichtige Marktsegmente und aufkommende Trends, um Wachstumschancen zu identifizieren.\n\n• Marktsegmentierungsanalyse\n• Kundenforschung\n• Marktgrößenbewertung\n• Trend-Identifikation\n• Chancen-Mapping"
+            en: "For startups ready to turn traction into money.\n\nKey Areas:\n• Revenue strategy: Define scalable income streams and unlock smart monetization paths\n• Strategic partnerships: Discover who can open doors and fuel your growth\n• Business model optimization: Validate and refine your path to profitability\n• Market fit assessment: Ensure your product meets real market demand\n\nWhy it matters: A great idea is only half the journey. This package helps you make money faster — with the right partners and a revenue model that works.",
+            de: "Für Start-ups, die bereit sind, aus der Traktion Geld zu machen.\n\nKernbereiche:\n• Umsatzstrategie: Definieren Sie skalierbare Einkommensströme und erschließen Sie intelligente Monetarisierungspfade\n• Strategische Partnerschaften: Finden Sie heraus, wer Türen öffnen und Ihr Wachstum beflügeln kann\n• Geschäftsmodell-Optimierung: Validieren und verfeinern Sie Ihren Weg zur Profitabilität\n• Marktfit-Bewertung: Stellen Sie sicher, dass Ihr Produkt echte Marktnachfrage erfüllt\n\nWarum es wichtig ist: Eine großartige Idee ist nur die halbe Miete. Dieses Paket hilft Ihnen, schneller Geld zu verdienen — mit den richtigen Partnern und einem funktionierenden Geschäftsmodell."
         }
     },
-    revenue: {
-        title: { en: "Revenue Strategy", de: "Umsatzstrategie" },
+    'sales-boost': {
+        title: { 
+            en: "3. Sales Boost — Turn interest into income", 
+            de: "3. Verkaufs-Schub — Interesse in Einkommen umwandeln" 
+        },
         text: { 
-            en: "Design sustainable revenue streams that scale with your growth.\n\n• Business Model Canvas\n• Revenue Stream Design\n• Pricing Strategy\n• Unit Economics\n• Scalability Planning",
-            de: "Gestalten Sie nachhaltige Umsatzströme, die mit Ihrem Wachstum skalieren.\n\n• Business Model Canvas\n• Revenue Stream Design\n• Preisstrategie\n• Unit Economics\n• Skalierbarkeitsplanung"
+            en: "For growing startups ready to scale customer acquisition.\n\nKey Areas:\n• Sales acceleration: Optimize your channels and sharpen your pitch-to-close journey\n• Pitch readiness: Build a compelling deck and message that resonates with investors and customers alike\n• Customer acquisition: Develop systematic approaches to finding and converting prospects\n• Sales process optimization: Streamline your sales funnel for maximum efficiency\n\nWhy it matters: You have attention — now convert it. This package gives you the tools and confidence to sell, close, and grow.",
+            de: "Für wachsende Start-ups, die bereit sind, ihre Kundenakquise zu skalieren.\n\nKernbereiche:\n• Verkaufsbeschleunigung: Optimieren Sie Ihre Kanäle und verfeinern Sie Ihre Verkaufspräsentation\n• Überzeugende Ansprache: Erstellen Sie ein überzeugendes Pitch-Deck und eine Botschaft, die bei Investoren und Kunden ankommt\n• Kundenakquise: Entwickeln Sie systematische Ansätze zum Finden und Konvertieren von Interessenten\n• Verkaufsprozess-Optimierung: Optimieren Sie Ihren Verkaufstrichter für maximale Effizienz\n\nWarum es wichtig ist: Sie haben Aufmerksamkeit — jetzt geht es darum, diese in Umsatz umzuwandeln. Dieses Paket gibt Ihnen die Werkzeuge und das Selbstvertrauen, zu verkaufen, abzuschließen und zu wachsen."
         }
     },
-    sales: {
-        title: { en: "Sales Acceleration", de: "Vertriebsbeschleunigung" },
+    'growth-capabilities': {
+        title: { 
+            en: "4. Growth Capabilities — Build what makes you unstoppable", 
+            de: "4. Wachstumsfähigkeiten — Bauen Sie auf, was Sie unaufhaltsam macht" 
+        },
         text: { 
-            en: "Build efficient customer acquisition channels that drive sustainable growth.\n\n• Customer Acquisition Strategy\n• Channel Optimization\n• Conversion Funnel Design\n• CAC/LTV Analysis\n• Growth Hacking Techniques",
-            de: "Bauen Sie effiziente Kundenakquise-Kanäle auf, die nachhaltiges Wachstum fördern.\n\n• Kundenakquise-Strategie\n• Kanal-Optimierung\n• Conversion-Funnel-Design\n• CAC/LTV-Analyse\n• Growth-Hacking-Techniken"
+            en: "For scaling startups investing in long-term strength.\n\nKey Areas:\n• Strategic capabilities: Identify and build the talents, systems, and technologies that power your mission\n• Cost efficiency: Improve margins by working smarter, not just harder\n• AI Tools workshops: Equip your team with practical know-how to leverage cutting-edge AI tools for productivity and innovation\n• System optimization: Build processes that scale with your growth\n\nWhy it matters: Scaling isn't just about more customers — it's about stronger systems. This package helps you grow sustainably while staying agile.",
+            de: "Für wachstumsorientierte Start-ups, die in langfristige Stärke investieren.\n\nKernbereiche:\n• Strategische Fähigkeiten: Identifizieren und entwickeln Sie die Talente, Systeme und Technologien, die Ihre Mission antreiben\n• Kosteneffizienz: Verbessern Sie Ihre Margen, indem Sie klüger und nicht nur härter arbeiten\n• KI-Tools Workshops: Rüsten Sie Ihr Team mit praktischem Know-how aus, um moderne KI-Tools für Produktivität und Innovation zu nutzen\n• Systemoptimierung: Bauen Sie Prozesse auf, die mit Ihrem Wachstum skalieren\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden — es geht um stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben."
         }
     },
-    capabilities: {
-        title: { en: "Strategic Capabilities", de: "Strategische Fähigkeiten" },
+    'scale-strategy': {
+        title: { 
+            en: "5. Scale Strategy — Become the category leader", 
+            de: "5. Skalierungsstrategie — Werden Sie zum Branchenführer" 
+        },
         text: { 
-            en: "Build a robust, scalable technology foundation for your startup.\n\n• Technology Architecture\n• Platform Selection\n• Scalability Planning\n• Security Framework\n• AI/ML Integration",
-            de: "Bauen Sie eine robuste, skalierbare Technologie-Grundlage für Ihr Startup.\n\n• Technologie-Architektur\n• Plattform-Auswahl\n• Skalierbarkeitsplanung\n• Sicherheits-Framework\n• KI/ML-Integration"
-        }
-    },
-    cost: {
-        title: { en: "Cost Efficiency", de: "Kosteneffizienz" },
-        text: { 
-            en: "Optimize your cost structure for lean operations and efficient scaling.\n\n• Cost Analysis & Optimization\n• Budget Planning\n• Cash Flow Management\n• Resource Allocation\n• Financial Efficiency",
-            de: "Optimieren Sie Ihre Kostenstruktur für schlanke Abläufe und effiziente Skalierung.\n\n• Kostenanalyse & Optimierung\n• Budgetplanung\n• Cash-Flow-Management\n• Ressourcenallokation\n• Finanzielle Effizienz"
-        }
-    },
-    partner: {
-        title: { en: "Strategic Partnerships", de: "Strategische Partnerschaften" },
-        text: { 
-            en: "Identify and secure strategic partnerships that accelerate your growth.\n\n• Partnership Strategy\n• Partner Identification\n• Alliance Development\n• Integration Planning\n• Mutual Value Creation",
-            de: "Identifizieren und sichern Sie strategische Partnerschaften, die Ihr Wachstum beschleunigen.\n\n• Partnerschaftsstrategie\n• Partner-Identifikation\n• Allianz-Entwicklung\n• Integrationsplanung\n• Gegenseitige Wertschöpfung"
-        }
-    },
-    usp: {
-        title: { en: "Value Proposition", de: "Wertversprechen" },
-        text: { 
-            en: "Craft a compelling value proposition that resonates with your target market.\n\n• Value Proposition Canvas\n• Customer Pain Point Analysis\n• Unique Value Definition\n• Message-Market Fit\n• Brand Positioning",
-            de: "Erstellen Sie ein überzeugendes Wertversprechen, das bei Ihrem Zielmarkt ankommt.\n\n• Value Proposition Canvas\n• Analyse der Kundenschmerzen\n• Definition einzigartiger Werte\n• Message-Market Fit\n• Markenpositionierung"
-        }
-    },
-    pitch: {
-        title: { en: "Pitch Readiness", de: "Pitch-Bereitschaft" },
-        text: { 
-            en: "Prepare compelling investor materials that secure funding for your startup.\n\n• Pitch Deck Development\n• Financial Projections\n• Due Diligence Preparation\n• Investor Targeting\n• Funding Strategy",
-            de: "Bereiten Sie überzeugende Investor-Materialien vor, die Finanzierung für Ihr Startup sichern.\n\n• Pitch-Deck-Entwicklung\n• Finanzprognosen\n• Due-Diligence-Vorbereitung\n• Investor-Targeting\n• Finanzierungsstrategie"
-        }
-    },
-    ai: {
-        title: { en: "AI for Startups", de: "KI für Startups" },
-        text: { 
-            en: "Integrate AI strategically to accelerate your startup's growth and efficiency.\n\n• AI Strategy Development\n• Technology Assessment\n• Implementation Planning\n• ROI Optimization\n• Competitive Advantage through AI",
-            de: "Integrieren Sie KI strategisch, um das Wachstum und die Effizienz Ihres Startups zu beschleunigen.\n\n• KI-Strategieentwicklung\n• Technologiebewertung\n• Implementierungsplanung\n• ROI-Optimierung\n• Wettbewerbsvorteil durch KI"
+            en: "For mature startups ready to lead, launch larger funding rounds or expand globally.\n\nKey Areas:\n• AI Tools mastery: Advanced AI integration to automate operations and build competitive advantages\n• Comprehensive strategy: All of the above packages fully tailored to your current scaling challenges\n• Senior advisor access: Tailored workshops and strategy sessions with experienced advisors\n• Market expansion: Strategic planning for geographic and vertical growth\n• Leadership development: Build the leadership capabilities needed for scale\n\nWhy it matters: When you're ready to scale up, you need more than just advice - you need strategic clout. This flagship package turns ambition into execution.",
+            de: "Für etablierte Start-ups, die bereit sind, zu führen, größere Finanzierungsrunden zu starten oder global zu expandieren.\n\nKernbereiche:\n• KI-Tools Mastery: Fortgeschrittene KI-Integration zur Automatisierung und Aufbau von Wettbewerbsvorteilen\n• Umfassende Strategie: All das oben Genannte — maßgeschneidert auf Ihre aktuellen Skalierungsherausforderungen\n• Senior-Berater-Zugang: Maßgeschneiderte Workshops und Strategiesitzungen mit erfahrenen Beratern\n• Markterweiterung: Strategische Planung für geografisches und vertikales Wachstum\n• Führungskräfteentwicklung: Bauen Sie die Führungskompetenzen auf, die für Skalierung erforderlich sind\n\nWarum es wichtig ist: Wenn Sie bereit sind zu wachsen, brauchen Sie mehr als nur Ratschläge — Sie brauchen strategische Schlagkraft. Dieses Flaggschiff-Paket verwandelt Ambitionen in Umsetzung."
         }
     }
 };
@@ -160,6 +140,27 @@ function initializeLanguageToggle() {
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'en' ? 'de' : 'en';
     updateLanguage(currentLanguage);
+    
+    // If modal is open, refresh its content with new language
+    const modal = document.getElementById('growth-modal');
+    if (modal && modal.style.display === 'block') {
+        // Find which step is currently displayed by checking the title
+        const currentTitle = document.getElementById('growth-modal-title').textContent;
+        let currentStep = null;
+        
+        // Find the step that matches the current title
+        for (const [step, content] of Object.entries(growthContent)) {
+            if (content.title.en === currentTitle || content.title.de === currentTitle) {
+                currentStep = step;
+                break;
+            }
+        }
+        
+        // Refresh modal content if we found the step
+        if (currentStep) {
+            openGrowthModal(currentStep);
+        }
+    }
 }
 
 function updateLanguage(lang) {
@@ -269,69 +270,122 @@ function openGrowthModal(step) {
         // Set title
         title.textContent = content.title[currentLanguage];
         
-        // Format text content with proper list structure
+        // Format text content with proper structure
         const fullText = content.text[currentLanguage];
-        const parts = fullText.split('\n\n');
-        const description = parts[0];
-        const bulletPoints = parts[1] ? parts[1].split('\n') : [];
+        
+        // Split into sections
+        const sections = fullText.split('\n\n');
+        const description = sections[0];
+        const keyAreasSection = sections[1]; // "Key Areas:" section
+        const whyItMattersSection = sections[2]; // "Why it matters:" section
         
         // Clear previous content
         text.innerHTML = '';
         
-        // Add description paragraph
+        // Add description
         const descParagraph = document.createElement('p');
         descParagraph.textContent = description;
         descParagraph.style.marginBottom = '20px';
-        descParagraph.style.lineHeight = '1.6';
+        descParagraph.style.fontWeight = '500';
         text.appendChild(descParagraph);
         
-        // Add bullet points as a proper list
-        if (bulletPoints.length > 0) {
-            const listContainer = document.createElement('div');
-            listContainer.style.marginTop = '16px';
+        // Process Key Areas section
+        if (keyAreasSection && (keyAreasSection.includes('Key Areas:') || keyAreasSection.includes('Kernbereiche:'))) {
+            const keyAreasDiv = document.createElement('div');
+            keyAreasDiv.style.marginBottom = '20px';
             
-            const listTitle = document.createElement('h4');
-            listTitle.textContent = currentLanguage === 'en' ? 'Key Areas:' : 'Kernbereiche:';
-            listTitle.style.marginBottom = '12px';
-            listTitle.style.fontSize = '1.1rem';
-            listTitle.style.fontWeight = '600';
-            listTitle.style.color = '#211D58';
-            listContainer.appendChild(listTitle);
+            const keyAreasTitle = document.createElement('h4');
+            keyAreasTitle.textContent = currentLanguage === 'en' ? 'Key Areas:' : 'Kernbereiche:';
+            keyAreasTitle.style.marginBottom = '12px';
+            keyAreasTitle.style.fontSize = '18px';
+            keyAreasTitle.style.fontWeight = '600';
+            keyAreasTitle.style.color = '#211D58';
+            keyAreasDiv.appendChild(keyAreasTitle);
             
             const list = document.createElement('ul');
             list.style.paddingLeft = '0';
             list.style.listStyle = 'none';
             list.style.margin = '0';
             
+            // Extract bullet points
+            const bulletPoints = keyAreasSection.split('\n').filter(line => line.trim().startsWith('•'));
+            
             bulletPoints.forEach(point => {
-                if (point.trim() && point.startsWith('•')) {
-                    const listItem = document.createElement('li');
-                    listItem.style.marginBottom = '8px';
-                    listItem.style.paddingLeft = '24px';
-                    listItem.style.position = 'relative';
-                    listItem.style.lineHeight = '1.5';
+                const listItem = document.createElement('li');
+                listItem.style.marginBottom = '10px';
+                listItem.style.paddingLeft = '24px';
+                listItem.style.position = 'relative';
+                listItem.style.lineHeight = '1.6';
+                
+                // Check if this is an AI Tools related point
+                const isAITools = point.toLowerCase().includes('ai tools') || point.toLowerCase().includes('ki-tools');
+                
+                // Create custom bullet
+                const bullet = document.createElement('span');
+                bullet.innerHTML = isAITools ? '🤖' : '→';
+                bullet.style.position = 'absolute';
+                bullet.style.left = '0';
+                bullet.style.color = isAITools ? '#FF6B35' : '#8BC07C';
+                bullet.style.fontWeight = 'bold';
+                bullet.style.fontSize = isAITools ? '14px' : '16px';
+                
+                listItem.appendChild(bullet);
+                
+                // Add text content (remove the bullet character)
+                const textSpan = document.createElement('span');
+                textSpan.textContent = point.replace('•', '').trim();
+                
+                // Special styling for AI Tools content
+                if (isAITools) {
+                    textSpan.style.background = 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)';
+                    textSpan.style.webkitBackgroundClip = 'text';
+                    textSpan.style.webkitTextFillColor = 'transparent';
+                    textSpan.style.backgroundClip = 'text';
+                    textSpan.style.fontWeight = '700';
+                    textSpan.style.fontSize = '15px';
                     
-                    // Create custom bullet
-                    const bullet = document.createElement('span');
-                    bullet.innerHTML = '●';
-                    bullet.style.position = 'absolute';
-                    bullet.style.left = '8px';
-                    bullet.style.color = '#8BC07C';
-                    bullet.style.fontWeight = 'bold';
-                    
-                    listItem.appendChild(bullet);
-                    
-                    // Add text content (remove the original • character)
-                    const textSpan = document.createElement('span');
-                    textSpan.textContent = point.replace('•', '').trim();
-                    listItem.appendChild(textSpan);
-                    
-                    list.appendChild(listItem);
+                    // Add a subtle glow effect
+                    listItem.style.background = 'linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(247, 147, 30, 0.05) 100%)';
+                    listItem.style.borderRadius = '6px';
+                    listItem.style.padding = '8px 8px 8px 24px';
+                    listItem.style.border = '1px solid rgba(255, 107, 53, 0.2)';
+                    listItem.style.marginBottom = '12px';
                 }
+                
+                listItem.appendChild(textSpan);
+                
+                list.appendChild(listItem);
             });
             
-            listContainer.appendChild(list);
-            text.appendChild(listContainer);
+            keyAreasDiv.appendChild(list);
+            text.appendChild(keyAreasDiv);
+        }
+        
+        // Process "Why it matters" section
+        if (whyItMattersSection && (whyItMattersSection.includes('Why it matters:') || whyItMattersSection.includes('Warum es wichtig ist:'))) {
+            const whyDiv = document.createElement('div');
+            whyDiv.style.marginTop = '20px';
+            whyDiv.style.padding = '16px';
+            whyDiv.style.backgroundColor = '#F5F5F5';
+            whyDiv.style.borderRadius = '8px';
+            whyDiv.style.borderLeft = '4px solid #8BC07C';
+            
+            const whyTitle = document.createElement('h4');
+            whyTitle.textContent = currentLanguage === 'en' ? 'Why It Matters:' : 'Warum es wichtig ist:';
+            whyTitle.style.marginBottom = '8px';
+            whyTitle.style.fontSize = '16px';
+            whyTitle.style.fontWeight = '600';
+            whyTitle.style.color = '#211D58';
+            whyDiv.appendChild(whyTitle);
+            
+            const whyText = document.createElement('p');
+            whyText.textContent = whyItMattersSection.replace('Why it matters:', '').replace('Warum es wichtig ist:', '').trim();
+            whyText.style.margin = '0';
+            whyText.style.lineHeight = '1.6';
+            whyText.style.color = '#4A4A4A';
+            whyDiv.appendChild(whyText);
+            
+            text.appendChild(whyDiv);
         }
         
         modal.style.display = 'block';
