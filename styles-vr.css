@@ -766,6 +766,36 @@ p {
     color: var(--dark-gray);
 }
 
+/* === Cookie Consent (A+B) === */
+.cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#1f2937;color:#fff;padding:16px 20px;box-shadow:0 -2px 12px rgba(0,0,0,.2);transform:translateY(0);}
+.cookie-banner__inner{max-width:1100px;margin:0 auto;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cookie-banner__text strong{display:block;margin-bottom:4px}
+.cookie-banner__text p{margin:0 0 6px 0;opacity:.9}
+.cookie-banner .cookie-link{color:#9cd2ff;text-decoration:underline}
+.cookie-banner__actions{display:flex;gap:8px;flex-shrink:0}
+.btn{border:none;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+.btn-primary{background:#2563eb;color:#fff}
+.btn-secondary{background:#374151;color:#fff}
+.btn-outline{background:transparent;color:#fff;border:1px solid #9ca3af}
+.link-like{background:none;border:none;color:inherit;text-decoration:underline;cursor:pointer;padding:0}
+.cookie-settings-entry{display:flex;justify-content:flex-end;margin:12px 0}
+
+/* Modal */
+.cookie-modal{display:none;position:fixed;inset:0;z-index:10000}
+.cookie-modal.open{display:block}
+.cookie-modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.cookie-modal__dialog{position:relative;z-index:1;max-width:560px;margin:10vh auto;background:#fff;color:#111;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.cookie-modal__header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #eee}
+.cookie-modal__body{padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.cookie-modal__footer{padding:16px 20px;border-top:1px solid #eee;display:flex;justify-content:flex-end}
+.modal-close{background:none;border:none;font-size:24px;line-height:1;cursor:pointer}
+.cookie-toggle{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.switch input[type="checkbox"]{width:44px;height:24px;appearance:none;background:#e5e7eb;border-radius:999px;position:relative;outline:none;cursor:pointer;transition:background .2s ease}
+.switch input[type="checkbox"]::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .2s ease}
+.switch input[type="checkbox"]:checked{background:#2563eb}
+.switch input[type="checkbox"]:checked::after{left:22px}
+.switch.disabled{opacity:.6}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .hero h1 {
@@ -806,6 +836,8 @@ p {
     .contact-details {
         grid-template-columns: 1fr;
     }
+
+    .cookie-banner__actions{width:100%;justify-content:flex-end}
 }
 
 /* Animations */

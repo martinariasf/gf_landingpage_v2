@@ -17,14 +17,16 @@
     <!-- VR Website Specific Styles -->
     <link rel="stylesheet" href="styles-vr.css">
     
-    <!-- Google Analytics -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D1MXJ2SMZ"></script>
+    <!-- Google Analytics Consent Stub -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-2D1MXJ2SMZ');
+      // Deny by default (before any network calls)
+      gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied' });
+      
+      // Set configuration variables
+      window.__GA_MEASUREMENT_ID__ = 'G-2D1MXJ2SMZ';
+      window.__CONSENT_VERSION__ = 'vr-v1';
     </script>
 </head>
 
@@ -354,6 +356,63 @@
             </div>
         </div>
     </section>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-banner__inner">
+            <div class="cookie-banner__text">
+                <strong data-en="We value your privacy" data-de="Wir respektieren Ihre Privatsphäre">Wir respektieren Ihre Privatsphäre</strong>
+                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren.">Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren.</p>
+            </div>
+            <div class="cookie-banner__actions">
+                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren">Alle akzeptieren</button>
+                <button id="cookie-reject" class="btn btn-secondary" data-en="Essential Only" data-de="Nur notwendige">Nur notwendige</button>
+                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen">Anpassen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Entry Point -->
+    <div class="cookie-settings-entry">
+        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen">Cookie-Einstellungen</button>
+    </div>
+
+    <!-- Cookie Modal -->
+    <div id="cookie-modal" class="cookie-modal" aria-hidden="true">
+        <div class="cookie-modal__backdrop" onclick="closeModal()"></div>
+        <div class="cookie-modal__dialog">
+            <div class="cookie-modal__header">
+                <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen">Cookie-Einstellungen</h3>
+                <button id="cookie-close" class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="cookie-modal__body">
+                <p data-en="We use cookies to improve your experience on our website. You can customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen.">Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen.</p>
+                
+                <div class="cookie-toggle">
+                    <div>
+                        <strong data-en="Essential Cookies" data-de="Notwendige Cookies">Notwendige Cookies</strong>
+                        <p data-en="Required for the website to function properly." data-de="Erforderlich für das ordnungsgemäße Funktionieren der Website.">Erforderlich für das ordnungsgemäße Funktionieren der Website.</p>
+                    </div>
+                    <div class="switch disabled">
+                        <input type="checkbox" checked disabled>
+                    </div>
+                </div>
+                
+                <div class="cookie-toggle">
+                    <div>
+                        <strong data-en="Analytics Cookies" data-de="Analyse-Cookies">Analyse-Cookies</strong>
+                        <p data-en="Help us understand how visitors interact with our website." data-de="Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.">Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.</p>
+                    </div>
+                    <div class="switch">
+                        <input type="checkbox" id="toggle-analytics">
+                    </div>
+                </div>
+            </div>
+            <div class="cookie-modal__footer">
+                <button id="cookie-save" class="btn btn-primary" data-en="Save Preferences" data-de="Einstellungen speichern">Einstellungen speichern</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="script-vr.js"></script>
