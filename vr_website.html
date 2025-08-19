@@ -45,8 +45,19 @@
                 <li data-en="Free initial consultation included" data-de="Kostenlose Erstberatung inklusive">Kostenlose Erstberatung inklusive</li>
             </ul>
             
-            <form class="email-form" id="modalForm">
-                <input type="email" class="email-input" placeholder="Ihre E-Mail-Adresse" required id="modalEmail" data-en="Your email address" data-de="Ihre E-Mail-Adresse">
+            <form class="email-form" id="modalForm" action="https://formspree.io/f/myzgvodd" method="POST">
+                <input type="email" class="email-input" name="email" placeholder="Ihre E-Mail-Adresse" required id="modalEmail" data-en="Your email address" data-de="Ihre E-Mail-Adresse">
+                
+                <!-- Hidden fields for modal form -->
+                <input type="hidden" name="_subject" value="Neue VR-Guide Anfrage (Popup Modal)">
+                <input type="hidden" name="_replyto" id="modalReplyTo">
+                <input type="hidden" name="_next" value="https://gfinnov.com/vr_website.html">
+                <input type="hidden" name="form_type" value="VR Popup Modal Guide Request">
+                <input type="hidden" name="timestamp" id="modalTimestamp">
+                <input type="hidden" name="source" value="VR Website Popup Modal">
+                <input type="hidden" name="name" value="Not provided (Popup)">
+                <input type="hidden" name="company" value="Not provided (Popup)">
+                
                 <button type="submit" class="email-submit" data-en="📧 Get Free Guide" data-de="📧 Kostenlosen Guide erhalten">📧 Kostenlosen Guide erhalten</button>
             </form>
             
@@ -247,15 +258,24 @@
                 
                 <div class="newsletter-form-container fade-in">
                     <h4 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.3rem;" data-en="Download Free Guide" data-de="Kostenlosen Guide herunterladen">Kostenlosen Guide herunterladen</h4>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <input type="text" class="newsletter-input" placeholder="Ihr Name" required id="nameInput" data-en="Your Name" data-de="Ihr Name">
-                        <input type="email" class="newsletter-input" placeholder="Ihre E-Mail-Adresse" required id="emailInput" data-en="Your Email Address" data-de="Ihre E-Mail-Adresse">
-                        <input type="text" class="newsletter-input" placeholder="Unternehmen (optional)" id="companyInput" data-en="Company (optional)" data-de="Unternehmen (optional)">
+                    <form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/myzgvodd" method="POST">
+                        <input type="text" class="newsletter-input" name="name" placeholder="Ihr Name" required id="nameInput" data-en="Your Name" data-de="Ihr Name">
+                        <input type="email" class="newsletter-input" name="email" placeholder="Ihre E-Mail-Adresse" required id="emailInput" data-en="Your Email Address" data-de="Ihre E-Mail-Adresse">
+                        <input type="text" class="newsletter-input" name="company" placeholder="Unternehmen (optional)" id="companyInput" data-en="Company (optional)" data-de="Unternehmen (optional)">
+                        
+                        <!-- Hidden fields for tracking -->
+                        <input type="hidden" name="_subject" value="Neue VR-Guide Anfrage von der Website">
+                        <input type="hidden" name="_replyto" id="hiddenReplyTo">
+                        <input type="hidden" name="_next" value="https://gfinnov.com/vr_website.html#newsletter">
+                        <input type="hidden" name="form_type" value="VR Newsletter Guide Request">
+                        <input type="hidden" name="timestamp" id="timestamp">
+                        <input type="hidden" name="source" value="VR Website Newsletter Section">
+                        
                         <button type="submit" class="newsletter-submit" data-en="📧 Get Free Guide" data-de="📧 Guide kostenlos erhalten">📧 Guide kostenlos erhalten</button>
                     </form>
                     <div class="success-message" id="successMessage">
                         <strong data-en="🎉 Thank you!" data-de="🎉 Vielen Dank!">🎉 Vielen Dank!</strong><br>
-                        <span data-en="Your VR Trade Show Guide will be in your inbox within the next few minutes." data-de="Ihr VR-Messe-Guide wird in den nächsten Minuten in Ihrem Postfach sein.">Ihr VR-Messe-Guide wird in den nächsten Minuten in Ihrem Postfach sein.</span>
+                        <span data-en="Your VR Trade Show Guide request has been sent! We'll send you the guide and contact you soon." data-de="Ihre VR-Messe-Guide Anfrage wurde gesendet! Wir senden Ihnen den Guide und kontaktieren Sie bald.">Ihre VR-Messe-Guide Anfrage wurde gesendet! Wir senden Ihnen den Guide und kontaktieren Sie bald.</span>
                     </div>
                     <p class="privacy-note" data-en="🔒 Your data is secure. No sharing with third parties. Unsubscribe anytime." data-de="🔒 Ihre Daten sind sicher. Keine Weitergabe an Dritte. Abmeldung jederzeit möglich.">
                         <i class="fas fa-lock"></i> Ihre Daten sind sicher. Keine Weitergabe an Dritte. Abmeldung jederzeit möglich.

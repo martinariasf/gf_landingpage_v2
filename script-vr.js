@@ -167,6 +167,9 @@ function loadLanguagePreference() {
 
 // Email Capture Modal and Newsletter functionality
 function initializeEmailCapture() {
+    // Set timestamps when page loads
+    setFormTimestamps();
+    
     // Timer-based popup (30 seconds)
     setTimeout(() => {
         if (!modalShown && !emailCaptured) {
@@ -199,10 +202,32 @@ function initializeEmailCapture() {
     const modalForm = document.getElementById('modalForm');
     if (modalForm) {
         modalForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Set reply-to before submission
             const email = document.getElementById('modalEmail').value;
-            handleEmailSubmission(email, 'popup');
-            closeModal();
+            const modalReplyTo = document.getElementById('modalReplyTo');
+            if (modalReplyTo) {
+                modalReplyTo.value = email;
+            }
+            
+            // Update timestamp
+            const modalTimestamp = document.getElementById('modalTimestamp');
+            if (modalTimestamp) {
+                modalTimestamp.value = new Date().toISOString();
+            }
+            
+            // Form will submit normally to Formspree
+            // Show loading state
+            const submitBtn = e.target.querySelector('.email-submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = currentLanguage === 'de' ? 'Wird gesendet...' : 'Sending...';
+            }
+            
+            // Close modal after a brief delay to allow form submission
+            setTimeout(() => {
+                closeModal();
+                showSubmissionFeedback('popup');
+            }, 1000);
         });
     }
     
@@ -210,11 +235,30 @@ function initializeEmailCapture() {
     const newsletterForm = document.getElementById('newsletterForm');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('nameInput').value;
+            // Set reply-to and timestamp before submission
             const email = document.getElementById('emailInput').value;
-            const company = document.getElementById('companyInput').value;
-            handleEmailSubmission(email, 'newsletter', name, company);
+            const hiddenReplyTo = document.getElementById('hiddenReplyTo');
+            if (hiddenReplyTo) {
+                hiddenReplyTo.value = email;
+            }
+            
+            const timestamp = document.getElementById('timestamp');
+            if (timestamp) {
+                timestamp.value = new Date().toISOString();
+            }
+            
+            // Show loading state
+            const submitBtn = e.target.querySelector('.newsletter-submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = currentLanguage === 'de' ? 'Wird gesendet...' : 'Sending...';
+            }
+            
+            // Form will submit normally to Formspree
+            // Show success message after brief delay
+            setTimeout(() => {
+                handleEmailSubmission(email, 'newsletter');
+            }, 1000);
         });
     }
     
@@ -240,6 +284,55 @@ function initializeEmailCapture() {
             closeModal();
         }
     });
+}
+
+function setFormTimestamps() {
+    const timestamp = document.getElementById('timestamp');
+    const modalTimestamp = document.getElementById('modalTimestamp');
+    const currentTime = new Date().toISOString();
+    
+    if (timestamp) timestamp.value = currentTime;
+    if (modalTimestamp) modalTimestamp.value = currentTime;
+}
+
+function showSubmissionFeedback(source) {
+    let message;
+    if (currentLanguage === 'de') {
+        message = source === 'popup' 
+            ? 'Vielen Dank! Ihre Anfrage wurde gesendet. Wir kontaktieren Sie bald mit dem VR-Guide.'
+            : 'Vielen Dank! Ihre Newsletter-Anfrage wurde gesendet.';
+    } else {
+        message = source === 'popup'
+            ? 'Thank you! Your request has been sent. We\'ll contact you soon with the VR Guide.'
+            : 'Thank you! Your newsletter request has been sent.';
+    }
+    
+    // Create and show temporary notification
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(45deg, #8BC07C, rgba(139, 192, 124, 0.8));
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        z-index: 10001;
+        font-family: var(--font-primary);
+        font-weight: 600;
+        max-width: 300px;
+        animation: slideInRight 0.3s ease;
+    `;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    // Remove notification after 5 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.remove();
+        }
+    }, 5000);
 }
 
 function showModal() {
