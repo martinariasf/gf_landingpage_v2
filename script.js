@@ -493,3 +493,118 @@ window.GFWebsite = {
     openGrowthModal,
     closeGrowthModal
 };
+
+
+// === Consent Manager (A+B) ===
+(function(){
+  const STORAGE_KEY = 'consent-' + (window.__CONSENT_VERSION__||'v1');
+  const GA_ID = window.__GA_MEASUREMENT_ID__ || 'G-2D1MXJ2SMZ';
+
+  const $ = (sel) => document.querySelector(sel);
+
+  function getConsent(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || null; } catch(e){ return null; }
+  }
+  function setConsent(obj){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+  }
+
+  function applyConsent(consent){
+    // Only analytics is toggled here (necessary is always on)
+    if(consent.analytics === true){
+      // Load GA loader once
+      if(!window.__GA_LOADED__){
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        s.onload = function(){
+          gtag('js', new Date());
+          gtag('config', GA_ID);
+          gtag('consent','update',{ analytics_storage: 'granted' });
+        };
+        document.head.appendChild(s);
+        window.__GA_LOADED__ = true;
+      }else{
+        gtag('consent','update',{ analytics_storage: 'granted' });
+      }
+    }else{
+      // Update to denied
+      gtag('consent','update',{ analytics_storage: 'denied' });
+    }
+  }
+
+  function showBanner(){
+    const banner = $('#cookie-banner');
+    if(banner) banner.style.display = 'block';
+  }
+  function hideBanner(){
+    const banner = $('#cookie-banner');
+    if(banner) banner.style.display = 'none';
+  }
+  function openModal(){
+    const modal = $('#cookie-modal');
+    if(modal){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); }
+  }
+  function closeModal(){
+    const modal = $('#cookie-modal');
+    if(modal){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+  }
+
+  function initUI(){
+    const btnAccept = $('#cookie-accept');
+    const btnReject = $('#cookie-reject');
+    const btnCustomize = $('#cookie-customize');
+    const btnSettings = $('#cookie-settings');
+    const btnClose = $('#cookie-close');
+    const btnSave = $('#cookie-save');
+    const toggleAnalytics = $('#toggle-analytics');
+
+    if(btnAccept) btnAccept.addEventListener('click', () => {
+      const consent = { necessary: true, analytics: true, at: new Date().toISOString() };
+      setConsent(consent);
+      applyConsent(consent);
+      hideBanner();
+    });
+
+    if(btnReject) btnReject.addEventListener('click', () => {
+      const consent = { necessary: true, analytics: false, at: new Date().toISOString() };
+      setConsent(consent);
+      applyConsent(consent);
+      hideBanner();
+    });
+
+    if(btnCustomize) btnCustomize.addEventListener('click', () => {
+      const c = getConsent() || { analytics: false };
+      if(toggleAnalytics) toggleAnalytics.checked = !!c.analytics;
+      openModal();
+    });
+
+    if(btnSettings) btnSettings.addEventListener('click', () => {
+      const c = getConsent() || { analytics: false };
+      if(toggleAnalytics) toggleAnalytics.checked = !!c.analytics;
+      openModal();
+    });
+
+    if(btnClose) btnClose.addEventListener('click', closeModal);
+
+    if(btnSave) btnSave.addEventListener('click', () => {
+      const consent = { necessary: true, analytics: !!(toggleAnalytics && toggleAnalytics.checked), at: new Date().toISOString() };
+      setConsent(consent);
+      applyConsent(consent);
+      closeModal();
+      hideBanner();
+    });
+  }
+
+  // On load: default deny already set in stub. Decide UI and possibly enable analytics.
+  document.addEventListener('DOMContentLoaded', function(){
+    initUI();
+    const consent = getConsent();
+    if(consent){
+      applyConsent(consent);
+      hideBanner();
+    }else{
+      showBanner();
+    }
+  });
+})();

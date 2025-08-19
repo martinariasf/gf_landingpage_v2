@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Google Analytics -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D1MXJ2SMZ"></script>
+    <!-- Google Analytics Consent Stub -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Deny by default (before any network calls)
+      gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied' });
+    </script>
+    <script>
+    function enableAnalytics(){
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2D1MXJ2SMZ';
+      document.head.appendChild(s);
+
       gtag('js', new Date());
-      gtag('config', 'G-2D1MXJ2SMZ');
+      gtag('config', 'G-2D1MXJ2SMZ'); // GA4; consent already controls storage
+      gtag('consent','update',{ analytics_storage: 'granted' });
+    }
     </script>
 </head>
 <body>
@@ -343,6 +353,73 @@
             <p id="growth-modal-text"></p>
         </div>
     </div>
+
+    <!-- Cookie Consent Banner and Settings -->
+    <div id="cookie-consent-banner" style="position: fixed; bottom: 0; width: 100%; background: #222; color: #fff; text-align: center; padding: 15px; z-index: 1000; display: none;">
+      <span>We use cookies to enhance your experience. Do you accept analytics cookies?</span>
+      <button id="accept-cookies" style="margin: 0 10px;">Accept All</button>
+      <button id="reject-cookies" style="margin: 0 10px;">Reject Non-Essential</button>
+      <button id="customize-cookies" style="margin: 0 10px;">Customize</button>
+    </div>
+    <div id="cookie-settings-link" style="position: fixed; bottom: 10px; right: 10px; background: #222; color: #fff; padding: 8px 12px; cursor: pointer; z-index:1000;">Cookie Settings</div>
+
+    <script>
+    // Cookie Consent Logic
+    (function() {
+      const banner = document.getElementById('cookie-consent-banner');
+      const acceptBtn = document.getElementById('accept-cookies');
+      const rejectBtn = document.getElementById('reject-cookies');
+      const customizeBtn = document.getElementById('customize-cookies');
+      const settingsLink = document.getElementById('cookie-settings-link');
+
+      function showBanner() {
+        banner.style.display = 'block';
+      }
+
+      function hideBanner() {
+        banner.style.display = 'none';
+      }
+
+      function setConsent(choice) {
+        localStorage.setItem('cookieConsent', choice);
+        if(choice === 'accepted') {
+          enableAnalytics();
+        } else {
+          // In case of rejection, ensure analytics remain disabled
+          // You might also remove any analytics cookies here if needed
+          gtag('consent','update',{ analytics_storage: 'denied' });
+        }
+        hideBanner();
+      }
+
+      // Check stored consent
+      const storedConsent = localStorage.getItem('cookieConsent');
+      if(!storedConsent) {
+        showBanner();
+      } else if(storedConsent === 'accepted') {
+        enableAnalytics();
+      }
+
+      // Button event listeners
+      acceptBtn.addEventListener('click', function() {
+        setConsent('accepted');
+      });
+
+      rejectBtn.addEventListener('click', function() {
+        setConsent('rejected');
+      });
+
+      customizeBtn.addEventListener('click', function() {
+        // For this example, customize behaves like reject
+        setConsent('rejected');
+      });
+
+      // Persistent cookie settings link to reopen banner
+      settingsLink.addEventListener('click', function() {
+        showBanner();
+      });
+    })();
+    </script>
 
     <script src="script.js"></script>
 </body>
