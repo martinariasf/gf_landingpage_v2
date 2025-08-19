@@ -494,7 +494,6 @@ window.GFWebsite = {
     closeGrowthModal
 };
 
-
 // === Consent Manager (A+B) ===
 (function(){
   const STORAGE_KEY = 'consent-' + (window.__CONSENT_VERSION__||'v1');

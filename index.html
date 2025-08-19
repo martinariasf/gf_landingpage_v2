@@ -14,18 +14,10 @@
       function gtag(){dataLayer.push(arguments);}
       // Deny by default (before any network calls)
       gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied' });
-    </script>
-    <script>
-    function enableAnalytics(){
-      const s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2D1MXJ2SMZ';
-      document.head.appendChild(s);
-
-      gtag('js', new Date());
-      gtag('config', 'G-2D1MXJ2SMZ'); // GA4; consent already controls storage
-      gtag('consent','update',{ analytics_storage: 'granted' });
-    }
+      
+      // Set configuration variables
+      window.__GA_MEASUREMENT_ID__ = 'G-2D1MXJ2SMZ';
+      window.__CONSENT_VERSION__ = 'v1';
     </script>
 </head>
 <body>
@@ -249,9 +241,9 @@
                 
                 <div class="team-member">
                     <div class="member-photo">
-                        <img src="images/team/team-wasilios.png" alt="Wasilios Minoudis" class="team-photo" />
+                        <img src="images/team/team-wasilios.png" alt="Wasilios" class="team-photo" />
                     </div>
-                    <h3>Wasilios Minoudis</h3>
+                    <h3>Wasilios</h3>
                     <p class="member-role" data-en="VR/AR/XR Expert" data-de="VR/AR/XR-Experte">VR/AR/XR Expert</p>
                     <ul class="member-skills">
                         <li data-en="🥽 Immersive technology development" data-de="🥽 Entwicklung immersiver Technologien">🥽 Immersive technology development</li>
@@ -354,73 +346,47 @@
         </div>
     </div>
 
-    <!-- Cookie Consent Banner and Settings -->
-    <div id="cookie-consent-banner" style="position: fixed; bottom: 0; width: 100%; background: #222; color: #fff; text-align: center; padding: 15px; z-index: 1000; display: none;">
-      <span>We use cookies to enhance your experience. Do you accept analytics cookies?</span>
-      <button id="accept-cookies" style="margin: 0 10px;">Accept All</button>
-      <button id="reject-cookies" style="margin: 0 10px;">Reject Non-Essential</button>
-      <button id="customize-cookies" style="margin: 0 10px;">Customize</button>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-banner__inner">
+            <div class="cookie-banner__text">
+                <strong data-en="We value your privacy" data-de="Wir respektieren Ihre Privatsphäre">We value your privacy</strong>
+                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren.">This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept.</p>
+            </div>
+            <div class="cookie-banner__actions">
+                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren">Accept All</button>
+                <button id="cookie-reject" class="btn btn-secondary" data-en="Essential Only" data-de="Nur notwendige">Essential Only</button>
+                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen">Customize</button>
+            </div>
+        </div>
     </div>
-    <div id="cookie-settings-link" style="position: fixed; bottom: 10px; right: 10px; background: #222; color: #fff; padding: 8px 12px; cursor: pointer; z-index:1000;">Cookie Settings</div>
 
-    <script>
-    // Cookie Consent Logic
-    (function() {
-      const banner = document.getElementById('cookie-consent-banner');
-      const acceptBtn = document.getElementById('accept-cookies');
-      const rejectBtn = document.getElementById('reject-cookies');
-      const customizeBtn = document.getElementById('customize-cookies');
-      const settingsLink = document.getElementById('cookie-settings-link');
+    <!-- Cookie Settings Entry Point -->
+    <div class="cookie-settings-entry">
+        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen">Cookie Settings</button>
+    </div>
 
-      function showBanner() {
-        banner.style.display = 'block';
-      }
-
-      function hideBanner() {
-        banner.style.display = 'none';
-      }
-
-      function setConsent(choice) {
-        localStorage.setItem('cookieConsent', choice);
-        if(choice === 'accepted') {
-          enableAnalytics();
-        } else {
-          // In case of rejection, ensure analytics remain disabled
-          // You might also remove any analytics cookies here if needed
-          gtag('consent','update',{ analytics_storage: 'denied' });
-        }
-        hideBanner();
-      }
-
-      // Check stored consent
-      const storedConsent = localStorage.getItem('cookieConsent');
-      if(!storedConsent) {
-        showBanner();
-      } else if(storedConsent === 'accepted') {
-        enableAnalytics();
-      }
-
-      // Button event listeners
-      acceptBtn.addEventListener('click', function() {
-        setConsent('accepted');
-      });
-
-      rejectBtn.addEventListener('click', function() {
-        setConsent('rejected');
-      });
-
-      customizeBtn.addEventListener('click', function() {
-        // For this example, customize behaves like reject
-        setConsent('rejected');
-      });
-
-      // Persistent cookie settings link to reopen banner
-      settingsLink.addEventListener('click', function() {
-        showBanner();
-      });
-    })();
-    </script>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    <!-- Cookie Modal -->
+    <div id="cookie-modal" class="cookie-modal" aria-hidden="true">
+        <div class="cookie-modal__backdrop" onclick="closeModal()"></div>
+        <div class="cookie-modal__dialog">
+            <div class="cookie-modal__header">
+                <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen">Cookie Preferences</h3>
+                <button id="cookie-close" class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="cookie-modal__body">
+                <p data-en="We use cookies to improve your experience on our website. You can customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen.">We use cookies to improve your experience on our website. You can customize your preferences below.</p>
+                
+                <div class="cookie-toggle">
+                    <div>
+                        <strong data-en="Essential Cookies" data-de="Notwendige Cookies">Essential Cookies</strong>
+                        <p data-en="Required for the website to function properly." data-de="Erforderlich für das ordnungsgemäße Funktionieren der Website.">Required for the website to function properly.</p>
+                    </div>
+                    <div class="switch disabled">
+                        <input type="checkbox" checked disabled>
+                    </div>
+                </div>
+                
+                <div class="cookie-toggle">
+                    <div>
+                        <strong data-en="Analytics Cookies" data-de="Analyse-Cookies
