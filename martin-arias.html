@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martín Arias - GF Innovative Solutions</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">← Back to Home</a>
+                <button class="language-toggle" type="button" aria-label="Toggle Language">
+                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="section-primary" style="margin-top: 80px; padding-top: 48px;">
+        <div class="container">
+            <div class="profile-layout">
+                <div class="profile-sidebar">
+                    <div class="profile-photo">
+                        <img src="images/team/team-martin-arias.png" alt="Martín Arias" class="team-photo" />
+                    </div>
+                    <h1>Martín Arias</h1>
+                    <p class="member-role" data-en="Coordinator, AI Expert" data-de="Koordinator, KI-Experte">Koordinator, KI-Experte</p>
+                </div>
+                <div class="profile-body">
+                    <div class="profile-text" data-lang="de">
+                        <p>Ich unterstütze Unternehmen dabei, operative Kosten zu senken, indem ich wiederkehrende Aufgaben in KI-gestützte, automatisierte Workflows überführe, die sich nahtlos in bestehende Systeme integrieren lassen.</p>
+                        <p>Ich bin Ingenieur aus Überzeugung und Entwickler aus Leidenschaft. Ich habe mein Studium im Bereich Industrie- und Maschinenbau in Uruguay als Jahrgangsbester abgeschlossen, große Industrieprojekte bei UPM geleitet und bin anschließend nach Deutschland gezogen, um einen Master in Entwicklung zu absolvieren. Dort habe ich mit Auszeichnung abgeschlossen und den Bosch-Preis als bester Absolvent meines Jahrgangs erhalten.</p>
+                        <p>Seitdem arbeite ich an der Schnittstelle von Engineering, Automatisierung und Innovation. Ich habe KI- und Robotics-Startups in Europa im Rahmen des EIT-Inkubators begleitet und Automatisierungslösungen für industrielle und automotive Umgebungen entwickelt, unter anderem bei Evomotiv.</p>
+                        <p>Heute liegt mein Fokus darauf, KI dort einzusetzen, wo sie echten Mehrwert schafft: in internen Prozessen, operativen Abläufen und technischen Workflows. Mein Ziel ist es, Komplexität zu reduzieren, manuelle Arbeit zu minimieren und Unternehmen durch intelligente Systeme effizienter und skalierbarer zu machen.</p>
+                        <h3>Schwerpunkte</h3>
+                        <p>Innovation, Künstliche Intelligenz und Engineering Development.</p>
+                        <h3>Aktuell verfügbare Produkte <span style="font-size: 14px; font-weight: 400;">(7 Tage kostenlos testen)</span></h3>
+                        <ul class="profile-products">
+                            <li>Instagram Carousel Generator</li>
+                            <li>LinkedIn Scraper & E-Mail Outreach Automation</li>
+                            <li>Rechnungs-Automatisierung</li>
+                        </ul>
+                    </div>
+                    <div class="profile-text" data-lang="en" style="display: none;">
+                        <p>I help companies reduce operational costs by transforming recurring tasks into AI-powered, automated workflows that integrate seamlessly with existing systems.</p>
+                        <p>I am an engineer by conviction and a developer by passion. I graduated top of my class in Industrial and Mechanical Engineering in Uruguay, led large industrial projects at UPM, and then moved to Germany to pursue a Master's in Development, where I graduated with distinction and received the Bosch Prize as the best graduate of my cohort.</p>
+                        <p>Since then, I have been working at the intersection of engineering, automation, and innovation. I have supported AI and robotics startups in Europe through the EIT incubator and developed automation solutions for industrial and automotive environments, including at Evomotiv.</p>
+                        <p>Today, my focus is on deploying AI where it creates real value: in internal processes, operational workflows, and technical systems. My goal is to reduce complexity, minimize manual work, and make companies more efficient and scalable through intelligent systems.</p>
+                        <h3>Focus Areas</h3>
+                        <p>Innovation, Artificial Intelligence, and Engineering Development.</p>
+                        <h3>Currently Available Products <span style="font-size: 14px; font-weight: 400;">(7-day free trial)</span></h3>
+                        <ul class="profile-products">
+                            <li>Instagram Carousel Generator</li>
+                            <li>LinkedIn Scraper & Email Outreach Automation</li>
+                            <li>Invoice Automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./images/gf-logo-white.png" alt="GF Innovative Solutions" class="footer-logo">
+                    <p>Guided by tech, powered by people.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>info@gfinnov.com</p>
+                    <p>+49 172 95 123 76</p>
+                    <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="imprint.html">Imprint</a> | 
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle for profile page
+        let currentLanguage = 'de';
+        
+        document.querySelector('.language-toggle').addEventListener('click', function() {
+            currentLanguage = currentLanguage === 'de' ? 'en' : 'de';
+            const altLang = currentLanguage === 'de' ? 'en' : 'de';
+            
+            document.getElementById('current-lang').textContent = currentLanguage.toUpperCase();
+            document.getElementById('alt-lang').textContent = altLang.toUpperCase();
+            
+            // Toggle profile text blocks
+            document.querySelectorAll('.profile-text').forEach(el => {
+                el.style.display = el.dataset.lang === currentLanguage ? 'block' : 'none';
+            });
+            
+            // Toggle data-en/data-de elements
+            document.querySelectorAll('[data-en][data-de]').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.dataset[currentLanguage];
+                } else {
+                    el.textContent = el.dataset[currentLanguage];
+                }
+            });
+        });
+    </script>
+</body>
+</html>

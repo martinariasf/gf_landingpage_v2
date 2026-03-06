@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar García Urdiales - GF Innovative Solutions</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">← Back to Home</a>
+                <button class="language-toggle" type="button" aria-label="Toggle Language">
+                    <span id="current-lang">EN</span> | <span id="alt-lang">DE</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="section-primary" style="margin-top: 80px; padding-top: 48px;">
+        <div class="container">
+            <div class="profile-layout">
+                <div class="profile-sidebar">
+                    <div class="profile-photo">
+                        <img src="images/team/team-omar-garcia.png" alt="Omar García Urdiales" class="team-photo" />
+                    </div>
+                    <h1>Omar García Urdiales</h1>
+                    <p class="member-role" data-en="Co-Founder, Business & Innovation" data-de="Mitgründer, Business & Innovation">Co-Founder, Business & Innovation</p>
+                </div>
+                <div class="profile-body">
+                    <div class="profile-text" data-lang="en">
+                        <p>I lead innovation and entrepreneurship education as Associate Director of CREATE-X Learn at Georgia Tech, empowering students to transform ideas into impactful ventures.</p>
+                        <p>With over a decade of experience in startup coaching, innovation strategy, and academic teaching, I've supported founders across life sciences, mobility, and digital sectors.</p>
+                        <p>I'm currently completing a Ph.D. in Entrepreneurship and Digitalization at TU Dortmund University, where my research focuses on entrepreneurial behavior in innovation processes — specifically through the lens of bricolage theory.</p>
+                        <p>Driven by a passion for experiential learning and systems-level thinking, I enjoy building bridges between academia, industry, and emerging entrepreneurs to drive meaningful change.</p>
+                    </div>
+                    <div class="profile-text" data-lang="de" style="display: none;">
+                        <p>Ich leite die Innovations- und Gründungsausbildung als Associate Director von CREATE-X Learn am Georgia Institute of Technology und befähige Studierende, Ideen in wirkungsvolle Unternehmen umzuwandeln.</p>
+                        <p>Mit über einem Jahrzehnt Erfahrung in Startup-Coaching, Innovationsstrategie und akademischer Lehre habe ich Gründer in den Bereichen Life Sciences, Mobilität und Digitalisierung unterstützt.</p>
+                        <p>Derzeit promoviere ich in Entrepreneurship und Digitalisierung an der TU Dortmund, wo meine Forschung sich auf unternehmerisches Verhalten in Innovationsprozessen konzentriert — insbesondere durch die Linse der Bricolage-Theorie.</p>
+                        <p>Angetrieben von einer Leidenschaft für erfahrungsbasiertes Lernen und systemisches Denken baue ich Brücken zwischen Wissenschaft, Wirtschaft und aufstrebenden Unternehmern, um bedeutsamen Wandel voranzutreiben.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="./images/gf-logo-white.png" alt="GF Innovative Solutions" class="footer-logo">
+                    <p>Guided by tech, powered by people.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>info@gfinnov.com</p>
+                    <p>+49 172 95 123 76</p>
+                    <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="imprint.html">Imprint</a> | 
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle for profile page
+        let currentLanguage = 'en';
+        
+        document.querySelector('.language-toggle').addEventListener('click', function() {
+            currentLanguage = currentLanguage === 'en' ? 'de' : 'en';
+            const altLang = currentLanguage === 'en' ? 'de' : 'en';
+            
+            document.getElementById('current-lang').textContent = currentLanguage.toUpperCase();
+            document.getElementById('alt-lang').textContent = altLang.toUpperCase();
+            
+            // Toggle profile text blocks
+            document.querySelectorAll('.profile-text').forEach(el => {
+                el.style.display = el.dataset.lang === currentLanguage ? 'block' : 'none';
+            });
+            
+            // Toggle data-en/data-de elements
+            document.querySelectorAll('[data-en][data-de]').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.dataset[currentLanguage];
+                } else {
+                    el.textContent = el.dataset[currentLanguage];
+                }
+            });
+        });
+    </script>
+</body>
+</html>
