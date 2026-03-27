@@ -80,6 +80,25 @@ function initializeWebsite() {
 
 // Navigation functionality
 function initializeNavigation() {
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        navMenu.querySelectorAll('.nav-link').forEach(function(link) {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+    }
+
     // Add scroll effect to navbar
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
@@ -299,7 +318,7 @@ function openGrowthModal(step) {
             keyAreasTitle.style.marginBottom = '12px';
             keyAreasTitle.style.fontSize = '18px';
             keyAreasTitle.style.fontWeight = '600';
-            keyAreasTitle.style.color = '#211D58';
+            keyAreasTitle.style.color = '#8cbe7d';
             keyAreasDiv.appendChild(keyAreasTitle);
             
             const list = document.createElement('ul');
@@ -375,7 +394,7 @@ function openGrowthModal(step) {
             whyTitle.style.marginBottom = '8px';
             whyTitle.style.fontSize = '16px';
             whyTitle.style.fontWeight = '600';
-            whyTitle.style.color = '#211D58';
+            whyTitle.style.color = '#8cbe7d';
             whyDiv.appendChild(whyTitle);
             
             const whyText = document.createElement('p');

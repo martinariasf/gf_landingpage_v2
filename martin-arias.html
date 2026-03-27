@@ -15,6 +15,11 @@
             <div class="nav-logo">
                 <img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo">
             </div>
+            <div class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">← Back to Home</a>
                 <button class="language-toggle" type="button" aria-label="Toggle Language">
@@ -95,9 +100,28 @@
     </footer>
 
     <script>
+        // Mobile nav toggle
+        (function() {
+            var navToggle = document.querySelector('.nav-toggle');
+            var navMenu = document.querySelector('.nav-menu');
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    navToggle.classList.toggle('active');
+                });
+                navMenu.querySelectorAll('.nav-link').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                    });
+                });
+            }
+        })();
+    </script>
+    <script>
         // Language toggle for profile page
         let currentLanguage = 'de';
-        
+
         document.querySelector('.language-toggle').addEventListener('click', function() {
             currentLanguage = currentLanguage === 'de' ? 'en' : 'de';
             const altLang = currentLanguage === 'de' ? 'en' : 'de';
