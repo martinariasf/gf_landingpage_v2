@@ -1,13 +1,13 @@
 /* VR Website Styles - Following GF Corporate Identity */
 :root {
-    --primary-blue: #211D58;
+    --primary-blue: #8cbe7d;
     --innovation-green: #8BC07C;
     --pure-white: #FFFFFF;
     --light-gray: #F5F5F5;
     --medium-gray: #E0E0E0;
     --dark-gray: #4A4A4A;
-    --shadow-primary: rgba(33, 29, 88, 0.1);
-    --shadow-elevated: rgba(33, 29, 88, 0.15);
+    --shadow-primary: rgba(140, 190, 125, 0.1);
+    --shadow-elevated: rgba(140, 190, 125, 0.15);
     --font-primary: 'Montserrat', 'Open Sans', sans-serif;
     --border-radius: 8px;
     --border-radius-large: 12px;
@@ -708,7 +708,7 @@ p {
 }
 
 .contact-btn {
-    background: rgba(33, 29, 88, 0.9);
+    background: rgba(140, 190, 125, 0.9);
     color: white;
     padding: 1rem 3rem;
     font-size: 1.2rem;

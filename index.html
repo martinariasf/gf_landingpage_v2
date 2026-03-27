@@ -5,118 +5,997 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GF Innovative Solutions - AI Implementation for Startups & SMEs</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Google Analytics Consent Stub -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      // Deny by default (before any network calls)
       gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied' });
-      
-      // Set configuration variables
       window.__GA_MEASUREMENT_ID__ = 'G-2D1MXJ2SMZ';
       window.__CONSENT_VERSION__ = 'v1';
     </script>
+
+    <style>
+    /* ── CSS Custom Properties ── */
+    :root {
+        --bg: #ffffff;
+        --bg-light: #f8f9fa;
+        --bg-card: #ffffff;
+        --green: #22c55e;
+        --teal: #14b8a6;
+        --white: #1a1a1a;
+        --gray: #6b7280;
+        --gray-dim: #9ca3af;
+        --border: #e5e7eb;
+        --border-hover: #d1d5db;
+        --glass: rgba(255,255,255,0.92);
+        --glass-border: #e5e7eb;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --font: 'Inter', system-ui, -apple-system, sans-serif;
+        --max-w: 1200px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--white);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--teal); }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Utility ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .section-tag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 12px;
+    }
+    .section-title {
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 800;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+    .section-subtitle {
+        color: var(--gray);
+        font-size: 17px;
+        max-width: 640px;
+        margin-bottom: 48px;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ── Buttons ── */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        border-radius: var(--radius-sm);
+        font-family: var(--font);
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .25s;
+        border: none;
+        text-decoration: none;
+    }
+    .btn-primary {
+        background: var(--green);
+        color: #fff;
+    }
+    .btn-primary:hover {
+        background: #16a34a;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(34,197,94,.25);
+    }
+    .btn-ghost {
+        background: transparent;
+        color: var(--white);
+        border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+        border-color: var(--green);
+        color: var(--green);
+        transform: translateY(-2px);
+    }
+
+    /* ── Section backgrounds ── */
+    .section {
+        padding: 100px 0;
+        position: relative;
+    }
+    .section--dark {
+        background: var(--bg);
+    }
+    .section--darker {
+        background: var(--bg-light);
+    }
+    .section--gradient {
+        background: var(--bg);
+    }
+
+    /* ── Navigation ── */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10100;
+        background: rgba(11,22,40,0.95);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        transition: background .3s;
+    }
+    .nav-container {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+        position: relative;
+    }
+    .nav-logo .logo {
+        height: 36px;
+        width: auto;
+    }
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+    .nav-link {
+        color: #94a3b8;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color .2s;
+    }
+    .nav-link:hover { color: #f1f5f9; }
+    .nav-cta {
+        background: var(--green);
+        color: #fff !important;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        transition: all .25s;
+    }
+    .nav-cta:hover {
+        background: #16a34a;
+        color: #fff !important;
+        transform: translateY(-1px);
+    }
+    .lang-toggle {
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: transparent;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-family: var(--font);
+    }
+    .lang-toggle .active-lang { color: #f1f5f9; font-weight: 700; text-decoration: underline; }
+
+    /* ── Hero ── */
+    .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding-top: 68px;
+        background: linear-gradient(135deg, #1560B2 0%, #4D8DB4 40%, #5BA8A0 70%, #8ECD8A 100%);
+        color: #f1f5f9;
+    }
+    .hero::before {
+        content: none;
+    }
+    .hero::after {
+        content: none;
+    }
+    .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 80px 24px;
+    }
+    .hero-label {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--green);
+        margin-bottom: 20px;
+        position: relative;
+    }
+    .hero-label::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        height: 2px;
+        background: var(--green);
+        animation: underlineGrow 2s ease-in-out infinite alternate;
+    }
+    @keyframes underlineGrow {
+        0% { width: 0; }
+        100% { width: 100%; }
+    }
+    .hero h1 {
+        font-size: clamp(36px, 5.5vw, 64px);
+        font-weight: 800;
+        line-height: 1.1;
+        max-width: 720px;
+        margin-bottom: 24px;
+    }
+    .hero-sub {
+        font-size: 18px;
+        color: #ffffff;
+        max-width: 600px;
+        line-height: 1.7;
+        margin-bottom: 40px;
+    }
+    .hero-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+    .hero .btn-ghost {
+        color: #f1f5f9;
+        border-color: rgba(255,255,255,0.2);
+    }
+    .hero .btn-ghost:hover {
+        border-color: var(--green);
+        color: var(--green);
+    }
+
+    /* ── Glass Card ── */
+    .glass-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .glass-card:hover {
+        border-color: var(--border-hover);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    }
+
+    /* ── About Section ── */
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+    }
+    .about-text p {
+        color: var(--gray);
+        margin-bottom: 16px;
+        font-size: 16px;
+    }
+    .about-text strong { color: #1a1a1a; }
+    .claude-callout {
+        background: linear-gradient(135deg, rgba(34,197,94,.06), rgba(20,184,166,.06));
+        border: 1px solid rgba(34,197,94,.2);
+        border-radius: var(--radius-sm);
+        padding: 20px 24px;
+        margin-top: 24px;
+        font-size: 15px;
+        color: #1a1a1a;
+    }
+    .claude-callout strong { color: var(--green); }
+    .about-badges {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .badge-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: border-color .3s;
+    }
+    .badge-card:hover { border-color: var(--border-hover); }
+    .badge-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: rgba(34,197,94,.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+    }
+    .badge-card h4 { font-size: 16px; font-weight: 600; }
+    .badge-card p { font-size: 13px; color: var(--gray-dim); margin-top: 2px; }
+
+    /* ── Differences ── */
+    .diff-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+    .diff-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .diff-card p {
+        color: var(--gray);
+        font-size: 14px;
+        line-height: 1.7;
+    }
+    .diff-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: rgba(34,197,94,.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        color: var(--green);
+    }
+    .diff-icon svg { width: 22px; height: 22px; }
+    .cta-strip {
+        text-align: center;
+        padding: 40px;
+        border-radius: var(--radius);
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+    }
+    .cta-strip h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    /* ── Services ── */
+    .services-tier-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: #1a1a1a;
+    }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+    .service-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        transition: border-color .3s, transform .3s;
+    }
+    .service-card:hover {
+        border-color: var(--border-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    }
+    .service-card--featured {
+        border-color: var(--green) !important;
+        box-shadow: 0 0 30px rgba(34,197,94,.1);
+    }
+    .service-card h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .service-card > p {
+        color: var(--gray);
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+    .accordion-toggle {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--gray);
+        font-family: var(--font);
+        font-size: 13px;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all .2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 8px;
+    }
+    .accordion-toggle:hover { border-color: var(--green); color: var(--green); }
+    .accordion-toggle .arrow { transition: transform .3s; font-size: 11px; }
+    .accordion-toggle.open .arrow { transform: rotate(180deg); }
+    .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .4s ease;
+    }
+    .accordion-body.open { max-height: 600px; }
+    .tier-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin: 10px 0 14px;
+    }
+    .tier-table th {
+        text-align: left;
+        padding: 6px 0;
+        font-weight: 600;
+        color: var(--green);
+        border-bottom: 1px solid var(--border);
+    }
+    .tier-table td {
+        padding: 6px 0;
+        border-bottom: 1px solid var(--border);
+        color: var(--gray);
+    }
+    .complementary-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .complementary-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 24px;
+        transition: border-color .3s;
+    }
+    .complementary-card:hover { border-color: var(--border-hover); }
+    .complementary-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .complementary-card p { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
+
+    /* ── Tools ── */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+    .tool-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        text-align: center;
+    }
+    .tool-icon {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+    .tool-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+    .tool-card p { font-size: 14px; color: var(--gray); margin-bottom: 16px; }
+    .badge-soon {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--teal);
+        border: 1px solid rgba(20,184,166,.3);
+        padding: 4px 12px;
+        border-radius: 20px;
+    }
+    .tools-cta {
+        text-align: center;
+        padding: 40px;
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+    }
+    .tools-cta h3 { font-size: 22px; margin-bottom: 20px; }
+
+    /* ── Trust ── */
+    .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .trust-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 24px;
+        transition: border-color .3s;
+    }
+    .trust-card:hover { border-color: var(--border-hover); }
+    .trust-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: rgba(34,197,94,.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--green);
+        margin-bottom: 14px;
+        font-size: 18px;
+    }
+    .trust-card h4 { color: var(--teal); font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .trust-card p { font-size: 13px; color: var(--gray); }
+
+    /* ── Team ── */
+    .founders-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        margin-bottom: 40px;
+    }
+    .founder-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 32px;
+        display: flex;
+        gap: 24px;
+        align-items: start;
+        transition: border-color .3s;
+    }
+    .founder-card:hover { border-color: var(--border-hover); }
+    .founder-photo {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        border: 2px solid var(--border);
+    }
+    .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .founder-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .founder-info h3 a { color: #1a1a1a; }
+    .founder-info h3 a:hover { color: var(--green); }
+    .founder-role { color: var(--green); font-size: 13px; font-weight: 500; margin-bottom: 10px; }
+    .founder-skills { font-size: 13px; color: var(--gray); }
+    .founder-skills li { margin-bottom: 4px; }
+    .extended-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .extended-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 24px;
+        text-align: center;
+        transition: border-color .3s;
+    }
+    .extended-card:hover { border-color: var(--border-hover); }
+    .extended-photo {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 12px;
+        border: 2px solid var(--border);
+    }
+    .extended-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .extended-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .extended-card .ext-role { color: var(--teal); font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+    .extended-card ul { font-size: 12px; color: var(--gray); }
+    .extended-card li { margin-bottom: 2px; }
+
+    /* ── Digital Team ── */
+    .digital-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+    }
+    .digital-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 24px;
+        text-align: center;
+        transition: border-color .3s;
+    }
+    .digital-card:hover { border-color: var(--border-hover); }
+    .digital-photo {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 12px;
+        border: 2px solid var(--border);
+    }
+    .digital-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .digital-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .digital-card .digi-role { color: var(--teal); font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+    .digital-card ul { font-size: 12px; color: var(--gray); text-align: left; }
+    .digital-card li { margin-bottom: 2px; }
+
+    /* ── Ethics ── */
+    .ethics-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+    .ethics-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px;
+        transition: border-color .3s;
+    }
+    .ethics-card:hover { border-color: var(--border-hover); }
+    .ethics-card h4 { font-size: 17px; font-weight: 600; margin-bottom: 10px; color: var(--green); }
+    .ethics-card p { font-size: 14px; color: var(--gray); }
+
+    /* ── Testimonials ── */
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+    .testimonial-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--green);
+        border-radius: var(--radius-sm);
+        padding: 28px 28px 28px 32px;
+    }
+    .testimonial-card blockquote {
+        font-size: 16px;
+        font-style: italic;
+        color: #1a1a1a;
+        margin-bottom: 14px;
+        line-height: 1.6;
+    }
+    .testimonial-card cite {
+        font-size: 14px;
+        color: var(--teal);
+        font-style: normal;
+        font-weight: 500;
+    }
+
+    /* ── Contact ── */
+    .contact-section {
+        text-align: center;
+    }
+    .tab-buttons {
+        display: inline-flex;
+        gap: 0;
+        margin-bottom: 32px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+    }
+    .tab-btn {
+        background: transparent;
+        border: none;
+        color: var(--gray);
+        font-family: var(--font);
+        font-size: 15px;
+        font-weight: 500;
+        padding: 14px 28px;
+        cursor: pointer;
+        transition: all .2s;
+    }
+    .tab-btn.active {
+        background: var(--green);
+        color: #fff;
+        font-weight: 600;
+    }
+    .tab-btn:not(.active):hover { color: #1a1a1a; }
+    .tab-pane { display: none; margin-bottom: 32px; }
+    .tab-pane.active { display: block; }
+    .tab-pane h3 { font-size: 22px; margin-bottom: 10px; }
+    .tab-pane p { color: var(--gray); font-size: 16px; max-width: 500px; margin: 0 auto; }
+
+    /* ── Footer ── */
+    .footer {
+        background: #0b1628;
+        color: #f1f5f9;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 60px 0 30px;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+    .footer-logo {
+        height: 32px;
+        width: auto;
+        margin-bottom: 12px;
+    }
+    .footer-tagline { color: #94a3b8; font-size: 14px; }
+    .footer h4 { font-size: 14px; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; color: #f1f5f9; }
+    .footer ul li { margin-bottom: 8px; }
+    .footer ul a { color: #94a3b8; font-size: 14px; }
+    .footer ul a:hover { color: var(--green); }
+    .footer-contact p { color: #94a3b8; font-size: 14px; margin-bottom: 4px; }
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: #64748b;
+    }
+    .footer-bottom a { color: #64748b; }
+    .footer-bottom a:hover { color: var(--green); }
+
+    /* ── Cookie Banner ── */
+    .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid var(--border);
+        padding: 20px 24px;
+        box-shadow: 0 -4px 20px rgba(0,0,0,.06);
+    }
+    .cookie-banner__inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+    .cookie-banner__text strong { color: #1a1a1a; font-size: 15px; }
+    .cookie-banner__text p { color: var(--gray); font-size: 13px; margin-top: 4px; }
+    .cookie-banner__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cookie-banner__actions .btn { padding: 10px 18px; font-size: 13px; }
+    .btn-outline {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--gray);
+    }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+
+    /* ── Cookie Modal ── */
+    .cookie-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+    }
+    .cookie-modal.open { display: flex; align-items: center; justify-content: center; }
+    .cookie-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.6);
+    }
+    .cookie-modal__dialog {
+        position: relative;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        max-width: 480px;
+        width: 90%;
+        padding: 28px;
+    }
+    .cookie-modal__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+    .cookie-modal__header h3 { font-size: 18px; }
+    .modal-close {
+        background: none;
+        border: none;
+        color: var(--gray);
+        font-size: 24px;
+        cursor: pointer;
+    }
+    .cookie-modal__body p { color: var(--gray); font-size: 14px; margin-bottom: 20px; }
+    .cookie-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .cookie-toggle strong { font-size: 14px; }
+    .cookie-toggle p { font-size: 12px; color: var(--gray-dim); margin-top: 2px; }
+    .cookie-modal__footer {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+    .switch input { width: 40px; height: 20px; cursor: pointer; }
+    .cookie-settings-entry {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        z-index: 999;
+    }
+    .link-like {
+        background: none;
+        border: none;
+        color: var(--gray-dim);
+        font-size: 12px;
+        cursor: pointer;
+        font-family: var(--font);
+    }
+    .link-like:hover { color: var(--green); }
+
+    /* ── Hamburger Menu ── */
+    .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 10102;
+        pointer-events: auto;
+    }
+    .nav-hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #f1f5f9;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    .nav-menu.open {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(11,22,40,0.98);
+        padding: 20px 24px;
+        gap: 16px;
+        z-index: 10101;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        pointer-events: auto;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 920px) {
+        .nav-menu { display: none; }
+        .nav-hamburger { display: flex; }
+        .nav-menu.open .nav-link,
+        .nav-menu.open .nav-cta {
+            display: block;
+            padding: 12px 0;
+            pointer-events: auto;
+        }
+        .about-grid { grid-template-columns: 1fr; }
+        .diff-grid { grid-template-columns: 1fr; }
+        .services-grid { grid-template-columns: 1fr; }
+        .complementary-grid { grid-template-columns: 1fr; }
+        .tools-grid { grid-template-columns: 1fr; }
+        .trust-grid { grid-template-columns: 1fr; }
+        .founders-grid { grid-template-columns: 1fr; }
+        .extended-grid { grid-template-columns: 1fr; }
+        .digital-grid { grid-template-columns: repeat(2, 1fr); }
+        .ethics-grid { grid-template-columns: 1fr; }
+        .testimonials-grid { grid-template-columns: 1fr; }
+        .footer-grid { grid-template-columns: 1fr; }
+        .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+        .hero h1 { font-size: clamp(28px, 7vw, 48px); }
+        .section { padding: 64px 0; }
+        .founder-card { flex-direction: column; align-items: center; text-align: center; }
+    }
+    </style>
 </head>
 <body>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo">
+                <img src="images/Logo GF - B&N Chico.png" alt="GF Innovative Solutions" style="height:36px; width:auto;">
             </div>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
             <div class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#team" class="nav-link">Team</a>
-                <a href="#digital-workers" class="nav-link" data-en="Digital Workers" data-de="Digitale Mitarbeiter">Digital Workers</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">EN</span> | <span id="alt-lang">DE</span>
+                <a href="#home" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
+                <a href="#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
+                <a href="#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
+                <a href="#how-we-work" class="nav-link" data-en="How We Work" data-de="Wie wir arbeiten">How We Work</a>
+                <a href="#use-cases" class="nav-link" data-en="Use Cases" data-de="Anwendungsfälle">Use Cases</a>
+                <a href="#resources" class="nav-link" data-en="Resources" data-de="Ressourcen">Resources</a>
+                <a href="#team" class="nav-link" data-en="Team" data-de="Team">Team</a>
+                <a href="#digital-team" class="nav-link" data-en="Digital Team" data-de="Digitales Team">Digital Team</a>
+                <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
+                <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Toggle Language">
+                    <span class="active-lang" id="lang-en">EN</span> | <span id="lang-de">DE</span>
                 </button>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title" data-en="We make AI work for your business, not the other way around" data-de="Wir bringen KI für Ihr Unternehmen zum Arbeiten, nicht umgekehrt">
-                    We make AI work for your business, not the other way around
-                </h1>
-                <p class="hero-subtitle" data-en="Most companies know AI could help them. They just don't know where to start, or they underestimate what's truly possible. We bridge that gap. From strategy to working implementation, we turn AI potential into operational reality." data-de="Die meisten Unternehmen wissen, dass KI ihnen helfen könnte. Sie wissen nur nicht, wo sie anfangen sollen, oder sie unterschätzen, was wirklich möglich ist. Wir schließen diese Lücke. Von der Strategie bis zur funktionierenden Implementierung verwandeln wir KI-Potenzial in operative Realität.">
-                    Most companies know AI could help them. They just don't know where to start, or they underestimate what's truly possible. We bridge that gap. From strategy to working implementation, we turn AI potential into operational reality.
-                </p>
-                <p class="hero-tagline" data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">
-                    Guided by tech, powered by people.
-                </p>
-                <div class="hero-buttons">
-                    <a href="vr_website.html" class="btn btn-primary" data-en="Discover Our VR Solutions" data-de="Entdecken Sie unsere VR-Lösungen">
-                        Discover Our VR Solutions
-                    </a>
-                    <!-- <a href="startups.html" class="btn btn-secondary" data-en="Startup Growth Journey" data-de="Startup-Wachstumsreise">
-                        Startup Growth Journey
-                    </a> -->
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-graphic">
-                    <!-- Tech-inspired geometric shapes -->
-                    <div class="floating-element element-1"></div>
-                    <div class="floating-element element-2"></div>
-                    <div class="floating-element element-3"></div>
-                </div>
+        <div class="hero-inner">
+            <span class="hero-label" data-en="AI Implementation Partner" data-de="KI-Implementierungspartner">AI Implementation Partner</span>
+            <h1 data-en="Your first AI team without the hiring cost." data-de="Ihr erstes KI-Team ohne Einstellungskosten.">Your first AI team without the hiring cost.</h1>
+            <p class="hero-sub" data-en="We build custom AI agents for <strong>companies of 4–50 people</strong>, no internal dev team required. From automating manual work to handling customer flows, we deliver results <strong>from month one</strong>." data-de="Wir entwickeln maßgeschneiderte KI-Agenten für <strong>Unternehmen mit 4–50 Mitarbeitern</strong>, kein internes Entwicklerteam erforderlich. Von der Automatisierung manueller Arbeit bis zur Bearbeitung von Kundenabläufen liefern wir Ergebnisse <strong>ab dem ersten Monat</strong>.">We build custom AI agents for <strong>companies of 4–50 people</strong>, no internal dev team required. From automating manual work to handling customer flows, we deliver results <strong>from month one</strong>.</p>
+            <div class="hero-buttons">
+                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" data-en="Book Free AI Assessment" data-de="Kostenloses KI-Assessment buchen">Book Free AI Assessment</a>
+                <a href="#services" class="btn btn-ghost" data-en="Explore our services" data-de="Leistungen entdecken">Explore our services</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section-secondary">
+    <section id="about" class="section section--darker">
         <div class="container">
-            <h2 class="section-title" data-en="About Us" data-de="Über Uns">About Us</h2>
-            <div class="about-content">
+            <span class="section-tag" data-en="Who We Are" data-de="Wer wir sind">Who We Are</span>
+            <h2 class="section-title" data-en="About Us" data-de="Über uns">About Us</h2>
+            <div class="about-grid">
                 <div class="about-text">
-                    <p data-en="GF Innovative Solutions is a German-based AI consultancy and implementation partner specializing in helping startups and SMEs unlock the real capabilities of artificial intelligence." data-de="GF Innovative Solutions ist eine in Deutschland ansässige KI-Beratung und Implementierungspartner, spezialisiert darauf, Startups und KMU zu helfen, die echten Fähigkeiten künstlicher Intelligenz zu erschließen.">
-                        <strong>GF Innovative Solutions</strong> is a German-based AI consultancy and implementation partner specializing in helping startups and SMEs unlock the real capabilities of artificial intelligence.
-                    </p>
-                    <p data-en="Here's what we see every day: companies are either overwhelmed by AI or underestimating what it can actually do for them. The gap between AI's potential and its current use in most businesses is enormous. Our mission is to close that gap." data-de="Folgendes erleben wir täglich: Unternehmen sind entweder von KI überfordert oder unterschätzen, was sie tatsächlich für sie tun kann. Die Kluft zwischen dem Potenzial von KI und ihrer aktuellen Nutzung in den meisten Unternehmen ist enorm. Unsere Mission ist es, diese Lücke zu schließen.">
-                        Here's what we see every day: companies are either overwhelmed by AI or underestimating what it can actually do for them. The gap between AI's potential and its current use in most businesses is enormous. Our mission is to close that gap.
-                    </p>
-                    <p data-en="We don't just consult. We implement. We build AI systems that automate operations, reduce costs, and free up your team for higher-value work. From custom AI agents to process automation and secure infrastructure, we handle both the strategy and the code." data-de="Wir beraten nicht nur. Wir implementieren. Wir bauen KI-Systeme, die Abläufe automatisieren, Kosten senken und Ihr Team für höherwertige Arbeit freisetzen. Von maßgeschneiderten KI-Agenten bis hin zu Prozessautomatisierung und sicherer Infrastruktur übernehmen wir sowohl die Strategie als auch den Code.">
-                        We don't just consult. We implement. We build AI systems that automate operations, reduce costs, and free up your team for higher-value work. From custom AI agents to process automation and secure infrastructure, we handle both the strategy and the code.
-                    </p>
-                    <p data-en="We also offer immersive solutions like VR training and digital twins for industrial clients, particularly for trade fairs and remote demonstrations." data-de="Wir bieten auch immersive Lösungen wie VR-Training und digitale Zwillinge für Industriekunden an, insbesondere für Messen und Fernvorführungen.">
-                        We also offer immersive solutions like VR training and digital twins for industrial clients, particularly for trade fairs and remote demonstrations.
-                    </p>
-                    <p data-en="Made in Germany. Built for businesses that want results, not presentations." data-de="Made in Germany. Gebaut für Unternehmen, die Ergebnisse wollen, keine Präsentationen.">
-                        <strong>Made in Germany.</strong> Built for businesses that want results, not presentations.
-                    </p>
+                    <p><strong>GF Innovative Solutions</strong> is a German-based AI consultancy and implementation partner. We help startups and SMEs unlock the real capabilities of artificial intelligence, not with slide decks, but with working systems.</p>
+                    <p>We don't just consult. <strong>We implement.</strong> We build AI systems that automate operations, reduce costs, and free up your team for higher-value work. From custom AI agents to process automation and secure infrastructure, we handle the strategy and the code.</p>
+                    <p><strong>Made in Germany.</strong> Built for businesses that want results, not presentations. Bridging Germany and Israel, international perspective, local implementation.</p>
+                    <div class="claude-callout">
+                        <strong>Powered by Anthropic's Claude</strong>: frontier AI with enterprise-grade security and safety built in.
+                    </div>
                 </div>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <div class="value-icon">🤝</div>
-                        <h3 data-en="AI implementation partner" data-de="KI-Implementierungspartner">AI implementation partner</h3>
+                <div class="about-badges">
+                    <div class="badge-card">
+                        <div class="badge-icon">&#x1F91D;</div>
+                        <div>
+                            <h4>Implementation Partner</h4>
+                            <p>We build it. We don't just advise.</p>
+                        </div>
                     </div>
-                    <div class="value-item">
-                        <div class="value-icon">🚀</div>
-                        <h3 data-en="Startup-friendly tech strategy" data-de="Startup-freundliche Tech-Strategie">Startup-friendly tech strategy</h3>
+                    <div class="badge-card">
+                        <div class="badge-icon">&#x1F680;</div>
+                        <div>
+                            <h4>Startup-Friendly</h4>
+                            <p>Lean, fast, budget-conscious delivery.</p>
+                        </div>
                     </div>
-                    <div class="value-item">
-                        <div class="value-icon">🥽</div>
-                        <h3 data-en="VR & immersive solutions" data-de="VR & immersive Lösungen">VR & immersive solutions</h3>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">🌍</div>
-                        <h3 data-en="German precision with global perspective" data-de="Deutsche Präzision mit globaler Perspektive">German precision with global perspective</h3>
+                    <div class="badge-card">
+                        <div class="badge-icon">&#x1F30D;</div>
+                        <div>
+                            <h4>German Precision</h4>
+                            <p>Quality engineering with global perspective.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,311 +1003,366 @@
     </section>
 
     <!-- What Makes Us Different -->
-    <section class="section-primary">
+    <section class="section section--gradient">
         <div class="container">
+            <span class="section-tag" data-en="Our Edge" data-de="Unser Vorteil">Our Edge</span>
             <h2 class="section-title" data-en="What Makes Us Different" data-de="Was uns unterscheidet">What Makes Us Different</h2>
-            <p class="section-subtitle" data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
-            
-            <div class="differences-grid">
-                <div class="difference-item">
-                    <div class="difference-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                        </svg>
+            <p class="section-subtitle" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie.">Guided by people, powered by tech.</p>
+            <div class="diff-grid">
+                <div class="glass-card diff-card">
+                    <div class="diff-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     </div>
-                    <h3 data-en="We speak startup — and scale-up" data-de="Wir sprechen Startup — und Scale-up">We speak startup — and scale-up</h3>
-                    <p data-en="Our team blends deep technical expertise with real-world experience helping early-stage founders launch functional MVPs. Whether you're building your first AI-powered prototype or scaling existing operations, we guide you with clarity, speed and technical precision. We understand the startup journey because we've lived it." data-de="Unser Team verbindet tiefes technisches Fachwissen mit echter Erfahrung beim Helfen von Gründern in der Frühphase, funktionale MVPs zu lancieren. Ob Sie Ihren ersten KI-gestützten Prototyp bauen oder bestehende Operationen skalieren, wir führen Sie mit Klarheit, Geschwindigkeit und technischer Präzision. Wir verstehen die Startup-Reise, weil wir sie selbst gelebt haben.">
-                        Our team blends deep technical expertise with real-world experience helping early-stage founders launch functional MVPs. Whether you're building your first AI-powered prototype or scaling existing operations, we guide you with clarity, speed and technical precision. We understand the startup journey because we've lived it.
-                    </p>
+                    <h3>We speak startup and scale-up</h3>
+                    <p>Our team blends deep technical expertise with real-world experience helping early-stage founders launch functional MVPs. Whether you're building your first AI-powered prototype or scaling existing operations, we guide you with clarity, speed and precision.</p>
                 </div>
-                
-                <div class="difference-item">
-                    <div class="difference-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
-                        </svg>
+                <div class="glass-card diff-card">
+                    <div class="diff-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/></svg>
                     </div>
-                    <h3 data-en="AI implementation, not just strategy" data-de="KI-Implementierung, nicht nur Strategie">AI implementation, not just strategy</h3>
-                    <p data-en="Most companies underestimate what AI can actually do for them. They see chatbots and think that's it. But AI can automate entire operational workflows, process thousands of documents in seconds, and handle complex decision-making tasks that currently eat up your team's time. We don't sell you on the AI hype. We show you what's possible today, with your data, in your context. Then we build it. And here's the key: behind every AI system we implement, there's a human team monitoring, adjusting, and ensuring you get the results you need. That combination of AI power and human oversight is what makes it work." data-de="Die meisten Unternehmen unterschätzen, was KI tatsächlich für sie tun kann. Sie sehen Chatbots und denken, das war's. Aber KI kann ganze operative Workflows automatisieren, Tausende von Dokumenten in Sekunden verarbeiten und komplexe Entscheidungsaufgaben übernehmen. Wir verkaufen Ihnen keinen KI-Hype. Wir zeigen Ihnen, was heute möglich ist, mit Ihren Daten, in Ihrem Kontext. Dann bauen wir es. Hinter jedem KI-System, das wir implementieren, steht ein menschliches Team, das überwacht, anpasst und sicherstellt, dass Sie die gewünschten Ergebnisse erhalten.">
-                        Most companies underestimate what AI can actually do for them. They see chatbots and think that's it. But AI can automate entire operational workflows, process thousands of documents in seconds, and handle complex decision-making tasks that currently eat up your team's time. We don't sell you on the AI hype. We show you what's possible today, with your data, in your context. Then we build it. And here's the key: behind every AI system we implement, there's a human team monitoring, adjusting, and ensuring you get the results you need. That combination of AI power and human oversight is what makes it work.
-                    </p>
+                    <h3>AI implementation, not just strategy</h3>
+                    <p>We don't sell the hype. We show you what's possible today, with your data, in your context. Then we build it. Behind every AI system we deploy, a human team monitors, adjusts, and ensures real results.</p>
                 </div>
-                
-                <div class="difference-item">
-                    <div class="difference-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
+                <div class="glass-card diff-card">
+                    <div class="diff-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
-                    <h3 data-en="Security and compliance built-in" data-de="Sicherheit und Compliance eingebaut">Security and compliance built-in</h3>
-                    <p data-en="Data protection isn't an afterthought for us. Every AI system we build is designed with GDPR compliance and German data protection standards in mind. We work with secure hosting providers, implement proper access controls, and ensure your sensitive data never leaves your control. Whether you need on-premise deployment, EU-hosted cloud solutions, or hybrid architectures, we design systems that meet your security requirements without sacrificing functionality. Because AI is only useful if you can trust it with your data." data-de="Datenschutz ist für uns kein nachträglicher Gedanke. Jedes KI-System, das wir bauen, ist mit DSGVO-Konformität und deutschen Datenschutzstandards konzipiert. Wir arbeiten mit sicheren Hosting-Anbietern, implementieren ordnungsgemäße Zugriffskontrollen und stellen sicher, dass Ihre sensiblen Daten nie Ihre Kontrolle verlassen. Ob Sie On-Premise-Bereitstellung, EU-gehostete Cloud-Lösungen oder hybride Architekturen benötigen — wir entwerfen Systeme, die Ihre Sicherheitsanforderungen erfüllen, ohne die Funktionalität zu opfern.">
-                        Data protection isn't an afterthought for us. Every AI system we build is designed with GDPR compliance and German data protection standards in mind. We work with secure hosting providers, implement proper access controls, and ensure your sensitive data never leaves your control. Whether you need on-premise deployment, EU-hosted cloud solutions, or hybrid architectures, we design systems that meet your security requirements without sacrificing functionality. Because AI is only useful if you can trust it with your data.
-                    </p>
+                    <h3>Security and compliance built-in</h3>
+                    <p>Every AI system we build is designed with GDPR compliance and German data protection standards. We work with secure hosting, implement proper access controls, and ensure your data never leaves your control.</p>
                 </div>
-                
-                <div class="difference-item">
-                    <div class="difference-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/>
-                        </svg>
+                <div class="glass-card diff-card">
+                    <div class="diff-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <h3 data-en="Product meets people" data-de="Produkt trifft Menschen">Product meets people</h3>
-                    <p data-en="Our edge is human. We're engineers who understand business, and business people who understand technology. One of us thinks in systems and architecture, the other in workflows and user needs. Together, we transform AI potential into practical tools your team will actually use. We can't guarantee that every AI experiment will work perfectly on the first try. But we can guarantee that there's a dedicated team behind every implementation, monitoring performance, fixing issues, and iterating until it delivers real value. That's the perfect combination of AI capabilities and human commitment." data-de="Unser Vorteil ist menschlich. Wir sind Ingenieure, die Geschäft verstehen, und Geschäftsleute, die Technologie verstehen. Einer von uns denkt in Systemen und Architektur, der andere in Workflows und Nutzerbedürfnissen. Zusammen verwandeln wir KI-Potenzial in praktische Werkzeuge, die Ihr Team tatsächlich nutzen wird. Wir können nicht garantieren, dass jedes KI-Experiment beim ersten Versuch perfekt funktioniert. Aber wir garantieren, dass hinter jeder Implementierung ein engagiertes Team steht, das die Leistung überwacht, Probleme behebt und iteriert, bis es echten Wert liefert.">
-                        Our edge is human. We're engineers who understand business, and business people who understand technology. One of us thinks in systems and architecture, the other in workflows and user needs. Together, we transform AI potential into practical tools your team will actually use. We can't guarantee that every AI experiment will work perfectly on the first try. But we can guarantee that there's a dedicated team behind every implementation, monitoring performance, fixing issues, and iterating until it delivers real value. That's the perfect combination of AI capabilities and human commitment.
-                    </p>
+                    <h3>From concept to continuity</h3>
+                    <p>We don't "launch and leave." We accompany your journey, iterating, testing, and scaling, until your ideas generate measurable impact. Whether you need a technical advisor or go-to-market support, we're here for the long game.</p>
                 </div>
             </div>
-            
-            <div class="cta-section">
-                <h3 data-en="From concept to continuity." data-de="Vom Konzept zur Kontinuität.">From concept to continuity.</h3>
-                <p data-en="We don't just 'launch and leave.' We accompany your journey — iterating, testing and scaling — until your ideas generate measurable impact. Whether you need a technical advisor, VR design, or go-to-market support, we're here for the long game." data-de="Wir 'starten und verlassen' nicht einfach. Wir begleiten Ihre Reise — iterieren, testen und skalieren — bis Ihre Ideen messbaren Einfluss generieren. Ob Sie einen technischen Berater, VR-Design oder Go-to-Market-Support benötigen, wir sind für das lange Spiel da.">
-                    We don't just "launch and leave." We accompany your journey — iterating, testing and scaling — until your ideas generate measurable impact. Whether you need a technical advisor, VR design, or go-to-market support, we're here for the long game.
-                </p>
-                <a href="#contact" class="btn btn-primary" data-en="Let's build something that lasts" data-de="Lassen Sie uns etwas Dauerhaftes bauen">Let's build something that lasts</a>
+            <div class="cta-strip">
+                <h3 data-en="Ready to build something that lasts?" data-de="Bereit, etwas Bleibendes zu schaffen?">Ready to build something that lasts?</h3>
+                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" data-en="Book Free AI Assessment" data-de="Kostenloses KI-Assessment buchen">Book Free AI Assessment</a>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section-secondary">
+    <section id="services" class="section section--darker">
         <div class="container">
-            <h2 class="section-title" data-en="How We Help You Implement AI" data-de="Wie wir Ihnen bei der KI-Implementierung helfen">How We Help You Implement AI</h2>
-            <p class="section-subtitle" data-en="Three core services, tailored to where you are in your AI journey" data-de="Drei Kernleistungen, abgestimmt darauf, wo Sie auf Ihrer KI-Reise stehen">Three core services, tailored to where you are in your AI journey</p>
+            <span class="section-tag" data-en="What We Do" data-de="Was wir tun">What We Do</span>
+            <h2 class="section-title" data-en="Our Services" data-de="Unsere Leistungen">Our Services</h2>
+            <p class="section-subtitle" data-en="A structured portfolio built around practical AI implementation, from free assessment to full automation." data-de="Ein strukturiertes Portfolio rund um praktische KI-Implementierung, vom kostenlosen Assessment bis zur vollständigen Automatisierung.">A structured portfolio built around practical AI implementation, from free assessment to full automation.</p>
 
+            <h3 class="services-tier-title" data-en="AI Automation" data-de="KI-Automatisierung">AI Automation</h3>
             <div class="services-grid">
-                <div class="service-card">
-                    <span class="service-tag">FOR STARTUPS</span>
-                    <h3 data-en="Fractional CTO & AI Strategy" data-de="Fractional CTO & KI-Strategie">Fractional CTO & AI Strategy</h3>
-                    <p data-en="You need technical leadership but can't afford a full-time CTO. We become your AI-focused technical partner, helping you make the right decisions from architecture to vendor selection." data-de="Sie brauchen technische Führung, können sich aber keinen Vollzeit-CTO leisten. Wir werden Ihr KI-fokussierter technischer Partner und helfen Ihnen, die richtigen Entscheidungen von der Architektur bis zur Anbieterauswahl zu treffen.">You need technical leadership but can't afford a full-time CTO. We become your AI-focused technical partner, helping you make the right decisions from architecture to vendor selection.</p>
-                    <ul class="service-features">
-                        <li>AI strategy and implementation roadmap</li>
-                        <li>Technical decision-making support</li>
-                        <li>Architecture design and code review</li>
-                        <li>MVP development guidance</li>
-                        <li>Team mentoring and training</li>
-                    </ul>
-                    <p class="service-perfect" data-en="Perfect for: Early-stage startups building AI-powered products or integrating AI into existing operations." data-de="Perfekt für: Startups in der Frühphase, die KI-gestützte Produkte bauen oder KI in bestehende Abläufe integrieren."><strong>Perfect for:</strong> Early-stage startups building AI-powered products or integrating AI into existing operations.</p>
-                </div>
-
+                <!-- Process Screening (featured) -->
                 <div class="service-card service-card--featured">
-                    <span class="service-tag service-tag--popular">MOST POPULAR</span>
-                    <h3 data-en="AI Implementation Sprint" data-de="KI-Implementierungs-Sprint">AI Implementation Sprint</h3>
-                    <p data-en="You know what process needs automation. We build a working AI solution in 4–8 weeks, test it with real data, measure the impact, and help you scale it." data-de="Sie wissen, welcher Prozess automatisiert werden muss. Wir bauen eine funktionierende KI-Lösung in 4–8 Wochen, testen sie mit echten Daten, messen die Wirkung und helfen Ihnen, sie zu skalieren.">You know what process needs automation. We build a working AI solution in 4–8 weeks, test it with real data, measure the impact, and help you scale it.</p>
-                    <ul class="service-features">
-                        <li>Process analysis and requirements gathering</li>
-                        <li>Custom AI system development (agents, automation, workflows)</li>
-                        <li>Integration with your existing tools</li>
-                        <li>Real data testing and validation</li>
-                        <li>Performance monitoring and iteration</li>
-                    </ul>
-                    <p class="service-perfect" data-en="Perfect for: SMEs and startups ready to automate specific operational processes and see ROI quickly." data-de="Perfekt für: KMU und Startups, die bereit sind, spezifische operative Prozesse zu automatisieren und schnell ROI zu sehen."><strong>Perfect for:</strong> SMEs and startups ready to automate specific operational processes and see ROI quickly.</p>
+                    <h3>Process Screening</h3>
+                    <p>Our flagship service. We identify your highest-burden manual processes and map exactly where AI creates measurable ROI. Express tier is free.</p>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">View tiers <span class="arrow">&#9660;</span></button>
+                    <div class="accordion-body">
+                        <table class="tier-table">
+                            <thead><tr><th>Tier</th></tr></thead>
+                            <tbody>
+                                <tr><td>Express (free AI scan)</td></tr>
+                                <tr><td>Premium Tier 1 (deep analysis)</td></tr>
+                                <tr><td>Premium Tier 2 (full roadmap)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="process-screening.html" class="btn btn-primary" style="margin-top:10px">Learn more</a>
                 </div>
 
+                <!-- n8n Automation -->
                 <div class="service-card">
-                    <span class="service-tag">FOR GROWING COMPANIES</span>
-                    <h3 data-en="AI Infrastructure & Custom Agents" data-de="KI-Infrastruktur & Individuelle Agenten">AI Infrastructure & Custom Agents</h3>
-                    <p data-en="You need AI capabilities but want to own the infrastructure. We build and deploy custom AI agents, set up secure servers, and create automation workflows that run on your terms." data-de="Sie brauchen KI-Fähigkeiten, möchten aber die Infrastruktur besitzen. Wir bauen und deployen individuelle KI-Agenten, richten sichere Server ein und erstellen Automatisierungs-Workflows, die nach Ihren Bedingungen laufen.">You need AI capabilities but want to own the infrastructure. We build and deploy custom AI agents, set up secure servers, and create automation workflows that run on your terms.</p>
-                    <ul class="service-features">
-                        <li>Custom AI agent development (document processing, customer support, data analysis)</li>
-                        <li>Secure server setup and deployment (on-premise or EU-hosted cloud)</li>
-                        <li>Integration with your existing systems (CRM, ERP, databases)</li>
-                        <li>Workflow automation and orchestration</li>
-                        <li>Ongoing monitoring and maintenance</li>
-                    </ul>
-                    <p class="service-perfect" data-en="Perfect for: Companies that need enterprise-grade AI solutions with full control over data and infrastructure." data-de="Perfekt für: Unternehmen, die Enterprise-Grade KI-Lösungen mit voller Kontrolle über Daten und Infrastruktur benötigen."><strong>Perfect for:</strong> Companies that need enterprise-grade AI solutions with full control over data and infrastructure.</p>
+                    <h3>AI Workflow Automation (n8n)</h3>
+                    <p>Custom n8n workflow automation tailored to your operations. From simple integrations to complex multi-step automations with full pricing transparency.</p>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">View tiers <span class="arrow">&#9660;</span></button>
+                    <div class="accordion-body">
+                        <table class="tier-table">
+                            <thead><tr><th>Tier</th></tr></thead>
+                            <tbody>
+                                <tr><td>Server install (existing infra)</td></tr>
+                                <tr><td>Server install (full VPS)</td></tr>
+                                <tr><td>Workflow Simple (&lt;5 steps)</td></tr>
+                                <tr><td>Workflow Mid (5–15 steps)</td></tr>
+                                <tr><td>Workflow Complex (&gt;15 steps)</td></tr>
+                                <tr><td>Custom</td></tr>
+                                <tr><td>Monthly maintenance</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size:12px;color:var(--gray-dim);">Self-Managed Package available: full documentation, team training, and on-demand consulting.</p>
+                    </div>
+                    <a href="#contact" class="btn btn-ghost" style="margin-top:10px">Get a quote</a>
+                </div>
+
+                <!-- OpenClawd Agents -->
+                <div class="service-card">
+                    <h3>OpenClawd AI Agents</h3>
+                    <p>Autonomous AI agents deployed on your private VPS. Powered by Anthropic Claude. Integrates with Telegram, WhatsApp, Discord, calendars, CRMs, and n8n.</p>
+                    <button class="accordion-toggle" onclick="toggleAccordion(this)">View details <span class="arrow">&#9660;</span></button>
+                    <div class="accordion-body">
+                        <table class="tier-table">
+                            <thead><tr><th>Service</th></tr></thead>
+                            <tbody>
+                                <tr><td>Agent install (existing VPS)</td></tr>
+                                <tr><td>Full VPS provision + install</td></tr>
+                                <tr><td>Monthly maintenance</td></tr>
+                            </tbody>
+                        </table>
+                        <p style="font-size:12px;color:var(--gray-dim);margin-top:8px;">Includes skill configuration, n8n integration, and private VPS hosting. Minimum 4 GB RAM / 2 vCPU recommended.</p>
+                    </div>
+                    <a href="openclawd-agents.html" class="btn btn-ghost" style="margin-top:10px">Learn more</a>
+                </div>
+
+                <!-- AI Security -->
+                <div class="service-card">
+                    <h3>AI Security &amp; Compliance</h3>
+                    <p>Hands-on Security Talk workshops and AI Risk Assessments. Fully aligned with EU AI Act requirements: transparency, human oversight, and risk management built into every engagement.</p>
+                    <a href="#contact" class="btn btn-ghost">Contact us</a>
                 </div>
             </div>
 
-            <div class="service-additional">
-                <h3 data-en="Beyond AI: Immersive Solutions" data-de="Über KI hinaus: Immersive Lösungen">Beyond AI: Immersive Solutions</h3>
-                <p data-en="We also build VR training systems, AR product demos, and digital twins for industrial clients. Perfect for trade fairs, complex machinery demonstrations, and remote training scenarios." data-de="Wir bauen auch VR-Trainingssysteme, AR-Produktdemos und digitale Zwillinge für Industriekunden. Perfekt für Messen, komplexe Maschinenvorführungen und Remote-Trainingsszenarien.">We also build VR training systems, AR product demos, and digital twins for industrial clients. Perfect for trade fairs, complex machinery demonstrations, and remote training scenarios.</p>
-                <a href="vr_website.html" class="btn btn-primary" data-en="Learn more about our immersive solutions →" data-de="Mehr über unsere immersiven Lösungen erfahren →">Learn more about our immersive solutions →</a>
+            <h3 class="services-tier-title" data-en="Complementary Services" data-de="Ergänzende Leistungen">Complementary Services</h3>
+            <div class="complementary-grid">
+                <div class="complementary-card">
+                    <h4>AI Strategy Consulting</h4>
+                    <p>For COOs, Heads of Operations, and AI Managers in Mittelstand companies. Fractional CTO support without the full-time cost.</p>
+                    <a href="#contact" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;">Contact us</a>
+                </div>
+                <div class="complementary-card">
+                    <h4>VR &amp; Trade Fair Solutions</h4>
+                    <p>Immersive VR demos and digital twins for industrial clients. Ideal for trade fairs and remote demonstrations.</p>
+                    <a href="vr_website.html" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;">Learn more</a>
+                </div>
+                <div class="complementary-card">
+                    <h4>Startup Growth Journey</h4>
+                    <p>Tailored consulting for early-stage startups. Strategy, product-market fit, and AI integration roadmap.</p>
+                    <a href="startups.html" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;">Learn more</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools & Frameworks Section -->
-    <section class="section-primary">
+    <!-- Tools & Resources -->
+    <section id="resources" class="section section--gradient">
         <div class="container">
-            <h2 class="section-title" data-en="Tools, Workflows & AI Frameworks We've Built" data-de="Tools, Workflows & KI-Frameworks, die wir gebaut haben">Tools, Workflows & AI Frameworks We've Built</h2>
+            <span class="section-tag" data-en="Resources" data-de="Ressourcen">Resources</span>
+            <h2 class="section-title" data-en="Tools &amp; Resources" data-de="Tools &amp; Ressourcen">Tools &amp; Resources</h2>
             <p class="section-subtitle" data-en="We don't just talk about AI innovation. We build tools and share them." data-de="Wir reden nicht nur über KI-Innovation. Wir bauen Tools und teilen sie.">We don't just talk about AI innovation. We build tools and share them.</p>
-
             <div class="tools-grid">
                 <div class="tool-card">
-                    <div class="tool-icon">🤖</div>
-                    <h3 data-en="AI Agent Templates" data-de="KI-Agenten-Vorlagen">AI Agent Templates</h3>
-                    <p data-en="Pre-built AI agent architectures for common business processes: document processing, customer support routing, data validation, and report generation. Available as open-source frameworks or custom implementations." data-de="Vorgefertigte KI-Agenten-Architekturen für gängige Geschäftsprozesse: Dokumentenverarbeitung, Kundensupport-Routing, Datenvalidierung und Berichterstellung.">Pre-built AI agent architectures for common business processes: document processing, customer support routing, data validation, and report generation. Available as open-source frameworks or custom implementations.</p>
-                    <a href="#" class="tool-cta" data-en="Explore on GitHub →" data-de="Auf GitHub erkunden →">Explore on GitHub →</a>
+                    <div class="tool-icon">&#x1F916;</div>
+                    <h3>Agent Templates</h3>
+                    <p>Pre-built AI agent architectures for common business processes: document processing, customer support routing, data validation, and report generation.</p>
+                    <span class="badge-soon">Coming Soon</span>
                 </div>
                 <div class="tool-card">
-                    <div class="tool-icon">⚙️</div>
-                    <h3 data-en="Automation Workflows" data-de="Automatisierungs-Workflows">Automation Workflows</h3>
-                    <p data-en="Ready-to-deploy workflow templates for n8n, Make, and custom integrations. From invoice processing to CRM automation, we've built production-ready flows. Some are free, some are premium, all are battle-tested." data-de="Einsatzbereite Workflow-Vorlagen für n8n, Make und individuelle Integrationen. Von der Rechnungsverarbeitung bis zur CRM-Automatisierung — praxiserprobt.">Ready-to-deploy workflow templates for n8n, Make, and custom integrations. From invoice processing to CRM automation, we've built production-ready flows. Some are free, some are premium, all are battle-tested.</p>
-                    <a href="#" class="tool-cta" data-en="Browse Templates →" data-de="Vorlagen durchsuchen →">Browse Templates →</a>
+                    <div class="tool-icon">&#x2699;&#xFE0F;</div>
+                    <h3>Automation Workflows</h3>
+                    <p>Ready-to-deploy workflow templates for n8n, Make, and custom integrations. From invoice processing to CRM automation, battle-tested.</p>
+                    <span class="badge-soon">Coming Soon</span>
                 </div>
                 <div class="tool-card">
-                    <div class="tool-icon">📊</div>
-                    <h3 data-en="AI Implementation Toolkit" data-de="KI-Implementierungs-Toolkit">AI Implementation Toolkit</h3>
-                    <p data-en="Our internal frameworks for AI project scoping, ROI calculation, and performance monitoring. We use these with every client, and now you can too. Includes assessment templates, cost calculators, and implementation checklists." data-de="Unsere internen Frameworks für KI-Projektplanung, ROI-Berechnung und Performance-Monitoring. Enthält Bewertungsvorlagen, Kostenrechner und Implementierungs-Checklisten.">Our internal frameworks for AI project scoping, ROI calculation, and performance monitoring. We use these with every client, and now you can too. Includes assessment templates, cost calculators, and implementation checklists.</p>
-                    <a href="#" class="tool-cta" data-en="Download Free Tools →" data-de="Kostenlose Tools herunterladen →">Download Free Tools →</a>
+                    <div class="tool-icon">&#x1F4CA;</div>
+                    <h3>AI Implementation Toolkit</h3>
+                    <p>Internal frameworks for AI project scoping, ROI calculation, and performance monitoring. Assessment templates, cost calculators, and checklists.</p>
+                    <span class="badge-soon">Coming Soon</span>
                 </div>
             </div>
+            <div class="tools-cta">
+                <h3 data-en="Ready to discover your AI potential?" data-de="Bereit, Ihr KI-Potenzial zu entdecken?">Ready to discover your AI potential?</h3>
+                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" data-en="Book Free AI Assessment" data-de="Kostenloses KI-Assessment buchen">Book Free AI Assessment</a>
+            </div>
+        </div>
+    </section>
 
-            <div class="tools-bottom">
-                <p data-en="We believe in learning by building and sharing what works. These tools represent hundreds of hours of real-world AI implementation experience. Use them, adapt them, and let us know what you build." data-de="Wir glauben daran, durch Bauen zu lernen und zu teilen, was funktioniert. Diese Tools repräsentieren Hunderte von Stunden realer KI-Implementierungserfahrung.">We believe in learning by building and sharing what works. These tools represent hundreds of hours of real-world AI implementation experience. Use them, adapt them, and let us know what you build.</p>
-                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" data-en="Schedule a Consultation" data-de="Beratung vereinbaren">Schedule a Consultation</a>
+    <!-- Trust & Compliance -->
+    <section id="trust" class="section section--darker">
+        <div class="container">
+            <span class="section-tag" data-en="Security" data-de="Sicherheit">Security</span>
+            <h2 class="section-title" data-en="Trust &amp; Compliance" data-de="Vertrauen &amp; Compliance">Trust &amp; Compliance</h2>
+            <p class="section-subtitle" data-en="Designed for the German B2B market. Security and compliance are not afterthoughts." data-de="Entwickelt für den deutschen B2B-Markt. Sicherheit und Compliance sind keine Nebensache.">Designed for the German B2B market. Security and compliance are not afterthoughts.</p>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">&#x1F6E1;&#xFE0F;</div>
+                    <h4>GDPR Compliant</h4>
+                    <p>All data processing under German/EU law. AVV (DPA) signed before any engagement.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">&#x1F512;</div>
+                    <h4>Private Infrastructure</h4>
+                    <p>Your data runs on private VPS, never shared cloud. Not used for AI model training.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">&#x1F513;</div>
+                    <h4>No Lock-in</h4>
+                    <p>IP transfers to you on full payment. 30–60 day cancellation. No proprietary dependencies.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">&#x1F4DD;</div>
+                    <h4>NDA by Default</h4>
+                    <p>Mutual NDA signed before any process data is shared. Confidentiality is the baseline.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">&#x2696;&#xFE0F;</div>
+                    <h4>EU AI Act</h4>
+                    <p>Our implementations follow EU AI Act requirements for transparency, human oversight, and risk management.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">&#x2705;</div>
+                    <h4>SLA Guaranteed</h4>
+                    <p>4h critical response time. 99% uptime for managed services. Clear contractual terms.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="section-secondary">
+    <section id="team" class="section section--gradient">
         <div class="container">
+            <span class="section-tag" data-en="The People" data-de="Die Menschen">The People</span>
             <h2 class="section-title" data-en="Our Team" data-de="Unser Team">Our Team</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <a href="martin-arias.html" class="member-link">
-                        <div class="member-photo">
-                            <img src="images/team/team-martin-arias.png" alt="Martín Arias" class="team-photo" />
-                        </div>
-                        <h3>Martín Arias</h3>
-                    </a>
-                    <p class="member-role" data-en="Coordinator, AI Expert" data-de="Koordinator, KI-Experte">Coordinator, AI Expert</p>
-                    <ul class="member-skills">
-                        <li data-en="🤖 AI implementation & architecture" data-de="🤖 KI-Implementierung & Architektur">🤖 AI implementation & architecture</li>
-                        <li data-en="💻 Strategic planning, development & DevOps" data-de="💻 Strategische Planung, Entwicklung & DevOps">💻 Strategic planning, development & DevOps</li>
-                        <li data-en="⚡ Custom AI agents & automation" data-de="⚡ Individuelle KI-Agenten & Automatisierung">⚡ Custom AI agents & automation</li>
-                    </ul>
-                </div>
-                
-                <div class="team-member">
-                    <a href="omar-garcia.html" class="member-link">
-                        <div class="member-photo">
-                            <img src="images/team/team-omar-garcia.png" alt="Omar García Urdiales" class="team-photo" />
-                        </div>
-                        <h3>Omar García Urdiales</h3>
-                    </a>
-                    <p class="member-role" data-en="Co-Founder, Business & Innovation" data-de="Mitgründer, Business & Innovation">Co-Founder, Business & Innovation</p>
-                    <ul class="member-skills">
-                        <li data-en="🚀 AI strategy & business consulting" data-de="🚀 KI-Strategie & Unternehmensberatung">🚀 AI strategy & business consulting</li>
-                        <li data-en="💡 Startup growth & go-to-market" data-de="💡 Startup-Wachstum & Go-to-Market">💡 Startup growth & go-to-market</li>
-                        <li data-en="🤝 Client partnerships & delivery" data-de="🤝 Kundenpartnerschaften & Delivery">🤝 Client partnerships & delivery</li>
-                    </ul>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/team/team-martin-hueppauf.png" alt="Dr. Martin Hüppauff" class="team-photo" />
+            <p class="section-subtitle" data-en="Engineers who understand business. Business people who understand technology." data-de="Ingenieure, die Geschäft verstehen. Geschäftsleute, die Technologie verstehen.">Engineers who understand business. Business people who understand technology.</p>
+
+            <!-- Co-Founders -->
+            <div class="founders-grid">
+                <div class="founder-card">
+                    <div class="founder-photo">
+                        <img src="images/team/team-martin-arias.png" alt="Martín Arias">
                     </div>
-                    <h3>Dr. Martin Hüppauff</h3>
-                    <p class="member-role" data-en="Strategy" data-de="Strategie">Strategy</p>
-                    <ul class="member-skills">
-                        <li data-en="🎯 Strategic planning" data-de="🎯 Strategische Planung">🎯 Strategic planning</li>
-                        <li data-en="📈 Business development" data-de="📈 Geschäftsentwicklung">📈 Business development</li>
-                        <li data-en="🔬 Research & analysis" data-de="🔬 Forschung & Analyse">🔬 Research & analysis</li>
+                    <div class="founder-info">
+                        <h3><a href="martin-arias.html">Martín Arias</a></h3>
+                        <div class="founder-role">CTO &amp; Co-Founder</div>
+                        <ul class="founder-skills">
+                            <li>AI implementation &amp; architecture</li>
+                            <li>Strategic planning, development &amp; DevOps</li>
+                            <li>Custom AI agents &amp; automation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="founder-card">
+                    <div class="founder-photo">
+                        <img src="images/team/team-omar-garcia.png" alt="Omar García Urdiales">
+                    </div>
+                    <div class="founder-info">
+                        <h3><a href="omar-garcia.html">Omar García Urdiales</a></h3>
+                        <div class="founder-role">Co-Founder</div>
+                        <ul class="founder-skills">
+                            <li>AI strategy &amp; business consulting</li>
+                            <li>Startup growth &amp; go-to-market</li>
+                            <li>Client partnerships &amp; delivery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extended Team -->
+            <div class="extended-grid">
+                <div class="extended-card">
+                    <div class="extended-photo">
+                        <img src="images/team/team-martin-hueppauf.png" alt="Dr. Martin Hüppauff">
+                    </div>
+                    <h4>Dr. Martin Hüppauff</h4>
+                    <div class="ext-role">Strategy</div>
+                    <ul>
+                        <li>Strategic planning</li>
+                        <li>Business development</li>
+                        <li>Research &amp; analysis</li>
                     </ul>
                 </div>
-                
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/team/team-pilar-arias.png" alt="Pilar Arias" class="team-photo" />
+                <div class="extended-card">
+                    <div class="extended-photo">
+                        <img src="images/team/team-pilar-arias.png" alt="Pilar Arias">
                     </div>
-                    <h3>Pilar Arias</h3>
-                    <p class="member-role" data-en="Marketing, Branding & Sales" data-de="Marketing, Branding & Vertrieb">Marketing, Branding & Sales</p>
-                    <ul class="member-skills">
-                        <li data-en="🎨 Brand strategy & design" data-de="🎨 Markenstrategie & Design">🎨 Brand strategy & design</li>
-                        <li data-en="📢 Marketing automation" data-de="📢 Marketing-Automatisierung">📢 Marketing automation</li>
-                        <li data-en="💼 Sales optimization" data-de="💼 Vertriebsoptimierung">💼 Sales optimization</li>
+                    <h4>Pilar Arias</h4>
+                    <div class="ext-role">Marketing, Branding &amp; Sales</div>
+                    <ul>
+                        <li>Brand strategy &amp; design</li>
+                        <li>Marketing automation</li>
+                        <li>Sales optimization</li>
                     </ul>
                 </div>
-                
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/team/team-wasilios.png" alt="Wasilios Minoudis" class="team-photo" />
+                <div class="extended-card">
+                    <div class="extended-photo">
+                        <img src="images/team/team-wasilios.png" alt="Wasilios Minoudis">
                     </div>
-                    <h3>Wasilios Minoudis</h3>
-                    <p class="member-role" data-en="VR/AR/XR Expert" data-de="VR/AR/XR-Experte">VR/AR/XR Expert</p>
-                    <ul class="member-skills">
-                        <li data-en="🥽 Immersive technology development" data-de="🥽 Entwicklung immersiver Technologien">🥽 Immersive technology development</li>
-                        <li data-en="🎮 Interactive experience design" data-de="🎮 Design interaktiver Erlebnisse">🎮 Interactive experience design</li>
-                        <li data-en="⚡ Real-time 3D solutions" data-de="⚡ Echtzeit-3D-Lösungen">⚡ Real-time 3D solutions</li>
+                    <h4>Wasilios Minoudis</h4>
+                    <div class="ext-role">VR/AR/XR Expert</div>
+                    <ul>
+                        <li>Immersive technology development</li>
+                        <li>Interactive experience design</li>
+                        <li>Real-time 3D solutions</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Digital Workers Section -->
-    <section id="digital-workers" class="section-primary">
+    <!-- Digital Team Section -->
+    <section id="digital-team" class="section section--darker">
         <div class="container">
-            <h2 class="section-title" data-en="Our Digital Workers" data-de="Unsere Digitalen Mitarbeiter">Our Digital Workers</h2>
-            <p data-en="Meet our AI-powered team members — always on, always learning." data-de="Lernen Sie unsere KI-gestützten Teammitglieder kennen — immer aktiv, immer lernend.">Meet our AI-powered team members — always on, always learning.</p>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/digital-workers/camila.jpg" alt="Camila" class="team-photo" />
+            <span class="section-tag" data-en="AI Team Members" data-de="KI-Teammitglieder">AI Team Members</span>
+            <h2 class="section-title" data-en="Our Digital Team" data-de="Unser digitales Team">Our Digital Team</h2>
+            <p class="section-subtitle" data-en="Meet our AI-powered team members, always on, always learning." data-de="Lernen Sie unsere KI-gestützten Teammitglieder kennen, immer aktiv, immer lernend.">Meet our AI-powered team members, always on, always learning.</p>
+            <div class="digital-grid">
+                <div class="digital-card">
+                    <div class="digital-photo">
+                        <img src="images/digital-workers/otto.jpg" alt="Otto">
                     </div>
-                    <h3>Camila</h3>
-                    <p class="member-role" data-en="Project Management & Delivery" data-de="Projektmanagement & Lieferung">Project Management & Delivery</p>
-                    <ul class="member-skills">
-                        <li data-en="🗂️ Project tracking & reporting" data-de="🗂️ Projektverfolgung & Berichterstattung">🗂️ Project tracking & reporting</li>
-                        <li data-en="📋 Document & deliverable management" data-de="📋 Dokumenten- & Liefermanagement">📋 Document & deliverable management</li>
-                        <li data-en="🤝 Client coordination" data-de="🤝 Kundenkoordination">🤝 Client coordination</li>
+                    <h4>Otto</h4>
+                    <div class="digi-role">Infrastructure &amp; DevOps</div>
+                    <ul>
+                        <li>Server &amp; container management</li>
+                        <li>Security &amp; monitoring</li>
+                        <li>CI/CD automation</li>
                     </ul>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/digital-workers/carlos.jpg" alt="Carlos" class="team-photo" />
+                <div class="digital-card">
+                    <div class="digital-photo">
+                        <img src="images/digital-workers/viktor.jpg" alt="Viktor">
                     </div>
-                    <h3>Carlos</h3>
-                    <p class="member-role" data-en="General Assistant & AI Strategist" data-de="Allgemeiner Assistent & KI-Stratege">General Assistant & AI Strategist</p>
-                    <ul class="member-skills">
-                        <li data-en="🤖 AI research & insights" data-de="🤖 KI-Forschung & Erkenntnisse">🤖 AI research & insights</li>
-                        <li data-en="💬 Team communication" data-de="💬 Teamkommunikation">💬 Team communication</li>
-                        <li data-en="⚡ Task automation" data-de="⚡ Aufgabenautomatisierung">⚡ Task automation</li>
+                    <h4>Viktor</h4>
+                    <div class="digi-role">Sales &amp; Business Development</div>
+                    <ul>
+                        <li>Lead tracking &amp; CRM</li>
+                        <li>Pipeline management</li>
+                        <li>Proposal &amp; outreach</li>
                     </ul>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/digital-workers/molly.jpg" alt="Molly" class="team-photo" />
+                <div class="digital-card">
+                    <div class="digital-photo">
+                        <img src="images/digital-workers/camila.jpg" alt="Camila">
                     </div>
-                    <h3>Molly</h3>
-                    <p class="member-role" data-en="Finance & Administration" data-de="Finanzen & Verwaltung">Finance & Administration</p>
-                    <ul class="member-skills">
-                        <li data-en="💰 Financial tracking & reporting" data-de="💰 Finanzverfolgung & Berichterstattung">💰 Financial tracking & reporting</li>
-                        <li data-en="📊 Budget analysis" data-de="📊 Budgetanalyse">📊 Budget analysis</li>
-                        <li data-en="🧾 Invoice processing" data-de="🧾 Rechnungsbearbeitung">🧾 Invoice processing</li>
+                    <h4>Camila</h4>
+                    <div class="digi-role">Project Management &amp; Delivery</div>
+                    <ul>
+                        <li>Project tracking &amp; reporting</li>
+                        <li>Document management</li>
+                        <li>Client coordination</li>
                     </ul>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/digital-workers/otto.jpg" alt="Otto" class="team-photo" />
+                <div class="digital-card">
+                    <div class="digital-photo">
+                        <img src="images/digital-workers/carlos.jpg" alt="Carlos">
                     </div>
-                    <h3>Otto</h3>
-                    <p class="member-role" data-en="Infrastructure & DevOps" data-de="Infrastruktur & DevOps">Infrastructure & DevOps</p>
-                    <ul class="member-skills">
-                        <li data-en="🖥️ Server & container management" data-de="🖥️ Server- & Container-Management">🖥️ Server & container management</li>
-                        <li data-en="🔒 Security & monitoring" data-de="🔒 Sicherheit & Überwachung">🔒 Security & monitoring</li>
-                        <li data-en="⚙️ CI/CD automation" data-de="⚙️ CI/CD-Automatisierung">⚙️ CI/CD automation</li>
+                    <h4>Carlos</h4>
+                    <div class="digi-role">General Assistant &amp; AI Strategist</div>
+                    <ul>
+                        <li>AI research &amp; insights</li>
+                        <li>Team communication</li>
+                        <li>Task automation</li>
                     </ul>
                 </div>
-
-                <div class="team-member">
-                    <div class="member-photo">
-                        <img src="images/digital-workers/viktor.jpg" alt="Viktor" class="team-photo" />
+                <div class="digital-card">
+                    <div class="digital-photo">
+                        <img src="images/digital-workers/molly.jpg" alt="Molly">
                     </div>
-                    <h3>Viktor</h3>
-                    <p class="member-role" data-en="Sales & Business Development" data-de="Vertrieb & Geschäftsentwicklung">Sales & Business Development</p>
-                    <ul class="member-skills">
-                        <li data-en="📈 Lead tracking & CRM" data-de="📈 Lead-Verfolgung & CRM">📈 Lead tracking & CRM</li>
-                        <li data-en="🎯 Pipeline management" data-de="🎯 Pipeline-Management">🎯 Pipeline management</li>
-                        <li data-en="💼 Proposal & outreach" data-de="💼 Angebote & Akquise">💼 Proposal & outreach</li>
+                    <h4>Molly</h4>
+                    <div class="digi-role">Finance &amp; Administration</div>
+                    <ul>
+                        <li>Financial tracking &amp; reporting</li>
+                        <li>Budget analysis</li>
+                        <li>Invoice processing</li>
                     </ul>
                 </div>
             </div>
@@ -436,161 +1370,288 @@
     </section>
 
     <!-- Ethics Section -->
-    <section class="section-primary ethics-section">
+    <section class="section section--gradient">
         <div class="container">
+            <span class="section-tag" data-en="Ethics" data-de="Ethik">Ethics</span>
             <h2 class="section-title" data-en="Our Commitment to Ethical AI" data-de="Unser Engagement für ethische KI">Our Commitment to Ethical AI</h2>
-            <div class="ethics-content">
-                <div class="ethics-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
+            <p class="section-subtitle" data-en="Responsible AI isn't optional. It's how we build." data-de="Verantwortungsvolle KI ist keine Option. So bauen wir.">Responsible AI isn't optional. It's how we build.</p>
+            <div class="ethics-grid">
+                <div class="ethics-card">
+                    <h4>Human-First</h4>
+                    <p>AI amplifies human capacity. We never design systems that remove human judgment from critical decisions.</p>
                 </div>
-                <p data-en="We follow the principles of the Human Development Report 2025. The digital solutions and AI implementations we deliver are designed to strengthen — not diminish — human agency. We reserve the right to decide which tasks to automate, guided by a clear principle: automation should empower us as humans, not degrade our role in the process." data-de="Wir folgen den Grundsätzen des Human Development Report 2025. Die digitalen Lösungen und KI-Implementierungen, die wir liefern, sind darauf ausgelegt, die menschliche Handlungsfähigkeit zu stärken — nicht zu vermindern. Wir behalten uns das Recht vor zu entscheiden, welche Aufgaben automatisiert werden, geleitet von einem klaren Prinzip: Automatisierung soll uns als Menschen stärken, nicht unsere Rolle im Prozess herabsetzen.">
-                    We follow the principles of the <strong>Human Development Report 2025</strong>. The digital solutions and AI implementations we deliver are designed to strengthen — not diminish — human agency. We reserve the right to decide which tasks to automate, guided by a clear principle: automation should empower us as humans, not degrade our role in the process.
-                </p>
+                <div class="ethics-card">
+                    <h4>Radical Transparency</h4>
+                    <p>We show you what the AI found, how it found it, and the limits of that analysis. No black boxes.</p>
+                </div>
+                <div class="ethics-card">
+                    <h4>EU AI Act Aligned</h4>
+                    <p>Our implementations comply with EU AI Act requirements. We stay current so your systems stay compliant.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials section-secondary">
+    <section class="section section--darker">
         <div class="container">
+            <span class="section-tag" data-en="Testimonials" data-de="Referenzen">Testimonials</span>
             <h2 class="section-title" data-en="What Our Clients Say" data-de="Was unsere Kunden sagen">What Our Clients Say</h2>
-            <div class="testimonials-slider">
-                <div class="testimonial active">
-                    <blockquote data-en="They challenged our assumptions and helped us build something real." data-de="Sie stellten unsere Annahmen in Frage und halfen uns, etwas Echtes zu bauen.">
-                        "They challenged our assumptions and helped us build something real."
-                    </blockquote>
-                    <cite data-en="— Ira, Startup Founder" data-de="— Ira, Startup-Gründer">— Ira, Startup Founder</cite>
+            <p class="section-subtitle" style="margin-bottom:32px;"></p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <blockquote>"They challenged our assumptions and helped us build something real."</blockquote>
+                    <cite>Ira, Startup Founder</cite>
                 </div>
-                <div class="testimonial">
-                    <blockquote data-en="GF helped us turn a highly manual process into a visual, scalable VR experience." data-de="GF half uns, einen hochgradig manuellen Prozess in ein visuelles, skalierbares VR-Erlebnis zu verwandeln.">
-                        "GF helped us turn a highly manual process into a visual, scalable VR experience."
-                    </blockquote>
-                    <cite data-en="— Client from Manufacturing Sector" data-de="— Kunde aus dem Fertigungssektor">— Client from Manufacturing Sector</cite>
+                <div class="testimonial-card">
+                    <blockquote>"GF helped us turn a highly manual process into a visual, scalable VR experience."</blockquote>
+                    <cite>Client from Manufacturing Sector</cite>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-cta">
+    <section id="contact" class="section section--gradient contact-section">
         <div class="container">
-            <h2 class="section-title" data-en="Let's Start Your Journey" data-de="Lassen Sie uns Ihre Reise beginnen">Let's Start Your Journey</h2>
-            <div class="contact-tabs">
-                <div class="tab-buttons">
-                    <button class="tab-btn active" onclick="switchTab('startup')" data-en="I'm a startup" data-de="Ich bin ein Startup">I'm a startup</button>
-                    <button class="tab-btn" onclick="switchTab('business')" data-en="I'm an established business" data-de="Ich bin ein etabliertes Unternehmen">I'm an established business</button>
-                </div>
-                
-                <div class="tab-content">
-                    <div id="startup-tab" class="tab-pane active">
-                        <h3 data-en="Ready to build AI into your product?" data-de="Bereit, KI in Ihr Produkt einzubauen?">Ready to build AI into your product?</h3>
-                        <p data-en="Let's discuss your MVP, AI strategy, and technical roadmap. Talk directly with our CTO." data-de="Lassen Sie uns über Ihr MVP, Ihre KI-Strategie und Ihre technische Roadmap sprechen. Sprechen Sie direkt mit unserem CTO.">Let's discuss your MVP, AI strategy, and technical roadmap. Talk directly with our CTO.</p>
-                    </div>
-                    <div id="business-tab" class="tab-pane">
-                        <h3 data-en="Ready to automate your operations with AI?" data-de="Bereit, Ihre Abläufe mit KI zu automatisieren?">Ready to automate your operations with AI?</h3>
-                        <p data-en="Let's identify processes that waste your team's time and build AI solutions that actually work. No fluff, just results." data-de="Lassen Sie uns Prozesse identifizieren, die die Zeit Ihres Teams verschwenden, und KI-Lösungen bauen, die tatsächlich funktionieren. Kein Bla-Bla, nur Ergebnisse.">Let's identify processes that waste your team's time and build AI solutions that actually work. No fluff, just results.</p>
-                    </div>
-                </div>
-                
-                <div class="calendly-container">
-                    <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary btn-large" target="_blank" data-en="Schedule Your Intro Call" data-de="Planen Sie Ihr Einführungsgespräch">Schedule Your Intro Call</a>
-                </div>
+            <span class="section-tag" data-en="Get Started" data-de="Loslegen">Get Started</span>
+            <h2 class="section-title" data-en="Let's Start Your Journey" data-de="Starten Sie Ihre Reise">Let's Start Your Journey</h2>
+
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab('startup')" data-en="I'm a startup" data-de="Ich bin ein Startup">I'm a startup</button>
+                <button class="tab-btn" onclick="switchTab('business')" data-en="I'm an established business" data-de="Ich bin ein etabliertes Unternehmen">I'm an established business</button>
             </div>
+
+            <div id="startup-tab" class="tab-pane active">
+                <h3 data-en="Ready to build AI into your product?" data-de="Bereit, KI in Ihr Produkt einzubauen?">Ready to build AI into your product?</h3>
+                <p data-en="Let's discuss your MVP, AI strategy, and technical roadmap. Talk directly with our CTO." data-de="Lassen Sie uns Ihr MVP, Ihre KI-Strategie und technische Roadmap besprechen. Sprechen Sie direkt mit unserem CTO.">Let's discuss your MVP, AI strategy, and technical roadmap. Talk directly with our CTO.</p>
+            </div>
+            <div id="business-tab" class="tab-pane">
+                <h3 data-en="Ready to automate your operations with AI?" data-de="Bereit, Ihre Abläufe mit KI zu automatisieren?">Ready to automate your operations with AI?</h3>
+                <p data-en="Book a free assessment. We'll identify processes that waste your team's time and show you what AI can do. No fluff, just results." data-de="Buchen Sie ein kostenloses Assessment. Wir identifizieren Prozesse, die Ihr Team Zeit kosten, und zeigen Ihnen, was KI leisten kann. Keine leeren Versprechen, nur Ergebnisse.">Book a free assessment. We'll identify processes that waste your team's time and show you what AI can do. No fluff, just results.</p>
+            </div>
+
+            <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" style="margin-top:8px;" data-en="Schedule Your Intro Call" data-de="Erstgespräch vereinbaren">Schedule Your Intro Call</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img src="./images/gf-logo-white.png" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+            <div class="footer-grid">
+                <div>
+                    <img src="images/Logo GF - B&N Chico.png" alt="GF Innovative Solutions" style="height:36px; width:auto;">
+                    <p class="footer-tagline" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie.">Guided by people, powered by tech.</p>
                 </div>
-                <div class="footer-section">
+                <div>
                     <h4 data-en="Services" data-de="Leistungen">Services</h4>
                     <ul>
-                        <li><a href="#services" data-en="AI Implementation & Strategy" data-de="KI-Implementierung & Strategie">AI Implementation & Strategy</a></li>
-                        <li><a href="#services" data-en="Custom AI Agents & Automation" data-de="Individuelle KI-Agenten & Automatisierung">Custom AI Agents & Automation</a></li>
-                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung">VR/AR Development</a></li>
-                        <li><a href="#services" data-en="Fractional CTO Services" data-de="Fractional CTO Services">Fractional CTO Services</a></li>
+                        <li><a href="#services">AI Implementation &amp; Strategy</a></li>
+                        <li><a href="#services">Custom AI Agents &amp; Automation</a></li>
+                        <li><a href="vr_website.html">VR/AR Development</a></li>
+                        <li><a href="#services">Fractional CTO Services</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-contact">
                     <h4 data-en="Contact" data-de="Kontakt">Contact</h4>
-                    <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef7f0f8f1def9f8f7f0f0f1e8b0fdf1f3">[email&#160;protected]</a></p>
+                    <p>info@gf-innovative.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
-                <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Imprint</a> | 
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
+                <p>&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div>
+                    <a href="imprint.html">Imprint</a> | <a href="privacy.html">Privacy Policy</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Growth Journey Modal -->
-    <div id="growth-modal" class="growth-modal">
-        <div class="growth-modal-content">
-            <span class="growth-close">&times;</span>
-            <h3 id="growth-modal-title"></h3>
-            <p id="growth-modal-text"></p>
-        </div>
-    </div>
-
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
         <div class="cookie-banner__inner">
             <div class="cookie-banner__text">
-                <strong data-en="We value your privacy" data-de="Wir respektieren Ihre Privatsphäre">We value your privacy</strong>
-                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren.">This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept.</p>
+                <strong>We value your privacy</strong>
+                <p>This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept.</p>
             </div>
             <div class="cookie-banner__actions">
-                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren">Accept All</button>
-                <button id="cookie-reject" class="btn btn-secondary" data-en="Essential Only" data-de="Nur notwendige">Essential Only</button>
-                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen">Customize</button>
+                <button id="cookie-accept" class="btn btn-primary">Accept All</button>
+                <button id="cookie-reject" class="btn btn-ghost">Essential Only</button>
+                <button id="cookie-customize" class="btn btn-outline">Customize</button>
             </div>
         </div>
     </div>
 
     <!-- Cookie Settings Entry Point -->
     <div class="cookie-settings-entry">
-        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen">Cookie Settings</button>
+        <button id="cookie-settings" class="link-like">Cookie Settings</button>
     </div>
 
     <!-- Cookie Modal -->
     <div id="cookie-modal" class="cookie-modal" aria-hidden="true">
-        <div class="cookie-modal__backdrop" onclick="closeModal()"></div>
+        <div class="cookie-modal__backdrop" onclick="closeCookieModal()"></div>
         <div class="cookie-modal__dialog">
             <div class="cookie-modal__header">
-                <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen">Cookie Preferences</h3>
-                <button id="cookie-close" class="modal-close" aria-label="Close">&times;</button>
+                <h3>Cookie Preferences</h3>
+                <button class="modal-close" onclick="closeCookieModal()" aria-label="Close">&times;</button>
             </div>
             <div class="cookie-modal__body">
-                <p data-en="We use cookies to improve your experience on our website. You can customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen.">We use cookies to improve your experience on our website. You can customize your preferences below.</p>
-                
+                <p>We use cookies to improve your experience. Customize your preferences below.</p>
                 <div class="cookie-toggle">
                     <div>
-                        <strong data-en="Essential Cookies" data-de="Notwendige Cookies">Essential Cookies</strong>
-                        <p data-en="Required for the website to function properly." data-de="Erforderlich für das ordnungsgemäße Funktionieren der Website.">Required for the website to function properly.</p>
+                        <strong>Essential Cookies</strong>
+                        <p>Required for the website to function properly.</p>
                     </div>
-                    <div class="switch disabled">
-                        <input type="checkbox" checked disabled>
-                    </div>
+                    <div class="switch"><input type="checkbox" checked disabled></div>
                 </div>
-                
                 <div class="cookie-toggle">
                     <div>
-                        <strong data-en="Analytics Cookies" data-de="Analyse-Cookies">Analytics Cookies</strong>
-                        <p data-en="Used for site analytics and performance metrics." data-de="Wird für Website-Analysen und Leistungskennzahlen verwendet.">Used for site analytics and performance metrics.</p>
+                        <strong>Analytics Cookies</strong>
+                        <p>Used for site analytics and performance metrics.</p>
                     </div>
-                    <div class="switch">
-                        <input type="checkbox" id="toggle-analytics">
-                    </div>
-   
+                    <div class="switch"><input type="checkbox" id="toggle-analytics"></div>
+                </div>
+            </div>
+            <div class="cookie-modal__footer">
+                <button class="btn btn-ghost" onclick="saveCookiePrefs()">Save Preferences</button>
+                <button class="btn btn-primary" onclick="acceptAllCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+    /* Smooth scroll for anchor links */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    /* Tab switching */
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-btn').forEach(function(btn) { btn.classList.remove('active'); });
+        document.querySelectorAll('.tab-pane').forEach(function(pane) { pane.classList.remove('active'); });
+        document.getElementById(tab + '-tab').classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    /* Accordion */
+    function toggleAccordion(btn) {
+        var body = btn.nextElementSibling;
+        var isOpen = body.classList.contains('open');
+        body.classList.toggle('open');
+        btn.classList.toggle('open');
+    }
+
+    /* Cookie consent */
+    (function() {
+        var consent = localStorage.getItem('cookie-consent');
+        if (!consent) {
+            document.getElementById('cookie-banner').style.display = '';
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookie-consent', 'all');
+            document.getElementById('cookie-banner').style.display = 'none';
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', { analytics_storage: 'granted' });
+            }
+        });
+
+        document.getElementById('cookie-reject').addEventListener('click', function() {
+            localStorage.setItem('cookie-consent', 'essential');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+
+        document.getElementById('cookie-customize').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            openCookieModal();
+        });
+
+        document.getElementById('cookie-settings').addEventListener('click', function() {
+            openCookieModal();
+        });
+    })();
+
+    function openCookieModal() {
+        document.getElementById('cookie-modal').classList.add('open');
+        document.getElementById('cookie-modal').setAttribute('aria-hidden', 'false');
+    }
+
+    function closeCookieModal() {
+        document.getElementById('cookie-modal').classList.remove('open');
+        document.getElementById('cookie-modal').setAttribute('aria-hidden', 'true');
+    }
+
+    function saveCookiePrefs() {
+        var analytics = document.getElementById('toggle-analytics').checked;
+        localStorage.setItem('cookie-consent', analytics ? 'all' : 'essential');
+        if (analytics && typeof gtag === 'function') {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+        }
+        closeCookieModal();
+    }
+
+    function acceptAllCookies() {
+        localStorage.setItem('cookie-consent', 'all');
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+        }
+        closeCookieModal();
+    }
+
+    /* Language toggle */
+    (function() {
+        var lang = localStorage.getItem('site-lang') || 'en';
+        var toggleBtn = document.getElementById('lang-toggle');
+        var langEn = document.getElementById('lang-en');
+        var langDe = document.getElementById('lang-de');
+
+        function applyLang(l) {
+            lang = l;
+            localStorage.setItem('site-lang', l);
+            document.documentElement.lang = l;
+            document.querySelectorAll('[data-en][data-de]').forEach(function(el) {
+                el.innerHTML = el.getAttribute('data-' + l);
+            });
+            if (l === 'en') {
+                langEn.classList.add('active-lang');
+                langDe.classList.remove('active-lang');
+            } else {
+                langDe.classList.add('active-lang');
+                langEn.classList.remove('active-lang');
+            }
+        }
+
+        toggleBtn.addEventListener('click', function() {
+            applyLang(lang === 'en' ? 'de' : 'en');
+        });
+
+        applyLang(lang);
+    })();
+</script>
+<script>
+    const hamburger = document.getElementById('nav-hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('open');
+        navMenu.classList.toggle('open');
+        this.setAttribute('aria-expanded', navMenu.classList.contains('open'));
+    });
+    // Close menu when a nav link is clicked
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            navMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+</script>
+</body>
+</html>
