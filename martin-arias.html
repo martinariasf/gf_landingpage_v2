@@ -21,7 +21,7 @@
                 <span></span>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link">← Back to Home</a>
+                <a href="index.html" class="nav-link" data-en="← Back to Home" data-de="← Zurück zur Startseite">← Zurück zur Startseite</a>
                 <button class="language-toggle" type="button" aria-label="Toggle Language">
                     <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
                 </button>
@@ -80,20 +80,20 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img src="./images/gf-logo-white.png" alt="GF Innovative Solutions" class="footer-logo">
-                    <p>Guided by tech, powered by people.</p>
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Von Technologie geleitet, von Menschen angetrieben.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact</h4>
+                    <h4 data-en="Contact" data-de="Kontakt">Kontakt</h4>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten.">&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten.</p>
                 <div class="footer-links">
-                    <a href="imprint.html">Imprint</a> | 
-                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> |
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Datenschutzerklärung</a>
                 </div>
             </div>
         </div>
@@ -122,19 +122,20 @@
         // Language toggle for profile page
         let currentLanguage = 'de';
 
-        document.querySelector('.language-toggle').addEventListener('click', function() {
-            currentLanguage = currentLanguage === 'de' ? 'en' : 'de';
+        // Initialize language on page load
+        (function initLanguage() {
+            const saved = localStorage.getItem('preferred-language');
+            if (saved === 'en' || saved === 'de') currentLanguage = saved;
+            applyLanguage();
+        })();
+
+        function applyLanguage() {
             const altLang = currentLanguage === 'de' ? 'en' : 'de';
-            
             document.getElementById('current-lang').textContent = currentLanguage.toUpperCase();
             document.getElementById('alt-lang').textContent = altLang.toUpperCase();
-            
-            // Toggle profile text blocks
             document.querySelectorAll('.profile-text').forEach(el => {
                 el.style.display = el.dataset.lang === currentLanguage ? 'block' : 'none';
             });
-            
-            // Toggle data-en/data-de elements
             document.querySelectorAll('[data-en][data-de]').forEach(el => {
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = el.dataset[currentLanguage];
@@ -142,6 +143,12 @@
                     el.textContent = el.dataset[currentLanguage];
                 }
             });
+        }
+
+        document.querySelector('.language-toggle').addEventListener('click', function() {
+            currentLanguage = currentLanguage === 'de' ? 'en' : 'de';
+            localStorage.setItem('preferred-language', currentLanguage);
+            applyLanguage();
         });
     </script>
 </body>

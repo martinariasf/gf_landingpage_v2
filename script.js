@@ -1,5 +1,5 @@
 // Global variables
-let currentLanguage = 'en';
+let currentLanguage = 'de';
 let testimonialIndex = 0;
 
 // Growth Journey Content Data
@@ -437,8 +437,8 @@ function loadLanguagePreference() {
         currentLanguage = savedLanguage;
         console.log('Loaded language preference:', currentLanguage);
     } else {
-        currentLanguage = 'en'; // Default to English
-        console.log('No saved preference, defaulting to English');
+        currentLanguage = 'de'; // Default to German
+        console.log('No saved preference, defaulting to German');
     }
 }
 

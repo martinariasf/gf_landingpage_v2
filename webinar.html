@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        .navbar {
+            background: linear-gradient(135deg, #1560B2 0%, #2a4a9e 55%, #4D8DB4 100%);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 2px 20px rgba(21, 96, 178, 0.18);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+        .nav-link,
+        .language-toggle {
+            color: #f1f5f9;
+        }
+        .nav-link:hover,
+        .language-toggle:hover {
+            color: #dbeafe;
+            border-color: rgba(255,255,255,0.35);
+        }
+        .language-toggle {
+            border: 1px solid rgba(255,255,255,0.22);
+            background: rgba(255,255,255,0.08);
+        }
+        .nav-toggle span {
+            background: #f1f5f9;
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                background: rgba(21, 96, 178, 0.96);
+            }
+        }
         .webinar-hero {
             background: linear-gradient(135deg, var(--primary-blue) 0%, #2a4a9e 50%, var(--innovation-green) 100%);
             padding: 140px 0 64px 0;
@@ -148,7 +176,7 @@
                 <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
                 <a href="index.html#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Contact</a>
                 <button class="language-toggle" type="button" aria-label="Toggle Language" onclick="toggleLang()">
-                    <span id="current-lang">EN</span> | <span id="alt-lang">DE</span>
+                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
                 </button>
             </div>
             <div class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
@@ -254,7 +282,7 @@
 
     <script>
     // === Language Toggle ===
-    let lang = 'en';
+    let lang = 'de';
     function toggleLang() {
         lang = lang === 'en' ? 'de' : 'en';
         document.getElementById('current-lang').textContent = lang.toUpperCase();
