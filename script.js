@@ -94,22 +94,24 @@ function initializeWebsite() {
 
 // Navigation functionality
 function initializeNavigation() {
-    const navToggle = document.querySelector('.nav-toggle');
+    const navToggle = document.querySelector('.nav-hamburger, .nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
+            const isOpen = navMenu.classList.toggle('open');
+            navMenu.classList.toggle('active', isOpen);
+            navToggle.classList.toggle('open', isOpen);
+            navToggle.classList.toggle('active', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     }
     
     // Close mobile menu when clicking on a link
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-cta');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            if (navMenu) navMenu.classList.remove('active');
-            if (navToggle) navToggle.classList.remove('active');
+            closeMobileMenu();
         });
     });
     
@@ -118,14 +120,24 @@ function initializeNavigation() {
         const navbar = document.querySelector('.navbar');
         if (navbar) {
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.background = 'linear-gradient(135deg, rgba(21, 96, 178, 0.96) 0%, rgba(42, 74, 158, 0.96) 55%, rgba(77, 141, 180, 0.96) 100%)';
                 navbar.style.backdropFilter = 'blur(10px)';
             } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.background = 'linear-gradient(135deg, rgba(21, 96, 178, 0.94) 0%, rgba(42, 74, 158, 0.94) 55%, rgba(77, 141, 180, 0.94) 100%)';
+                navbar.style.backdropFilter = 'blur(14px)';
             }
         }
     });
+}
+
+function closeMobileMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    const navToggle = document.querySelector('.nav-hamburger, .nav-toggle');
+    if (navMenu) navMenu.classList.remove('active', 'open');
+    if (navToggle) {
+        navToggle.classList.remove('active', 'open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    }
 }
 
 // Smooth scrolling for navigation links
