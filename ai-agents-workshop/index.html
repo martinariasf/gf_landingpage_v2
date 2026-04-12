@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agents Workshop - GF Innovative Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- ========== SLIDE 1: TITLE & TEAM ========== -->
+<div class="slide slide--dark active">
+  <div class="parallax-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="grid-overlay"></div>
+  <div class="content content--center">
+    <p class="caption fade-in" style="letter-spacing:4px; margin-bottom:16px;">GF INNOVATIVE SOLUTIONS</p>
+    <h1 class="fade-in-up" style="font-size:52px;">AI Agents <span class="highlight">Workshop</span></h1>
+    <p style="font-size:19px; margin-top:12px; opacity:0.7;" class="fade-in-up fade-in-delay-1">From Chat to Autonomous AI Systems</p>
+    <p style="margin-top:24px; opacity:0.4; font-size:15px;" class="fade-in-up fade-in-delay-3">April 14, 2026</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 2: ABOUT MARTIN (LANDING) ========== -->
+<div class="slide slide--dark slide-landing">
+  <div class="parallax-bg"><div class="orb orb-3"></div></div>
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Introduction</span>
+  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
+    <div class="landing-content">
+      <h2 class="landing-el landing-el-1">Martin Arias</h2>
+      <p class="highlight landing-el landing-el-2" style="font-size:20px; font-weight:600; margin-bottom:24px;">CTO &amp; Co-Founder, GF Innovative Solutions</p>
+      <ul class="bullets landing-el landing-el-3">
+        <li>Developer Engineer</li>
+        <li>AI Manager for a SME Automotive Company</li>
+        <li>Ex-Innovation Startup Consultor for EU (EIT)</li>
+        <li>Curious person</li>
+      </ul>
+    </div>
+    <div class="landing-el landing-el-4" style="display:flex; justify-content:center; align-items:center;">
+      <img src="images/Logo_GF_-_B_N_Chico.png" alt="GF Innovative Solutions" style="width:100%; max-width:320px;">
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 3: THE HOOK - LIVE DEMO ========== -->
+<div class="slide slide--accent">
+  <div class="content content--center">
+    <p class="caption" style="letter-spacing:4px; margin-bottom:16px; color:rgba(255,255,255,0.8);">LIVE DEMO</p>
+    <h1 style="font-size:56px; color:var(--white);">AI Agent Updates<br>a Website in Real-Time</h1>
+    <p style="font-size:20px; margin-top:32px; opacity:0.85;">OpenClaw &rarr; Website &rarr; Workshop time updated to "To be discussed"</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 4: PARTICIPANT INTROS ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div></div>
+  <div class="content content--center">
+    <h2 class="section-title" style="font-size:56px;">Your Turn</h2>
+    <div style="margin-top:40px; max-width:700px; margin-left:auto; margin-right:auto;">
+      <ul class="bullets" style="text-align:left;">
+        <li>Your <span class="highlight bold">name</span> &amp; role</li>
+        <li>What <span class="highlight bold">process</span> would you want to automate like that?</li>
+      </ul>
+    </div>
+    <p class="caption" style="margin-top:40px;">Max 1 minute each</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 5: AGENDA ========== -->
+<div class="slide slide--dark">
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Agenda</span>
+  <div class="content content--center" style="max-width:800px; z-index:1; position:relative;">
+    <h2 class="fade-in-up">Today's Journey</h2>
+    <ol style="list-style:none; counter-reset:agenda; margin-top:16px;">
+      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-1">
+        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">1</span>
+        <span>From Chat to Agents <span class="highlight">&mdash; the shift</span></span>
+      </li>
+      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-1">
+        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">2</span>
+        <span>The Agent Loop <span class="highlight">&mdash; how agents think</span></span>
+      </li>
+      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-2">
+        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">3</span>
+        <span>Platform Landscape <span class="highlight">&mdash; N8N, Claude Code, OpenClaw</span></span>
+      </li>
+      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-2">
+        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">4</span>
+        <span>Context, Tools &amp; Skills <span class="highlight">&mdash; the building blocks</span></span>
+      </li>
+      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-3">
+        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">5</span>
+        <span>Live Demos &amp; Hands-on <span class="highlight">&mdash; build together</span></span>
+      </li>
+      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-3">
+        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">6</span>
+        <span>Limitations of AI <span class="highlight">&mdash; what to watch out for</span></span>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<!-- ========== SLIDE 6: SECTION - CHAT VS AGENTS ========== -->
+<div class="slide slide--blue">
+  <div class="content content--center">
+    <p class="section-subtitle" style="color:var(--green);">01</p>
+    <h1 class="section-title" style="font-size:64px;">Chat vs Agents</h1>
+    <p class="section-subtitle">The fundamental shift</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 7: CHAT VS AGENTS VISUAL ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <span class="slide-label">Chat vs Agents</span>
+  <div class="content content--center">
+    <h2 style="margin-bottom:32px;">Two ways to use AI</h2>
+    <div class="vs-container">
+      <div class="vs-box card" style="min-height:280px; position:relative; overflow:hidden;">
+        <img src="images/pingpong.jpg" alt="Ping pong" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.25;">
+        <div style="position:relative; z-index:1; padding:24px; text-align:center;">
+          <h3 style="font-size:28px; margin-bottom:8px;">Chat</h3>
+          <p class="vs-label">Question &rarr; Answer</p>
+          <p style="margin-top:12px; opacity:0.8; font-size:18px;">You ask, AI replies,<br><strong>you do the work</strong></p>
+        </div>
+      </div>
+      <div class="vs-divider">VS</div>
+      <div class="vs-box card" style="min-height:280px; position:relative; overflow:hidden; border-color:var(--green);">
+        <img src="images/robot.jpg" alt="Robot" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.25;">
+        <div style="position:relative; z-index:1; padding:24px; text-align:center;">
+          <h3 style="font-size:28px; margin-bottom:8px;">Agent</h3>
+          <p class="vs-label">Goal &rarr; Result</p>
+          <p style="margin-top:12px; opacity:0.8; font-size:18px;">You set a goal,<br><strong>AI does the work</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 8: SECTION - AGENT LOOP ========== -->
+<div class="slide slide--blue">
+  <div class="content content--center">
+    <p class="section-subtitle" style="color:var(--green);">02</p>
+    <h1 class="section-title">The Agent Loop</h1>
+    <p class="section-subtitle">How agents think and act</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 9: AGENT LOOP DIAGRAM ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-3"></div></div>
+  <div class="grid-overlay"></div>
+  <span class="slide-label">The Agent Loop</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2 style="margin-bottom:8px;">Observe &rarr; Think &rarr; Act</h2>
+    <p class="caption" style="margin-bottom:32px;">The agent keeps looping until the task is complete</p>
+    <div class="loop-circular">
+      <svg class="loop-svg" viewBox="0 0 420 380" fill="none">
+        <defs>
+          <marker id="ah" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#8BC07C"/></marker>
+        </defs>
+        <!-- Curved arrows between nodes -->
+        <path d="M 255 60 Q 370 110 330 240" stroke="#8BC07C" stroke-width="3" stroke-dasharray="8 4" marker-end="url(#ah)" opacity="0.7" class="loop-path"/>
+        <path d="M 290 290 Q 210 370 130 290" stroke="#8BC07C" stroke-width="3" stroke-dasharray="8 4" marker-end="url(#ah)" opacity="0.7" class="loop-path"/>
+        <path d="M 90 240 Q 50 110 165 60" stroke="#8BC07C" stroke-width="3" stroke-dasharray="8 4" marker-end="url(#ah)" opacity="0.7" class="loop-path"/>
+      </svg>
+      <div class="loop-node loop-node--top" style="background:rgba(139,192,124,0.15); border:2px solid var(--green);" data-tooltip="Read files, check tools, gather information">
+        <img src="images/observe.jpg" alt="">
+        <span style="font-size:20px; font-weight:700;">OBSERVE</span>
+        <span class="node-label">Read context</span>
+      </div>
+      <div class="loop-node loop-node--right" style="background:rgba(33,29,88,0.6); border:2px solid rgba(255,255,255,0.2);" data-tooltip="Plan the next step based on what it observed">
+        <img src="images/think.jpg" alt="">
+        <span style="font-size:20px; font-weight:700;">THINK</span>
+        <span class="node-label">Plan next step</span>
+      </div>
+      <div class="loop-node loop-node--left" style="background:rgba(139,192,124,0.15); border:2px solid var(--green);" data-tooltip="Execute: write code, call API, send email, etc.">
+        <img src="images/act.jpg" alt="">
+        <span style="font-size:20px; font-weight:700;">ACT</span>
+        <span class="node-label">Execute action</span>
+      </div>
+    </div>
+    <p class="loop-return" style="margin-top:24px;">&#x21BB; Repeats until the goal is achieved</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 10: LOOP IN THE DEMO ========== -->
+<div class="slide slide--dark">
+  <span class="slide-label">The Agent Loop</span>
+  <div class="content content--left" style="max-width:900px; z-index:1; position:relative;">
+    <h2>In the demo, <span class="highlight">Camila</span> did this:</h2>
+    <div style="margin-top:24px; display:flex; align-items:flex-start; gap:24px;">
+      <img src="images/Camila.png" alt="Camila" style="width:80px; height:80px; border-radius:50%; border:2px solid var(--green); flex-shrink:0; margin-top:8px;">
+      <div style="flex:1;">
+        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="color:var(--green); font-weight:700; min-width:90px;">Observe</span>
+          <span style="opacity:0.8;">"I received an instruction to update the workshop time"</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="color:var(--green); font-weight:700; min-width:90px;">Think</span>
+          <span style="opacity:0.8;">"I need to find the workshop page and change the time"</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="color:var(--green); font-weight:700; min-width:90px;">Act</span>
+          <span style="opacity:0.8;">"Update website &rarr; change time to 'To be discussed'"</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px; padding:14px 0;">
+          <span style="color:var(--green); font-weight:700; min-width:90px;">&#x2705; Done</span>
+          <span style="opacity:0.8;">"Website updated. Task complete."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 11: 4 COMPONENTS ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div></div>
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Building Blocks</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2 style="margin-bottom:28px;">4 Components of an Agent</h2>
+    <div class="components-grid">
+      <div class="component-card fade-in-up">
+        <img class="comp-img" src="images/brain.jpg" alt="AI Brain">
+        <div><h3>LLM</h3><p>The brain &mdash; Claude, GPT, Gemini</p></div>
+      </div>
+      <div class="component-card fade-in-up fade-in-delay-1">
+        <img class="comp-img" src="images/loop.jpg" alt="Loop">
+        <div><h3>Loop</h3><p>Keeps going until the task is done</p></div>
+      </div>
+      <div class="component-card fade-in-up fade-in-delay-2">
+        <img class="comp-img" src="images/tools.jpg" alt="Tools">
+        <div><h3>Tools</h3><p>Email, Calendar, APIs via MCP</p></div>
+      </div>
+      <div class="component-card fade-in-up fade-in-delay-3">
+        <img class="comp-img" src="images/context.jpg" alt="Context">
+        <div><h3>Context</h3><p>Your business knowledge &amp; memory</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 12: DRIVING ANALOGY ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-2"></div></div>
+  <span class="slide-label">Building Blocks</span>
+  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
+    <div>
+      <h2>Think of it like <span class="highlight">learning to drive</span></h2>
+      <ul class="bullets" style="margin-top:20px;">
+        <li>Learn <strong>how to drive</strong> &mdash; pedals, steering, brakes</li>
+        <li>Then jump into <strong>any car</strong></li>
+        <li>Agent platforms = <span class="highlight bold">different cars</span></li>
+        <li>Same driving skills work everywhere</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/car.jpg" alt="Car" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 13: SECTION - PLATFORM COMPARISON ========== -->
+<div class="slide slide--blue">
+  <div class="content content--center">
+    <p class="section-subtitle" style="color:var(--green);">03</p>
+    <h1 class="section-title" style="font-size:52px;">Platform Landscape</h1>
+    <p class="section-subtitle">N8N &middot; Claude Code &middot; OpenClaw</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 14: COMPARISON TABLE ========== -->
+<div class="slide slide--dark">
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Platform Comparison</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2 style="margin-bottom:16px;">At a Glance</h2>
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <th style="width:18%;"></th>
+          <th style="width:27%;"><img src="images/n8n-logo.svg" alt="N8N" style="height:24px; vertical-align:middle; margin-right:8px; filter:brightness(0) invert(1);">N8N</th>
+          <th style="width:28%;"><img src="images/claude-logo.svg" alt="Claude" style="height:24px; vertical-align:middle; margin-right:8px; filter:brightness(0) invert(1);">Claude Code</th>
+          <th style="width:27%;"><img src="images/openclaw-logo" alt="OpenClaw" style="height:24px; vertical-align:middle; margin-right:8px;">OpenClaw</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="stagger-reveal stagger-1">
+          <td style="font-weight:600;">Type</td>
+          <td>Visual workflow builder</td>
+          <td>Code-first agent harness</td>
+          <td>Autonomous agent platform</td>
+        </tr>
+        <tr class="stagger-reveal stagger-2">
+          <td style="font-weight:600;">Readiness</td>
+          <td><span class="tag tag--green">Production-ready</span></td>
+          <td><span class="tag tag--green">Stable</span></td>
+          <td><span class="tag tag--orange">Early stage</span></td>
+        </tr>
+        <tr class="stagger-reveal stagger-3">
+          <td style="font-weight:600;">Power</td>
+          <td><span class="tag tag--blue">Moderate</span></td>
+          <td><span class="tag tag--green">High</span></td>
+          <td><span class="tag tag--green">Very High</span></td>
+        </tr>
+        <tr class="stagger-reveal stagger-4">
+          <td style="font-weight:600;">Key strength</td>
+          <td>Open source, German-based, SOC2, enterprise-ready</td>
+          <td>Skills (/plugins), sessions, auto-approve, dispatch</td>
+          <td>Most autonomous, sub-agents, fallback models, OAuth</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ========== SLIDE 15: READINESS VS POWER ========== -->
+<div class="slide slide--dark">
+  <span class="slide-label">Platform Comparison</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2 style="margin-bottom:8px;">Readiness vs Power</h2>
+    <div class="chart-container" id="readinessChart">
+      <div class="chart-quadrants"><div></div><div></div><div></div><div></div></div>
+      <div class="chart-axis-x"></div>
+      <div class="chart-axis-y"></div>
+      <div class="chart-label-x">POWER &rarr;</div>
+      <div class="chart-label-y">READINESS &rarr;</div>
+      <div class="chart-point n8n" style="left:30%; bottom:82%;" data-tooltip="Open source, enterprise-ready, visual workflows">
+        <div class="dot"></div><span class="label"><img src="images/n8n-logo.svg" alt="" style="height:16px; vertical-align:middle; margin-right:4px; filter:brightness(0) invert(1);">N8N</span>
+      </div>
+      <div class="chart-point claude" style="left:65%; bottom:74%;" data-tooltip="Skills, sessions, browser, dispatch to phone">
+        <div class="dot"></div><span class="label"><img src="images/claude-logo.svg" alt="" style="height:16px; vertical-align:middle; margin-right:4px; filter:brightness(0) invert(1);">Claude Code</span>
+      </div>
+      <div class="chart-point openclaw" style="left:87%; bottom:28%;" data-tooltip="Most powerful, but requires setup investment">
+        <div class="dot"></div><span class="label"><img src="images/openclaw-logo" alt="" style="height:16px; vertical-align:middle; margin-right:4px;">OpenClaw</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 16: SECTION - CONTEXT & SKILLS ========== -->
+<div class="slide slide--blue">
+  <div class="content content--center">
+    <p class="section-subtitle" style="color:var(--green);">04</p>
+    <h1 class="section-title" style="font-size:56px;">Context, Tools<br>&amp; Skills</h1>
+    <p class="section-subtitle">The building blocks of every agent</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 17: CONTEXT ENGINEERING ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div><div class="orb orb-3"></div></div>
+  <span class="slide-label">Context Engineering</span>
+  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
+    <div>
+      <h2><span style="text-decoration:line-through; opacity:0.4;">Prompt Engineering</span></h2>
+      <h2 class="highlight" style="margin-top:-8px;">Context Engineering</h2>
+      <ul class="bullets" style="margin-top:24px;">
+        <li>The models are <strong>already good</strong></li>
+        <li>What matters is the <strong>context</strong> you provide</li>
+        <li>Think: <span class="highlight">onboarding a new employee</span></li>
+        <li>You'd explain the business, the tools, the processes</li>
+        <li>Same with agents &mdash; <strong>context is everything</strong></li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/onboarding.jpg" alt="Onboarding" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 18: TOOLS & CONNECTIONS ========== -->
+<div class="slide slide--dark">
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Tools</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2 style="margin-bottom:8px;">Connecting Tools</h2>
+    <p class="caption" style="margin-bottom:24px;">What tools can agents use?</p>
+    <div class="tool-row">
+      <div class="tool-item" data-tooltip="Email & communication">
+        <div class="tool-icon" style="background:#fff; padding:10px;"><img src="images/gmail-logo.svg" alt="" style="width:100%; height:100%;"></div><span>Gmail</span>
+      </div>
+      <div class="tool-item" data-tooltip="Project management">
+        <div class="tool-icon" style="background:#fff; padding:10px;"><img src="images/notion-logo.svg" alt="" style="width:100%; height:100%; filter:brightness(0);"></div><span>Notion</span>
+      </div>
+      <div class="tool-item" data-tooltip="File storage">
+        <div class="tool-icon" style="background:#fff; padding:10px;"><img src="images/googledrive-logo.svg" alt="" style="width:100%; height:100%;"></div><span>Drive</span>
+      </div>
+      <div class="tool-item" data-tooltip="Calendar & scheduling">
+        <div class="tool-icon" style="background:#fff; padding:10px;"><img src="images/googlecalendar-logo.svg" alt="" style="width:100%; height:100%;"></div><span>Calendar</span>
+      </div>
+      <div class="tool-item" data-tooltip="Accounting">
+        <div class="tool-icon" style="background:#fff; padding:6px;"><img src="images/sevdesk-logo.svg" alt="" style="width:100%; height:100%;"></div><span>sevDesk</span>
+      </div>
+      <div class="tool-item" data-tooltip="Messaging">
+        <div class="tool-icon" style="background:#fff; padding:10px;"><img src="images/telegram-logo.svg" alt="" style="width:100%; height:100%;"></div><span>Telegram</span>
+      </div>
+      <div class="tool-item" data-tooltip="Social media">
+        <div class="tool-icon" style="background:#fff; padding:10px;"><img src="images/instagram-logo.svg" alt="" style="width:100%; height:100%;"></div><span>Instagram</span>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px; font-size:22px; margin-bottom:16px;">How do agents connect to them?</h3>
+    <div class="conn-types">
+      <div class="conn-type" data-tooltip="Model Context Protocol - universal standard by Anthropic">
+        <h4>MCP</h4>
+        <p>Universal protocol</p>
+      </div>
+      <div class="conn-type" data-tooltip="Direct API calls to services">
+        <h4>API</h4>
+        <p>Direct integration</p>
+      </div>
+      <div class="conn-type" data-tooltip="Command-line tools the agent can execute">
+        <h4>CLI</h4>
+        <p>Command line</p>
+      </div>
+      <div class="conn-type" data-tooltip="Browser automation for any web tool">
+        <h4>Browser</h4>
+        <p>Web automation</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== OUR AI TEAM (part of Tools section) ========== -->
+<div class="slide slide--dark">
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Tools</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2 style="margin-bottom:20px;">Our AI Team</h2>
+    <div class="ecosystem">
+      <div class="agent-row">
+        <img src="images/Otto.png" alt="Otto" class="agent-avatar">
+        <span class="agent-name">Otto</span>
+        <span class="agent-role">DevOps &amp; Infrastructure</span>
+        <span class="agent-arrow">&#x27A1;</span>
+        <span class="agent-tool">N8N</span>
+        <span class="agent-tool">Website</span>
+        <span class="agent-tool">Notion</span>
+        <span class="agent-tool">Other Agents</span>
+      </div>
+      <div class="agent-row">
+        <img src="images/Molly.png" alt="Molly" class="agent-avatar">
+        <span class="agent-name">Molly</span>
+        <span class="agent-role">Finance</span>
+        <span class="agent-arrow">&#x27A1;</span>
+        <span class="agent-tool">sevDesk</span>
+        <span class="agent-tool">Email</span>
+      </div>
+      <div class="agent-row">
+        <img src="images/Carlos.png" alt="Carlos" class="agent-avatar">
+        <span class="agent-name">Carlos</span>
+        <span class="agent-role">Operations</span>
+        <span class="agent-arrow">&#x27A1;</span>
+        <span class="agent-tool">Internet</span>
+        <span class="agent-tool">Notion</span>
+      </div>
+      <div class="agent-row">
+        <img src="images/Camila.png" alt="Camila" class="agent-avatar">
+        <span class="agent-name">Camila</span>
+        <span class="agent-role">Projects</span>
+        <span class="agent-arrow">&#x27A1;</span>
+        <span class="agent-tool">Website Arena</span>
+        <span class="agent-tool">Drive</span>
+      </div>
+      <div class="agent-row">
+        <img src="images/Viktor.png" alt="Viktor" class="agent-avatar">
+        <span class="agent-name">Viktor</span>
+        <span class="agent-role">Sales &amp; Marketing</span>
+        <span class="agent-arrow">&#x27A1;</span>
+        <span class="agent-tool">NanoBananaPro</span>
+        <span class="agent-tool">Instagram</span>
+        <span class="agent-tool">Email</span>
+      </div>
+      <div class="agent-row">
+        <img src="images/Brain.jpg" alt="Brain" class="agent-avatar">
+        <span class="agent-name">Brain</span>
+        <span class="agent-role">Knowledge</span>
+        <span class="agent-arrow">&#x27A1;</span>
+        <span class="agent-tool">Knowledge</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 19: LIVE DEMO - N8N WORKFLOW ========== -->
+<div class="slide slide--accent">
+  <div class="content content--center">
+    <p class="caption" style="letter-spacing:4px; margin-bottom:16px; color:rgba(255,255,255,0.8);">LIVE DEMO</p>
+    <h1 style="font-size:48px; color:var(--white);">Creating an AI Agent<br>Workflow in N8N</h1>
+    <p style="font-size:20px; margin-top:32px; opacity:0.85;">Building a workflow from scratch &mdash; visual, no code needed</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 20: SKILLS ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-2"></div></div>
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Skills</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2>Skills = <span class="highlight">SOPs for AI</span></h2>
+    <p style="margin-bottom:28px; font-size:19px; opacity:0.7;">Standard Operating Procedures &mdash; explain a process once, reuse forever</p>
+
+    <div class="skill-flow">
+      <div class="skill-step">
+        <h4>1. Walk through</h4>
+      </div>
+      <span class="skill-arrow">&#x27A1;</span>
+      <div class="skill-step">
+        <h4>2. Succeed</h4>
+      </div>
+      <span class="skill-arrow">&#x27A1;</span>
+      <div class="skill-step">
+        <h4>3. Create skill</h4>
+      </div>
+      <span class="skill-arrow">&#x27A1;</span>
+      <div class="skill-step" style="border-color:var(--green);">
+        <h4 class="highlight">4. Iterate</h4>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:32px; text-align:left; max-width:900px; margin-left:auto; margin-right:auto;">
+      <div>
+        <h3 style="font-size:20px; margin-bottom:8px;">How it works</h3>
+        <ul class="bullets">
+          <li>Only <strong>name + description</strong> in context</li>
+          <li>Full skill loads <strong>only when needed</strong></li>
+          <li>Saves tokens, keeps agent fast</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:20px; margin-bottom:8px;">Golden rule</h3>
+        <ul class="bullets">
+          <li><strong>Build your own</strong> skills</li>
+          <li>Don't download random skills</li>
+          <li>Your agent needs <em>your</em> context</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 23: LIVE DEMOS SECTION ========== -->
+<div class="slide slide--blue">
+  <div class="content content--center">
+    <p class="section-subtitle" style="color:var(--green);">05</p>
+    <h1 class="section-title">Live Demos</h1>
+    <p class="section-subtitle">Claude Code + Browser Interaction</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 24: CLAUDE CODE DEMO ========== -->
+<div class="slide slide--accent">
+  <div class="content content--center">
+    <p class="caption" style="letter-spacing:4px; margin-bottom:16px; color:rgba(255,255,255,0.8);">LIVE DEMO</p>
+    <h1 style="font-size:48px; color:var(--white);">Claude Code +<br>Browser Interaction</h1>
+    <div style="margin-top:32px; font-size:20px; opacity:0.9; text-align:left; max-width:600px; margin-left:auto; margin-right:auto;">
+      <ul class="bullets">
+        <li>Browsing the web autonomously</li>
+        <li>Reading &amp; acting on web pages</li>
+        <li>Running skills in real-time</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 25: CLAUDE CODE PRO TIPS ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div></div>
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Pro Tips</span>
+  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
+    <div>
+      <h2>Claude Code <span class="highlight">Pro Tips</span></h2>
+      <ul class="bullets" style="margin-top:20px;">
+        <li>Install skills: <code>/plugins</code> &mdash; try <strong>Superpowers</strong></li>
+        <li>Resume: <code>claude --continue</code> or <code>--resume</code></li>
+        <li>Keep sessions alive with <strong>tmux</strong></li>
+        <li>Auto-approve safe edits after planning</li>
+        <li><strong>Dispatch:</strong> continue from your phone</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/terminal.jpg" alt="Terminal" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 26: PAUSE ========== -->
+<div class="slide slide--dark">
+  <div class="content content--center">
+    <div class="big-number">5</div>
+    <h2 style="margin-top:16px; font-weight:300;">Minute Break</h2>
+    <p class="caption" style="margin-top:24px;">Grab a coffee, stretch, think about your questions</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 27: KEY INSIGHT ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-3"></div><div class="orb orb-2"></div></div>
+  <span class="slide-label">Key Insight</span>
+  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
+    <div>
+      <div class="quote" style="font-size:28px;">
+        "Scale for <span class="highlight">productivity</span>,<br>not for what looks cool."
+      </div>
+      <ul class="bullets" style="margin-top:28px;">
+        <li>Start with <strong>1 agent</strong>, build up</li>
+        <li>Build your <strong>own skills</strong></li>
+        <li>Automate <strong>3-5 tiny processes</strong> each week</li>
+        <li>It compounds over weeks and months</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/productivity.jpg" alt="Productivity" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 30: NEXT STEPS ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div></div>
+  <span class="slide-label">Next Steps</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2 style="margin-bottom:24px;">Your Roadmap</h2>
+    <div class="three-col">
+      <div class="card" style="text-align:center; overflow:hidden; padding:0;">
+        <img src="images/week1-setup.jpg" alt="Setting up" style="width:100%; height:140px; object-fit:cover;">
+        <div style="padding:20px;">
+          <h3 style="font-size:22px;">Week 1</h3>
+          <p style="font-size:16px; opacity:0.8;">Pick your first workflow<br>Set up your agent<br>Connect 1-2 tools</p>
+        </div>
+      </div>
+      <div class="card" style="text-align:center; overflow:hidden; padding:0;">
+        <img src="images/week2-build.jpg" alt="Building together" style="width:100%; height:140px; object-fit:cover;">
+        <div style="padding:20px;">
+          <h3 style="font-size:22px;">Week 2-3</h3>
+          <p style="font-size:16px; opacity:0.8;">Build 3-5 skills<br>Iterate &amp; improve<br>Add memory</p>
+        </div>
+      </div>
+      <div class="card" style="text-align:center; overflow:hidden; padding:0;">
+        <img src="images/month2-scale.jpg" alt="Scaling up" style="width:100%; height:140px; object-fit:cover;">
+        <div style="padding:20px;">
+          <h3 style="font-size:22px;">Month 2+</h3>
+          <p style="font-size:16px; opacity:0.8;">Add more agents<br>Chain skills together<br>Schedule automations</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 31: WHERE TO START ========== -->
+<div class="slide slide--dark">
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Getting Started</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2>Where to Start?</h2>
+    <p style="font-size:20px; opacity:0.7; margin-bottom:28px;">Ask yourself: <span class="highlight bold">which workflows do you want to automate?</span></p>
+    <div class="three-col" style="max-width:1100px;">
+      <div class="card" style="text-align:center; padding:32px 24px;">
+        <img src="images/n8n-logo.svg" alt="N8N" style="height:48px; margin-bottom:16px; filter:brightness(0) invert(1);">
+        <h3 style="font-size:24px; margin-bottom:8px;">N8N</h3>
+        <p style="font-size:16px; opacity:0.8; line-height:1.5;">Visual workflow builder<br>Open source &amp; enterprise-ready<br>Easiest to get started</p>
+        <p style="margin-top:12px; font-size:14px;"><span class="tag tag--green">Start here</span></p>
+      </div>
+      <div class="card" style="text-align:center; padding:32px 24px;">
+        <img src="images/claude-logo.svg" alt="Claude Code" style="height:48px; margin-bottom:16px; filter:brightness(0) invert(1);">
+        <h3 style="font-size:24px; margin-bottom:8px;">Claude Code</h3>
+        <p style="font-size:16px; opacity:0.8; line-height:1.5;">Skills &amp; browser automation<br>Sessions, dispatch to phone<br>Great for custom workflows</p>
+        <p style="margin-top:12px; font-size:14px;"><span class="tag tag--green">Versatile</span></p>
+      </div>
+      <div class="card" style="text-align:center; padding:32px 24px;">
+        <img src="images/openclaw-logo" alt="OpenClaw" style="height:48px; margin-bottom:16px;">
+        <h3 style="font-size:24px; margin-bottom:8px;">OpenClaw</h3>
+        <p style="font-size:16px; opacity:0.8; line-height:1.5;">Most autonomous agent<br>Sub-agents &amp; fallback models<br>Invest 2 weeks to set up</p>
+        <p style="margin-top:12px; font-size:14px;"><span class="tag tag--orange">Advanced</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 32: SECTION - LIMITATIONS ========== -->
+<div class="slide slide--blue">
+  <div class="content content--center">
+    <p class="section-subtitle" style="color:var(--green);">06</p>
+    <h1 class="section-title" style="font-size:56px;">Limitations of AI</h1>
+    <p class="section-subtitle">What to watch out for</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 33: LIMITATIONS CONTENT ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div><div class="orb orb-3"></div></div>
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Limitations</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h2 style="margin-bottom:24px;">The Other Side of the Coin</h2>
+    <div class="limitations-grid">
+
+      <div class="limitation-card stagger-reveal stagger-1" data-tooltip="Classified data must NOT be processed by public AI. Use only approved, internal AI tools.">
+        <div class="limitation-img"><img src="images/caveman.jpg" alt="Data Protection"><div class="limitation-img-overlay"></div></div>
+        <div class="limitation-body">
+          <h3><span class="highlight">Data Security</span></h3>
+          <p>&ldquo;Others have technology&hellip;<br>but we have <strong>Datenschutz</strong>&rdquo;</p>
+          <p class="caption" style="margin-top:6px;">EU AI Act &middot; GDPR &middot; No classified data in public AI</p>
+        </div>
+      </div>
+
+      <div class="limitation-card stagger-reveal stagger-2" data-tooltip="Training large models uses massive energy and water resources">
+        <div class="limitation-img"><img src="images/environment.jpg" alt="Environment"><div class="limitation-img-overlay"></div></div>
+        <div class="limitation-body">
+          <h3><span class="highlight">Environment</span></h3>
+          <p>Training &amp; running AI models<br>has a <strong>significant carbon footprint</strong></p>
+        </div>
+      </div>
+
+      <div class="limitation-card stagger-reveal stagger-3" data-tooltip="API costs, compute, infrastructure add up quickly">
+        <div class="limitation-img"><img src="images/costs.jpg" alt="Costs"><div class="limitation-img-overlay"></div></div>
+        <div class="limitation-body">
+          <h3><span class="highlight">Costs</span></h3>
+          <p>API tokens, compute &amp; infra<br><strong>add up fast</strong> at scale</p>
+        </div>
+      </div>
+
+      <div class="limitation-card stagger-reveal stagger-4" data-tooltip="AI can generate confident but wrong answers when lacking context">
+        <div class="limitation-img"><img src="images/hallucination.jpg" alt="Hallucinations"><div class="limitation-img-overlay"></div></div>
+        <div class="limitation-body">
+          <h3><span class="highlight">Hallucinations</span></h3>
+          <p>Confident but <strong>wrong</strong> answers<br>when context is missing</p>
+        </div>
+      </div>
+
+      <div class="limitation-card stagger-reveal stagger-5" data-tooltip="Malicious inputs can trick AI into ignoring instructions or leaking data">
+        <div class="limitation-img"><img src="images/prompt-injection.jpg" alt="Prompt Injection"><div class="limitation-img-overlay"></div></div>
+        <div class="limitation-body">
+          <h3><span class="highlight">Prompt Injection</span></h3>
+          <p>Malicious inputs can <strong>trick AI</strong><br>into ignoring its instructions</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 34: DATA SECURITY DEEP DIVE ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-2"></div></div>
+  <span class="slide-label">Data Security</span>
+  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
+    <div>
+      <h2>Data Protection<br>&amp; <span class="highlight">AI</span></h2>
+      <ul class="bullets" style="margin-top:20px;">
+        <li><strong>Classified data</strong> must NOT go into public AI</li>
+        <li>Use only <strong>approved internal</strong> AI tools</li>
+        <li>EU AI Act: biometric surveillance &amp; automated hiring &rarr; <strong style="color:#FF6D5A;">forbidden</strong></li>
+        <li>Always review outputs for <strong>data protection</strong> compliance</li>
+        <li>Know your company&rsquo;s <strong>data classification</strong> levels</li>
+      </ul>
+    </div>
+    <div style="position:relative;">
+      <img src="images/data-security.jpg" alt="Data Security" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
+      <div style="position:absolute; bottom:16px; left:16px; right:16px; background:rgba(15,13,46,0.85); border-radius:10px; padding:14px 18px; text-align:center;">
+        <p style="font-size:15px; font-weight:600; color:var(--green);">Rule of thumb: if it&rsquo;s confidential, keep it off public AI</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== EXERCISE SECTION: DESIGN YOUR AGENT ========== -->
+<div class="slide slide--blue">
+  <div class="content content--center">
+    <p class="section-subtitle" style="color:var(--green);">YOUR TURN</p>
+    <h1 class="section-title">Design Your Agent</h1>
+  </div>
+</div>
+
+<!-- ========== EXERCISE ========== -->
+<div class="slide slide--dark">
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Exercise</span>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <div class="exercise-box">
+      <h3 style="font-size:28px; margin-bottom:20px;">Design Your First Agent</h3>
+      <p style="font-size:18px; margin-bottom:20px;">In pairs, take 5 minutes to discuss:</p>
+      <ol>
+        <li>Pick <strong>1 workflow</strong> you want to automate</li>
+        <li>What would <strong>your prompt</strong> say?</li>
+        <li>Which <strong>3 tools</strong> does it need?</li>
+        <li>What's the <strong>first skill</strong> you'd create?</li>
+      </ol>
+      <p style="margin-top:20px; font-size:16px; opacity:0.7;">We'll share 2-3 ideas with the group</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 35: CONTACT ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-2"></div></div>
+  <span class="slide-label">Contact</span>
+  <div class="content content--center" style="z-index:1; position:relative; max-width:900px;">
+    <h2>Get in Touch</h2>
+
+    <!-- Team members -->
+    <div style="margin-top:28px; display:flex; justify-content:center; gap:48px;">
+      <div style="text-align:center;">
+        <div class="team-avatar" style="background:linear-gradient(135deg, var(--green), #5a9c4e); width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:24px; margin:0 auto 8px;">MA</div>
+        <span style="font-size:20px; font-weight:700; display:block;">Mart&iacute;n Arias</span>
+        <span style="font-size:15px; opacity:0.7;">CTO &amp; Co-Founder</span>
+      </div>
+      <div style="text-align:center;">
+        <div class="team-avatar" style="background:linear-gradient(135deg, #6366f1, #4f46e5); width:72px; height:72px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:24px; margin:0 auto 8px;">OG</div>
+        <span style="font-size:20px; font-weight:700; display:block;">Omar Garc&iacute;a</span>
+        <span style="font-size:15px; opacity:0.7;">Co-Founder</span>
+      </div>
+    </div>
+    <div style="margin-top:20px; display:flex; justify-content:center; gap:48px;">
+      <div style="text-align:center;">
+        <div class="team-avatar" style="background:linear-gradient(135deg, #ec4899, #db2777); width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; margin:0 auto 6px;">PA</div>
+        <span style="font-size:16px; font-weight:600; display:block;">Pilar Arias</span>
+        <span style="font-size:13px; opacity:0.7;">Marketing &amp; Sales</span>
+      </div>
+      <div style="text-align:center;">
+        <div class="team-avatar" style="background:linear-gradient(135deg, #f59e0b, #d97706); width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; margin:0 auto 6px;">MH</div>
+        <span style="font-size:16px; font-weight:600; display:block;">Dr. Martin H&uuml;ppauff</span>
+        <span style="font-size:13px; opacity:0.7;">Strategy</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:28px; max-width:700px; text-align:center; border-color:var(--green); background:rgba(139,192,124,0.06);">
+      <h3 style="font-size:20px; color:var(--green); margin-bottom:12px;">AI Transformation Consultancy</h3>
+      <p style="font-size:18px; opacity:0.85; line-height:1.6;">We offer <strong>consultancy hours</strong> to support your company&rsquo;s<br><span class="highlight bold">AI Transformation journey</span> &mdash; from strategy to implementation.</p>
+      <p style="font-size:16px; margin-top:16px; opacity:0.6;">Let&rsquo;s discuss how AI agents can work for your business.</p>
+    </div>
+    <div style="margin-top:20px;">
+      <img src="images/Logo_GF_-_B_N_Chico.png" alt="GF Innovative Solutions" style="max-width:180px; opacity:0.7;">
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 33: THANK YOU ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+  <div class="content content--center" style="z-index:1; position:relative;">
+    <h1 class="section-title" style="font-size:80px; color:var(--green);">Thank You!</h1>
+    <p style="font-size:24px; margin-top:24px; opacity:0.7;">Now go build your first agent.</p>
+    <div style="margin-top:40px;">
+      <div class="qr-code" style="margin:0 auto;">
+        <img src="images/qrcode_www.linkedin.com.png" alt="LinkedIn QR Code">
+      </div>
+      <p class="caption" style="margin-top:12px;">Connect on LinkedIn</p>
+    </div>
+    <p style="margin-top:32px; font-size:14px; opacity:0.3;">GF Innovative Solutions &middot; 2026</p>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<!-- PROGRESS BAR & COUNTER -->
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-counter" id="slideCounter"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
