@@ -294,6 +294,13 @@ code {
   border: 1px solid rgba(139,192,124,0.18);
   background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(139,192,124,0.08) 100%);
   box-shadow: 0 16px 40px rgba(5, 8, 26, 0.25);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+.agenda-box:hover {
+  transform: translateY(-8px);
+  border-color: var(--green);
+  background: linear-gradient(180deg, rgba(139,192,124,0.18) 0%, rgba(82,132,255,0.16) 100%);
+  box-shadow: 0 18px 42px rgba(139,192,124,0.18);
 }
 .agenda-box-label {
   font-size: 14px;
@@ -542,9 +549,9 @@ code {
 .loop-circular .loop-node {
   position: absolute; z-index: 1; width: 140px; height: 140px;
 }
-.loop-node--top { top: 0; left: 50%; transform: translateX(-50%); }
-.loop-node--right { bottom: 20px; right: 0; }
-.loop-node--left { bottom: 20px; left: 0; }
+.loop-node--top { top: 0; left: 50%; transform: translateX(-50%); width: 140px; height: 140px; }
+.loop-node--right { bottom: 20px; right: 0; width: 140px; height: 140px; }
+.loop-node--left { bottom: 20px; left: 0; width: 140px; height: 140px; }
 .loop-path {
   stroke-dashoffset: 200;
   animation: dashFlow 3s linear infinite;
@@ -558,6 +565,27 @@ code {
   display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
   width: 100%; max-width: 1200px; margin: 0 auto;
 }
+.limitations-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+  gap: 28px;
+  align-items: stretch;
+}
+.limitations-grid--compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: none;
+}
+.data-security-panel {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(139,192,124,0.18);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(139,192,124,0.08) 100%);
+  box-shadow: 0 16px 40px rgba(5, 8, 26, 0.25);
+}
+.data-security-copy .bullets li { font-size: 18px; }
 .limitation-card {
   border-radius: 12px; overflow: hidden;
   background: rgba(255,255,255,0.04);
@@ -619,7 +647,7 @@ code {
   .slide { padding: 40px; }
   h1 { font-size: 40px; }
   h2 { font-size: 32px; }
-  .two-col, .three-col, .agenda-boxes { grid-template-columns: 1fr; gap: 24px; }
+  .two-col, .three-col, .agenda-boxes, .limitations-split, .limitations-grid--compact { grid-template-columns: 1fr; gap: 24px; }
   .vs-container { flex-direction: column; }
   
 }
