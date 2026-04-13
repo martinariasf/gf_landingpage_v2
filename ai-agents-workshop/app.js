@@ -178,6 +178,22 @@
     });
   });
 
+  /* ===== AGENDA HOVER PREVIEW ===== */
+  const agendaItems = document.querySelectorAll('.agenda-item');
+  const agendaPanels = document.querySelectorAll('.agenda-preview-panel');
+
+  function setAgendaPanel(id) {
+    if (!id) return;
+    agendaItems.forEach(item => item.classList.toggle('active', item.dataset.agenda === id));
+    agendaPanels.forEach(panel => panel.classList.toggle('active', panel.dataset.panel === id));
+  }
+
+  agendaItems.forEach(item => {
+    item.addEventListener('mouseenter', () => setAgendaPanel(item.dataset.agenda));
+    item.addEventListener('focus', () => setAgendaPanel(item.dataset.agenda));
+  });
+
   /* ===== INIT ===== */
+  setAgendaPanel('1');
   updateUI();
 })();
