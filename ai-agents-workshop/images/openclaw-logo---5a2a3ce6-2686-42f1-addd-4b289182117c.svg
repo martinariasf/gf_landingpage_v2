@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="90" fill="#1a1a2e"/>
+  <circle cx="100" cy="100" r="70" fill="none" stroke="#00d4ff" stroke-width="4"/>
+  <path d="M70 80 Q100 50 130 80 Q140 100 130 120 Q100 150 70 120 Q60 100 70 80Z" fill="none" stroke="#00d4ff" stroke-width="3"/>
+  <circle cx="100" cy="100" r="15" fill="#00d4ff"/>
+  <text x="100" y="180" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="20" fill="#00d4ff">OpenClaw</text>
+</svg>
