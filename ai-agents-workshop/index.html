@@ -65,64 +65,36 @@
   <span class="slide-label">Agenda</span>
   <div class="content content--center agenda-slide" style="max-width:1100px; z-index:1; position:relative;">
     <h2 class="fade-in-up">Today's Journey</h2>
-    <div class="agenda-layout">
-      <ol class="agenda-list" style="list-style:none; counter-reset:agenda; margin-top:16px;">
-        <li class="agenda-item fade-in-up fade-in-delay-1 active" data-agenda="1">
-          <span class="agenda-number">1</span>
-          <span>From Chat to Agents <span class="highlight">&mdash; the shift</span></span>
-        </li>
-        <li class="agenda-item fade-in-up fade-in-delay-1" data-agenda="2">
-          <span class="agenda-number">2</span>
-          <span>The Agent Loop <span class="highlight">&mdash; how agents think</span></span>
-        </li>
-        <li class="agenda-item fade-in-up fade-in-delay-2" data-agenda="3">
-          <span class="agenda-number">3</span>
-          <span>Platform Landscape <span class="highlight">&mdash; N8N, Claude Code, Otto</span></span>
-        </li>
-        <li class="agenda-item fade-in-up fade-in-delay-2" data-agenda="4">
-          <span class="agenda-number">4</span>
-          <span>Context, Tools &amp; Skills <span class="highlight">&mdash; the building blocks</span></span>
-        </li>
-        <li class="agenda-item fade-in-up fade-in-delay-3" data-agenda="5">
-          <span class="agenda-number">5</span>
-          <span>Live Demos &amp; Hands-on <span class="highlight">&mdash; build together</span></span>
-        </li>
-        <li class="agenda-item fade-in-up fade-in-delay-3" data-agenda="6">
-          <span class="agenda-number">6</span>
-          <span>Limitations of AI <span class="highlight">&mdash; what to watch out for</span></span>
-        </li>
-      </ol>
-      <div class="agenda-preview card fade-in-up fade-in-delay-2" id="agendaPreview">
-        <div class="agenda-preview-panel active" data-panel="1">
-          <p class="caption">Section 01</p>
-          <h3>From Chat to Agents</h3>
-          <p>You’ll show the mindset shift from chat assistants to agents that act toward a goal.</p>
-        </div>
-        <div class="agenda-preview-panel" data-panel="2">
-          <p class="caption">Section 02</p>
-          <h3>The Agent Loop</h3>
-          <p>Explain how agents observe, think, act, and repeat until the job is done.</p>
-        </div>
-        <div class="agenda-preview-panel" data-panel="3">
-          <p class="caption">Section 03</p>
-          <h3>Platform Landscape</h3>
-          <p>Compare N8N, Claude Code, and Otto with a clearer visual identity and tradeoffs.</p>
-        </div>
-        <div class="agenda-preview-panel" data-panel="4">
-          <p class="caption">Section 04</p>
-          <h3>Context, Tools &amp; Skills</h3>
-          <p>Show what agents need to become useful: context, connected tools, and reusable skills.</p>
-        </div>
-        <div class="agenda-preview-panel" data-panel="5">
-          <p class="caption">Section 05</p>
-          <h3>Live Demos &amp; Hands-on</h3>
-          <p>Move from theory to practice with live examples and collaborative building.</p>
-        </div>
-        <div class="agenda-preview-panel" data-panel="6">
-          <p class="caption">Section 06</p>
-          <h3>Limitations of AI</h3>
-          <p>Close with guardrails: security, cost, hallucinations, and where caution matters most.</p>
-        </div>
+    <div class="agenda-boxes">
+      <div class="agenda-box fade-in-up fade-in-delay-1">
+        <p class="agenda-box-label">Section 01</p>
+        <h3>From Chat to Agents</h3>
+        <p>The shift from asking AI for answers to giving it goals and letting it act.</p>
+      </div>
+      <div class="agenda-box fade-in-up fade-in-delay-1">
+        <p class="agenda-box-label">Section 02</p>
+        <h3>The Agent Loop</h3>
+        <p>How agents observe, think, act, and keep going until the task is complete.</p>
+      </div>
+      <div class="agenda-box fade-in-up fade-in-delay-2">
+        <p class="agenda-box-label">Section 03</p>
+        <h3>Platform Landscape</h3>
+        <p>N8N, Claude Code, and Otto — where each one fits and why.</p>
+      </div>
+      <div class="agenda-box fade-in-up fade-in-delay-2">
+        <p class="agenda-box-label">Section 04</p>
+        <h3>Context, Tools &amp; Skills</h3>
+        <p>The building blocks that make an agent useful in the real world.</p>
+      </div>
+      <div class="agenda-box fade-in-up fade-in-delay-3">
+        <p class="agenda-box-label">Section 05</p>
+        <h3>Live Demos &amp; Hands-on</h3>
+        <p>See the concepts in action and start building together.</p>
+      </div>
+      <div class="agenda-box fade-in-up fade-in-delay-3">
+        <p class="agenda-box-label">Section 06</p>
+        <h3>Limitations of AI</h3>
+        <p>Risks, guardrails, and what to watch out for when using AI at work.</p>
       </div>
     </div>
   </div>
@@ -573,59 +545,6 @@
   </div>
 </div>
 
-<!-- ========== SLIDE 25: CLAUDE CODE PRO TIPS ========== -->
-<div class="slide slide--dark">
-  <div class="parallax-bg"><div class="orb orb-1"></div></div>
-  <div class="grid-overlay"></div>
-  <span class="slide-label">Pro Tips</span>
-  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
-    <div>
-      <h2>Claude Code <span class="highlight">Pro Tips</span></h2>
-      <ul class="bullets" style="margin-top:20px;">
-        <li>Install skills: <code>/plugins</code> &mdash; try <strong>Superpowers</strong></li>
-        <li>Resume: <code>claude --continue</code> or <code>--resume</code></li>
-        <li>Keep sessions alive with <strong>tmux</strong></li>
-        <li>Auto-approve safe edits after planning</li>
-        <li><strong>Dispatch:</strong> continue from your phone</li>
-      </ul>
-    </div>
-    <div>
-      <img src="images/terminal.jpg" alt="Terminal" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
-    </div>
-  </div>
-</div>
-
-<!-- ========== SLIDE 26: PAUSE ========== -->
-<div class="slide slide--dark">
-  <div class="content content--center">
-    <div class="big-number">5</div>
-    <h2 style="margin-top:16px; font-weight:300;">Minute Break</h2>
-    <p class="caption" style="margin-top:24px;">Grab a coffee, stretch, think about your questions</p>
-  </div>
-</div>
-
-<!-- ========== SLIDE 27: KEY INSIGHT ========== -->
-<div class="slide slide--dark">
-  <div class="parallax-bg"><div class="orb orb-3"></div><div class="orb orb-2"></div></div>
-  <span class="slide-label">Key Insight</span>
-  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
-    <div>
-      <div class="quote" style="font-size:28px;">
-        "Scale for <span class="highlight">productivity</span>,<br>not for what looks cool."
-      </div>
-      <ul class="bullets" style="margin-top:28px;">
-        <li>Start with <strong>1 agent</strong>, build up</li>
-        <li>Build your <strong>own skills</strong></li>
-        <li>Automate <strong>3-5 tiny processes</strong> each week</li>
-        <li>It compounds over weeks and months</li>
-      </ul>
-    </div>
-    <div>
-      <img src="images/productivity.jpg" alt="Productivity" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
-    </div>
-  </div>
-</div>
-
 <!-- ========== SLIDE 30: NEXT STEPS ========== -->
 <div class="slide slide--dark">
   <div class="parallax-bg"><div class="orb orb-1"></div></div>
@@ -696,6 +615,7 @@
     <p class="section-subtitle">What to watch out for</p>
   </div>
 </div>
+
 
 <!-- ========== SLIDE 33: LIMITATIONS CONTENT ========== -->
 <div class="slide slide--dark">
@@ -774,6 +694,61 @@
     </div>
   </div>
 </div>
+
+<!-- ========== SLIDE 25: CLAUDE CODE PRO TIPS ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-1"></div></div>
+  <div class="grid-overlay"></div>
+  <span class="slide-label">Pro Tips</span>
+  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
+    <div>
+      <h2>Claude Code <span class="highlight">Pro Tips</span></h2>
+      <ul class="bullets" style="margin-top:20px;">
+        <li>Install skills: <code>/plugins</code> &mdash; try <strong>Superpowers</strong></li>
+        <li>Resume: <code>claude --continue</code> or <code>--resume</code></li>
+        <li>Keep sessions alive with <strong>tmux</strong></li>
+        <li>Auto-approve safe edits after planning</li>
+        <li><strong>Dispatch:</strong> continue from your phone</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/terminal.jpg" alt="Terminal" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 26: PAUSE ========== -->
+
+<div class="slide slide--dark">
+  <div class="content content--center">
+    <div class="big-number">5</div>
+    <h2 style="margin-top:16px; font-weight:300;">Minute Break</h2>
+    <p class="caption" style="margin-top:24px;">Grab a coffee, stretch, think about your questions</p>
+  </div>
+</div>
+
+<!-- ========== SLIDE 27: KEY INSIGHT ========== -->
+<div class="slide slide--dark">
+  <div class="parallax-bg"><div class="orb orb-3"></div><div class="orb orb-2"></div></div>
+  <span class="slide-label">Key Insight</span>
+  <div class="two-col" style="max-width:1100px; z-index:1; position:relative; align-items:center;">
+    <div>
+      <div class="quote" style="font-size:28px;">
+        "Scale for <span class="highlight">productivity</span>,<br>not for what looks cool."
+      </div>
+      <ul class="bullets" style="margin-top:28px;">
+        <li>Start with <strong>1 agent</strong>, build up</li>
+        <li>Build your <strong>own skills</strong></li>
+        <li>Automate <strong>3-5 tiny processes</strong> each week</li>
+        <li>It compounds over weeks and months</li>
+      </ul>
+    </div>
+    <div>
+      <img src="images/productivity.jpg" alt="Productivity" style="width:100%; border-radius:16px; border:2px solid rgba(139,192,124,0.15);">
+    </div>
+  </div>
+</div>
+
 
 <!-- ========== EXERCISE SECTION: DESIGN YOUR AGENT ========== -->
 <div class="slide slide--blue">
