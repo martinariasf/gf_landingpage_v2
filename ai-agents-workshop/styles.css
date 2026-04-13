@@ -422,6 +422,48 @@ code {
 }
 .qr-code img { width: 100%; height: 100%; object-fit: contain; background: white; }
 
+.consultancy-center {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 900px !important;
+  justify-items: center;
+  text-align: center;
+}
+.consultancy-center > div:first-child {
+  max-width: 820px;
+}
+.consultancy-center .bullets {
+  display: inline-block;
+  text-align: left;
+}
+.consultancy-cta {
+  max-width: 860px;
+}
+.consultancy-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+.consultancy-expiry {
+  margin-top: 10px;
+  color: #FFD166;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.consultancy-card {
+  margin-top: 26px;
+  padding: 28px 32px;
+  border-radius: 18px;
+  border: 1px solid rgba(139,192,124,0.25);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+}
+.consultancy-qr {
+  width: 240px;
+  height: 240px;
+}
+
 /* ===== TEAM GRID (Slide 1) ===== */
 .team-grid {
   display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 28px;
