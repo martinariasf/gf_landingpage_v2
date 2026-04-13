@@ -44,15 +44,6 @@
   </div>
 </div>
 
-<!-- ========== SLIDE 3: THE HOOK - LIVE DEMO ========== -->
-<div class="slide slide--accent">
-  <div class="content content--center">
-    <p class="caption" style="letter-spacing:4px; margin-bottom:16px; color:rgba(255,255,255,0.8);">LIVE DEMO</p>
-    <h1 style="font-size:56px; color:var(--white);">AI Agent Updates<br>a Website in Real-Time</h1>
-    <p style="font-size:20px; margin-top:32px; opacity:0.85;">OpenClaw &rarr; Website &rarr; Workshop time updated to "To be discussed"</p>
-  </div>
-</div>
-
 <!-- ========== SLIDE 4: PARTICIPANT INTROS ========== -->
 <div class="slide slide--dark">
   <div class="parallax-bg"><div class="orb orb-1"></div></div>
@@ -72,34 +63,77 @@
 <div class="slide slide--dark">
   <div class="grid-overlay"></div>
   <span class="slide-label">Agenda</span>
-  <div class="content content--center" style="max-width:800px; z-index:1; position:relative;">
+  <div class="content content--center agenda-slide" style="max-width:1100px; z-index:1; position:relative;">
     <h2 class="fade-in-up">Today's Journey</h2>
-    <ol style="list-style:none; counter-reset:agenda; margin-top:16px;">
-      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-1">
-        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">1</span>
-        <span>From Chat to Agents <span class="highlight">&mdash; the shift</span></span>
-      </li>
-      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-1">
-        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">2</span>
-        <span>The Agent Loop <span class="highlight">&mdash; how agents think</span></span>
-      </li>
-      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-2">
-        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">3</span>
-        <span>Platform Landscape <span class="highlight">&mdash; N8N, Claude Code, OpenClaw</span></span>
-      </li>
-      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-2">
-        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">4</span>
-        <span>Context, Tools &amp; Skills <span class="highlight">&mdash; the building blocks</span></span>
-      </li>
-      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-3">
-        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">5</span>
-        <span>Live Demos &amp; Hands-on <span class="highlight">&mdash; build together</span></span>
-      </li>
-      <li style="counter-increment:agenda; padding:10px 0; font-size:21px; display:flex; align-items:center; gap:16px;" class="fade-in-up fade-in-delay-3">
-        <span style="background:var(--green); color:var(--blue); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px; flex-shrink:0;">6</span>
-        <span>Limitations of AI <span class="highlight">&mdash; what to watch out for</span></span>
-      </li>
-    </ol>
+    <div class="agenda-layout">
+      <ol class="agenda-list" style="list-style:none; counter-reset:agenda; margin-top:16px;">
+        <li class="agenda-item fade-in-up fade-in-delay-1 active" data-agenda="1">
+          <span class="agenda-number">1</span>
+          <span>From Chat to Agents <span class="highlight">&mdash; the shift</span></span>
+        </li>
+        <li class="agenda-item fade-in-up fade-in-delay-1" data-agenda="2">
+          <span class="agenda-number">2</span>
+          <span>The Agent Loop <span class="highlight">&mdash; how agents think</span></span>
+        </li>
+        <li class="agenda-item fade-in-up fade-in-delay-2" data-agenda="3">
+          <span class="agenda-number">3</span>
+          <span>Platform Landscape <span class="highlight">&mdash; N8N, Claude Code, Otto</span></span>
+        </li>
+        <li class="agenda-item fade-in-up fade-in-delay-2" data-agenda="4">
+          <span class="agenda-number">4</span>
+          <span>Context, Tools &amp; Skills <span class="highlight">&mdash; the building blocks</span></span>
+        </li>
+        <li class="agenda-item fade-in-up fade-in-delay-3" data-agenda="5">
+          <span class="agenda-number">5</span>
+          <span>Live Demos &amp; Hands-on <span class="highlight">&mdash; build together</span></span>
+        </li>
+        <li class="agenda-item fade-in-up fade-in-delay-3" data-agenda="6">
+          <span class="agenda-number">6</span>
+          <span>Limitations of AI <span class="highlight">&mdash; what to watch out for</span></span>
+        </li>
+      </ol>
+      <div class="agenda-preview card fade-in-up fade-in-delay-2" id="agendaPreview">
+        <div class="agenda-preview-panel active" data-panel="1">
+          <p class="caption">Section 01</p>
+          <h3>From Chat to Agents</h3>
+          <p>You’ll show the mindset shift from chat assistants to agents that act toward a goal.</p>
+        </div>
+        <div class="agenda-preview-panel" data-panel="2">
+          <p class="caption">Section 02</p>
+          <h3>The Agent Loop</h3>
+          <p>Explain how agents observe, think, act, and repeat until the job is done.</p>
+        </div>
+        <div class="agenda-preview-panel" data-panel="3">
+          <p class="caption">Section 03</p>
+          <h3>Platform Landscape</h3>
+          <p>Compare N8N, Claude Code, and Otto with a clearer visual identity and tradeoffs.</p>
+        </div>
+        <div class="agenda-preview-panel" data-panel="4">
+          <p class="caption">Section 04</p>
+          <h3>Context, Tools &amp; Skills</h3>
+          <p>Show what agents need to become useful: context, connected tools, and reusable skills.</p>
+        </div>
+        <div class="agenda-preview-panel" data-panel="5">
+          <p class="caption">Section 05</p>
+          <h3>Live Demos &amp; Hands-on</h3>
+          <p>Move from theory to practice with live examples and collaborative building.</p>
+        </div>
+        <div class="agenda-preview-panel" data-panel="6">
+          <p class="caption">Section 06</p>
+          <h3>Limitations of AI</h3>
+          <p>Close with guardrails: security, cost, hallucinations, and where caution matters most.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========== SLIDE 3: THE HOOK - LIVE DEMO ========== -->
+<div class="slide slide--accent">
+  <div class="content content--center">
+    <p class="caption" style="letter-spacing:4px; margin-bottom:16px; color:rgba(255,255,255,0.8);">LIVE DEMO</p>
+    <h1 style="font-size:56px; color:var(--white);">AI Agent Updates<br>a Website in Real-Time</h1>
+    <p style="font-size:20px; margin-top:32px; opacity:0.85;">Otto &rarr; Website &rarr; Workshop time updated to "To be discussed"</p>
   </div>
 </div>
 
@@ -187,35 +221,6 @@
   </div>
 </div>
 
-<!-- ========== SLIDE 10: LOOP IN THE DEMO ========== -->
-<div class="slide slide--dark">
-  <span class="slide-label">The Agent Loop</span>
-  <div class="content content--left" style="max-width:900px; z-index:1; position:relative;">
-    <h2>In the demo, <span class="highlight">Otto</span> did this:</h2>
-    <div style="margin-top:24px; display:flex; align-items:flex-start; gap:24px;">
-      <img src="images/Otto.png" alt="Otto" style="width:80px; height:80px; border-radius:50%; border:2px solid var(--green); flex-shrink:0; margin-top:8px;">
-      <div style="flex:1;">
-        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
-          <span style="color:var(--green); font-weight:700; min-width:90px;">Observe</span>
-          <span style="opacity:0.8;">"I received an instruction to update the workshop time"</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
-          <span style="color:var(--green); font-weight:700; min-width:90px;">Think</span>
-          <span style="opacity:0.8;">"I need to find the workshop page and change the time"</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.08);">
-          <span style="color:var(--green); font-weight:700; min-width:90px;">Act</span>
-          <span style="opacity:0.8;">"Update website &rarr; change time to 'To be discussed'"</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:16px; padding:14px 0;">
-          <span style="color:var(--green); font-weight:700; min-width:90px;">&#x2705; Done</span>
-          <span style="opacity:0.8;">"Website updated. Task complete."</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ========== SLIDE 11: 4 COMPONENTS ========== -->
 <div class="slide slide--dark">
   <div class="parallax-bg"><div class="orb orb-1"></div></div>
@@ -269,7 +274,7 @@
   <div class="content content--center">
     <p class="section-subtitle" style="color:var(--green);">03</p>
     <h1 class="section-title" style="font-size:52px;">Platform Landscape</h1>
-    <p class="section-subtitle">N8N &middot; Claude Code &middot; OpenClaw</p>
+    <p class="section-subtitle">N8N &middot; Claude Code &middot; Otto</p>
   </div>
 </div>
 
@@ -285,7 +290,7 @@
           <th style="width:18%;"></th>
           <th style="width:27%;"><img src="images/n8n-logo---aa592b95-f1e9-40af-8065-8e8357f36240.svg" alt="N8N" style="height:24px; vertical-align:middle; margin-right:8px; filter:brightness(0) invert(1);">N8N</th>
           <th style="width:28%;"><img src="images/claude-logo---9e28fbad-c27b-41cf-9e08-c6597e5b9558.svg" alt="Claude" style="height:24px; vertical-align:middle; margin-right:8px; filter:brightness(0) invert(1);">Claude Code</th>
-          <th style="width:27%;"><img src="images/openclaw-logo---a0d7b89e-d44f-4ebd-a682-08337787961c.svg" alt="OpenClaw" style="height:24px; vertical-align:middle; margin-right:8px;">OpenClaw</th>
+          <th style="width:27%;"><img src="images/otto-bug-logo.jpg" alt="Otto" style="height:32px; width:32px; vertical-align:middle; margin-right:8px; border-radius:50%; object-fit:cover;">Otto</th>
         </tr>
       </thead>
       <tbody>
@@ -311,7 +316,7 @@
           <td style="font-weight:600;">Key strength</td>
           <td>Open source, German-based, SOC2, enterprise-ready</td>
           <td>Skills (/plugins), sessions, auto-approve, dispatch</td>
-          <td>Most autonomous, sub-agents, fallback models, OAuth</td>
+          <td>Most autonomous, sub-agents, fallback models, and business-ready orchestration</td>
         </tr>
       </tbody>
     </table>
@@ -336,7 +341,7 @@
         <div class="dot"></div><span class="label"><img src="images/claude-logo---9e28fbad-c27b-41cf-9e08-c6597e5b9558.svg" alt="" style="height:16px; vertical-align:middle; margin-right:4px; filter:brightness(0) invert(1);">Claude Code</span>
       </div>
       <div class="chart-point openclaw" style="left:87%; bottom:28%;" data-tooltip="Most powerful, but requires setup investment">
-        <div class="dot"></div><span class="label"><img src="images/openclaw-logo---a0d7b89e-d44f-4ebd-a682-08337787961c.svg" alt="" style="height:16px; vertical-align:middle; margin-right:4px;">OpenClaw</span>
+        <div class="dot"></div><span class="label"><img src="images/otto-bug-logo.jpg" alt="" style="height:20px; width:20px; vertical-align:middle; margin-right:6px; border-radius:50%; object-fit:cover;">Otto</span>
       </div>
     </div>
   </div>
