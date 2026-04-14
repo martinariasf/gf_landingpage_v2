@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Computer monitor</title>
+  <desc id="desc">Stylized desktop computer monitor with stand</desc>
+  <rect width="512" height="512" rx="48" fill="none"/>
+  <rect x="72" y="88" width="368" height="248" rx="20" fill="#211D58" stroke="#8BC07C" stroke-width="18"/>
+  <rect x="94" y="110" width="324" height="204" rx="10" fill="#0f0d2e"/>
+  <path d="M132 280c38-56 82-78 132-66 34 8 66 3 116-38 11-9 27-7 36 4 9 11 7 27-4 36-59 49-104 65-160 52-27-7-54 7-85 52H132Z" fill="#8BC07C" opacity="0.95"/>
+  <circle cx="176" cy="172" r="22" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="230" y="350" width="52" height="56" rx="10" fill="#8BC07C"/>
+  <rect x="174" y="402" width="164" height="24" rx="12" fill="#FFFFFF" opacity="0.92"/>
+</svg>
