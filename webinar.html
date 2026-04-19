@@ -115,6 +115,28 @@
         .radio-option input[type="radio"] { accent-color: var(--innovation-green); width: 18px; height: 18px; cursor: pointer; }
         .radio-option span { font-size: 14px; }
 
+        .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+        .checkbox-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 14px;
+            border: 2px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .checkbox-option:hover { border-color: var(--innovation-green); background: rgba(139,192,124,0.04); }
+        .checkbox-option input[type="checkbox"] {
+            accent-color: var(--innovation-green);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .checkbox-option span { font-size: 14px; line-height: 1.5; }
+
         .submit-btn {
             width: 100%;
             padding: 16px;
@@ -251,12 +273,42 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label data-en="Which languages do you speak fluently?" data-de="Welche Sprachen sprichst du fließend?">Which languages do you speak fluently?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="fluentLanguages" value="German">
+                            <span data-en="German" data-de="Deutsch">German</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="fluentLanguages" value="English">
+                            <span data-en="English" data-de="Englisch">English</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="fluentLanguages" value="Spanish">
+                            <span data-en="Spanish" data-de="Spanisch">Spanish</span>
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="fluentLanguages" value="Other">
+                            <span data-en="Other" data-de="Andere">Other</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label data-en="What do you hope to learn?" data-de="Was erhoffst du dir vom Webinar?">What do you hope to learn?</label>
                     <textarea name="hopes"></textarea>
                 </div>
                 <div class="form-group">
                     <label data-en="How did you hear about us?" data-de="Wie hast du von uns erfahren?">How did you hear about us?</label>
                     <input type="text" name="source">
+                </div>
+                <div class="form-group">
+                    <label data-en="Accept conditions *" data-de="Bedingungen akzeptieren *">Accept conditions *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="acceptConditions" value="yes" required>
+                            <span data-en="I understand that the webinar may be recorded and that GF Innovative Solutions may publish the video on its platforms. I consent to the processing of my registration data for webinar organization." data-de="Ich verstehe, dass das Webinar aufgezeichnet werden kann und dass GF Innovative Solutions das Video auf seinen Plattformen veröffentlichen darf. Ich stimme der Verarbeitung meiner Registrierungsdaten zur Organisation des Webinars zu.">I understand that the webinar may be recorded and that GF Innovative Solutions may publish the video on its platforms. I consent to the processing of my registration data for webinar organization.</span>
+                        </label>
+                    </div>
                 </div>
                 <button type="submit" class="submit-btn" data-en="Register for Webinar" data-de="Zum Webinar anmelden">Register for Webinar</button>
                 <div class="error-msg" id="errorMsg" data-en="Something went wrong. Please try again." data-de="Etwas ist schiefgelaufen. Bitte versuche es erneut.">Something went wrong. Please try again.</div>
@@ -309,10 +361,10 @@
 
         // Basic validation
         const fd = new FormData(form);
-        if (!fd.get('fullName') || !fd.get('email') || !fd.get('company')) {
+        if (!fd.get('fullName') || !fd.get('email') || !fd.get('company') || !fd.get('acceptConditions')) {
             errorMsg.textContent = lang === 'de'
-                ? 'Bitte fülle alle Pflichtfelder aus.'
-                : 'Please fill in all required fields.';
+                ? 'Bitte fülle alle Pflichtfelder aus und akzeptiere die Bedingungen.'
+                : 'Please fill in all required fields and accept the conditions.';
             errorMsg.style.display = 'block';
             return;
         }
@@ -327,8 +379,10 @@
             role: fd.get('role') || '',
             companySize: fd.get('companySize') || '',
             aiUsage: fd.get('aiUsage') || '',
+            fluentLanguages: fd.getAll('fluentLanguages'),
             hopes: fd.get('hopes') || '',
             source: fd.get('source') || '',
+            acceptConditions: fd.get('acceptConditions') === 'yes',
             submittedAt: new Date().toISOString(),
             language: lang
         };
