@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webinar Replay: AI Agents | GF Innovative Solutions</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .navbar {
+            background: linear-gradient(135deg, #1560B2 0%, #2a4a9e 55%, #4D8DB4 100%);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 2px 20px rgba(21, 96, 178, 0.18);
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+        .nav-link,
+        .language-toggle {
+            color: #f1f5f9;
+        }
+        .nav-link:hover,
+        .language-toggle:hover {
+            color: #dbeafe;
+            border-color: rgba(255,255,255,0.35);
+        }
+        .language-toggle {
+            border: 1px solid rgba(255,255,255,0.22);
+            background: rgba(255,255,255,0.08);
+        }
+        .nav-toggle span {
+            background: #f1f5f9;
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                background: rgba(21, 96, 178, 0.96);
+            }
+        }
+
+        .video-hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #2a4a9e 50%, var(--innovation-green) 100%);
+            padding: 140px 0 56px 0;
+            margin-top: 80px;
+            text-align: center;
+            color: var(--pure-white);
+        }
+        .video-hero h1 {
+            color: var(--pure-white);
+            font-size: clamp(30px, 5vw, 44px);
+            margin-bottom: 12px;
+        }
+        .video-hero p {
+            color: rgba(255,255,255,0.92);
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+        .video-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            padding: 8px 18px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.22);
+        }
+
+        .video-section {
+            padding: 56px 0 96px;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        }
+        .video-shell {
+            max-width: 1080px;
+            margin: 0 auto;
+            background: var(--pure-white);
+            border-radius: 24px;
+            box-shadow: 0 18px 50px rgba(33,29,88,0.12);
+            border: 1px solid rgba(33,29,88,0.08);
+            padding: 28px;
+        }
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #0f172a;
+            box-shadow: 0 16px 40px rgba(15,23,42,0.28);
+        }
+        .video-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-meta {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-top: 28px;
+            align-items: start;
+        }
+        .video-copy h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+        .video-copy p {
+            color: var(--dark-gray);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .video-card {
+            background: rgba(77,141,180,0.08);
+            border: 1px solid rgba(77,141,180,0.14);
+            border-radius: 18px;
+            padding: 20px;
+        }
+        .video-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--primary-blue);
+        }
+        .video-card ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--dark-gray);
+        }
+        .video-card li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .gate-overlay {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15,23,42,0.74);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 12000;
+            padding: 20px;
+        }
+        .gate-overlay.active {
+            display: flex;
+        }
+        .gate-modal {
+            width: min(100%, 520px);
+            background: var(--pure-white);
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 24px 60px rgba(15,23,42,0.28);
+            border: 1px solid rgba(33,29,88,0.08);
+        }
+        .gate-modal h2 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .gate-modal p {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        .gate-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .gate-form label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .gate-form input[type="email"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            font-family: var(--font-primary);
+            font-size: 15px;
+            color: var(--dark-gray);
+            transition: var(--transition);
+            background: var(--pure-white);
+        }
+        .gate-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--innovation-green);
+            box-shadow: 0 0 0 3px rgba(139,192,124,0.15);
+        }
+        .gate-consent {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 14px;
+            border: 2px solid var(--medium-gray);
+            border-radius: var(--border-radius);
+            background: #f8fafc;
+        }
+        .gate-consent input[type="checkbox"] {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--innovation-green);
+            flex-shrink: 0;
+        }
+        .gate-consent span {
+            font-size: 14px;
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        .gate-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-blue);
+            color: var(--pure-white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: var(--font-primary);
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .gate-button:hover {
+            background: rgba(33,29,88,0.9);
+            transform: translateY(-1px);
+        }
+        .gate-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .gate-error {
+            display: none;
+            background: #fef2f2;
+            color: #991b1b;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #fecaca;
+            font-size: 14px;
+        }
+        .gate-success {
+            display: none;
+            background: #ecfdf5;
+            color: #166534;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #bbf7d0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 840px) {
+            .video-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 640px) {
+            .video-shell {
+                margin: 0 16px;
+                padding: 18px;
+            }
+            .gate-modal {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo"></a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
+                <a href="webinar.html" class="nav-link" data-en="Webinar" data-de="Webinar">Webinar</a>
+                <a href="webinar-video.html" class="nav-link" data-en="Replay" data-de="Replay">Replay</a>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Contact</a>
+                <button class="language-toggle" type="button" aria-label="Toggle Language" onclick="toggleLang()">
+                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
+                </button>
+            </div>
+            <div class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="video-hero">
+        <div class="container">
+            <div class="video-badge" data-en="🎥 Webinar Replay" data-de="🎥 Webinar-Aufzeichnung">🎥 Webinar Replay</div>
+            <h1 data-en="Watch our AI Agents webinar" data-de="Sieh dir unser Webinar zu KI-Agenten an">Watch our AI Agents webinar</h1>
+            <p data-en="Explore how AI agents work, where they create business value, and how startups and SMEs can start implementing them today."
+               data-de="Erfahre, wie KI-Agenten funktionieren, wo sie geschäftlichen Mehrwert schaffen und wie Startups und KMUs sie heute einsetzen können.">
+                Explore how AI agents work, where they create business value, and how startups and SMEs can start implementing them today.
+            </p>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-shell">
+                <div class="video-frame">
+                    <iframe id="webinarVideo"
+                        src="https://www.youtube-nocookie.com/embed/k0G8yrhtBeQ?rel=0&modestbranding=1&enablejsapi=1"
+                        title="GF Innovative Solutions Webinar Replay"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-meta">
+                    <div class="video-copy">
+                        <h2 data-en="AI agents without the hype" data-de="KI-Agenten ohne Hype">AI agents without the hype</h2>
+                        <p data-en="This replay walks through practical AI-agent use cases, implementation logic, and how GF Innovative Solutions helps teams move from ideas to working systems. A short access form will appear automatically after a few seconds so viewers can continue watching."
+                           data-de="Diese Aufzeichnung zeigt praxisnahe Anwendungsfälle für KI-Agenten, die Umsetzungslogik und wie GF Innovative Solutions Teams von der Idee bis zum funktionierenden System begleitet. Nach ein paar Sekunden erscheint automatisch ein kurzes Zugangsformular, damit Zuschauer weitersehen können.">
+                            This replay walks through practical AI-agent use cases, implementation logic, and how GF Innovative Solutions helps teams move from ideas to working systems. A short access form will appear automatically after a few seconds so viewers can continue watching.
+                        </p>
+                    </div>
+                    <aside class="video-card">
+                        <h3 data-en="What you'll learn" data-de="Das erwartet dich">What you'll learn</h3>
+                        <ul>
+                            <li data-en="Where AI agents create measurable ROI" data-de="Wo KI-Agenten messbaren ROI liefern">Where AI agents create measurable ROI</li>
+                            <li data-en="How automation fits into startup and SME workflows" data-de="Wie Automatisierung in Startup- und KMU-Workflows passt">How automation fits into startup and SME workflows</li>
+                            <li data-en="What secure implementation looks like in practice" data-de="Wie sichere Implementierung in der Praxis aussieht">What secure implementation looks like in practice</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gate-overlay" id="gateOverlay" aria-hidden="true">
+        <div class="gate-modal" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+            <h2 id="gateTitle" data-en="Continue watching" data-de="Weiter ansehen">Continue watching</h2>
+            <p data-en="To keep watching the webinar replay, please enter your email address and accept the terms below."
+               data-de="Um die Webinar-Aufzeichnung weiter anzusehen, gib bitte deine E-Mail-Adresse ein und akzeptiere die folgenden Bedingungen.">
+                To keep watching the webinar replay, please enter your email address and accept the terms below.
+            </p>
+            <form id="videoGateForm" class="gate-form" novalidate>
+                <div>
+                    <label for="gateEmail" data-en="Email address *" data-de="E-Mail-Adresse *">Email address *</label>
+                    <input id="gateEmail" name="email" type="email" required>
+                </div>
+                <label class="gate-consent">
+                    <input type="checkbox" id="gateConsent" name="consent" value="yes" required>
+                    <span data-en="I accept that my email will be stored in GF Innovative Solutions' databases for webinar access and follow-up communication."
+                          data-de="Ich akzeptiere, dass meine E-Mail-Adresse in den Datenbanken von GF Innovative Solutions für den Zugriff auf das Webinar und die Nachverfolgung gespeichert wird.">
+                        I accept that my email will be stored in GF Innovative Solutions' databases for webinar access and follow-up communication.
+                    </span>
+                </label>
+                <div class="gate-error" id="gateError" data-en="Please enter a valid email and accept the terms to continue." data-de="Bitte gib eine gültige E-Mail-Adresse ein und akzeptiere die Bedingungen, um fortzufahren.">Please enter a valid email and accept the terms to continue.</div>
+                <div class="gate-success" id="gateSuccess" data-en="Thanks — access granted. Enjoy the webinar." data-de="Danke — Zugriff freigeschaltet. Viel Spaß beim Webinar.">Thanks — access granted. Enjoy the webinar.</div>
+                <button type="submit" class="gate-button" id="gateButton" data-en="Accept and continue" data-de="Akzeptieren und weiter">Accept and continue</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a> · <a href="imprint.html">Imprint</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    let lang = 'de';
+    let gateUnlocked = false;
+    let gateShown = false;
+    const GATE_WEBHOOK_URL = 'https://n8n.ai.gfinnov.com/webhook/webinar-video-access';
+
+    function setText(el, text) {
+        if (!el) return;
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = text;
+        else el.textContent = text;
+    }
+
+    function toggleLang() {
+        lang = lang === 'en' ? 'de' : 'en';
+        document.getElementById('current-lang').textContent = lang.toUpperCase();
+        document.getElementById('alt-lang').textContent = lang === 'en' ? 'DE' : 'EN';
+        document.querySelectorAll('[data-en]').forEach(el => {
+            const text = el.getAttribute('data-' + lang);
+            if (text) setText(el, text);
+        });
+    }
+
+    function showGate() {
+        if (gateUnlocked || gateShown) return;
+        gateShown = true;
+        const overlay = document.getElementById('gateOverlay');
+        overlay.classList.add('active');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeGate() {
+        const overlay = document.getElementById('gateOverlay');
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    setTimeout(showGate, 3000);
+
+    document.getElementById('videoGateForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('gateEmail').value.trim();
+        const consent = document.getElementById('gateConsent').checked;
+        const button = document.getElementById('gateButton');
+        const error = document.getElementById('gateError');
+        const success = document.getElementById('gateSuccess');
+
+        error.style.display = 'none';
+        success.style.display = 'none';
+
+        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!emailValid || !consent) {
+            error.textContent = lang === 'de'
+                ? 'Bitte gib eine gültige E-Mail-Adresse ein und akzeptiere die Bedingungen, um fortzufahren.'
+                : 'Please enter a valid email and accept the terms to continue.';
+            error.style.display = 'block';
+            return;
+        }
+
+        button.disabled = true;
+        button.textContent = lang === 'de' ? 'Wird gespeichert…' : 'Saving…';
+
+        const payload = {
+            email,
+            consent,
+            source: 'webinar-video.html',
+            videoUrl: 'https://youtu.be/k0G8yrhtBeQ',
+            submittedAt: new Date().toISOString(),
+            language: lang,
+            page: window.location.href
+        };
+
+        try {
+            const res = await fetch(GATE_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) throw new Error('Webhook failed');
+
+            gateUnlocked = true;
+            success.textContent = lang === 'de'
+                ? 'Danke — Zugriff freigeschaltet. Viel Spaß beim Webinar.'
+                : 'Thanks — access granted. Enjoy the webinar.';
+            success.style.display = 'block';
+
+            setTimeout(() => {
+                closeGate();
+            }, 900);
+        } catch (err) {
+            error.textContent = lang === 'de'
+                ? 'Die Speicherung konnte gerade nicht abgeschlossen werden. Bitte versuche es erneut.'
+                : 'We could not save your access right now. Please try again.';
+            error.style.display = 'block';
+        } finally {
+            button.disabled = false;
+            button.textContent = lang === 'de' ? 'Akzeptieren und weiter' : 'Accept and continue';
+        }
+    });
+    </script>
+</body>
+</html>
