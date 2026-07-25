@@ -129,6 +129,33 @@
         background: var(--bg);
     }
 
+    /* ── Pilot CTA band ── */
+    .pilot-band {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        flex-wrap: wrap;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--green);
+        border-radius: var(--radius);
+        padding: 32px 36px;
+    }
+    .pilot-band__copy { flex: 1 1 420px; }
+    .pilot-band__badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 10px;
+    }
+    .pilot-band .section-title { font-size: clamp(24px, 3vw, 32px); }
+    .pilot-band p { color: var(--gray); margin-top: 6px; }
+    .pilot-band .btn { flex: 0 0 auto; }
+
     .gallery-feature {
         display: grid;
         grid-template-columns: 1.05fr 0.95fr;
@@ -981,7 +1008,7 @@
                 <a href="#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
                 <a href="#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
                 <a href="#resources" class="nav-link" data-en="Resources" data-de="Ressourcen">Resources</a>
-                <a href="webinar.html" class="nav-link" data-en="Webinar" data-de="Webinar">Webinar</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
                 <a href="#team" class="nav-link" data-en="Team" data-de="Team">Team</a>
                 <a href="#digital-team" class="nav-link" data-en="Digital Team" data-de="Digitales Team">Digital Team</a>
                 <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
@@ -1451,6 +1478,20 @@
                     <blockquote>"GF helped us turn a highly manual process into a visual, scalable VR experience."</blockquote>
                     <cite>Client from Manufacturing Sector</cite>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilot CTA Band -->
+    <section class="section section--gradient">
+        <div class="container">
+            <div class="pilot-band">
+                <div class="pilot-band__copy">
+                    <span class="pilot-band__badge" data-en="3 spots · August / September 2026" data-de="3 Plätze · August / September 2026">3 spots · August / September 2026</span>
+                    <h2 class="section-title" data-en="Pilot our AI marketing platform" data-de="Teste unsere KI-Marketing-Plattform">Pilot our AI marketing platform</h2>
+                    <p data-en="For marketing agencies: three weeks with one real client, free, in exchange for your feedback." data-de="Für Marketing-Agenturen: drei Wochen mit einem echten Kunden, kostenlos, im Austausch für dein Feedback.">For marketing agencies: three weeks with one real client, free, in exchange for your feedback.</p>
+                </div>
+                <a href="pilot.html" class="btn btn-primary" data-en="Apply for a spot" data-de="Auf einen Platz bewerben">Apply for a spot</a>
             </div>
         </div>
     </section>
