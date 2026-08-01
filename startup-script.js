@@ -57,7 +57,6 @@ const growthContent = {
 
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Startup website loaded');
     initializeWebsite();
 });
 
@@ -229,19 +228,14 @@ function initializeGrowthJourney() {
     const modal = document.getElementById('growth-modal');
     const closeBtn = document.querySelector('.growth-close');
     
-    console.log('Found growth boxes:', growthBoxes.length);
-    console.log('Growth content keys:', Object.keys(growthContent));
     
     growthBoxes.forEach((box, index) => {
         const step = box.getAttribute('data-step');
-        console.log(`Box ${index + 1} has data-step:`, step);
         
         box.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             const step = this.getAttribute('data-step');
-            console.log('Clicked box with step:', step);
-            console.log('Available content for step:', growthContent[step] ? 'Found' : 'Not found');
             openGrowthModal(step);
         });
     });
@@ -272,19 +266,16 @@ function initializeGrowthJourney() {
 }
 
 function openGrowthModal(step) {
-    console.log('openGrowthModal called with step:', step);
     const modal = document.getElementById('growth-modal');
     const title = document.getElementById('growth-modal-title');
     const text = document.getElementById('growth-modal-text');
     
     if (!modal || !title || !text) {
-        console.error('Modal elements not found:', { modal: !!modal, title: !!title, text: !!text });
         return;
     }
     
     if (growthContent[step]) {
         const content = growthContent[step];
-        console.log('Found content for step:', step, content);
         
         // Set title
         title.textContent = content.title[currentLanguage];
@@ -412,8 +403,6 @@ function openGrowthModal(step) {
         // Prevent body scroll when modal is open
         document.body.style.overflow = 'hidden';
     } else {
-        console.error('No content found for step:', step);
-        console.error('Available steps:', Object.keys(growthContent));
         
         // Show error message in modal
         title.textContent = 'Content Not Found';

@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GF Innovative Solutions - AI Implementation for Startups & SMEs</title>
+    <meta name="description" content="We build custom AI agents and automation for German companies of 4–50 people. No internal dev team required, results from month one. GDPR-compliant, hosted in the EU.">
+    <link rel="canonical" href="https://www.gfinnov.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GF Innovative Solutions">
+    <meta property="og:url" content="https://www.gfinnov.com/">
+    <meta property="og:title" content="Your first AI team without the hiring cost.">
+    <meta property="og:description" content="Custom AI agents and automation for German companies of 4–50 people. No internal dev team required, results from month one.">
+    <meta property="og:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your first AI team without the hiring cost.">
+    <meta name="twitter:description" content="Custom AI agents and automation for German companies of 4–50 people. No internal dev team required, results from month one.">
+    <meta name="twitter:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Google Analytics Consent Stub -->
@@ -22,11 +40,14 @@
         --bg: #ffffff;
         --bg-light: #f8f9fa;
         --bg-card: #ffffff;
-        --green: #22c55e;
-        --teal: #14b8a6;
+        /* --green is the accessible text/CTA green (5.1:1 on white).
+           --green-bright is decorative only: fills, hovers, rules. Never text. */
+        --green: #15803d;
+        --green-bright: #22c55e;
+        --teal: #0f766e;
         --white: #1a1a1a;
-        --gray: #6b7280;
-        --gray-dim: #9ca3af;
+        --gray: #4b5563;
+        --gray-dim: #6b7280;
         --border: #e5e7eb;
         --border-hover: #d1d5db;
         --glass: rgba(255,255,255,0.92);
@@ -52,6 +73,54 @@
     ul { list-style: none; }
     img { max-width: 100%; display: block; }
 
+    /* ── Focus & keyboard access ── */
+    :focus-visible {
+        outline: 3px solid var(--green);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+    /* On the dark navbar and the coloured hero the green ring is too low-contrast. */
+    .navbar :focus-visible,
+    .hero :focus-visible {
+        outline-color: #ffffff;
+        box-shadow: 0 0 0 5px rgba(15, 23, 42, .55);
+    }
+    .skip-link {
+        position: absolute;
+        left: 12px;
+        top: -100px;
+        z-index: 10200;
+        background: var(--green);
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: var(--radius-sm);
+        font-size: 15px;
+        font-weight: 600;
+        transition: top .18s ease;
+    }
+    .skip-link:focus {
+        top: 12px;
+        color: #fff;
+    }
+
+    /* ── Reduced motion ──
+       Keep state changes legible; only stop the decorative, looping motion. */
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .hero-label::after {
+            animation: none;
+            width: 100%;
+        }
+        *, *::before, *::after {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: .12s !important;
+        }
+        .btn:hover,
+        .service-card:hover,
+        .glass-card:hover { transform: none; }
+    }
+
     /* ── Utility ── */
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
     .section-tag {
@@ -74,6 +143,12 @@
         font-size: 17px;
         max-width: 640px;
         margin-bottom: 48px;
+    }
+    /* German compound nouns are long enough to overflow narrow viewports at
+       heading sizes; hyphenation keys off the lang attribute. */
+    h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
@@ -98,10 +173,10 @@
         color: #fff;
     }
     .btn-primary:hover {
-        background: #16a34a;
+        background: #166534;
         color: #fff;
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(34,197,94,.25);
+        box-shadow: 0 8px 20px rgba(15, 23, 42, .18);
     }
     .btn-ghost {
         background: transparent;
@@ -266,6 +341,14 @@
         font-family: var(--font);
     }
     .lang-toggle .active-lang { color: #f1f5f9; font-weight: 700; text-decoration: underline; }
+    /* Mobile-only twin of the language switch, shown next to the hamburger. */
+    .nav-mobile-lang {
+        display: none;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 8px;
+        min-height: 44px;
+    }
 
     /* ── Hero ── */
     .hero {
@@ -275,7 +358,8 @@
         position: relative;
         overflow: hidden;
         padding-top: 68px;
-        background: linear-gradient(135deg, #1560B2 0%, #4D8DB4 40%, #5BA8A0 70%, #8ECD8A 100%);
+        /* Terminus pulled off green so the primary CTA has a field to stand on. */
+        background: linear-gradient(135deg, #0F4C8A 0%, #1560B2 35%, #3F82AC 70%, #5BA8A0 100%);
         color: #f1f5f9;
     }
     .hero::before {
@@ -297,22 +381,26 @@
         font-weight: 600;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: var(--green);
+        color: #ffffff;
         margin-bottom: 20px;
         position: relative;
     }
+    /* Draws once on load, then rests. A permanent pulse three lines above the
+       headline competes with the CTA for attention. */
     .hero-label::after {
         content: '';
         position: absolute;
         left: 0;
         bottom: -4px;
         height: 2px;
-        background: var(--green);
-        animation: underlineGrow 2s ease-in-out infinite alternate;
+        width: 100%;
+        background: var(--green-bright);
+        transform-origin: left center;
+        animation: underlineGrow .9s ease-out .2s both;
     }
     @keyframes underlineGrow {
-        0% { width: 0; }
-        100% { width: 100%; }
+        0% { transform: scaleX(0); }
+        100% { transform: scaleX(1); }
     }
     .hero h1 {
         font-size: clamp(36px, 5.5vw, 64px);
@@ -333,9 +421,19 @@
         gap: 16px;
         flex-wrap: wrap;
     }
+    /* Inverted on the coloured field: filled = primary, outlined = secondary.
+       White ground also gives the CTA text a 5.1:1 ratio. */
+    .hero .btn-primary {
+        background: #ffffff;
+        color: var(--green);
+    }
+    .hero .btn-primary:hover {
+        background: #f0fdf4;
+        color: #166534;
+    }
     .hero .btn-ghost {
-        color: #f1f5f9;
-        border-color: rgba(255,255,255,0.2);
+        color: #ffffff;
+        border-color: rgba(255,255,255,0.55);
     }
     .hero .btn-ghost:hover {
         border-color: var(--green);
@@ -406,7 +504,7 @@
         font-size: 22px;
         flex-shrink: 0;
     }
-    .badge-card h4 { font-size: 16px; font-weight: 600; }
+    .badge-card h3 { font-size: 16px; font-weight: 600; }
     .badge-card p { font-size: 13px; color: var(--gray-dim); margin-top: 2px; }
 
     /* ── Differences ── */
@@ -477,7 +575,8 @@
     }
     .service-card--featured {
         border-color: var(--green) !important;
-        box-shadow: 0 0 30px rgba(34,197,94,.1);
+        border-width: 2px;
+        box-shadow: 0 10px 28px rgba(15, 23, 42, .10);
     }
     .service-card h3 {
         font-size: 18px;
@@ -489,47 +588,14 @@
         font-size: 14px;
         margin-bottom: 14px;
     }
-    .accordion-toggle {
-        background: transparent;
-        border: 1px solid var(--border);
+    /* Replaces the old "View tiers" accordions, which opened onto a table of
+       tier names with no price column. */
+    .service-note {
+        font-size: 14px;
         color: var(--gray);
-        font-family: var(--font);
-        font-size: 13px;
-        padding: 8px 14px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: all .2s;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 8px;
-    }
-    .accordion-toggle:hover { border-color: var(--green); color: var(--green); }
-    .accordion-toggle .arrow { transition: transform .3s; font-size: 11px; }
-    .accordion-toggle.open .arrow { transform: rotate(180deg); }
-    .accordion-body {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height .4s ease;
-    }
-    .accordion-body.open { max-height: 600px; }
-    .tier-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 13px;
-        margin: 10px 0 14px;
-    }
-    .tier-table th {
-        text-align: left;
-        padding: 6px 0;
-        font-weight: 600;
-        color: var(--green);
-        border-bottom: 1px solid var(--border);
-    }
-    .tier-table td {
-        padding: 6px 0;
-        border-bottom: 1px solid var(--border);
-        color: var(--gray);
+        border-left: 2px solid var(--border);
+        padding-left: 14px;
+        margin: 14px 0 4px;
     }
     .complementary-grid {
         display: grid;
@@ -547,45 +613,119 @@
     .complementary-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
     .complementary-card p { font-size: 13px; color: var(--gray); margin-bottom: 12px; }
 
-    /* ── Tools ── */
-    .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-        margin-bottom: 48px;
+    /* ── AI Marketing Platform ──
+       The product section. Vertical reels are the evidence, so the layout is
+       built around a 9:16 pair rather than the site's usual card grid. */
+    .platform-lede {
+        max-width: 720px;
+        margin-bottom: 44px;
     }
-    .tool-card {
+    .platform-lede p {
+        font-size: 17px;
+        color: var(--gray);
+        margin-bottom: 14px;
+    }
+    .platform-lede p:last-child { margin-bottom: 0; }
+
+    .platform-reels {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+        /* Keeps each 9:16 reel around phone size instead of dominating the page. */
+        max-width: 720px;
+        margin: 0 auto 56px;
+    }
+    .reel-card {
         background: var(--bg-card);
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        padding: 28px;
-        text-align: center;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
-    .tool-icon {
-        font-size: 32px;
-        margin-bottom: 16px;
+    .reel-card video {
+        width: 100%;
+        /* height:auto is required. The width/height attributes are kept so the
+           box is reserved before load, but as presentational hints on <video>
+           they otherwise beat aspect-ratio and render the element 1920px tall. */
+        height: auto;
+        aspect-ratio: 9 / 16;
+        display: block;
+        background: #0b1628;
+        object-fit: cover;
     }
-    .tool-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
-    .tool-card p { font-size: 14px; color: var(--gray); margin-bottom: 16px; }
-    .badge-soon {
+    .reel-card__body { padding: 22px 24px 26px; }
+    .reel-card__step {
         display: inline-block;
         font-size: 11px;
         font-weight: 700;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
-        letter-spacing: 1px;
         color: var(--teal);
-        border: 1px solid rgba(20,184,166,.3);
-        padding: 4px 12px;
-        border-radius: 20px;
+        margin-bottom: 8px;
     }
-    .tools-cta {
-        text-align: center;
-        padding: 40px;
+    .reel-card__body h3 {
+        font-size: 19px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    .reel-card__body p {
+        font-size: 14px;
+        color: var(--gray);
+        line-height: 1.65;
+    }
+
+    .platform-capabilities {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+        margin-bottom: 44px;
+    }
+    .capability {
+        border-top: 2px solid var(--green);
+        padding-top: 16px;
+    }
+    .capability h3 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+    .capability p {
+        font-size: 13.5px;
+        color: var(--gray);
+        line-height: 1.6;
+    }
+
+    .platform-cta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
         background: var(--bg-light);
         border: 1px solid var(--border);
         border-radius: var(--radius);
+        padding: 28px 32px;
     }
-    .tools-cta h3 { font-size: 22px; margin-bottom: 20px; }
+    .platform-cta p {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+    }
+    .platform-cta span {
+        display: block;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--gray);
+        margin-top: 4px;
+    }
+
+    .cta-reassurance {
+        margin-top: 14px;
+        font-size: 14px;
+        color: var(--gray);
+    }
 
     /* ── Trust ── */
     .trust-grid {
@@ -613,7 +753,7 @@
         margin-bottom: 14px;
         font-size: 18px;
     }
-    .trust-card h4 { color: var(--teal); font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .trust-card h3 { color: var(--teal); font-size: 16px; font-weight: 600; margin-bottom: 6px; }
     .trust-card p { font-size: 13px; color: var(--gray); }
 
     /* ── Team ── */
@@ -643,6 +783,8 @@
         border: 2px solid var(--border);
     }
     .founder-photo img { width: 100%; height: 100%; object-fit: cover; }
+    /* Name links were 22px tall; 24x24 minimum (WCAG 2.5.8). */
+    .founder-info h3 a { display: inline-block; padding: 2px 0; }
     .founder-info h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
     .founder-info h3 a { color: #1a1a1a; }
     .founder-info h3 a:hover { color: var(--green); }
@@ -701,7 +843,7 @@
         border: 2px solid var(--border);
     }
     .digital-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .digital-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .digital-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
     .digital-card .digi-role { color: var(--teal); font-size: 12px; font-weight: 500; margin-bottom: 8px; }
     .digital-card ul { font-size: 12px; color: var(--gray); text-align: left; }
     .digital-card li { margin-bottom: 2px; }
@@ -720,7 +862,7 @@
         transition: border-color .3s;
     }
     .ethics-card:hover { border-color: var(--border-hover); }
-    .ethics-card h4 { font-size: 17px; font-weight: 600; margin-bottom: 10px; color: var(--green); }
+    .ethics-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; color: var(--green); }
     .ethics-card p { font-size: 14px; color: var(--gray); }
 
     /* ── Testimonials ── */
@@ -817,8 +959,17 @@
         font-size: 13px;
         color: #64748b;
     }
-    .footer-bottom a { color: #64748b; }
+    /* 24x24 minimum target (WCAG 2.5.8); these were 16px tall. */
+    .footer-bottom a {
+        color: #64748b;
+        display: inline-block;
+        padding: 6px 4px;
+    }
     .footer-bottom a:hover { color: var(--green); }
+    .footer-grid ul a {
+        display: inline-block;
+        padding: 5px 0;
+    }
 
     /* ── Cookie Banner ── */
     .cookie-banner {
@@ -831,7 +982,7 @@
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
         border-top: 1px solid var(--border);
-        padding: 20px 24px;
+        padding: 14px 24px;
         box-shadow: 0 -4px 20px rgba(0,0,0,.06);
     }
     .cookie-banner__inner {
@@ -840,13 +991,56 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 20px;
         flex-wrap: wrap;
     }
     .cookie-banner__text strong { color: #1a1a1a; font-size: 15px; }
     .cookie-banner__text p { color: var(--gray); font-size: 13px; margin-top: 4px; }
-    .cookie-banner__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cookie-banner__actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .cookie-banner__actions .btn { padding: 10px 18px; font-size: 13px; }
+    /* "Customize" is the rare third choice — demote it to a link so the two
+       real answers stay side by side instead of wrapping to a third row. */
+    .cookie-banner__actions .btn-outline {
+        background: none;
+        border: none;
+        padding: 10px 4px;
+        color: var(--gray);
+        text-decoration: underline;
+        min-height: 44px;
+    }
+    .cookie-banner__actions .btn-outline:hover { color: var(--green); }
+
+    @media (max-width: 920px) {
+        /* Compact bar: the previous stacked layout ran 248px tall and covered
+           both hero CTAs on a 375x812 screen. */
+        .cookie-banner { padding: 10px 16px; }
+        .cookie-banner__inner {
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 12px;
+        }
+        .cookie-banner__text strong { font-size: 13px; }
+        .cookie-banner__text p {
+            font-size: 11px;
+            margin-top: 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .cookie-banner__actions {
+            flex-direction: column;
+            flex: 0 0 auto;
+            gap: 6px;
+        }
+        .cookie-banner__actions .btn {
+            padding: 8px 14px;
+            font-size: 12px;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .cookie-banner__actions .btn-outline { min-height: 24px; padding: 4px; font-size: 11px; }
+    }
     .btn-outline {
         background: transparent;
         border: 1px solid var(--border);
@@ -922,18 +1116,23 @@
         font-family: var(--font);
     }
     .link-like:hover { color: var(--green); }
+    /* was 14px tall */
+    .link-like { padding: 6px 4px; min-height: 24px; }
 
     /* ── Hamburger Menu ── */
     .nav-hamburger {
         display: none;
         flex-direction: column;
-        justify-content: space-between;
-        width: 28px;
-        height: 20px;
+        justify-content: center;
+        align-items: stretch;
+        gap: 5px;
+        /* 44x44 minimum tap target (WCAG 2.5.5); the bars stay 28px wide. */
+        width: 44px;
+        height: 44px;
         background: transparent;
         border: none;
         cursor: pointer;
-        padding: 0;
+        padding: 11px 8px;
         z-index: 10102;
         pointer-events: auto;
     }
@@ -945,9 +1144,10 @@
         border-radius: 2px;
         transition: all 0.3s ease;
     }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    /* Bars are 2px with 5px gaps, so each outer bar is 7px off centre. */
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .nav-menu.open {
         display: flex !important;
         flex-direction: column;
@@ -967,22 +1167,47 @@
     @media (max-width: 920px) {
         .nav-menu { display: none; }
         .nav-hamburger { display: flex; }
+        /* The language switch is the one control a German visitor may need
+           before anything else — keep it out of the collapsed menu. */
+        .nav-mobile-lang { display: inline-flex; }
+        .nav-menu .lang-toggle { display: none; }
         .nav-menu.open .nav-link,
         .nav-menu.open .nav-cta {
             display: block;
             padding: 12px 0;
             pointer-events: auto;
         }
+        /* Clears the compact cookie bar so the hero CTAs are never covered. */
+        .hero .hero-inner { padding-bottom: 132px; }
         .about-grid { grid-template-columns: 1fr; }
         .diff-grid { grid-template-columns: 1fr; }
         .services-grid { grid-template-columns: 1fr; }
         .complementary-grid { grid-template-columns: 1fr; }
-        .tools-grid { grid-template-columns: 1fr; }
+
         .trust-grid { grid-template-columns: 1fr; }
         .founders-grid { grid-template-columns: 1fr; }
         .extended-grid { grid-template-columns: 1fr; }
-        .digital-grid { grid-template-columns: repeat(2, 1fr); }
+        /* minmax(0,...) not 1fr: grid items default to min-width:auto, so the
+           longest role line ("Server & container management") forced the track
+           wider than the viewport and overflowed the page by 60px. */
+        .digital-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        /* 5 cards in 2 columns orphans the last one; centre it so the row
+           reads as deliberate rather than as a layout bug. */
+        .digital-grid > :last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            width: calc(50% - 10px);
+            margin-inline: auto;
+        }
         .ethics-grid { grid-template-columns: 1fr; }
+        /* One reel at a time: a 9:16 video in a half-width column on a phone
+           is unreadably small. */
+        .platform-reels {
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 420px;
+        }
+        .platform-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .platform-cta { padding: 24px; }
         .testimonials-grid { grid-template-columns: 1fr; }
         .footer-grid { grid-template-columns: 1fr; }
         .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -990,34 +1215,53 @@
         .section { padding: 64px 0; }
         .founder-card { flex-direction: column; align-items: center; text-align: center; }
     }
+
+    /* Two columns of role bullets are unreadable on a phone. */
+    @media (max-width: 620px) {
+        .digital-grid { grid-template-columns: 1fr; }
+        .digital-grid > :last-child:nth-child(odd) { width: 100%; }
+        .extended-grid { grid-template-columns: 1fr; }
+        .platform-capabilities { grid-template-columns: 1fr; }
+        .platform-cta { flex-direction: column; align-items: flex-start; }
+        .platform-cta .btn { width: 100%; }
+    }
     </style>
 </head>
 <body>
 
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="images/Logo GF - B&N Chico.png" alt="GF Innovative Solutions" style="height:36px; width:auto;">
+                <a href="#home" aria-label="GF Innovative Solutions — home">
+                    <img src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" width="340" height="72" fetchpriority="high" style="height:36px; width:auto;">
+                </a>
             </div>
-            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <div class="nav-mobile-lang">
+                <button class="lang-toggle" id="lang-toggle-mobile" type="button" aria-label="Sprache wechseln / Switch language">
+                    <span class="active-lang" id="lang-en-m">EN</span> | <span id="lang-de-m">DE</span>
+                </button>
+            </div>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
                 <span></span><span></span><span></span>
             </button>
-            <div class="nav-menu">
-                <a href="#home" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
-                <a href="#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
+            <div class="nav-menu" id="nav-menu">
                 <a href="#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
-                <a href="#resources" class="nav-link" data-en="Resources" data-de="Ressourcen">Resources</a>
+                <a href="#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform">AI Platform</a>
                 <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
                 <a href="#team" class="nav-link" data-en="Team" data-de="Team">Team</a>
-                <a href="#digital-team" class="nav-link" data-en="Digital Team" data-de="Digitales Team">Digital Team</a>
-                <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
-                <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Toggle Language">
+                <a href="#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
+                <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
+                <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Sprache wechseln / Switch language">
                     <span class="active-lang" id="lang-en">EN</span> | <span id="lang-de">DE</span>
                 </button>
             </div>
         </div>
     </nav>
+
+    <main id="main">
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1050,21 +1294,21 @@
                     <div class="badge-card">
                         <div class="badge-icon">&#x1F91D;</div>
                         <div>
-                            <h4 data-en="Implementation Partner" data-de="Implementierungspartner">Implementation Partner</h4>
+                            <h3 data-en="Implementation Partner" data-de="Implementierungspartner">Implementation Partner</h3>
                             <p data-en="We build it. We don't just advise." data-de="Wir bauen es. Wir beraten nicht nur.">We build it. We don't just advise.</p>
                         </div>
                     </div>
                     <div class="badge-card">
                         <div class="badge-icon">&#x1F680;</div>
                         <div>
-                            <h4 data-en="Startup-Friendly" data-de="Startup-freundlich">Startup-Friendly</h4>
+                            <h3 data-en="Startup-Friendly" data-de="Startup-freundlich">Startup-Friendly</h3>
                             <p data-en="Lean, fast, budget-conscious delivery." data-de="Schlank, schnell, budgetbewusst.">Lean, fast, budget-conscious delivery.</p>
                         </div>
                     </div>
                     <div class="badge-card">
                         <div class="badge-icon">&#x1F30D;</div>
                         <div>
-                            <h4 data-en="German Precision" data-de="Deutsche Präzision">German Precision</h4>
+                            <h3 data-en="German Precision" data-de="Deutsche Präzision">German Precision</h3>
                             <p data-en="Quality engineering with global perspective." data-de="Qualitäts-Engineering mit globaler Perspektive.">Quality engineering with global perspective.</p>
                         </div>
                     </div>
@@ -1129,17 +1373,7 @@
                 <div class="service-card service-card--featured">
                     <h3 data-en="Process Screening" data-de="Prozess-Screening">Process Screening</h3>
                     <p data-en="Our flagship service. We identify your highest-burden manual processes and map exactly where AI creates measurable ROI. Express tier is free." data-de="Unser Flaggschiff-Service. Wir identifizieren Ihre aufwändigsten manuellen Prozesse und zeigen genau, wo KI messbaren ROI erzeugt. Express-Stufe ist kostenlos.">Our flagship service. We identify your highest-burden manual processes and map exactly where AI creates measurable ROI. Express tier is free.</p>
-                    <button class="accordion-toggle" onclick="toggleAccordion(this)" data-en="View tiers" data-de="Stufen anzeigen">View tiers <span class="arrow">&#9660;</span></button>
-                    <div class="accordion-body">
-                        <table class="tier-table">
-                            <thead><tr><th data-en="Tier" data-de="Stufe">Tier</th></tr></thead>
-                            <tbody>
-                                <tr><td data-en="Express (free AI scan)" data-de="Express (kostenloser KI-Scan)">Express (free AI scan)</td></tr>
-                                <tr><td data-en="Premium Tier 1 (deep analysis)" data-de="Premium Stufe 1 (Tiefenanalyse)">Premium Tier 1 (deep analysis)</td></tr>
-                                <tr><td data-en="Premium Tier 2 (full roadmap)" data-de="Premium Stufe 2 (volle Roadmap)">Premium Tier 2 (full roadmap)</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <p class="service-note" data-en="Express is free. Premium tiers start at €1,000 (process map) and €1,600 (map + roadmap + on-site visit). Full prices on the Process Screening page." data-de="Express ist kostenlos. Premium-Stufen ab €1.000 (Prozesslandkarte) und €1.600 (Landkarte + Roadmap + Vor-Ort-Besuch). Vollständige Preise auf der Prozess-Screening-Seite.">Express is free. Premium tiers start at €1,000 (process map) and €1,600 (map + roadmap + on-site visit). Full prices on the Process Screening page.</p>
                     <a href="process-screening.html" class="btn btn-primary" style="margin-top:10px" data-en="Learn more" data-de="Mehr erfahren">Learn more</a>
                 </div>
 
@@ -1147,22 +1381,7 @@
                 <div class="service-card">
                     <h3 data-en="AI Workflow Automation (n8n)" data-de="KI-Workflow-Automatisierung (n8n)">AI Workflow Automation (n8n)</h3>
                     <p data-en="Custom n8n workflow automation tailored to your operations. From simple integrations to complex multi-step automations with full pricing transparency." data-de="Maßgeschneiderte n8n-Workflow-Automatisierung für Ihre Abläufe. Von einfachen Integrationen bis zu komplexen mehrstufigen Automatisierungen mit voller Preistransparenz.">Custom n8n workflow automation tailored to your operations. From simple integrations to complex multi-step automations with full pricing transparency.</p>
-                    <button class="accordion-toggle" onclick="toggleAccordion(this)" data-en="View tiers" data-de="Stufen anzeigen">View tiers <span class="arrow">&#9660;</span></button>
-                    <div class="accordion-body">
-                        <table class="tier-table">
-                            <thead><tr><th data-en="Tier" data-de="Stufe">Tier</th></tr></thead>
-                            <tbody>
-                                <tr><td data-en="Server install (existing infra)" data-de="Serverinstallation (vorhandene Infra)">Server install (existing infra)</td></tr>
-                                <tr><td data-en="Server install (full VPS)" data-de="Serverinstallation (voller VPS)">Server install (full VPS)</td></tr>
-                                <tr><td data-en="Workflow Simple (<5 steps)" data-de="Workflow Einfach (<5 Schritte)">Workflow Simple (&lt;5 steps)</td></tr>
-                                <tr><td data-en="Workflow Mid (5–15 steps)" data-de="Workflow Mittel (5–15 Schritte)">Workflow Mid (5–15 steps)</td></tr>
-                                <tr><td data-en="Workflow Complex (>15 steps)" data-de="Workflow Komplex (>15 Schritte)">Workflow Complex (&gt;15 steps)</td></tr>
-                                <tr><td>Custom</td></tr>
-                                <tr><td data-en="Monthly maintenance" data-de="Monatliche Wartung">Monthly maintenance</td></tr>
-                            </tbody>
-                        </table>
-                        <p style="font-size:12px;color:var(--gray-dim);" data-en="Self-Managed Package available: full documentation, team training, and on-demand consulting." data-de="Self-Managed-Paket verfügbar: vollständige Dokumentation, Teamschulung und Beratung auf Abruf.">Self-Managed Package available: full documentation, team training, and on-demand consulting.</p>
-                    </div>
+                    <p class="service-note" data-en="Priced per workflow by complexity, plus optional monthly maintenance. A Self-Managed Package includes documentation, team training and on-demand consulting." data-de="Preis pro Workflow nach Komplexität, plus optionale monatliche Wartung. Das Self-Managed-Paket enthält Dokumentation, Teamschulung und Beratung auf Abruf.">Priced per workflow by complexity, plus optional monthly maintenance. A Self-Managed Package includes documentation, team training and on-demand consulting.</p>
                     <a href="#contact" class="btn btn-ghost" style="margin-top:10px" data-en="Get a quote" data-de="Angebot anfordern">Get a quote</a>
                 </div>
 
@@ -1170,18 +1389,7 @@
                 <div class="service-card">
                     <h3>OpenClawd AI Agents</h3>
                     <p data-en="Autonomous AI agents deployed on your private VPS. Powered by Anthropic Claude. Integrates with Telegram, WhatsApp, Discord, calendars, CRMs, and n8n." data-de="Autonome KI-Agenten auf Ihrem privaten VPS. Powered by Anthropic Claude. Integration mit Telegram, WhatsApp, Discord, Kalendern, CRMs und n8n.">Autonomous AI agents deployed on your private VPS. Powered by Anthropic Claude. Integrates with Telegram, WhatsApp, Discord, calendars, CRMs, and n8n.</p>
-                    <button class="accordion-toggle" onclick="toggleAccordion(this)" data-en="View details" data-de="Details anzeigen">View details <span class="arrow">&#9660;</span></button>
-                    <div class="accordion-body">
-                        <table class="tier-table">
-                            <thead><tr><th data-en="Service" data-de="Service">Service</th></tr></thead>
-                            <tbody>
-                                <tr><td data-en="Agent install (existing VPS)" data-de="Agent-Installation (vorhandener VPS)">Agent install (existing VPS)</td></tr>
-                                <tr><td data-en="Full VPS provision + install" data-de="Volle VPS-Bereitstellung + Installation">Full VPS provision + install</td></tr>
-                                <tr><td data-en="Monthly maintenance" data-de="Monatliche Wartung">Monthly maintenance</td></tr>
-                            </tbody>
-                        </table>
-                        <p style="font-size:12px;color:var(--gray-dim);margin-top:8px;" data-en="Includes skill configuration, n8n integration, and private VPS hosting. Minimum 4 GB RAM / 2 vCPU recommended." data-de="Inkl. Skill-Konfiguration, n8n-Integration und privates VPS-Hosting. Mindestens 4 GB RAM / 2 vCPU empfohlen.">Includes skill configuration, n8n integration, and private VPS hosting. Minimum 4 GB RAM / 2 vCPU recommended.</p>
-                    </div>
+                    <p class="service-note" data-en="Installed on your existing server or on a private VPS we provision for you. Includes skill configuration, n8n integration and optional monthly maintenance." data-de="Installation auf Ihrem bestehenden Server oder auf einem privaten VPS, den wir für Sie bereitstellen. Inkl. Skill-Konfiguration, n8n-Integration und optionaler monatlicher Wartung.">Installed on your existing server or on a private VPS we provision for you. Includes skill configuration, n8n integration and optional monthly maintenance.</p>
                     <a href="openclawd-agents.html" class="btn btn-ghost" style="margin-top:10px" data-en="Learn more" data-de="Mehr erfahren">Learn more</a>
                 </div>
 
@@ -1208,41 +1416,76 @@
                 <div class="complementary-card">
                     <h4 data-en="Startup Growth Journey" data-de="Startup-Wachstumsreise">Startup Growth Journey</h4>
                     <p data-en="Tailored consulting for early-stage startups. Strategy, product-market fit, and AI integration roadmap." data-de="Maßgeschneiderte Beratung für Startups in der Frühphase. Strategie, Product-Market-Fit und KI-Integrations-Roadmap.">Tailored consulting for early-stage startups. Strategy, product-market fit, and AI integration roadmap.</p>
-                    <a href="startups.html" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;">Learn more</a>
+                    <a href="startups.html" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;" data-en="Learn more" data-de="Mehr erfahren">Learn more</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tools & Resources -->
-    <section id="resources" class="section section--gradient">
+    <!-- AI Marketing Platform -->
+    <section id="platform" class="section section--gradient">
         <div class="container">
-            <span class="section-tag" data-en="Resources" data-de="Ressourcen">Resources</span>
-            <h2 class="section-title" data-en="Tools &amp; Resources" data-de="Tools &amp; Ressourcen">Tools &amp; Resources</h2>
-            <p class="section-subtitle" data-en="We don't just talk about AI innovation. We build tools and share them." data-de="Wir reden nicht nur über KI-Innovation. Wir bauen Tools und teilen sie.">We don't just talk about AI innovation. We build tools and share them.</p>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-icon">&#x1F916;</div>
-                    <h3 data-en="Agent Templates" data-de="Agenten-Vorlagen">Agent Templates</h3>
-                    <p data-en="Pre-built AI agent architectures for common business processes: document processing, customer support routing, data validation, and report generation." data-de="Vorgefertigte KI-Agenten-Architekturen für gängige Geschäftsprozesse: Dokumentenverarbeitung, Kundenservice-Routing, Datenvalidierung und Berichtserstellung.">Pre-built AI agent architectures for common business processes: document processing, customer support routing, data validation, and report generation.</p>
-                    <span class="badge-soon" data-en="Coming Soon" data-de="Demnächst">Coming Soon</span>
+            <span class="section-tag" data-en="Our Product" data-de="Unser Produkt">Our Product</span>
+            <h2 class="section-title" data-en="The AI Marketing Platform" data-de="Die KI-Marketing-Plattform">The AI Marketing Platform</h2>
+            <div class="platform-lede">
+                <p data-en="Built for marketing agencies and in-house marketing teams. Every client's posts live in one content calendar. Your AI agent drafts the copy and the visuals, you review them, and the client approves with a single link — no email threads, no &quot;is this the final version?&quot;." data-de="Gebaut für Marketing-Agenturen und Inhouse-Marketingteams. Alle Posts eines Kunden liegen in einem Content-Kalender. Ihr KI-Agent entwirft Text und Bild, Sie prüfen, und der Kunde gibt per Link frei – keine E-Mail-Ketten, kein &quot;ist das die finale Version?&quot;.">Built for marketing agencies and in-house marketing teams. Every client's posts live in one content calendar. Your AI agent drafts the copy and the visuals, you review them, and the client approves with a single link — no email threads, no "is this the final version?".</p>
+                <p data-en="It is the same stack we run our own marketing on. The two reels below are the two halves of the workflow." data-de="Es ist derselbe Stack, auf dem wir unser eigenes Marketing betreiben. Die beiden Reels unten zeigen die zwei Hälften des Workflows.">It is the same stack we run our own marketing on. The two reels below are the two halves of the workflow.</p>
+            </div>
+
+            <div class="platform-reels">
+                <div class="reel-card">
+                    <video
+                        src="videos/gf-planner-chat-to-post.mp4"
+                        poster="videos/gf-planner-chat-to-post-poster.webp"
+                        width="1080" height="1920"
+                        controls muted playsinline preload="none"
+                        aria-label="15-second reel: a user asks the GF agent on WhatsApp for a Friday post about a new summer menu, and the agent replies with a finished photo and caption."></video>
+                    <div class="reel-card__body">
+                        <span class="reel-card__step" data-en="Step 1 · Create" data-de="Schritt 1 · Erstellen">Step 1 · Create</span>
+                        <h3 data-en="Message your agent, get a finished post" data-de="Schreiben Sie Ihrem Agenten, erhalten Sie einen fertigen Post">Message your agent, get a finished post</h3>
+                        <p data-en="Ask on WhatsApp or Telegram in plain language. The agent writes the caption, generates the image, and hands back a draft ready to schedule. Drafting that took hours takes minutes." data-de="Fragen Sie auf WhatsApp oder Telegram in normaler Sprache. Der Agent schreibt den Text, erzeugt das Bild und liefert einen Entwurf zurück, der direkt geplant werden kann. Aus Stunden werden Minuten.">Ask on WhatsApp or Telegram in plain language. The agent writes the caption, generates the image, and hands back a draft ready to schedule. Drafting that took hours takes minutes.</p>
+                    </div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">&#x2699;&#xFE0F;</div>
-                    <h3 data-en="Automation Workflows" data-de="Automatisierungs-Workflows">Automation Workflows</h3>
-                    <p data-en="Ready-to-deploy workflow templates for n8n, Make, and custom integrations. From invoice processing to CRM automation, battle-tested." data-de="Einsatzbereite Workflow-Vorlagen für n8n, Make und individuelle Integrationen. Von Rechnungsverarbeitung bis CRM-Automatisierung, praxiserprobt.">Ready-to-deploy workflow templates for n8n, Make, and custom integrations. From invoice processing to CRM automation, battle-tested.</p>
-                    <span class="badge-soon" data-en="Coming Soon" data-de="Demnächst">Coming Soon</span>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-icon">&#x1F4CA;</div>
-                    <h3 data-en="AI Implementation Toolkit" data-de="KI-Implementierungs-Toolkit">AI Implementation Toolkit</h3>
-                    <p data-en="Internal frameworks for AI project scoping, ROI calculation, and performance monitoring. Assessment templates, cost calculators, and checklists." data-de="Interne Frameworks für KI-Projektplanung, ROI-Berechnung und Leistungsüberwachung. Assessment-Vorlagen, Kostenrechner und Checklisten.">Internal frameworks for AI project scoping, ROI calculation, and performance monitoring. Assessment templates, cost calculators, and checklists.</p>
-                    <span class="badge-soon" data-en="Coming Soon" data-de="Demnächst">Coming Soon</span>
+                <div class="reel-card">
+                    <video
+                        src="videos/gf-planner-launch-reel.mp4"
+                        poster="videos/gf-planner-launch-reel-poster.webp"
+                        width="1080" height="1920"
+                        controls muted playsinline preload="none"
+                        aria-label="20-second reel: scattered approval emails and chats resolve into one content calendar where a client approves a post with a single swipe."></video>
+                    <div class="reel-card__body">
+                        <span class="reel-card__step" data-en="Step 2 · Approve" data-de="Schritt 2 · Freigeben">Step 2 · Approve</span>
+                        <h3 data-en="One calendar, one link, approved" data-de="Ein Kalender, ein Link, freigegeben">One calendar, one link, approved</h3>
+                        <p data-en="The client opens one link and swipes through the month — approve, comment, or request a change. Every decision is logged against the post, so nobody chases a thread to find the latest version." data-de="Der Kunde öffnet einen Link und geht den Monat durch – freigeben, kommentieren oder Änderung anfordern. Jede Entscheidung wird am Post protokolliert, niemand sucht mehr in E-Mail-Ketten nach der aktuellen Version.">The client opens one link and swipes through the month — approve, comment, or request a change. Every decision is logged against the post, so nobody chases a thread to find the latest version.</p>
+                    </div>
                 </div>
             </div>
-            <div class="tools-cta">
-                <h3 data-en="Ready to discover your AI potential?" data-de="Bereit, Ihr KI-Potenzial zu entdecken?">Ready to discover your AI potential?</h3>
-                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" data-en="Book Free AI Assessment" data-de="Kostenloses KI-Assessment buchen">Book Free AI Assessment</a>
+
+            <div class="platform-capabilities">
+                <div class="capability">
+                    <h3 data-en="Multi-client workspaces" data-de="Mandantenfähige Workspaces">Multi-client workspaces</h3>
+                    <p data-en="One login, every client separated. Roles for your team, your client, and read-only stakeholders." data-de="Ein Login, jeder Kunde getrennt. Rollen für Ihr Team, Ihren Kunden und Beteiligte mit Lesezugriff.">One login, every client separated. Roles for your team, your client, and read-only stakeholders.</p>
+                </div>
+                <div class="capability">
+                    <h3 data-en="Scheduling &amp; publishing" data-de="Planung &amp; Veröffentlichung">Scheduling &amp; publishing</h3>
+                    <p data-en="Approved posts go out on schedule to the connected channels. Nothing is published without a human yes." data-de="Freigegebene Posts gehen planmäßig an die verbundenen Kanäle. Nichts wird ohne menschliches Ja veröffentlicht.">Approved posts go out on schedule to the connected channels. Nothing is published without a human yes.</p>
+                </div>
+                <div class="capability">
+                    <h3 data-en="Your brand, not a template" data-de="Ihre Marke, keine Vorlage">Your brand, not a template</h3>
+                    <p data-en="The agent works from your brand assets, tone and past posts, so drafts arrive sounding like you." data-de="Der Agent arbeitet mit Ihren Markenassets, Ihrer Tonalität und früheren Posts – Entwürfe klingen von Anfang an nach Ihnen.">The agent works from your brand assets, tone and past posts, so drafts arrive sounding like you.</p>
+                </div>
+                <div class="capability">
+                    <h3 data-en="Hosted in the EU" data-de="Gehostet in der EU">Hosted in the EU</h3>
+                    <p data-en="Runs on private European infrastructure under the same AVV and GDPR terms as the rest of our work." data-de="Läuft auf privater europäischer Infrastruktur, unter denselben AVV- und DSGVO-Bedingungen wie unsere übrige Arbeit.">Runs on private European infrastructure under the same AVV and GDPR terms as the rest of our work.</p>
+                </div>
+            </div>
+
+            <div class="platform-cta">
+                <div>
+                    <p data-en="Three agencies get it free for three weeks." data-de="Drei Agenturen bekommen sie drei Wochen kostenlos.">Three agencies get it free for three weeks.</p>
+                    <span data-en="Run it with one real client. We want your feedback, not your budget." data-de="Nutzen Sie sie mit einem echten Kunden. Wir wollen Ihr Feedback, nicht Ihr Budget.">Run it with one real client. We want your feedback, not your budget.</span>
+                </div>
+                <a href="pilot.html" class="btn btn-primary" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben">Apply for the Pilot</a>
             </div>
         </div>
     </section>
@@ -1256,32 +1499,32 @@
             <div class="trust-grid">
                 <div class="trust-card">
                     <div class="trust-icon">&#x1F6E1;&#xFE0F;</div>
-                    <h4 data-en="GDPR Compliant" data-de="DSGVO-konform">GDPR Compliant</h4>
+                    <h3 data-en="GDPR Compliant" data-de="DSGVO-konform">GDPR Compliant</h3>
                     <p data-en="All data processing under German/EU law. AVV (DPA) signed before any engagement." data-de="Alle Datenverarbeitung nach deutschem/EU-Recht. AVV vor jeder Zusammenarbeit unterzeichnet.">All data processing under German/EU law. AVV (DPA) signed before any engagement.</p>
                 </div>
                 <div class="trust-card">
                     <div class="trust-icon">&#x1F512;</div>
-                    <h4 data-en="Private Infrastructure" data-de="Private Infrastruktur">Private Infrastructure</h4>
+                    <h3 data-en="Private Infrastructure" data-de="Private Infrastruktur">Private Infrastructure</h3>
                     <p data-en="Your data runs on private VPS, never shared cloud. Not used for AI model training." data-de="Ihre Daten laufen auf privaten VPS, nie in einer geteilten Cloud. Nicht für KI-Modelltraining genutzt.">Your data runs on private VPS, never shared cloud. Not used for AI model training.</p>
                 </div>
                 <div class="trust-card">
                     <div class="trust-icon">&#x1F513;</div>
-                    <h4 data-en="No Lock-in" data-de="Kein Lock-in">No Lock-in</h4>
+                    <h3 data-en="No Lock-in" data-de="Kein Lock-in">No Lock-in</h3>
                     <p data-en="IP transfers to you on full payment. 30–60 day cancellation. No proprietary dependencies." data-de="IP geht nach vollständiger Zahlung an Sie über. 30–60 Tage Kündigungsfrist. Keine proprietären Abhängigkeiten.">IP transfers to you on full payment. 30–60 day cancellation. No proprietary dependencies.</p>
                 </div>
                 <div class="trust-card">
                     <div class="trust-icon">&#x1F4DD;</div>
-                    <h4 data-en="NDA by Default" data-de="NDA standardmäßig">NDA by Default</h4>
+                    <h3 data-en="NDA by Default" data-de="NDA standardmäßig">NDA by Default</h3>
                     <p data-en="Mutual NDA signed before any process data is shared. Confidentiality is the baseline." data-de="Gegenseitige NDA vor jeder Weitergabe von Prozessdaten. Vertraulichkeit ist der Standard.">Mutual NDA signed before any process data is shared. Confidentiality is the baseline.</p>
                 </div>
                 <div class="trust-card">
                     <div class="trust-icon">&#x2696;&#xFE0F;</div>
-                    <h4 data-en="EU AI Act" data-de="EU AI Act">EU AI Act</h4>
+                    <h3 data-en="EU AI Act" data-de="EU AI Act">EU AI Act</h3>
                     <p data-en="Our implementations follow EU AI Act requirements for transparency, human oversight, and risk management." data-de="Unsere Implementierungen folgen den Anforderungen des EU AI Act an Transparenz, menschliche Aufsicht und Risikomanagement.">Our implementations follow EU AI Act requirements for transparency, human oversight, and risk management.</p>
                 </div>
                 <div class="trust-card">
                     <div class="trust-icon">&#x2705;</div>
-                    <h4 data-en="SLA Guaranteed" data-de="SLA garantiert">SLA Guaranteed</h4>
+                    <h3 data-en="SLA Guaranteed" data-de="SLA garantiert">SLA Guaranteed</h3>
                     <p data-en="4h critical response time. 99% uptime for managed services. Clear contractual terms." data-de="4h Reaktionszeit bei kritischen Fällen. 99 % Uptime für Managed Services. Klare Vertragsbedingungen.">4h critical response time. 99% uptime for managed services. Clear contractual terms.</p>
                 </div>
             </div>
@@ -1299,29 +1542,29 @@
             <div class="founders-grid">
                 <div class="founder-card">
                     <div class="founder-photo">
-                        <img src="images/team/team-martin-arias.png" alt="Martín Arias">
+                        <img loading="lazy" decoding="async" width="300" height="300" src="images/opt/team-martin-arias.webp" alt="Martín Arias">
                     </div>
                     <div class="founder-info">
                         <h3><a href="martin-arias.html">Martín Arias</a></h3>
-                        <div class="founder-role">CTO &amp; Co-Founder</div>
+                        <div class="founder-role" data-en="CTO &amp; Co-Founder" data-de="CTO &amp; Mitgründer">CTO &amp; Co-Founder</div>
                         <ul class="founder-skills">
-                            <li>AI implementation &amp; architecture</li>
-                            <li>Strategic planning, development &amp; DevOps</li>
-                            <li>Custom AI agents &amp; automation</li>
+                            <li data-en="AI implementation &amp; architecture" data-de="KI-Implementierung &amp; Architektur">AI implementation &amp; architecture</li>
+                            <li data-en="Strategic planning, development &amp; DevOps" data-de="Strategische Planung, Entwicklung &amp; DevOps">Strategic planning, development &amp; DevOps</li>
+                            <li data-en="Custom AI agents &amp; automation" data-de="Maßgeschneiderte KI-Agenten &amp; Automatisierung">Custom AI agents &amp; automation</li>
                         </ul>
                     </div>
                 </div>
                 <div class="founder-card">
                     <div class="founder-photo">
-                        <img src="images/team/team-omar-garcia.png" alt="Omar García Urdiales">
+                        <img loading="lazy" decoding="async" width="300" height="300" src="images/opt/team-omar-garcia.webp" alt="Omar García Urdiales">
                     </div>
                     <div class="founder-info">
                         <h3><a href="omar-garcia.html">Omar García Urdiales</a></h3>
-                        <div class="founder-role">Co-Founder</div>
+                        <div class="founder-role" data-en="Co-Founder" data-de="Mitgründer">Co-Founder</div>
                         <ul class="founder-skills">
-                            <li>AI strategy &amp; business consulting</li>
-                            <li>Startup growth &amp; go-to-market</li>
-                            <li>Client partnerships &amp; delivery</li>
+                            <li data-en="AI strategy &amp; business consulting" data-de="KI-Strategie &amp; Unternehmensberatung">AI strategy &amp; business consulting</li>
+                            <li data-en="Startup growth &amp; go-to-market" data-de="Startup-Wachstum &amp; Go-to-Market">Startup growth &amp; go-to-market</li>
+                            <li data-en="Client partnerships &amp; delivery" data-de="Kundenpartnerschaften &amp; Umsetzung">Client partnerships &amp; delivery</li>
                         </ul>
                     </div>
                 </div>
@@ -1331,38 +1574,38 @@
             <div class="extended-grid">
                 <div class="extended-card">
                     <div class="extended-photo">
-                        <img src="images/team/team-martin-hueppauf.png" alt="Dr. Martin Hüppauff">
+                        <img loading="lazy" decoding="async" width="300" height="300" src="images/opt/team-martin-hueppauf.webp" alt="Dr. Martin Hüppauff">
                     </div>
                     <h4>Dr. Martin Hüppauff</h4>
-                    <div class="ext-role">Strategy</div>
+                    <div class="ext-role" data-en="Strategy" data-de="Strategie">Strategy</div>
                     <ul>
-                        <li>Strategic planning</li>
-                        <li>Business development</li>
-                        <li>Research &amp; analysis</li>
+                        <li data-en="Strategic planning" data-de="Strategische Planung">Strategic planning</li>
+                        <li data-en="Business development" data-de="Geschäftsentwicklung">Business development</li>
+                        <li data-en="Research &amp; analysis" data-de="Recherche &amp; Analyse">Research &amp; analysis</li>
                     </ul>
                 </div>
                 <div class="extended-card">
                     <div class="extended-photo">
-                        <img src="images/team/team-pilar-arias.png" alt="Pilar Arias">
+                        <img loading="lazy" decoding="async" width="300" height="300" src="images/opt/team-pilar-arias.webp" alt="Pilar Arias">
                     </div>
                     <h4>Pilar Arias</h4>
-                    <div class="ext-role">Marketing, Branding &amp; Sales</div>
+                    <div class="ext-role" data-en="Marketing, Branding &amp; Sales" data-de="Marketing, Branding &amp; Vertrieb">Marketing, Branding &amp; Sales</div>
                     <ul>
-                        <li>Brand strategy &amp; design</li>
-                        <li>Marketing automation</li>
-                        <li>Sales optimization</li>
+                        <li data-en="Brand strategy &amp; design" data-de="Markenstrategie &amp; Design">Brand strategy &amp; design</li>
+                        <li data-en="Marketing automation" data-de="Marketing-Automatisierung">Marketing automation</li>
+                        <li data-en="Sales optimization" data-de="Vertriebsoptimierung">Sales optimization</li>
                     </ul>
                 </div>
                 <div class="extended-card">
                     <div class="extended-photo">
-                        <img src="images/team/team-wasilios.png" alt="Wasilios Minoudis">
+                        <img loading="lazy" decoding="async" width="300" height="300" src="images/opt/team-wasilios.webp" alt="Wasilios Minoudis">
                     </div>
                     <h4>Wasilios Minoudis</h4>
-                    <div class="ext-role">VR/AR/XR Expert</div>
+                    <div class="ext-role" data-en="VR/AR/XR Expert" data-de="VR/AR/XR-Experte">VR/AR/XR Expert</div>
                     <ul>
-                        <li>Immersive technology development</li>
-                        <li>Interactive experience design</li>
-                        <li>Real-time 3D solutions</li>
+                        <li data-en="Immersive technology development" data-de="Entwicklung immersiver Technologien">Immersive technology development</li>
+                        <li data-en="Interactive experience design" data-de="Interaktives Erlebnisdesign">Interactive experience design</li>
+                        <li data-en="Real-time 3D solutions" data-de="Echtzeit-3D-Lösungen">Real-time 3D solutions</li>
                     </ul>
                 </div>
             </div>
@@ -1378,62 +1621,62 @@
             <div class="digital-grid">
                 <div class="digital-card">
                     <div class="digital-photo">
-                        <img src="images/digital-workers/otto.jpg" alt="Otto">
+                        <img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-otto.webp" alt="Otto">
                     </div>
-                    <h4>Otto</h4>
-                    <div class="digi-role">Infrastructure &amp; DevOps</div>
+                    <h3>Otto</h3>
+                    <div class="digi-role" data-en="Infrastructure &amp; DevOps" data-de="Infrastruktur &amp; DevOps">Infrastructure &amp; DevOps</div>
                     <ul>
-                        <li>Server &amp; container management</li>
-                        <li>Security &amp; monitoring</li>
-                        <li>CI/CD automation</li>
+                        <li data-en="Server &amp; container management" data-de="Server- &amp; Container-Management">Server &amp; container management</li>
+                        <li data-en="Security &amp; monitoring" data-de="Sicherheit &amp; Monitoring">Security &amp; monitoring</li>
+                        <li data-en="CI/CD automation" data-de="CI/CD-Automatisierung">CI/CD automation</li>
                     </ul>
                 </div>
                 <div class="digital-card">
                     <div class="digital-photo">
-                        <img src="images/digital-workers/viktor.jpg" alt="Viktor">
+                        <img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-viktor.webp" alt="Viktor">
                     </div>
-                    <h4>Viktor</h4>
-                    <div class="digi-role">Sales &amp; Business Development</div>
+                    <h3>Viktor</h3>
+                    <div class="digi-role" data-en="Sales &amp; Business Development" data-de="Vertrieb &amp; Geschäftsentwicklung">Sales &amp; Business Development</div>
                     <ul>
-                        <li>Lead tracking &amp; CRM</li>
-                        <li>Pipeline management</li>
-                        <li>Proposal &amp; outreach</li>
+                        <li data-en="Lead tracking &amp; CRM" data-de="Lead-Tracking &amp; CRM">Lead tracking &amp; CRM</li>
+                        <li data-en="Pipeline management" data-de="Pipeline-Management">Pipeline management</li>
+                        <li data-en="Proposal &amp; outreach" data-de="Angebote &amp; Ansprache">Proposal &amp; outreach</li>
                     </ul>
                 </div>
                 <div class="digital-card">
                     <div class="digital-photo">
-                        <img src="images/digital-workers/camila.jpg" alt="Camila">
+                        <img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-camila.webp" alt="Camila">
                     </div>
-                    <h4>Camila</h4>
-                    <div class="digi-role">Project Management &amp; Delivery</div>
+                    <h3>Camila</h3>
+                    <div class="digi-role" data-en="Project Management &amp; Delivery" data-de="Projektmanagement &amp; Umsetzung">Project Management &amp; Delivery</div>
                     <ul>
-                        <li>Project tracking &amp; reporting</li>
-                        <li>Document management</li>
-                        <li>Client coordination</li>
+                        <li data-en="Project tracking &amp; reporting" data-de="Projektverfolgung &amp; Reporting">Project tracking &amp; reporting</li>
+                        <li data-en="Document management" data-de="Dokumentenmanagement">Document management</li>
+                        <li data-en="Client coordination" data-de="Kundenkoordination">Client coordination</li>
                     </ul>
                 </div>
                 <div class="digital-card">
                     <div class="digital-photo">
-                        <img src="images/digital-workers/carlos.jpg" alt="Carlos">
+                        <img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-carlos.webp" alt="Carlos">
                     </div>
-                    <h4>Carlos</h4>
-                    <div class="digi-role">General Assistant &amp; AI Strategist</div>
+                    <h3>Carlos</h3>
+                    <div class="digi-role" data-en="General Assistant &amp; AI Strategist" data-de="Allgemeine Assistenz &amp; KI-Stratege">General Assistant &amp; AI Strategist</div>
                     <ul>
-                        <li>AI research &amp; insights</li>
-                        <li>Team communication</li>
-                        <li>Task automation</li>
+                        <li data-en="AI research &amp; insights" data-de="KI-Recherche &amp; Insights">AI research &amp; insights</li>
+                        <li data-en="Team communication" data-de="Teamkommunikation">Team communication</li>
+                        <li data-en="Task automation" data-de="Aufgabenautomatisierung">Task automation</li>
                     </ul>
                 </div>
                 <div class="digital-card">
                     <div class="digital-photo">
-                        <img src="images/digital-workers/molly.jpg" alt="Molly">
+                        <img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-molly.webp" alt="Molly">
                     </div>
-                    <h4>Molly</h4>
-                    <div class="digi-role">Finance &amp; Administration</div>
+                    <h3>Molly</h3>
+                    <div class="digi-role" data-en="Finance &amp; Administration" data-de="Finanzen &amp; Verwaltung">Finance &amp; Administration</div>
                     <ul>
-                        <li>Financial tracking &amp; reporting</li>
-                        <li>Budget analysis</li>
-                        <li>Invoice processing</li>
+                        <li data-en="Financial tracking &amp; reporting" data-de="Finanzverfolgung &amp; Reporting">Financial tracking &amp; reporting</li>
+                        <li data-en="Budget analysis" data-de="Budgetanalyse">Budget analysis</li>
+                        <li data-en="Invoice processing" data-de="Rechnungsverarbeitung">Invoice processing</li>
                     </ul>
                 </div>
             </div>
@@ -1448,15 +1691,15 @@
             <p class="section-subtitle" data-en="Responsible AI isn't optional. It's how we build." data-de="Verantwortungsvolle KI ist keine Option. So bauen wir.">Responsible AI isn't optional. It's how we build.</p>
             <div class="ethics-grid">
                 <div class="ethics-card">
-                    <h4 data-en="Human-First" data-de="Mensch zuerst">Human-First</h4>
+                    <h3 data-en="Human-First" data-de="Mensch zuerst">Human-First</h3>
                     <p data-en="AI amplifies human capacity. We never design systems that remove human judgment from critical decisions." data-de="KI verstärkt menschliche Fähigkeiten. Wir entwickeln niemals Systeme, die menschliches Urteilsvermögen aus kritischen Entscheidungen entfernen.">AI amplifies human capacity. We never design systems that remove human judgment from critical decisions.</p>
                 </div>
                 <div class="ethics-card">
-                    <h4 data-en="Radical Transparency" data-de="Radikale Transparenz">Radical Transparency</h4>
+                    <h3 data-en="Radical Transparency" data-de="Radikale Transparenz">Radical Transparency</h3>
                     <p data-en="We show you what the AI found, how it found it, and the limits of that analysis. No black boxes." data-de="Wir zeigen Ihnen, was die KI gefunden hat, wie sie es gefunden hat und wo die Grenzen dieser Analyse liegen. Keine Black Boxes.">We show you what the AI found, how it found it, and the limits of that analysis. No black boxes.</p>
                 </div>
                 <div class="ethics-card">
-                    <h4 data-en="EU AI Act Aligned" data-de="Mit EU AI Act abgestimmt">EU AI Act Aligned</h4>
+                    <h3 data-en="EU AI Act Aligned" data-de="Mit EU AI Act abgestimmt">EU AI Act Aligned</h3>
                     <p data-en="Our implementations comply with EU AI Act requirements. We stay current so your systems stay compliant." data-de="Unsere Implementierungen entsprechen den Anforderungen des EU AI Act. Wir bleiben aktuell, damit Ihre Systeme compliant bleiben.">Our implementations comply with EU AI Act requirements. We stay current so your systems stay compliant.</p>
                 </div>
             </div>
@@ -1468,15 +1711,15 @@
         <div class="container">
             <span class="section-tag" data-en="Testimonials" data-de="Referenzen">Testimonials</span>
             <h2 class="section-title" data-en="What Our Clients Say" data-de="Was unsere Kunden sagen">What Our Clients Say</h2>
-            <p class="section-subtitle" style="margin-bottom:32px;"></p>
+            <p class="section-subtitle" style="margin-bottom:32px;" data-en="Named where our clients allowed it. Reference calls available on request." data-de="Namentlich, wo unsere Kunden es erlaubt haben. Referenzgespräche auf Anfrage.">Named where our clients allowed it. Reference calls available on request.</p>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <blockquote>"They challenged our assumptions and helped us build something real."</blockquote>
-                    <cite>Ira, Startup Founder</cite>
+                    <blockquote data-en="&quot;They challenged our assumptions and helped us build something real.&quot;" data-de="&quot;Sie haben unsere Annahmen hinterfragt und uns geholfen, etwas Echtes zu bauen.&quot;">"They challenged our assumptions and helped us build something real."</blockquote>
+                    <cite data-en="Ira, Startup Founder" data-de="Ira, Startup-Gründerin">Ira, Startup Founder</cite>
                 </div>
                 <div class="testimonial-card">
-                    <blockquote>"GF helped us turn a highly manual process into a visual, scalable VR experience."</blockquote>
-                    <cite>Client from Manufacturing Sector</cite>
+                    <blockquote data-en="&quot;GF helped us turn a highly manual process into a visual, scalable VR experience.&quot;" data-de="&quot;GF hat uns geholfen, einen sehr manuellen Prozess in ein visuelles, skalierbares VR-Erlebnis zu verwandeln.&quot;">"GF helped us turn a highly manual process into a visual, scalable VR experience."</blockquote>
+                    <cite data-en="Client from Manufacturing Sector" data-de="Kunde aus der Fertigungsindustrie">Client from Manufacturing Sector</cite>
                 </div>
             </div>
         </div>
@@ -1502,39 +1745,46 @@
             <span class="section-tag" data-en="Get Started" data-de="Loslegen">Get Started</span>
             <h2 class="section-title" data-en="Let's Start Your Journey" data-de="Starten Sie Ihre Reise">Let's Start Your Journey</h2>
 
-            <div class="tab-buttons">
-                <button class="tab-btn active" onclick="switchTab('startup')" data-en="I'm a startup" data-de="Ich bin ein Startup">I'm a startup</button>
-                <button class="tab-btn" onclick="switchTab('business')" data-en="I'm an established business" data-de="Ich bin ein etabliertes Unternehmen">I'm an established business</button>
+            <div class="tab-buttons" role="tablist">
+                <button class="tab-btn active" role="tab" id="tab-startup" data-tab="startup" aria-controls="startup-tab" aria-selected="true" onclick="switchTab('startup', event)" data-en="I'm a startup" data-de="Ich bin ein Startup">I'm a startup</button>
+                <button class="tab-btn" role="tab" id="tab-business" data-tab="business" aria-controls="business-tab" aria-selected="false" onclick="switchTab('business', event)" data-en="I'm an established business" data-de="Ich bin ein etabliertes Unternehmen">I'm an established business</button>
             </div>
 
-            <div id="startup-tab" class="tab-pane active">
+            <div id="startup-tab" class="tab-pane active" role="tabpanel" aria-labelledby="tab-startup">
                 <h3 data-en="Ready to build AI into your product?" data-de="Bereit, KI in Ihr Produkt einzubauen?">Ready to build AI into your product?</h3>
                 <p data-en="Let's discuss your MVP, AI strategy, and technical roadmap. Talk directly with our CTO." data-de="Lassen Sie uns Ihr MVP, Ihre KI-Strategie und technische Roadmap besprechen. Sprechen Sie direkt mit unserem CTO.">Let's discuss your MVP, AI strategy, and technical roadmap. Talk directly with our CTO.</p>
             </div>
-            <div id="business-tab" class="tab-pane">
+            <div id="business-tab" class="tab-pane" role="tabpanel" aria-labelledby="tab-business" hidden>
                 <h3 data-en="Ready to automate your operations with AI?" data-de="Bereit, Ihre Abläufe mit KI zu automatisieren?">Ready to automate your operations with AI?</h3>
-                <p data-en="Book a free assessment. We'll identify processes that waste your team's time and show you what AI can do. No fluff, just results." data-de="Buchen Sie ein kostenloses Assessment. Wir identifizieren Prozesse, die Ihr Team Zeit kosten, und zeigen Ihnen, was KI leisten kann. Keine leeren Versprechen, nur Ergebnisse.">Book a free assessment. We'll identify processes that waste your team's time and show you what AI can do. No fluff, just results.</p>
+                <p data-en="Book a free assessment. We'll identify processes that waste your team's time and show you what AI can do. Talk directly with our CTO. No fluff, just results." data-de="Buchen Sie ein kostenloses Assessment. Wir identifizieren Prozesse, die Ihr Team Zeit kosten, und zeigen Ihnen, was KI leisten kann. Sprechen Sie direkt mit unserem CTO. Keine leeren Versprechen, nur Ergebnisse.">Book a free assessment. We'll identify processes that waste your team's time and show you what AI can do. Talk directly with our CTO. No fluff, just results.</p>
             </div>
 
-            <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" style="margin-top:8px;" data-en="Schedule Your Intro Call" data-de="Erstgespräch vereinbaren">Schedule Your Intro Call</a>
+            <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:8px;" data-en="Schedule Your Intro Call" data-de="Erstgespräch vereinbaren">Schedule Your Intro Call</a>
+            <!-- Reassurance at the point of highest hesitation. -->
+            <p class="cta-reassurance" data-en="30 minutes · free · no obligation · in German or English" data-de="30 Minuten · kostenlos · unverbindlich · auf Deutsch oder Englisch">30 minutes · free · no obligation · in German or English</p>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <img src="images/Logo GF - B&N Chico.png" alt="GF Innovative Solutions" style="height:36px; width:auto;">
+                    <img width="340" height="72" src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" style="height:36px; width:auto;">
                     <p class="footer-tagline" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie.">Guided by people, powered by tech.</p>
                 </div>
                 <div>
-                    <h4 data-en="Services" data-de="Leistungen">Services</h4>
+                    <h4 data-en="Explore" data-de="Entdecken">Explore</h4>
                     <ul>
-                        <li><a href="#services">AI Implementation &amp; Strategy</a></li>
-                        <li><a href="#services">Custom AI Agents &amp; Automation</a></li>
-                        <li><a href="vr_website.html">VR/AR Development</a></li>
-                        <li><a href="#services">Fractional CTO Services</a></li>
+                        <li><a href="#services" data-en="Our Services" data-de="Unsere Leistungen">Our Services</a></li>
+                        <li><a href="how-we-work.html" data-en="How We Work" data-de="Wie wir arbeiten">How We Work</a></li>
+                        <li><a href="use-cases.html" data-en="Use Cases" data-de="Anwendungsfälle">Use Cases</a></li>
+                        <li><a href="process-screening.html" data-en="Process Screening" data-de="Prozess-Screening">Process Screening</a></li>
+                        <li><a href="openclawd-agents.html">OpenClawd AI Agents</a></li>
+                        <li><a href="resources.html" data-en="Resources" data-de="Ressourcen">Resources</a></li>
+                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung">VR/AR Development</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -1545,9 +1795,9 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten.">&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
                 <div>
-                    <a href="imprint.html">Imprint</a> | <a href="privacy.html">Privacy Policy</a>
+                    <a href="imprint.html">Impressum</a> | <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutz">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -1557,7 +1807,7 @@
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
         <div class="cookie-banner__inner">
             <div class="cookie-banner__text">
-                <strong>We value your privacy</strong>
+                <strong data-en="We value your privacy" data-de="Wir schätzen Ihre Privatsphäre">We value your privacy</strong>
                 <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können auswählen, welche Cookies Sie akzeptieren möchten.">This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept.</p>
             </div>
             <div class="cookie-banner__actions">
@@ -1579,23 +1829,23 @@
         <div class="cookie-modal__dialog">
             <div class="cookie-modal__header">
                 <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen">Cookie Preferences</h3>
-                <button class="modal-close" onclick="closeCookieModal()" aria-label="Close">&times;</button>
+                <button class="modal-close" onclick="closeCookieModal()" aria-label="Schließen / Close">&times;</button>
             </div>
             <div class="cookie-modal__body">
                 <p data-en="We use cookies to improve your experience. Customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis zu verbessern. Passen Sie unten Ihre Einstellungen an.">We use cookies to improve your experience. Customize your preferences below.</p>
                 <div class="cookie-toggle">
                     <div>
-                        <strong>Essential Cookies</strong>
-                        <p data-en="Required for the website to function properly." data-de="Erforderlich, damit die Website ordnungsgemäß funktioniert.">Required for the website to function properly.</p>
+                        <strong id="label-essential" data-en="Essential Cookies" data-de="Notwendige Cookies">Essential Cookies</strong>
+                        <p id="desc-essential" data-en="Required for the website to function properly." data-de="Erforderlich, damit die Website ordnungsgemäß funktioniert.">Required for the website to function properly.</p>
                     </div>
-                    <div class="switch"><input type="checkbox" checked disabled></div>
+                    <div class="switch"><input type="checkbox" id="toggle-essential" checked disabled aria-labelledby="label-essential" aria-describedby="desc-essential"></div>
                 </div>
                 <div class="cookie-toggle">
                     <div>
-                        <strong>Analytics Cookies</strong>
-                        <p data-en="Used for site analytics and performance metrics." data-de="Wird für Website-Analysen und Leistungskennzahlen verwendet.">Used for site analytics and performance metrics.</p>
+                        <strong id="label-analytics" data-en="Analytics Cookies" data-de="Analyse-Cookies">Analytics Cookies</strong>
+                        <p id="desc-analytics" data-en="Used for site analytics and performance metrics." data-de="Wird für Website-Analysen und Leistungskennzahlen verwendet.">Used for site analytics and performance metrics.</p>
                     </div>
-                    <div class="switch"><input type="checkbox" id="toggle-analytics"></div>
+                    <div class="switch"><input type="checkbox" id="toggle-analytics" aria-labelledby="label-analytics" aria-describedby="desc-analytics"></div>
                 </div>
             </div>
             <div class="cookie-modal__footer">
@@ -1618,20 +1868,25 @@
         });
     });
 
-    /* Tab switching */
-    function switchTab(tab) {
-        document.querySelectorAll('.tab-btn').forEach(function(btn) { btn.classList.remove('active'); });
-        document.querySelectorAll('.tab-pane').forEach(function(pane) { pane.classList.remove('active'); });
-        document.getElementById(tab + '-tab').classList.add('active');
-        event.target.classList.add('active');
-    }
-
-    /* Accordion */
-    function toggleAccordion(btn) {
-        var body = btn.nextElementSibling;
-        var isOpen = body.classList.contains('open');
-        body.classList.toggle('open');
-        btn.classList.toggle('open');
+    /* Tab switching. Takes the event explicitly — the implicit global `event`
+       is non-standard and breaks the active state where it is unsupported. */
+    function switchTab(tab, evt) {
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-pane').forEach(function(pane) {
+            pane.classList.remove('active');
+            pane.hidden = true;
+        });
+        var pane = document.getElementById(tab + '-tab');
+        pane.classList.add('active');
+        pane.hidden = false;
+        var btn = (evt && evt.currentTarget) || document.querySelector('[data-tab="' + tab + '"]');
+        if (btn) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+        }
     }
 
     /* Cookie consent */
@@ -1691,51 +1946,92 @@
         closeCookieModal();
     }
 
-    /* Language toggle */
+    /* Language.
+       One storage key ('site-lang') shared with script.js so the choice
+       survives navigation to the other pages. With no stored choice we follow
+       the browser: a German visitor should not land on an English page. */
     (function() {
-        var lang = localStorage.getItem('site-lang') || 'en';
-        var toggleBtn = document.getElementById('lang-toggle');
-        var langEn = document.getElementById('lang-en');
-        var langDe = document.getElementById('lang-de');
+        var STORAGE_KEY = 'site-lang';
 
-        function applyLang(l) {
+        function detectLang() {
+            var stored = localStorage.getItem(STORAGE_KEY);
+            if (stored === 'en' || stored === 'de') return stored;
+            var prefs = navigator.languages || [navigator.language || ''];
+            for (var i = 0; i < prefs.length; i++) {
+                var p = (prefs[i] || '').toLowerCase();
+                if (p.indexOf('de') === 0) return 'de';
+                if (p.indexOf('en') === 0) return 'en';
+            }
+            return 'de';
+        }
+
+        var lang = detectLang();
+        // Both toggles: the desktop one inside the menu, the mobile one beside
+        // the hamburger (the menu is display:none under 920px).
+        var toggles = [
+            { btn: 'lang-toggle',        en: 'lang-en',   de: 'lang-de' },
+            { btn: 'lang-toggle-mobile', en: 'lang-en-m', de: 'lang-de-m' }
+        ];
+
+        function applyLang(l, persist) {
             lang = l;
-            localStorage.setItem('site-lang', l);
+            if (persist) localStorage.setItem(STORAGE_KEY, l);
             document.documentElement.lang = l;
             document.querySelectorAll('[data-en][data-de]').forEach(function(el) {
                 el.innerHTML = el.getAttribute('data-' + l);
             });
-            if (l === 'en') {
-                langEn.classList.add('active-lang');
-                langDe.classList.remove('active-lang');
-            } else {
-                langDe.classList.add('active-lang');
-                langEn.classList.remove('active-lang');
-            }
+            toggles.forEach(function(t) {
+                var en = document.getElementById(t.en);
+                var de = document.getElementById(t.de);
+                if (!en || !de) return;
+                en.classList.toggle('active-lang', l === 'en');
+                de.classList.toggle('active-lang', l === 'de');
+            });
         }
 
-        toggleBtn.addEventListener('click', function() {
-            applyLang(lang === 'en' ? 'de' : 'en');
+        toggles.forEach(function(t) {
+            var btn = document.getElementById(t.btn);
+            if (!btn) return;
+            btn.addEventListener('click', function() {
+                applyLang(lang === 'en' ? 'de' : 'en', true);
+            });
         });
 
-        applyLang(lang);
+        applyLang(lang, false);
     })();
 </script>
 <script>
     const hamburger = document.getElementById('nav-hamburger');
     const navMenu = document.querySelector('.nav-menu');
+
+    function closeMenu() {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+    }
+
     hamburger.addEventListener('click', function() {
         this.classList.toggle('open');
         navMenu.classList.toggle('open');
         this.setAttribute('aria-expanded', navMenu.classList.contains('open'));
     });
-    // Close menu when a nav link is clicked
-    navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            navMenu.classList.remove('open');
-            hamburger.setAttribute('aria-expanded', 'false');
-        });
+
+    // Close on any menu item, not just links — the language toggle is a
+    // <button> and used to leave the menu open across the whole page.
+    navMenu.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('click', closeMenu);
+    });
+
+    // Escape is the expected way out of an open overlay menu.
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            if (navMenu.classList.contains('open')) {
+                closeMenu();
+                hamburger.focus();
+            }
+            const modal = document.getElementById('cookie-modal');
+            if (modal && modal.classList.contains('open')) closeCookieModal();
+        }
     });
 </script>
 </body>

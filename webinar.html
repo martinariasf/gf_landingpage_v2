@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webinar: AI Agents | KI-Agenten — GF Innovative Solutions</title>
+    <meta name="description" content="Join our live webinar on practical AI implementation for German SMEs.">
+    <link rel="canonical" href="https://www.gfinnov.com/webinar.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GF Innovative Solutions">
+    <meta property="og:url" content="https://www.gfinnov.com/webinar.html">
+    <meta property="og:title" content="Webinar — GF Innovative Solutions">
+    <meta property="og:description" content="Join our live webinar on practical AI implementation for German SMEs.">
+    <meta property="og:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Webinar — GF Innovative Solutions">
+    <meta name="twitter:description" content="Join our live webinar on practical AI implementation for German SMEs.">
+    <meta name="twitter:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -112,7 +126,8 @@
             transition: var(--transition);
         }
         .radio-option:hover { border-color: var(--innovation-green); background: rgba(139,192,124,0.04); }
-        .radio-option input[type="radio"] { accent-color: var(--innovation-green); width: 18px; height: 18px; cursor: pointer; }
+        /* 24x24 minimum target (WCAG 2.5.8); was 18px. */
+        .radio-option input[type="radio"] { accent-color: var(--innovation-green); width: 24px; height: 24px; cursor: pointer; }
         .radio-option span { font-size: 14px; }
 
         .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
@@ -129,8 +144,9 @@
         .checkbox-option:hover { border-color: var(--innovation-green); background: rgba(139,192,124,0.04); }
         .checkbox-option input[type="checkbox"] {
             accent-color: var(--innovation-green);
-            width: 18px;
-            height: 18px;
+            /* 24x24 minimum target (WCAG 2.5.8); was 18px. */
+            width: 24px;
+            height: 24px;
             cursor: pointer;
             margin-top: 2px;
             flex-shrink: 0;
@@ -187,11 +203,12 @@
     </style>
 </head>
 <body>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html"><img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo"></a>
+                <a href="index.html"><img src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
             </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
@@ -202,14 +219,14 @@
                     <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
                 </button>
             </div>
-            <div class="nav-toggle" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+            <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
                 <span></span><span></span><span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="webinar-hero">
+    <section id="main" tabindex="-1" class="webinar-hero">
         <div class="container">
             <div class="date-badge">📅 To be Discussed</div>
             <h1 data-en="Webinar: AI Agents" data-de="Webinar: KI-Agenten">Webinar: AI Agents</h1>
@@ -327,7 +344,7 @@
             <div class="footer-bottom">
                 <p>© 2026 GF Innovative Solutions. All rights reserved.</p>
                 <div class="footer-links">
-                    <a href="privacy.html">Privacy Policy</a> · <a href="imprint.html">Imprint</a>
+                    <a href="privacy.html">Privacy Policy</a> · <a href="imprint.html">Impressum</a>
                 </div>
             </div>
         </div>

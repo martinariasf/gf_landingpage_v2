@@ -894,8 +894,11 @@ p {
     margin-bottom: 16px;
 }
 
-.footer-section h4 {
-    color: var(--innovation-green);
+/* These were --innovation-green on the green footer ground, i.e. effectively
+   invisible. White is legible at heading size. */
+.footer-section h4,
+.footer-section h2 {
+    color: var(--pure-white);
     margin-bottom: 16px;
 }
 
@@ -1475,4 +1478,118 @@ p {
     border-left: 3px solid var(--accent-color, #00d4ff);
     padding: 1.2rem;
     border-radius: 4px;
+}
+/* ── Accessibility foundation ──────────────────────────────────────────────
+   Added in the 2026-08-01 accessibility pass. Previously this stylesheet had
+   no :focus rules at all, so keyboard users had only the UA default ring,
+   which is invisible against several of the backgrounds used here. */
+
+:focus-visible {
+    outline: 3px solid #15803d;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+.navbar :focus-visible,
+.hero :focus-visible {
+    outline-color: #ffffff;
+    box-shadow: 0 0 0 5px rgba(15, 23, 42, .55);
+}
+
+/* The nav toggle is now a <button>; strip the UA button chrome. */
+button.nav-toggle {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    /* 44x44 minimum tap target (WCAG 2.5.5). */
+    min-width: 44px;
+    min-height: 44px;
+}
+.language-toggle { min-height: 44px; }
+
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: -100px;
+    z-index: 10200;
+    background: #15803d;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top .18s ease;
+}
+.skip-link:focus { top: 12px; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .12s !important;
+    }
+}
+
+/* German compound nouns ("Datenschutzerklärung", "Einstellungskosten") are
+   long enough to overflow a 375px viewport at heading sizes. Hyphenation keys
+   off the lang attribute, which every page sets. */
+h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Minimum 24x24 tap targets (WCAG 2.5.8). Footer links and the cookie-settings
+   button were 14-19px tall. */
+.link-like { padding: 6px 4px; min-height: 24px; }
+.footer-bottom a,
+.footer-links a,
+.footer-section a {
+    display: inline-block;
+    padding: 5px 4px;
+}
+/* Checkbox and radio inputs shipped at 18x18. */
+input[type="checkbox"],
+input[type="radio"] {
+    width: 24px;
+    height: 24px;
+}
+
+/* The logo anchor is inline, so its box collapsed to the image baseline and
+   fell under the 24px minimum target. */
+.nav-logo a,
+.topbar .logo {
+    display: inline-block;
+    line-height: 0;
+}
+
+/* Footer column headings are <h2> for a valid document outline; they keep
+   their original small footer size. */
+.footer-section h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* Promoted for outline validity; sizes unchanged from the original h3/h4. */
+.service-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.profile-text h2 { font-size: clamp(18px, 3vw, 24px); }
+
+/* Subpage nav CTA: previously an undifferentiated .nav-link, so the primary
+   action looked identical to the other five items. */
+.nav-menu .nav-cta {
+    background: #15803d;
+    color: var(--pure-white);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    white-space: nowrap;
+}
+.nav-menu .nav-cta:hover {
+    background: #166534;
+    color: var(--pure-white);
+}
+@media (max-width: 768px) {
+    .nav-menu .nav-cta { border-radius: 0; }
 }

@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GF Innovative Solutions - Startup Growth Journey</title>
+    <meta name="description" content="Consulting for early-stage startups: strategy, product-market fit and an AI integration roadmap.">
+    <link rel="canonical" href="https://www.gfinnov.com/startups.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GF Innovative Solutions">
+    <meta property="og:url" content="https://www.gfinnov.com/startups.html">
+    <meta property="og:title" content="Startup Growth Journey — GF Innovative Solutions">
+    <meta property="og:description" content="Consulting for early-stage startups: strategy, product-market fit and an AI integration roadmap.">
+    <meta property="og:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Startup Growth Journey — GF Innovative Solutions">
+    <meta name="twitter:description" content="Consulting for early-stage startups: strategy, product-market fit and an AI integration roadmap.">
+    <meta name="twitter:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="startup-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -20,17 +35,18 @@
     </script>
 </head>
 <body>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="./images/gf-logo.png" alt="GF Innovative Solutions" class="logo">
+                <a href="index.html" aria-label="GF Innovative Solutions — Startseite / home"><img src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
             </div>
-            <div class="nav-toggle" aria-label="Toggle menu">
+            <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
                 <a href="#growth-journey" class="nav-link" data-en="Growth Journey" data-de="Wachstumsreise">Growth Journey</a>
@@ -43,7 +59,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="main" tabindex="-1" class="hero">
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title" data-en="From Idea to Scale-Up" data-de="Von der Idee zum Scale-Up">
@@ -73,15 +89,18 @@
     </section>
 
     <!-- Growth Journey Section -->
-    <section id="growth-journey" class="section-primary" style="background: url('images/background_consulting_4.png') no-repeat center center/cover;">
+    <section id="growth-journey" class="section-primary" style="background: url('images/opt/bg-consulting-4.webp') no-repeat center center/cover;">
         <div class="container">
             <h2 class="section-title" data-en="Your Startup Growth Journey" data-de="Ihre Startup-Wachstumsreise" style="margin-bottom: 24px;">Your Startup Growth Journey</h2>
             <p class="section-description" data-en="Click on each stage to explore the strategic elements that will accelerate your startup's growth." data-de="Klicken Sie auf jede Phase, um die strategischen Elemente zu erkunden, die das Wachstum Ihres Startups beschleunigen werden." style="margin-bottom: 40px; font-size: 1.2rem;">
                 Click on each stage to explore the strategic elements that will accelerate your startup's growth.
             </p>
 
-            <!-- Growth Journey Packages floating over the background -->
-            <div style="position:relative; min-height: 700px; width:100%;">
+            <!-- Growth Journey Packages floating over the background.
+                 The absolute left/top offsets are the desktop staircase; under
+                 768px .growth-stage collapses to a plain stack, because a
+                 220px box at left:45% pushed the page 16px past a 375px screen. -->
+            <div class="growth-stage" style="position:relative; min-height: 700px; width:100%;">
                 <div class="growth-box" data-step="startup-clarity" style="position:absolute;left:5%;top:600px;width:220px;cursor:pointer;">
                     <strong data-en="Startup Clarity" data-de="Startup-Klarheit">Startup Clarity</strong>
                 </div>
@@ -170,11 +189,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <img src="./images/gf-logo-white.png" alt="GF Innovative Solutions" class="footer-logo">
+                    <img src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
                     <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
                 </div>
                 <div class="footer-section">
-                    <h4 data-en="For Startups" data-de="Für Startups">For Startups</h4>
+                    <h2 data-en="For Startups" data-de="Für Startups">For Startups</h2>
                     <ul>
                         <li><a href="#" data-en="MVP Development" data-de="MVP-Entwicklung">MVP Development</a></li>
                         <li><a href="#" data-en="AI Integration" data-de="KI-Integration">AI Integration</a></li>
@@ -182,7 +201,7 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4 data-en="Contact" data-de="Kontakt">Contact</h4>
+                    <h2 data-en="Contact" data-de="Kontakt">Contact</h2>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
@@ -191,7 +210,7 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
                 <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Imprint</a> | 
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> | 
                     <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
                 </div>
             </div>

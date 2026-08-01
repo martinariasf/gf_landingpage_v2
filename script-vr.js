@@ -7,21 +7,18 @@ let emailCaptured = false;
 
 // DOM Content Loaded - Single event listener
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('VR Website - DOM Content Loaded');
     initializeVRWebsite();
     initializeScrollAnimations();
 });
 
 // Initialize VR website functionality
 function initializeVRWebsite() {
-    console.log('Initializing VR website...');
     initializeNavigation();
     initializeSmoothScrolling();
     initializeLanguageToggle();
     initializeEmailCapture();
     loadLanguagePreference();
     updateLanguage(currentLanguage || 'de');
-    console.log('VR Website initialization completed');
 }
 
 // Navigation functionality
@@ -83,21 +80,17 @@ function initializeSmoothScrolling() {
 
 // Language toggle functionality
 function toggleLanguage() {
-    console.log('Current language:', currentLanguage);
     currentLanguage = currentLanguage === 'en' ? 'de' : 'en';
-    console.log('Switching to language:', currentLanguage);
     updateLanguage(currentLanguage);
 }
 
 function initializeLanguageToggle() {
     const languageToggle = document.querySelector('.language-toggle');
-    console.log('Language toggle button found:', !!languageToggle);
     
     if (languageToggle) {
         languageToggle.removeEventListener('click', toggleLanguage);
         languageToggle.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log('Language toggle clicked');
             toggleLanguage();
         });
         
@@ -108,12 +101,10 @@ function initializeLanguageToggle() {
             }
         });
     } else {
-        console.error('Language toggle button not found!');
     }
 }
 
 function updateLanguage(lang) {
-    console.log('Updating language to:', lang);
     
     // Update language toggle button
     const currentLangElement = document.getElementById('current-lang');
@@ -122,14 +113,11 @@ function updateLanguage(lang) {
     if (currentLangElement && altLangElement) {
         currentLangElement.textContent = lang.toUpperCase();
         altLangElement.textContent = lang === 'en' ? 'DE' : 'EN';
-        console.log('Updated language toggle display');
     } else {
-        console.error('Language toggle elements not found');
     }
     
     // Update all elements with language attributes
     const elementsWithLang = document.querySelectorAll('[data-en][data-de]');
-    console.log('Found elements to translate:', elementsWithLang.length);
     
     elementsWithLang.forEach((element, index) => {
         const text = element.getAttribute(`data-${lang}`);
@@ -148,20 +136,16 @@ function updateLanguage(lang) {
     // Store language preference
     localStorage.setItem('preferred-language', lang);
     
-    console.log('Language update completed');
 }
 
 // Load saved language preference
 function loadLanguagePreference() {
     const savedLanguage = localStorage.getItem('preferred-language');
-    console.log('Saved language preference:', savedLanguage);
     
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'de')) {
         currentLanguage = savedLanguage;
-        console.log('Loaded language preference:', currentLanguage);
     } else {
         currentLanguage = 'de'; // Default to German for VR website
-        console.log('No saved preference, defaulting to German');
     }
 }
 
@@ -363,7 +347,6 @@ function handleEmailSubmission(email, source, name = '', company = '') {
         if (form) form.style.display = 'none';
         if (successMessage) successMessage.classList.add('show');
         
-        console.log('Email captured:', { email, name, company, source });
         
         // Track conversion (Google Analytics, Facebook Pixel, etc.)
         if (typeof gtag !== 'undefined') {

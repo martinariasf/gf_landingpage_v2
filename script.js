@@ -1,4 +1,8 @@
 // Global variables
+// Shared with the inline language script on index.html. Keep this key in sync
+// there — two different keys made the homepage and the subpages disagree about
+// the visitor's language within a single session.
+const LANG_STORAGE_KEY = 'site-lang';
 let currentLanguage = 'de';
 let testimonialIndex = 0;
 
@@ -64,7 +68,6 @@ const growthContent = {
 
 // DOM Content Loaded - Single event listener
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM Content Loaded');
     initializeWebsite();
     initializeScrollAnimations();
     addFloatingAnimations();
@@ -72,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize website functionality
 function initializeWebsite() {
-    console.log('Initializing website...');
     initializeNavigation();
     initializeTestimonialSlider();
     initializeSmoothScrolling();
@@ -80,16 +82,9 @@ function initializeWebsite() {
     initializeContactTabs();
     initializeGrowthJourney();
     
-    // Load saved language preference first
+    // Resolve the language (stored choice, else browser) and render it.
     loadLanguagePreference();
-    
-    // Set initial language (fallback to 'en' if no preference saved)
-    if (!currentLanguage) {
-        currentLanguage = 'en';
-    }
     updateLanguage(currentLanguage);
-    
-    console.log('Website initialization completed');
 }
 
 // Navigation functionality
@@ -165,22 +160,18 @@ function initializeSmoothScrolling() {
 
 // Language toggle functionality
 function toggleLanguage() {
-    console.log('Current language:', currentLanguage);
     currentLanguage = currentLanguage === 'en' ? 'de' : 'en';
-    console.log('Switching to language:', currentLanguage);
     updateLanguage(currentLanguage);
 }
 
 function initializeLanguageToggle() {
     const languageToggle = document.querySelector('.language-toggle');
-    console.log('Language toggle button found:', !!languageToggle);
     
     if (languageToggle) {
         // Remove any existing event listeners and add a new one
         languageToggle.removeEventListener('click', toggleLanguage);
         languageToggle.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log('Language toggle clicked');
             toggleLanguage();
         });
         
@@ -192,12 +183,10 @@ function initializeLanguageToggle() {
             }
         });
     } else {
-        console.error('Language toggle button not found!');
     }
 }
 
 function updateLanguage(lang) {
-    console.log('Updating language to:', lang);
     
     // Update language toggle button
     const currentLangElement = document.getElementById('current-lang');
@@ -206,14 +195,11 @@ function updateLanguage(lang) {
     if (currentLangElement && altLangElement) {
         currentLangElement.textContent = lang.toUpperCase();
         altLangElement.textContent = lang === 'en' ? 'DE' : 'EN';
-        console.log('Updated language toggle display');
     } else {
-        console.error('Language toggle elements not found');
     }
     
     // Update all elements with language attributes
     const elementsWithLang = document.querySelectorAll('[data-en][data-de]');
-    console.log('Found elements to translate:', elementsWithLang.length);
     
     elementsWithLang.forEach((element, index) => {
         const text = element.getAttribute(`data-${lang}`);
@@ -231,9 +217,8 @@ function updateLanguage(lang) {
     document.documentElement.lang = lang;
     
     // Store language preference
-    localStorage.setItem('preferred-language', lang);
+    localStorage.setItem(LANG_STORAGE_KEY, lang);
     
-    console.log('Language update completed');
 }
 
 // Testimonial slider
@@ -274,24 +259,19 @@ function switchTab(tabName) {
 
 // Growth Journey functionality
 function initializeGrowthJourney() {
-    console.log('Initializing Growth Journey...');
     
     // Add click listeners to growth boxes
     const growthBoxes = document.querySelectorAll('.growth-box');
     const modal = document.getElementById('growth-modal');
     const closeBtn = document.querySelector('.growth-close');
     
-    console.log('Found growth boxes:', growthBoxes.length);
-    console.log('Found modal:', modal ? 'Yes' : 'No');
     
     growthBoxes.forEach((box, index) => {
-        console.log(`Setting up box ${index + 1}:`, box.getAttribute('data-step'));
         
         box.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             const step = this.getAttribute('data-step');
-            console.log('Clicked box:', step);
             openGrowthModal(step);
         });
         
@@ -326,14 +306,12 @@ function initializeGrowthJourney() {
 }
 
 function openGrowthModal(step) {
-    console.log('Opening modal for step:', step);
     
     const modal = document.getElementById('growth-modal');
     const title = document.getElementById('growth-modal-title');
     const text = document.getElementById('growth-modal-text');
     
     if (!modal || !title || !text) {
-        console.error('Modal elements not found:', { modal: !!modal, title: !!title, text: !!text });
         return;
     }
     
@@ -343,17 +321,14 @@ function openGrowthModal(step) {
         text.textContent = content.text[currentLanguage];
         modal.style.display = 'block';
         
-        console.log('Modal opened successfully');
         
         // Prevent body scroll when modal is open
         document.body.style.overflow = 'hidden';
     } else {
-        console.error('Content not found for step:', step);
     }
 }
 
 function closeGrowthModal() {
-    console.log('Closing modal');
     const modal = document.getElementById('growth-modal');
     if (modal) {
         modal.style.display = 'none';
@@ -392,7 +367,6 @@ function handleContactForm(event) {
     // Add your form handling logic here
     // For now, we're using Calendly, but this is ready for future forms
     
-    console.log('Contact form submitted');
 }
 
 // Utility functions
@@ -440,17 +414,22 @@ function adjustLayoutForScreenSize() {
     }
 }
 
-// Load saved language preference
+// Load saved language preference.
+// With no stored choice we follow the browser instead of hard-defaulting, so an
+// English-speaking visitor is not forced into German and vice versa.
 function loadLanguagePreference() {
-    const savedLanguage = localStorage.getItem('preferred-language');
-    console.log('Saved language preference:', savedLanguage);
-    
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'de')) {
+    const savedLanguage = localStorage.getItem(LANG_STORAGE_KEY);
+
+    if (savedLanguage === 'en' || savedLanguage === 'de') {
         currentLanguage = savedLanguage;
-        console.log('Loaded language preference:', currentLanguage);
     } else {
-        currentLanguage = 'de'; // Default to German
-        console.log('No saved preference, defaulting to German');
+        currentLanguage = 'de';
+        const prefs = navigator.languages || [navigator.language || ''];
+        for (const raw of prefs) {
+            const p = (raw || '').toLowerCase();
+            if (p.startsWith('de')) { currentLanguage = 'de'; break; }
+            if (p.startsWith('en')) { currentLanguage = 'en'; break; }
+        }
     }
 }
 

@@ -705,12 +705,28 @@ p {
         padding: 0 10px;
     }
     
+    /* The desktop staircase is absolutely positioned via inline left/top with a
+       fixed 220px width, which pushed the page 16px past a 375px viewport.
+       Collapse it to a stack; !important is required to beat inline styles. */
+    .growth-stage {
+        min-height: 0 !important;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .growth-stage .growth-box {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+    }
+
     .growth-box {
         font-size: 12px;
         padding: 12px 16px;
-        min-width: 140px;
+        min-width: 0;
     }
-    
+
     .growth-modal-content {
         width: 95%;
         margin: 10% auto;
@@ -808,3 +824,75 @@ p {
 .mt-24 { margin-top: 24px; }
 .mt-32 { margin-top: 32px; }
 .mt-48 { margin-top: 48px; }
+/* ── Accessibility foundation ──────────────────────────────────────────────
+   Added in the 2026-08-01 accessibility pass; see styles.css for rationale. */
+
+:focus-visible {
+    outline: 3px solid #15803d;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+.navbar :focus-visible,
+.hero :focus-visible {
+    outline-color: #ffffff;
+    box-shadow: 0 0 0 5px rgba(15, 23, 42, .55);
+}
+button.nav-toggle {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+}
+.language-toggle { min-height: 44px; }
+
+.skip-link {
+    position: absolute;
+    left: 12px;
+    top: -100px;
+    z-index: 10200;
+    background: #15803d;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top .18s ease;
+}
+.skip-link:focus { top: 12px; color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .12s !important;
+    }
+    /* These loop forever on the startup hero. */
+    .rocket-element, .orbit-element { animation: none !important; }
+}
+
+/* See styles.css: long German compounds overflow narrow viewports. */
+h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Minimum 24x24 tap targets (WCAG 2.5.8). */
+.link-like { padding: 6px 4px; min-height: 24px; }
+.footer-bottom a,
+.footer-section a {
+    display: inline-block;
+    padding: 5px 4px;
+}
+input[type="checkbox"],
+input[type="radio"] {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-logo a { display: inline-block; line-height: 0; }
+
+.footer-section h2 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }

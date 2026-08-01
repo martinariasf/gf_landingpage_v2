@@ -6,7 +6,20 @@
     <meta name="description" content="VR Solutions for Training and Marketing" />
     <meta name="author" content="GF Innovative Solutions" />
     <title>GF Innovative Solutions - VR Solutions</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="canonical" href="https://www.gfinnov.com/vr_website.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GF Innovative Solutions">
+    <meta property="og:url" content="https://www.gfinnov.com/vr_website.html">
+    <meta property="og:title" content="VR & Trade Fair Solutions — GF Innovative Solutions">
+    <meta property="og:description" content="Immersive VR demos and digital twins for industrial clients. Built for trade fairs and remote demonstrations.">
+    <meta property="og:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VR & Trade Fair Solutions — GF Innovative Solutions">
+    <meta name="twitter:description" content="Immersive VR demos and digital twins for industrial clients. Built for trade fairs and remote demonstrations.">
+    <meta name="twitter:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     
     <!-- Font Awesome icons -->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -31,6 +44,7 @@
 </head>
 
 <body>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
     <!-- Email Capture Modal -->
     <div class="modal-overlay" id="emailModal">
         <div class="modal-content">
@@ -71,30 +85,29 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="images/gf-logo.png" alt="GF Innovative Solutions" style="height: 40px;">
+                <a href="index.html" aria-label="GF Innovative Solutions — Startseite / home"><img src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" style="height: 40px;"></a>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Startseite</a>
-                <a href="#packages" class="nav-link" data-en="Packages" data-de="Packages">Packages</a>
-                <a href="#gallery" class="nav-link" data-en="Gallery" data-de="Galerie">Galerie</a>
-                <a href="#newsletter" class="nav-link" data-en="Free Guide" data-de="Free Guide">Free Guide</a>
-                <a href="#messe" class="nav-link" data-en="VR in Trade Shows" data-de="VR in Messen">VR in Messen</a>
-                <a href="#frontline" class="nav-link" data-en="Frontline.io" data-de="Frontline.io">Frontline.io</a>
-                <a href="#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Kontakt</a>
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
+                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform">AI Platform</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team">Team</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
+                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
                 <button class="language-toggle" type="button" aria-label="Toggle Language">
                     <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
                 </button>
             </div>
-            <div class="nav-toggle">
+            <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="main" tabindex="-1" class="hero">
         <div class="hero-content fade-in">
             <h1 data-en="Captivate Your Audience with VR/AR" data-de="Begeistern Sie Ihr Publikum mit VR/AR">Begeistern Sie Ihr Publikum mit VR/AR</h1>
             <p data-en="Innovative Virtual & Augmented Reality solutions for unforgettable trade show experiences, efficient training and maximum ROI" data-de="Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI">Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI</p>
@@ -173,7 +186,7 @@
                         <img src="images/frontline/frontline.io - digital Twin gif .gif" alt="Digital Twin" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--primary-blue); margin-bottom: 1rem;" data-en="Digital Twins" data-de="Digitale Zwillinge">Digitale Zwillinge</h4>
+                        <h3 style="color: var(--primary-blue); margin-bottom: 1rem;" data-en="Digital Twins" data-de="Digitale Zwillinge">Digitale Zwillinge</h3>
                         <p style="color: #6c757d;" data-en="Virtual replicas of your machines for immersive training and simulation" data-de="Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation">Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation</p>
                     </div>
                 </div>
@@ -317,7 +330,7 @@
             <div class="frontline-features">
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-cube"></i>
-                    <h4 data-en="Digital Twins" data-de="Digitale Zwillinge">Digitale Zwillinge</h4>
+                    <h3 data-en="Digital Twins" data-de="Digitale Zwillinge">Digitale Zwillinge</h3>
                     <p data-en="Create virtual replicas of your machines and processes in hours" data-de="Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden">Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden</p>
                 </div>
                 <div class="frontline-feature fade-in">
