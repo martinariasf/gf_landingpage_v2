@@ -1,7 +1,17 @@
 /* VR Website Styles - Following GF Corporate Identity */
 :root {
-    --primary-blue: #8cbe7d;
-    --innovation-green: #8BC07C;
+    /* NOTE: --primary-blue is green, not blue — the name is a fossil.
+       Both brand greens were #8BC07C/#8cbe7d, which fails WCAG AA in BOTH
+       directions: 2.15:1 as text on white, and 2.12:1 as a ground under white
+       text. They are used for both jobs throughout this stylesheet, so the fix
+       is at the token: #4a7a40 is the same hue, deep enough to clear 5.07:1
+       either way. --brand-green-light keeps the original tint for decoration
+       only (borders, dividers, fills that carry no text). */
+    --primary-blue: #3f6d35;
+    --innovation-green: #4a7a40;
+    --brand-green-light: #8BC07C;
+    --heading: #1f2937;      /* 13.6:1 on white */
+    --accent-green: #15803d; /* 5.1:1 on white, matches the homepage token */
     --pure-white: #FFFFFF;
     --light-gray: #F5F5F5;
     --medium-gray: #E0E0E0;
@@ -32,8 +42,9 @@ body {
 }
 
 /* Typography */
+/* Was --primary-blue (#8cbe7d) on white: ~2.1:1. See styles.css. */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-blue);
+    color: var(--heading);
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 16px;
@@ -974,3 +985,30 @@ h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; hyphens: auto; }
 }
 
 .footer-section h2 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+
+.footer-bottom,
+.footer-bottom a,
+.footer-bottom p,
+.footer-section h2,
+.footer-section h4 {
+    color: var(--pure-white);
+}
+
+/* These cards sit on a dark section; the headings inherited --heading (dark)
+   and landed at 3.02:1. */
+.frontline-feature h3,
+.frontline-feature h4,
+.frontline-feature p {
+    color: var(--pure-white);
+}
+
+/* The logo anchor is inline, so its box collapsed under the 24px minimum. */
+.nav-logo a { display: inline-block; line-height: 0; }
+
+/* height:auto is required: the width/height attributes are kept so the box is
+   reserved before load, but as presentational hints on <video> they otherwise
+   beat the inline width:100% and render the element at its full pixel height. */
+.frontline-loop {
+    height: auto;
+    display: block;
+}

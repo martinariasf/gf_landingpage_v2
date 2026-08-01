@@ -208,7 +208,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html"><img src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
+                <a href="index.html"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
             </div>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
@@ -243,24 +243,24 @@
             <h2 data-en="Register Now" data-de="Jetzt anmelden">Register Now</h2>
             <form id="registrationForm" novalidate>
                 <div class="form-group">
-                    <label data-en="Full Name *" data-de="Vollständiger Name *">Full Name *</label>
-                    <input type="text" name="fullName" required>
+                    <label data-en="Full Name *" data-de="Vollständiger Name *" for="f-fullName">Full Name *</label>
+                    <input id="f-fullName" type="text" name="fullName" required>
                 </div>
                 <div class="form-group">
-                    <label data-en="Email Address *" data-de="E-Mail-Adresse *">Email Address *</label>
-                    <input type="email" name="email" required>
+                    <label data-en="Email Address *" data-de="E-Mail-Adresse *" for="f-email">Email Address *</label>
+                    <input id="f-email" type="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label data-en="Company *" data-de="Unternehmen *">Company *</label>
-                    <input type="text" name="company" required>
+                    <label data-en="Company *" data-de="Unternehmen *" for="f-company">Company *</label>
+                    <input id="f-company" type="text" name="company" required>
                 </div>
                 <div class="form-group">
-                    <label data-en="Your Role" data-de="Deine Position">Your Role</label>
-                    <input type="text" name="role">
+                    <label data-en="Your Role" data-de="Deine Position" for="f-role">Your Role</label>
+                    <input id="f-role" type="text" name="role">
                 </div>
                 <div class="form-group">
-                    <label data-en="Company Size" data-de="Unternehmensgröße">Company Size</label>
-                    <select name="companySize">
+                    <label data-en="Company Size" data-de="Unternehmensgröße" for="f-companySize">Company Size</label>
+                    <select id="f-companySize" name="companySize">
                         <option value="" data-en="— Select —" data-de="— Auswählen —">— Select —</option>
                         <option value="1-10">1–10</option>
                         <option value="11-50">11–50</option>
@@ -311,12 +311,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label data-en="What do you hope to learn?" data-de="Was erhoffst du dir vom Webinar?">What do you hope to learn?</label>
-                    <textarea name="hopes"></textarea>
+                    <label data-en="What do you hope to learn?" data-de="Was erhoffst du dir vom Webinar?" for="f-hopes">What do you hope to learn?</label>
+                    <textarea id="f-hopes" name="hopes"></textarea>
                 </div>
                 <div class="form-group">
-                    <label data-en="How did you hear about us?" data-de="Wie hast du von uns erfahren?">How did you hear about us?</label>
-                    <input type="text" name="source">
+                    <label data-en="How did you hear about us?" data-de="Wie hast du von uns erfahren?" for="f-source">How did you hear about us?</label>
+                    <input id="f-source" type="text" name="source">
                 </div>
                 <div class="form-group">
                     <label data-en="Accept conditions *" data-de="Bedingungen akzeptieren *">Accept conditions *</label>
