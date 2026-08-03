@@ -21,9 +21,12 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -31,15 +34,17 @@
                 <a href="index.html" aria-label="GF Innovative Solutions — Startseite / home"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
             </div>
             <div class="nav-menu">
-                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
-                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform">AI Platform</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
-                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team">Team</a>
-                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
-                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
-                </button>
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform" data-es="Plataforma de IA">AI Platform</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns" data-es="Quiénes somos">About</a>
+                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
             <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false">
                 <span></span>
@@ -53,8 +58,8 @@
     <section id="main" tabindex="-1" class="hero" style="min-height: auto; padding: 120px 0 64px 0;">
         <div class="hero-container" style="grid-template-columns: 1fr;">
             <div class="hero-content" style="text-align: center;">
-                <h1 class="hero-title" data-en="How We Work" data-de="Wie wir arbeiten">How We Work</h1>
-                <p class="hero-subtitle" data-en="A transparent, low-risk journey from first contact to measurable results." data-de="Ein transparenter, risikoarmer Weg vom ersten Kontakt zu messbaren Ergebnissen.">
+                <h1 class="hero-title" data-en="How We Work" data-de="Wie wir arbeiten" data-es="Cómo trabajamos">How We Work</h1>
+                <p class="hero-subtitle" data-en="A transparent, low-risk journey from first contact to measurable results." data-de="Ein transparenter, risikoarmer Weg vom ersten Kontakt zu messbaren Ergebnissen." data-es="Un recorrido transparente y de bajo riesgo, del primer contacto a resultados medibles.">
                     A transparent, low-risk journey from first contact to measurable results.
                 </p>
             </div>
@@ -64,15 +69,15 @@
     <!-- 7-Step Journey -->
     <section class="section-primary" style="padding-top: 64px;">
         <div class="container">
-            <h2 class="section-title" data-en="Your Journey With Us" data-de="Ihr Weg mit uns">Your Journey With Us</h2>
+            <h2 class="section-title" data-en="Your Journey With Us" data-de="Ihr Weg mit uns" data-es="Su recorrido con nosotros">Your Journey With Us</h2>
 
             <div style="max-width: 800px; margin: 0 auto;">
                 <!-- Step 1 -->
                 <div style="display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start;">
                     <div style="flex-shrink: 0; width: 48px; height: 48px; background: var(--primary-blue); color: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">1</div>
                     <div>
-                        <h3 style="margin-bottom: 8px;" data-en="Initial Contact" data-de="Erstkontakt">Initial Contact</h3>
-                        <p data-en="You reach out. We respond within 24h." data-de="Sie nehmen Kontakt auf. Wir antworten innerhalb von 24h.">You reach out. We respond within 24h.</p>
+                        <h3 style="margin-bottom: 8px;" data-en="Initial Contact" data-de="Erstkontakt" data-es="Primer contacto">Initial Contact</h3>
+                        <p data-en="You reach out. We respond within 24h." data-de="Sie nehmen Kontakt auf. Wir antworten innerhalb von 24h." data-es="Usted nos escribe. Respondemos en 24 h.">You reach out. We respond within 24h.</p>
                     </div>
                 </div>
 
@@ -80,8 +85,8 @@
                 <div style="display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start;">
                     <div style="flex-shrink: 0; width: 48px; height: 48px; background: var(--primary-blue); color: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">2</div>
                     <div>
-                        <h3 style="margin-bottom: 8px;" data-en="Qualification Call (20 min)" data-de="Qualifikationsgespräch (20 Min.)">Qualification Call (20 min)</h3>
-                        <p data-en="We learn about your operations and identify potential process candidates." data-de="Wir erfahren mehr über Ihre Abläufe und identifizieren potenzielle Prozesskandidaten.">We learn about your operations and identify potential process candidates.</p>
+                        <h3 style="margin-bottom: 8px;" data-en="Qualification Call (20 min)" data-de="Qualifikationsgespräch (20 Min.)" data-es="Llamada de calificación (20 min)">Qualification Call (20 min)</h3>
+                        <p data-en="We learn about your operations and identify potential process candidates." data-de="Wir erfahren mehr über Ihre Abläufe und identifizieren potenzielle Prozesskandidaten." data-es="Conocemos sus operaciones e identificamos procesos candidatos.">We learn about your operations and identify potential process candidates.</p>
                     </div>
                 </div>
 
@@ -89,8 +94,8 @@
                 <div style="display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start;">
                     <div style="flex-shrink: 0; width: 48px; height: 48px; background: var(--innovation-green); color: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">3</div>
                     <div>
-                        <h3 style="margin-bottom: 8px;" data-en="Free AI Assessment — Process Screening Express (€0)" data-de="Kostenloses KI-Assessment (€0)">Free AI Assessment — Process Screening Express (€0)</h3>
-                        <p data-en="You submit process documentation. We deliver AI analysis in 48–72h." data-de="Sie reichen Prozessdokumentation ein. Wir liefern die KI-Analyse in 48–72h.">You submit process documentation. We deliver AI analysis in 48–72h.</p>
+                        <h3 style="margin-bottom: 8px;" data-en="Free AI Assessment — Process Screening Express (€0)" data-de="Kostenloses KI-Assessment (€0)" data-es="Evaluación de IA gratuita — Diagnóstico de procesos Express (0 €)">Free AI Assessment — Process Screening Express (€0)</h3>
+                        <p data-en="You submit process documentation. We deliver AI analysis in 48–72h." data-de="Sie reichen Prozessdokumentation ein. Wir liefern die KI-Analyse in 48–72h." data-es="Usted envía la documentación de sus procesos. Entregamos el análisis de IA en 48-72 h.">You submit process documentation. We deliver AI analysis in 48–72h.</p>
                     </div>
                 </div>
 
@@ -98,8 +103,8 @@
                 <div style="display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start;">
                     <div style="flex-shrink: 0; width: 48px; height: 48px; background: var(--primary-blue); color: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">4</div>
                     <div>
-                        <h3 style="margin-bottom: 8px;" data-en="Results Presentation (45 min)" data-de="Ergebnispräsentation (45 Min.)">Results Presentation (45 min)</h3>
-                        <p data-en="We present findings, ROI estimate, and recommended next steps." data-de="Wir präsentieren Ergebnisse, ROI-Schätzung und empfohlene nächste Schritte.">We present findings, ROI estimate, and recommended next steps.</p>
+                        <h3 style="margin-bottom: 8px;" data-en="Results Presentation (45 min)" data-de="Ergebnispräsentation (45 Min.)" data-es="Presentación de resultados (45 min)">Results Presentation (45 min)</h3>
+                        <p data-en="We present findings, ROI estimate, and recommended next steps." data-de="Wir präsentieren Ergebnisse, ROI-Schätzung und empfohlene nächste Schritte." data-es="Presentamos hallazgos, estimación de ROI y próximos pasos recomendados.">We present findings, ROI estimate, and recommended next steps.</p>
                     </div>
                 </div>
 
@@ -107,8 +112,8 @@
                 <div style="display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start;">
                     <div style="flex-shrink: 0; width: 48px; height: 48px; background: var(--primary-blue); color: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">5</div>
                     <div>
-                        <h3 style="margin-bottom: 8px;" data-en="Commercial Proposal" data-de="Kommerzielles Angebot">Commercial Proposal</h3>
-                        <p data-en="Transparent fixed-price proposal. No surprises." data-de="Transparentes Festpreisangebot. Keine Überraschungen.">Transparent fixed-price proposal. No surprises.</p>
+                        <h3 style="margin-bottom: 8px;" data-en="Commercial Proposal" data-de="Kommerzielles Angebot" data-es="Propuesta comercial">Commercial Proposal</h3>
+                        <p data-en="Transparent fixed-price proposal. No surprises." data-de="Transparentes Festpreisangebot. Keine Überraschungen." data-es="Propuesta transparente a precio cerrado. Sin sorpresas.">Transparent fixed-price proposal. No surprises.</p>
                     </div>
                 </div>
 
@@ -116,8 +121,8 @@
                 <div style="display: flex; gap: 24px; margin-bottom: 40px; align-items: flex-start;">
                     <div style="flex-shrink: 0; width: 48px; height: 48px; background: var(--primary-blue); color: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">6</div>
                     <div>
-                        <h3 style="margin-bottom: 8px;" data-en="Contract & Onboarding" data-de="Vertrag & Onboarding">Contract & Onboarding</h3>
-                        <p data-en="NDA → AVV (DPA) → Service Contract. IP transfers to you on completion." data-de="NDA → AVV (DSGVO) → Dienstvertrag. IP geht bei Abschluss an Sie über.">NDA → AVV (DPA) → Service Contract. IP transfers to you on completion.</p>
+                        <h3 style="margin-bottom: 8px;" data-en="Contract & Onboarding" data-de="Vertrag & Onboarding" data-es="Contrato e incorporación">Contract & Onboarding</h3>
+                        <p data-en="NDA → AVV (DPA) → Service Contract. IP transfers to you on completion." data-de="NDA → AVV (DSGVO) → Dienstvertrag. IP geht bei Abschluss an Sie über." data-es="Confidencialidad → contrato de encargo (RGPD) → contrato de servicios. La propiedad intelectual pasa a usted al finalizar.">NDA → AVV (DPA) → Service Contract. IP transfers to you on completion.</p>
                     </div>
                 </div>
 
@@ -125,8 +130,8 @@
                 <div style="display: flex; gap: 24px; margin-bottom: 0; align-items: flex-start;">
                     <div style="flex-shrink: 0; width: 48px; height: 48px; background: var(--innovation-green); color: var(--pure-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;">7</div>
                     <div>
-                        <h3 style="margin-bottom: 8px;" data-en="Natural Upsell" data-de="Natürliche Erweiterung">Natural Upsell</h3>
-                        <p data-en="Once you see results, we discuss what else can be automated." data-de="Sobald Sie Ergebnisse sehen, besprechen wir, was noch automatisiert werden kann.">Once you see results, we discuss what else can be automated.</p>
+                        <h3 style="margin-bottom: 8px;" data-en="Natural Upsell" data-de="Natürliche Erweiterung" data-es="Ampliación natural">Natural Upsell</h3>
+                        <p data-en="Once you see results, we discuss what else can be automated." data-de="Sobald Sie Ergebnisse sehen, besprechen wir, was noch automatisiert werden kann." data-es="Una vez que vea resultados, hablamos de qué más se puede automatizar.">Once you see results, we discuss what else can be automated.</p>
                     </div>
                 </div>
             </div>
@@ -136,28 +141,28 @@
     <!-- Methodology Section -->
     <section class="section-secondary">
         <div class="container">
-            <h2 class="section-title" data-en="Our Sales Framework" data-de="Unser Beratungsrahmen">Our Sales Framework</h2>
+            <h2 class="section-title" data-en="Our Sales Framework" data-de="Unser Beratungsrahmen" data-es="Nuestro marco de trabajo">Our Sales Framework</h2>
 
             <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 <div class="service-card" style="text-align: center;">
-                    <h3 data-en="Problem" data-de="Problem">Problem</h3>
-                    <p data-en="We identify the real operational burden." data-de="Wir identifizieren die tatsächliche operative Belastung.">We identify the real operational burden.</p>
+                    <h3 data-en="Problem" data-de="Problem" data-es="Problema">Problem</h3>
+                    <p data-en="We identify the real operational burden." data-de="Wir identifizieren die tatsächliche operative Belastung." data-es="Identificamos la carga operativa real.">We identify the real operational burden.</p>
                 </div>
                 <div class="service-card" style="text-align: center;">
-                    <h3 data-en="Impact" data-de="Auswirkung">Impact</h3>
-                    <p data-en="We quantify cost and time loss." data-de="Wir quantifizieren Kosten- und Zeitverluste.">We quantify cost and time loss.</p>
+                    <h3 data-en="Impact" data-de="Auswirkung" data-es="Impacto">Impact</h3>
+                    <p data-en="We quantify cost and time loss." data-de="Wir quantifizieren Kosten- und Zeitverluste." data-es="Cuantificamos la pérdida de costos y de tiempo.">We quantify cost and time loss.</p>
                 </div>
                 <div class="service-card" style="text-align: center;">
-                    <h3 data-en="Solution" data-de="Lösung">Solution</h3>
-                    <p data-en="We design the right automation." data-de="Wir entwerfen die passende Automatisierung.">We design the right automation.</p>
+                    <h3 data-en="Solution" data-de="Lösung" data-es="Solución">Solution</h3>
+                    <p data-en="We design the right automation." data-de="Wir entwerfen die passende Automatisierung." data-es="Diseñamos la automatización adecuada.">We design the right automation.</p>
                 </div>
                 <div class="service-card" style="text-align: center;">
-                    <h3 data-en="Proof" data-de="Beweis">Proof</h3>
-                    <p data-en="We deliver analysis before you commit." data-de="Wir liefern die Analyse, bevor Sie sich festlegen.">We deliver analysis before you commit.</p>
+                    <h3 data-en="Proof" data-de="Beweis" data-es="Prueba">Proof</h3>
+                    <p data-en="We deliver analysis before you commit." data-de="Wir liefern die Analyse, bevor Sie sich festlegen." data-es="Entregamos el análisis antes de que usted se comprometa.">We deliver analysis before you commit.</p>
                 </div>
                 <div class="service-card" style="text-align: center;">
-                    <h3 data-en="Entry Point" data-de="Einstiegspunkt">Entry Point</h3>
-                    <p data-en="The assessment is always free." data-de="Die Bewertung ist immer kostenlos.">The assessment is always free.</p>
+                    <h3 data-en="Entry Point" data-de="Einstiegspunkt" data-es="Punto de entrada">Entry Point</h3>
+                    <p data-en="The assessment is always free." data-de="Die Bewertung ist immer kostenlos." data-es="La evaluación siempre es gratuita.">The assessment is always free.</p>
                 </div>
             </div>
         </div>
@@ -166,8 +171,8 @@
     <!-- CTA Section -->
     <section class="section-primary" style="padding: 64px 0;">
         <div class="container text-center">
-            <h2 class="section-title" data-en="Ready to start?" data-de="Bereit zu starten?">Ready to start?</h2>
-            <a href="process-screening.html" class="btn btn-primary btn-large" data-en="Start with the Free Assessment" data-de="Starten Sie mit der kostenlosen Bewertung">Start with the Free Assessment</a>
+            <h2 class="section-title" data-en="Ready to start?" data-de="Bereit zu starten?" data-es="¿Listo para empezar?">Ready to start?</h2>
+            <a href="process-screening.html" class="btn btn-primary btn-large" data-en="Start with the Free Assessment" data-de="Starten Sie mit der kostenlosen Bewertung" data-es="Empiece con la evaluación gratuita">Start with the Free Assessment</a>
         </div>
     </section>
 
@@ -177,29 +182,29 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Guided by tech, powered by people.</p>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Services" data-de="Leistungen">Services</h2>
+                    <h2 data-en="Services" data-de="Leistungen" data-es="Servicios">Services</h2>
                     <ul>
-                        <li><a href="index.html#services" data-en="AI Implementation & Strategy" data-de="KI-Implementierung & Strategie">AI Implementation & Strategy</a></li>
-                        <li><a href="index.html#services" data-en="Custom AI Agents & Automation" data-de="Individuelle KI-Agenten & Automatisierung">Custom AI Agents & Automation</a></li>
-                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung">VR/AR Development</a></li>
-                        <li><a href="index.html#services" data-en="Fractional CTO Services" data-de="Fractional CTO Services">Fractional CTO Services</a></li>
+                        <li><a href="index.html#services" data-en="AI Implementation & Strategy" data-de="KI-Implementierung & Strategie" data-es="Implementación y estrategia de IA">AI Implementation & Strategy</a></li>
+                        <li><a href="index.html#services" data-en="Custom AI Agents & Automation" data-de="Individuelle KI-Agenten & Automatisierung" data-es="Agentes de IA y automatización a medida">Custom AI Agents & Automation</a></li>
+                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung" data-es="Desarrollo de RV/RA">VR/AR Development</a></li>
+                        <li><a href="index.html#services" data-en="Fractional CTO Services" data-de="Fractional CTO Services" data-es="Servicios de CTO a tiempo parcial">Fractional CTO Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt">Contact</h2>
+                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
                 <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> |
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> |
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>

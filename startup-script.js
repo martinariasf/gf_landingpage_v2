@@ -1,56 +1,80 @@
 // Global variables
-let currentLanguage = 'en';
+// Language lives in lang.js; this file only reads the active choice for the
+// growth modal, whose copy is in JS rather than in data-* attributes.
+let openGrowthStep = null;
+
+function activeLanguage() {
+    return (window.GFLang && window.GFLang.get()) || 'en';
+}
+
+// Section labels for the modal parser below. The copy encodes its own
+// headings, so the parser has to know them in every language.
+const MODAL_LABELS = {
+    en: { keyAreas: 'Key Areas:', why: 'Why it matters:', whyHeading: 'Why It Matters:' },
+    de: { keyAreas: 'Kernbereiche:', why: 'Warum es wichtig ist:', whyHeading: 'Warum es wichtig ist:' },
+    es: { keyAreas: 'Áreas clave:', why: 'Por qué importa:', whyHeading: 'Por qué importa:' }
+};
 
 // Startup-focused Growth Journey Content
 const growthContent = {
     'startup-clarity': {
         title: { 
             en: "1. Startup Clarity – Building on solid foundation", 
-            de: "1. Startup Klarheit – Aufbau auf solidem Fundament" 
+            de: "1. Startup Klarheit – Aufbau auf solidem Fundament",
+            es: "1. Claridad de startup: construir sobre bases sólidas" 
         },
         text: { 
             en: "For early-stage startups looking to validate their idea and understand the playing field.\n\nKey Areas:\n• Market insights: Identify the right segment, assess the opportunity, and spot emerging trends\n• Competitive landscape: Understand your competitors and carve out your unique space\n• Value proposition: Get crystal clear on what makes you irresistible to your target customers\n• Strategic positioning: Position your startup for maximum market impact\n\nWhy it matters: Without clarity, even the best ideas struggle. This package helps you validate your vision, position smartly, and prepare for fast, confident execution.",
-            de: "Für Start-ups in der Frühphase, die ihre Idee validieren und das Umfeld verstehen möchten.\n\nKernbereiche:\n• Marktanalysen: Erkennen Sie das richtige Segment, schätzen Sie die Chancen ein und entdecken Sie aufkommende Trends\n• Wettbewerbslandschaft: Verstehen Sie Ihre Konkurrenten und positionieren Sie sich einzigartig\n• Wertangebot: Erkennen Sie klar, was Sie für Ihre Zielkunden unwiderstehlich macht\n• Strategische Positionierung: Positionieren Sie Ihr Start-up für maximale Marktauswirkung\n\nWarum es wichtig ist: Ohne Klarheit können auch die besten Ideen scheitern. Dieses Paket hilft Ihnen, Ihre Vision zu validieren, sich smart zu positionieren und sich auf eine schnelle, selbstbewusste Umsetzung vorzubereiten."
+            de: "Für Start-ups in der Frühphase, die ihre Idee validieren und das Umfeld verstehen möchten.\n\nKernbereiche:\n• Marktanalysen: Erkennen Sie das richtige Segment, schätzen Sie die Chancen ein und entdecken Sie aufkommende Trends\n• Wettbewerbslandschaft: Verstehen Sie Ihre Konkurrenten und positionieren Sie sich einzigartig\n• Wertangebot: Erkennen Sie klar, was Sie für Ihre Zielkunden unwiderstehlich macht\n• Strategische Positionierung: Positionieren Sie Ihr Start-up für maximale Marktauswirkung\n\nWarum es wichtig ist: Ohne Klarheit können auch die besten Ideen scheitern. Dieses Paket hilft Ihnen, Ihre Vision zu validieren, sich smart zu positionieren und sich auf eine schnelle, selbstbewusste Umsetzung vorzubereiten.",
+            es: "Para startups en fase temprana que quieren validar su idea y entender el terreno de juego.\n\nÁreas clave:\n• Análisis de mercado: identifique el segmento correcto, evalúe la oportunidad y detecte tendencias emergentes\n• Panorama competitivo: entienda a sus competidores y defina su espacio propio\n• Propuesta de valor: aclare qué le hace irresistible para sus clientes objetivo\n• Posicionamiento estratégico: posicione su startup para lograr el máximo impacto en el mercado\n\nPor qué importa: sin claridad, incluso las mejores ideas se atascan. Este paquete le ayuda a validar su visión, posicionarse con inteligencia y prepararse para ejecutar rápido y con confianza."
         }
     },
     'revenue-engine': {
         title: { 
             en: "2. Revenue Engine – Get your business model running", 
-            de: "2. Umsatzmotor – Ihr Geschäftsmodell in Gang bringen" 
+            de: "2. Umsatzmotor – Ihr Geschäftsmodell in Gang bringen",
+            es: "2. Motor de ingresos: ponga en marcha su modelo de negocio" 
         },
         text: { 
             en: "For startups ready to turn traction into money.\n\nKey Areas:\n• Revenue strategy: Define scalable income streams and unlock smart monetization paths\n• Strategic partnerships: Discover who can open doors and fuel your growth\n• Business model optimization: Validate and refine your path to profitability\n• Market fit assessment: Ensure your product meets real market demand\n\nWhy it matters: A great idea is only half the journey. This package helps you make money faster – with the right partners and a revenue model that works.",
-            de: "Für Start-ups, die bereit sind, aus der Traktion Geld zu machen.\n\nKernbereiche:\n• Umsatzstrategie: Definieren Sie skalierbare Einkommensströme und erschließen Sie intelligente Monetarisierungspfade\n• Strategische Partnerschaften: Finden Sie heraus, wer Türen öffnen und Ihr Wachstum beflügeln kann\n• Geschäftsmodell-Optimierung: Validieren und verfeinern Sie Ihren Weg zur Profitabilität\n• Marktfit-Bewertung: Stellen Sie sicher, dass Ihr Produkt echte Marktnachfrage erfüllt\n\nWarum es wichtig ist: Eine großartige Idee ist nur die halbe Miete. Dieses Paket hilft Ihnen, schneller Geld zu verdienen – mit den richtigen Partnern und einem funktionierenden Geschäftsmodell."
+            de: "Für Start-ups, die bereit sind, aus der Traktion Geld zu machen.\n\nKernbereiche:\n• Umsatzstrategie: Definieren Sie skalierbare Einkommensströme und erschließen Sie intelligente Monetarisierungspfade\n• Strategische Partnerschaften: Finden Sie heraus, wer Türen öffnen und Ihr Wachstum beflügeln kann\n• Geschäftsmodell-Optimierung: Validieren und verfeinern Sie Ihren Weg zur Profitabilität\n• Marktfit-Bewertung: Stellen Sie sicher, dass Ihr Produkt echte Marktnachfrage erfüllt\n\nWarum es wichtig ist: Eine großartige Idee ist nur die halbe Miete. Dieses Paket hilft Ihnen, schneller Geld zu verdienen – mit den richtigen Partnern und einem funktionierenden Geschäftsmodell.",
+            es: "Para startups listas para convertir la tracción en dinero.\n\nÁreas clave:\n• Estrategia de ingresos: defina fuentes de ingresos escalables y abra vías de monetización inteligentes\n• Alianzas estratégicas: descubra quién puede abrirle puertas e impulsar su crecimiento\n• Optimización del modelo de negocio: valide y refine su camino a la rentabilidad\n• Evaluación del encaje con el mercado: asegúrese de que su producto responde a una demanda real\n\nPor qué importa: una buena idea es solo la mitad del camino. Este paquete le ayuda a ganar dinero antes, con los socios adecuados y un modelo de ingresos que funciona."
         }
     },
     'sales-boost': {
         title: { 
             en: "3. Sales Boost – Turn interest into income", 
-            de: "3. Verkaufs-Schub – Interesse in Einkommen umwandeln" 
+            de: "3. Verkaufs-Schub – Interesse in Einkommen umwandeln",
+            es: "3. Impulso comercial: convierta el interés en ingresos" 
         },
         text: { 
             en: "For growing startups ready to scale customer acquisition.\n\nKey Areas:\n• Sales acceleration: Optimize your channels and sharpen your pitch-to-close journey\n• Pitch readiness: Build a compelling deck and message that resonates with investors and customers alike\n• Customer acquisition: Develop systematic approaches to finding and converting prospects\n• Sales process optimization: Streamline your sales funnel for maximum efficiency\n\nWhy it matters: You have attention – now convert it. This package gives you the tools and confidence to sell, close, and grow.",
-            de: "Für wachsende Start-ups, die bereit sind, ihre Kundenakquise zu skalieren.\n\nKernbereiche:\n• Verkaufsbeschleunigung: Optimieren Sie Ihre Kanäle und verfeinern Sie Ihre Verkaufspräsentation\n• Überzeugende Ansprache: Erstellen Sie ein überzeugendes Pitch-Deck und eine Botschaft, die bei Investoren und Kunden ankommt\n• Kundenakquise: Entwickeln Sie systematische Ansätze zum Finden und Konvertieren von Interessenten\n• Verkaufsprozess-Optimierung: Optimieren Sie Ihren Verkaufstrichter für maximale Effizienz\n\nWarum es wichtig ist: Sie haben Aufmerksamkeit – jetzt geht es darum, diese in Umsatz umzuwandeln. Dieses Paket gibt Ihnen die Werkzeuge und das Selbstvertrauen, zu verkaufen, abzuschließen und zu wachsen."
+            de: "Für wachsende Start-ups, die bereit sind, ihre Kundenakquise zu skalieren.\n\nKernbereiche:\n• Verkaufsbeschleunigung: Optimieren Sie Ihre Kanäle und verfeinern Sie Ihre Verkaufspräsentation\n• Überzeugende Ansprache: Erstellen Sie ein überzeugendes Pitch-Deck und eine Botschaft, die bei Investoren und Kunden ankommt\n• Kundenakquise: Entwickeln Sie systematische Ansätze zum Finden und Konvertieren von Interessenten\n• Verkaufsprozess-Optimierung: Optimieren Sie Ihren Verkaufstrichter für maximale Effizienz\n\nWarum es wichtig ist: Sie haben Aufmerksamkeit – jetzt geht es darum, diese in Umsatz umzuwandeln. Dieses Paket gibt Ihnen die Werkzeuge und das Selbstvertrauen, zu verkaufen, abzuschließen und zu wachsen.",
+            es: "Para startups en crecimiento listas para escalar la captación de clientes.\n\nÁreas clave:\n• Aceleración de ventas: optimice sus canales y afine el recorrido del pitch al cierre\n• Preparación del pitch: construya una presentación y un mensaje que convenzan tanto a inversores como a clientes\n• Captación de clientes: desarrolle métodos sistemáticos para encontrar y convertir prospectos\n• Optimización del proceso comercial: simplifique su embudo de ventas para ganar eficiencia\n\nPor qué importa: ya tiene la atención; ahora toca convertirla. Este paquete le da las herramientas y la confianza para vender, cerrar y crecer."
         }
     },
     'growth-capabilities': {
         title: { 
             en: "4. Growth Capabilities – Build what makes you unstoppable", 
-            de: "4. Wachstumsfähigkeiten – Bauen Sie auf, was Sie unaufhaltsam macht" 
+            de: "4. Wachstumsfähigkeiten – Bauen Sie auf, was Sie unaufhaltsam macht",
+            es: "4. Capacidades de crecimiento: construya lo que le hace imparable" 
         },
         text: { 
             en: "For scaling startups investing in long-term strength.\n\nKey Areas:\n• Strategic capabilities: Identify and build the talents, systems, and technologies that power your mission\n• Cost efficiency: Improve margins by working smarter, not just harder\n• AI Tools workshops: Equip your team with practical know-how to leverage cutting-edge AI tools for productivity and innovation\n• System optimization: Build processes that scale with your growth\n\nWhy it matters: Scaling isn't just about more customers – it's about stronger systems. This package helps you grow sustainably while staying agile.",
-            de: "Für wachstumsorientierte Start-ups, die in langfristige Stärke investieren.\n\nKernbereiche:\n• Strategische Fähigkeiten: Identifizieren und entwickeln Sie die Talente, Systeme und Technologien, die Ihre Mission antreiben\n• Kosteneffizienz: Verbessern Sie Ihre Margen, indem Sie klüger und nicht nur härter arbeiten\n• KI-Tools Workshops: Rüsten Sie Ihr Team mit praktischem Know-how aus, um moderne KI-Tools für Produktivität und Innovation zu nutzen\n• Systemoptimierung: Bauen Sie Prozesse auf, die mit Ihrem Wachstum skalieren\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden – es geht um stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben."
+            de: "Für wachstumsorientierte Start-ups, die in langfristige Stärke investieren.\n\nKernbereiche:\n• Strategische Fähigkeiten: Identifizieren und entwickeln Sie die Talente, Systeme und Technologien, die Ihre Mission antreiben\n• Kosteneffizienz: Verbessern Sie Ihre Margen, indem Sie klüger und nicht nur härter arbeiten\n• KI-Tools Workshops: Rüsten Sie Ihr Team mit praktischem Know-how aus, um moderne KI-Tools für Produktivität und Innovation zu nutzen\n• Systemoptimierung: Bauen Sie Prozesse auf, die mit Ihrem Wachstum skalieren\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden – es geht um stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben.",
+            es: "Para startups en escalado que invierten en fortaleza a largo plazo.\n\nÁreas clave:\n• Capacidades estratégicas: identifique y desarrolle el talento, los sistemas y las tecnologías que sostienen su misión\n• Eficiencia de costos: mejore sus márgenes trabajando de forma más inteligente, no solo más duro\n• Talleres de herramientas de IA: dote a su equipo del conocimiento práctico para aprovechar la IA en productividad e innovación\n• Optimización de sistemas: construya procesos que escalen con su crecimiento\n\nPor qué importa: escalar no es solo tener más clientes, es tener sistemas más sólidos. Este paquete le ayuda a crecer de forma sostenible sin perder agilidad."
         }
     },
     'scale-strategy': {
         title: { 
             en: "5. Scale Strategy – Become the category leader", 
-            de: "5. Skalierungsstrategie – Werden Sie zum Branchenführer" 
+            de: "5. Skalierungsstrategie – Werden Sie zum Branchenführer",
+            es: "5. Estrategia de escalado: conviértase en líder de su categoría" 
         },
         text: { 
             en: "For mature startups ready to lead, launch larger funding rounds or expand globally.\n\nKey Areas:\n• AI Tools mastery: Advanced AI integration to automate operations and build competitive advantages\n• Comprehensive strategy: All of the above packages fully tailored to your current scaling challenges\n• Senior advisor access: Tailored workshops and strategy sessions with experienced advisors\n• Market expansion: Strategic planning for geographic and vertical growth\n• Leadership development: Build the leadership capabilities needed for scale\n\nWhy it matters: When you're ready to scale up, you need more than just advice - you need strategic clout. This flagship package turns ambition into execution.",
-            de: "Für etablierte Start-ups, die bereit sind, zu führen, größere Finanzierungsrunden zu starten oder global zu expandieren.\n\nKernbereiche:\n• KI-Tools Mastery: Fortgeschrittene KI-Integration zur Automatisierung und Aufbau von Wettbewerbsvorteilen\n• Umfassende Strategie: All das oben Genannte – maßgeschneidert auf Ihre aktuellen Skalierungsherausforderungen\n• Senior-Berater-Zugang: Maßgeschneiderte Workshops und Strategiesitzungen mit erfahrenen Beratern\n• Markterweiterung: Strategische Planung für geografisches und vertikales Wachstum\n• Führungskräfteentwicklung: Bauen Sie die Führungskompetenzen auf, die für Skalierung erforderlich sind\n\nWarum es wichtig ist: Wenn Sie bereit sind zu wachsen, brauchen Sie mehr als nur Ratschläge – Sie brauchen strategische Schlagkraft. Dieses Flaggschiff-Paket verwandelt Ambitionen in Umsetzung."
+            de: "Für etablierte Start-ups, die bereit sind, zu führen, größere Finanzierungsrunden zu starten oder global zu expandieren.\n\nKernbereiche:\n• KI-Tools Mastery: Fortgeschrittene KI-Integration zur Automatisierung und Aufbau von Wettbewerbsvorteilen\n• Umfassende Strategie: All das oben Genannte – maßgeschneidert auf Ihre aktuellen Skalierungsherausforderungen\n• Senior-Berater-Zugang: Maßgeschneiderte Workshops und Strategiesitzungen mit erfahrenen Beratern\n• Markterweiterung: Strategische Planung für geografisches und vertikales Wachstum\n• Führungskräfteentwicklung: Bauen Sie die Führungskompetenzen auf, die für Skalierung erforderlich sind\n\nWarum es wichtig ist: Wenn Sie bereit sind zu wachsen, brauchen Sie mehr als nur Ratschläge – Sie brauchen strategische Schlagkraft. Dieses Flaggschiff-Paket verwandelt Ambitionen in Umsetzung.",
+            es: "Para startups maduras listas para liderar, levantar rondas mayores o expandirse globalmente.\n\nÁreas clave:\n• Dominio de las herramientas de IA: integración avanzada de IA para automatizar operaciones y crear ventajas competitivas\n• Estrategia integral: todos los paquetes anteriores, adaptados a sus retos actuales de escalado\n• Acceso a asesores sénior: talleres y sesiones de estrategia a medida con asesores experimentados\n• Expansión de mercado: planificación estratégica para el crecimiento geográfico y vertical\n• Desarrollo del liderazgo: construya las capacidades de dirección que exige el escalado\n\nPor qué importa: cuando está listo para escalar necesita más que consejos, necesita peso estratégico. Este paquete insignia convierte la ambición en ejecución."
         }
     }
 };
@@ -63,18 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Initialize website functionality
 function initializeWebsite() {
     initializeNavigation();
-    initializeLanguageToggle();
     initializeGrowthJourney();
     initializeSmoothScrolling();
-    
-    // Load saved language preference
-    loadLanguagePreference();
-    
-    // Set initial language
-    if (!currentLanguage) {
-        currentLanguage = 'en';
-    }
-    updateLanguage(currentLanguage);
 }
 
 // Navigation functionality
@@ -136,91 +150,14 @@ function initializeSmoothScrolling() {
     });
 }
 
-// Language toggle functionality
-function initializeLanguageToggle() {
-    const languageToggle = document.querySelector('.language-toggle');
-    
-    if (languageToggle) {
-        languageToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleLanguage();
-        });
-        
-        languageToggle.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleLanguage();
-            }
-        });
-    }
-}
-
-function toggleLanguage() {
-    currentLanguage = currentLanguage === 'en' ? 'de' : 'en';
-    updateLanguage(currentLanguage);
-    
-    // If modal is open, refresh its content with new language
+// The growth modal's copy lives in JS, so lang.js's data-* pass does not
+// reach it. Re-render an open modal when the visitor switches language.
+document.addEventListener('gf:langchange', () => {
     const modal = document.getElementById('growth-modal');
-    if (modal && modal.style.display === 'block') {
-        // Find which step is currently displayed by checking the title
-        const currentTitle = document.getElementById('growth-modal-title').textContent;
-        let currentStep = null;
-        
-        // Find the step that matches the current title
-        for (const [step, content] of Object.entries(growthContent)) {
-            if (content.title.en === currentTitle || content.title.de === currentTitle) {
-                currentStep = step;
-                break;
-            }
-        }
-        
-        // Refresh modal content if we found the step
-        if (currentStep) {
-            openGrowthModal(currentStep);
-        }
+    if (modal && modal.style.display === 'block' && openGrowthStep) {
+        openGrowthModal(openGrowthStep);
     }
-}
-
-function updateLanguage(lang) {
-    // Update language toggle button
-    const currentLangElement = document.getElementById('current-lang');
-    const altLangElement = document.getElementById('alt-lang');
-    
-    if (currentLangElement && altLangElement) {
-        currentLangElement.textContent = lang.toUpperCase();
-        altLangElement.textContent = lang === 'en' ? 'DE' : 'EN';
-    }
-    
-    // Update all elements with language attributes
-    const elementsWithLang = document.querySelectorAll('[data-en][data-de]');
-    
-    elementsWithLang.forEach(element => {
-        const text = element.getAttribute(`data-${lang}`);
-        if (text) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = text;
-            } else {
-                element.textContent = text;
-            }
-        }
-    });
-    
-    // Update document language
-    document.documentElement.lang = lang;
-    
-    // Store language preference
-    localStorage.setItem('preferred-language', lang);
-}
-
-// Load saved language preference
-function loadLanguagePreference() {
-    const savedLanguage = localStorage.getItem('preferred-language');
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'de')) {
-        currentLanguage = savedLanguage;
-    } else {
-        currentLanguage = 'en';
-    }
-}
+});
 
 // Growth Journey functionality
 function initializeGrowthJourney() {
@@ -276,12 +213,14 @@ function openGrowthModal(step) {
     
     if (growthContent[step]) {
         const content = growthContent[step];
-        
+        const lang = activeLanguage();
+        const labels = MODAL_LABELS[lang] || MODAL_LABELS.en;
+
         // Set title
-        title.textContent = content.title[currentLanguage];
-        
+        title.textContent = content.title[lang] || content.title.en;
+
         // Format text content with proper structure
-        const fullText = content.text[currentLanguage];
+        const fullText = content.text[lang] || content.text.en;
         
         // Split into sections
         const sections = fullText.split('\n\n');
@@ -300,12 +239,12 @@ function openGrowthModal(step) {
         text.appendChild(descParagraph);
         
         // Process Key Areas section
-        if (keyAreasSection && (keyAreasSection.includes('Key Areas:') || keyAreasSection.includes('Kernbereiche:'))) {
+        if (keyAreasSection && keyAreasSection.includes(labels.keyAreas)) {
             const keyAreasDiv = document.createElement('div');
             keyAreasDiv.style.marginBottom = '20px';
             
             const keyAreasTitle = document.createElement('h4');
-            keyAreasTitle.textContent = currentLanguage === 'en' ? 'Key Areas:' : 'Kernbereiche:';
+            keyAreasTitle.textContent = labels.keyAreas;
             keyAreasTitle.style.marginBottom = '12px';
             keyAreasTitle.style.fontSize = '18px';
             keyAreasTitle.style.fontWeight = '600';
@@ -328,7 +267,9 @@ function openGrowthModal(step) {
                 listItem.style.lineHeight = '1.6';
                 
                 // Check if this is an AI Tools related point
-                const isAITools = point.toLowerCase().includes('ai tools') || point.toLowerCase().includes('ki-tools');
+                const isAITools = point.toLowerCase().includes('ai tools')
+                || point.toLowerCase().includes('ki-tools')
+                || point.toLowerCase().includes('herramientas de ia');
                 
                 // Create custom bullet
                 const bullet = document.createElement('span');
@@ -372,7 +313,7 @@ function openGrowthModal(step) {
         }
         
         // Process "Why it matters" section
-        if (whyItMattersSection && (whyItMattersSection.includes('Why it matters:') || whyItMattersSection.includes('Warum es wichtig ist:'))) {
+        if (whyItMattersSection && whyItMattersSection.includes(labels.why)) {
             const whyDiv = document.createElement('div');
             whyDiv.style.marginTop = '20px';
             whyDiv.style.padding = '16px';
@@ -381,7 +322,7 @@ function openGrowthModal(step) {
             whyDiv.style.borderLeft = '4px solid #8BC07C';
             
             const whyTitle = document.createElement('h4');
-            whyTitle.textContent = currentLanguage === 'en' ? 'Why It Matters:' : 'Warum es wichtig ist:';
+            whyTitle.textContent = labels.whyHeading;
             whyTitle.style.marginBottom = '8px';
             whyTitle.style.fontSize = '16px';
             whyTitle.style.fontWeight = '600';
@@ -389,7 +330,7 @@ function openGrowthModal(step) {
             whyDiv.appendChild(whyTitle);
             
             const whyText = document.createElement('p');
-            whyText.textContent = whyItMattersSection.replace('Why it matters:', '').replace('Warum es wichtig ist:', '').trim();
+            whyText.textContent = whyItMattersSection.replace(labels.why, '').trim();
             whyText.style.margin = '0';
             whyText.style.lineHeight = '1.6';
             whyText.style.color = '#4A4A4A';
@@ -399,7 +340,8 @@ function openGrowthModal(step) {
         }
         
         modal.style.display = 'block';
-        
+        openGrowthStep = step;
+
         // Prevent body scroll when modal is open
         document.body.style.overflow = 'hidden';
     } else {
@@ -416,6 +358,7 @@ function closeGrowthModal() {
     const modal = document.getElementById('growth-modal');
     if (modal) {
         modal.style.display = 'none';
+        openGrowthStep = null;
         // Restore body scroll
         document.body.style.overflow = 'auto';
     }
@@ -438,10 +381,9 @@ function debounce(func, wait) {
     };
 }
 
-// Export functions for potential use
+// Export functions for potential use.
+// Language is no longer exported here — use window.GFLang (lang.js).
 window.StartupWebsite = {
-    toggleLanguage,
-    updateLanguage,
     openGrowthModal,
     closeGrowthModal
 };

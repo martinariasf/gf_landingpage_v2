@@ -41,26 +41,29 @@
       window.__GA_MEASUREMENT_ID__ = 'G-2D1MXJ2SMZ';
       window.__CONSENT_VERSION__ = 'vr-v1';
     </script>
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Email Capture Modal -->
     <div class="modal-overlay" id="emailModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <h3 class="modal-title" data-en="🚀 Revolutionize Your Trade Show Presence!" data-de="🚀 Revolutionieren Sie Ihre Messepräsenz!">🚀 Revolutionieren Sie Ihre Messepräsenz!</h3>
-            <p class="modal-subtitle" data-en="Get our exclusive 'VR/AR/MR Trade Show Success Guide' with proven strategies for 10x more booth visitors." data-de="Erhalten Sie unseren exklusiven 'VR/AR/MR Messe-Erfolgs-Guide' mit bewährten Strategien für 10x mehr Standbesucher.">Erhalten Sie unseren exklusiven <strong>"VR/AR/MR Messe-Erfolgs-Guide"</strong> mit bewährten Strategien für 10x mehr Standbesucher.</p>
+            <h3 class="modal-title" data-en="🚀 Revolutionize Your Trade Show Presence!" data-de="🚀 Revolutionieren Sie Ihre Messepräsenz!" data-es="🚀 ¡Revolucione su presencia en ferias!">🚀 Revolutionieren Sie Ihre Messepräsenz!</h3>
+            <p class="modal-subtitle" data-en="Get our exclusive 'VR/AR/MR Trade Show Success Guide' with proven strategies for 10x more booth visitors." data-de="Erhalten Sie unseren exklusiven 'VR/AR/MR Messe-Erfolgs-Guide' mit bewährten Strategien für 10x mehr Standbesucher." data-es="Reciba nuestra 'Guía de éxito en ferias con RV/RA/RM', con estrategias probadas para multiplicar por 10 las visitas a su stand.">Erhalten Sie unseren exklusiven <strong>"VR/AR/MR Messe-Erfolgs-Guide"</strong> mit bewährten Strategien für 10x mehr Standbesucher.</p>
             
             <ul class="modal-benefits">
-                <li data-en="15+ successful VR trade show projects analyzed" data-de="15+ erfolgreiche VR-Messe-Projekte analysiert">15+ erfolgreiche VR-Messe-Projekte analysiert</li>
-                <li data-en="Average ROI increase of 340%" data-de="ROI-Steigerung von durchschnittlich 340%">ROI-Steigerung von durchschnittlich 340%</li>
-                <li data-en="Step-by-step implementation guide" data-de="Schritt-für-Schritt Implementierung">Schritt-für-Schritt Implementierung</li>
-                <li data-en="Free initial consultation included" data-de="Kostenlose Erstberatung inklusive">Kostenlose Erstberatung inklusive</li>
+                <li data-en="15+ successful VR trade show projects analyzed" data-de="15+ erfolgreiche VR-Messe-Projekte analysiert" data-es="Más de 15 proyectos de RV en ferias analizados">15+ erfolgreiche VR-Messe-Projekte analysiert</li>
+                <li data-en="Average ROI increase of 340%" data-de="ROI-Steigerung von durchschnittlich 340%" data-es="Aumento medio del ROI del 340 %">ROI-Steigerung von durchschnittlich 340%</li>
+                <li data-en="Step-by-step implementation guide" data-de="Schritt-für-Schritt Implementierung" data-es="Guía de implementación paso a paso">Schritt-für-Schritt Implementierung</li>
+                <li data-en="Free initial consultation included" data-de="Kostenlose Erstberatung inklusive" data-es="Primera consulta gratuita incluida">Kostenlose Erstberatung inklusive</li>
             </ul>
             
             <form class="email-form" id="modalForm" action="https://formspree.io/f/myzgvodd" method="POST">
-                <input type="email" class="email-input" name="email" placeholder="Ihre E-Mail-Adresse" required id="modalEmail" data-en="Your email address" data-de="Ihre E-Mail-Adresse" aria-label="Ihre E-Mail-Adresse">
+                <input type="email" class="email-input" name="email" placeholder="Ihre E-Mail-Adresse" required id="modalEmail" data-en="Your email address" data-de="Ihre E-Mail-Adresse" data-es="Su correo electrónico" aria-label="Ihre E-Mail-Adresse">
                 
                 <!-- Hidden fields for modal form -->
                 <input type="hidden" name="_subject" value="Neue VR-Guide Anfrage (Popup Modal)">
@@ -72,10 +75,10 @@
                 <input type="hidden" name="name" value="Not provided (Popup)">
                 <input type="hidden" name="company" value="Not provided (Popup)">
                 
-                <button type="submit" class="email-submit" data-en="📧 Get Free Guide" data-de="📧 Kostenlosen Guide erhalten">📧 Kostenlosen Guide erhalten</button>
+                <button type="submit" class="email-submit" data-en="📧 Get Free Guide" data-de="📧 Kostenlosen Guide erhalten" data-es="📧 Obtener la guía gratis">📧 Kostenlosen Guide erhalten</button>
             </form>
             
-            <p class="privacy-note" data-en="🔒 100% secure - no data sharing" data-de="🔒 100% sicher - keine Weitergabe Ihrer Daten">
+            <p class="privacy-note" data-en="🔒 100% secure - no data sharing" data-de="🔒 100% sicher - keine Weitergabe Ihrer Daten" data-es="🔒 100 % seguro: no compartimos datos">
                 <i class="fas fa-lock"></i> 100% sicher - keine Weitergabe Ihrer Daten
             </p>
         </div>
@@ -88,15 +91,17 @@
                 <a href="index.html" aria-label="GF Innovative Solutions — Startseite / home"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" style="height: 40px;"></a>
             </div>
             <div class="nav-menu">
-                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
-                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform">AI Platform</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
-                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team">Team</a>
-                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
-                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
-                </button>
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform" data-es="Plataforma de IA">AI Platform</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns" data-es="Quiénes somos">About</a>
+                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
             <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false">
                 <span></span>
@@ -109,65 +114,65 @@
     <!-- Hero Section -->
     <section id="main" tabindex="-1" class="hero">
         <div class="hero-content fade-in">
-            <h1 data-en="Captivate Your Audience with VR/AR" data-de="Begeistern Sie Ihr Publikum mit VR/AR">Begeistern Sie Ihr Publikum mit VR/AR</h1>
-            <p data-en="Innovative Virtual & Augmented Reality solutions for unforgettable trade show experiences, efficient training and maximum ROI" data-de="Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI">Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI</p>
-            <a href="#packages" class="cta-button" data-en="Discover Our VR Packages" data-de="Entdecken Sie unsere VR-Pakete">Entdecken Sie unsere VR-Pakete</a>
+            <h1 data-en="Captivate Your Audience with VR/AR" data-de="Begeistern Sie Ihr Publikum mit VR/AR" data-es="Cautive a su público con RV/RA">Begeistern Sie Ihr Publikum mit VR/AR</h1>
+            <p data-en="Innovative Virtual & Augmented Reality solutions for unforgettable trade show experiences, efficient training and maximum ROI" data-de="Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI" data-es="Soluciones innovadoras de realidad virtual y aumentada para experiencias de feria inolvidables, formación eficiente y el máximo ROI">Innovative Virtual & Augmented Reality Lösungen für unvergessliche Messeerlebnisse, effizientes Training und maximalen ROI</p>
+            <a href="#packages" class="cta-button" data-en="Discover Our VR Packages" data-de="Entdecken Sie unsere VR-Pakete" data-es="Descubra nuestros paquetes de RV">Entdecken Sie unsere VR-Pakete</a>
         </div>
     </section>
 
     <!-- Packages Section -->
     <section class="section" id="packages">
         <div class="container">
-            <h2 class="section-title fade-in" data-en="VR Solutions Packages" data-de="VR Solutions Packages">VR Solutions Packages</h2>
-            <p class="section-subtitle fade-in" data-en="Tailored VR solutions for maximum efficiency and ROI" data-de="Maßgeschneiderte VR-Lösungen für maximale Effizienz und ROI">Maßgeschneiderte VR-Lösungen für maximale Effizienz und ROI</p>
+            <h2 class="section-title fade-in" data-en="VR Solutions Packages" data-de="VR Solutions Packages" data-es="Paquetes de soluciones de RV">VR Solutions Packages</h2>
+            <p class="section-subtitle fade-in" data-en="Tailored VR solutions for maximum efficiency and ROI" data-de="Maßgeschneiderte VR-Lösungen für maximale Effizienz und ROI" data-es="Soluciones de RV a medida para la máxima eficiencia y el mejor ROI">Maßgeschneiderte VR-Lösungen für maximale Effizienz und ROI</p>
             
             <div class="packages-grid">
                 <div class="package-card fade-in">
                     <div class="package-icon">
                         <i class="fas fa-cube"></i>
                     </div>
-                    <h3 class="package-title" data-en="Package 1: Digital Twin Development" data-de="Package 1: Digital Twin Entwicklung">Package 1: Digital Twin Entwicklung</h3>
-                    <p class="package-description" data-en="Professional development of customized digital twins for training and trade show presentations" data-de="Professionelle Entwicklung maßgeschneiderter digitaler Zwillinge für Training und Messepräsentationen">Professionelle Entwicklung maßgeschneiderter digitaler Zwillinge für Training und Messepräsentationen</p>
+                    <h3 class="package-title" data-en="Package 1: Digital Twin Development" data-de="Package 1: Digital Twin Entwicklung" data-es="Paquete 1: desarrollo de gemelo digital">Package 1: Digital Twin Entwicklung</h3>
+                    <p class="package-description" data-en="Professional development of customized digital twins for training and trade show presentations" data-de="Professionelle Entwicklung maßgeschneiderter digitaler Zwillinge für Training und Messepräsentationen" data-es="Desarrollo profesional de gemelos digitales a medida para formación y presentaciones en ferias">Professionelle Entwicklung maßgeschneiderter digitaler Zwillinge für Training und Messepräsentationen</p>
                     <ul class="package-features">
-                        <li data-en="Custom Digital Twin development service" data-de="Custom Digital Twin Entwicklungsservice">Custom Digital Twin Entwicklungsservice</li>
-                        <li data-en="Versatile for training AND trade shows" data-de="Vielseitig für Training UND Messen einsetzbar">Vielseitig für Training UND Messen einsetzbar</li>
-                        <li data-en="Complete ownership of all assets" data-de="Vollständiges Eigentum an allen Assets">Vollständiges Eigentum an allen Assets</li>
-                        <li data-en="Comprehensive implementation support included" data-de="Umfassende Implementierungsbetreuung inklusive">Umfassende Implementierungsbetreuung inklusive</li>
-                        <li data-en="Based on your CAD data" data-de="Basierend auf Ihren CAD-Daten">Basierend auf Ihren CAD-Daten</li>
+                        <li data-en="Custom Digital Twin development service" data-de="Custom Digital Twin Entwicklungsservice" data-es="Servicio de desarrollo de gemelos digitales a medida">Custom Digital Twin Entwicklungsservice</li>
+                        <li data-en="Versatile for training AND trade shows" data-de="Vielseitig für Training UND Messen einsetzbar" data-es="Versátil: sirve para formación Y para ferias">Vielseitig für Training UND Messen einsetzbar</li>
+                        <li data-en="Complete ownership of all assets" data-de="Vollständiges Eigentum an allen Assets" data-es="Propiedad completa de todos los recursos">Vollständiges Eigentum an allen Assets</li>
+                        <li data-en="Comprehensive implementation support included" data-de="Umfassende Implementierungsbetreuung inklusive" data-es="Acompañamiento integral en la implementación incluido">Umfassende Implementierungsbetreuung inklusive</li>
+                        <li data-en="Based on your CAD data" data-de="Basierend auf Ihren CAD-Daten" data-es="Basado en sus datos CAD">Basierend auf Ihren CAD-Daten</li>
                     </ul>
-                    <button class="package-btn" onclick="contactUs('Digital Twin Development Package')" data-en="Request Quote" data-de="Angebot anfordern">Angebot anfordern</button>
+                    <button class="package-btn" onclick="contactUs('Digital Twin Development Package')" data-en="Request Quote" data-de="Angebot anfordern" data-es="Solicitar presupuesto">Angebot anfordern</button>
                 </div>
 
                 <div class="package-card fade-in">
                     <div class="package-icon">
                         <i class="fas fa-video"></i>
                     </div>
-                    <h3 class="package-title" data-en="Package 2: VR Video Production" data-de="Package 2: VR Video Produktion">Package 2: VR Video Produktion</h3>
-                    <p class="package-description" data-en="High-quality VR video content for immersive product presentations and virtual tours" data-de="Hochwertige VR-Video-Inhalte für immersive Produktpräsentationen und virtuelle Rundgänge">Hochwertige VR-Video-Inhalte für immersive Produktpräsentationen und virtuelle Rundgänge</p>
+                    <h3 class="package-title" data-en="Package 2: VR Video Production" data-de="Package 2: VR Video Produktion" data-es="Paquete 2: producción de vídeo en RV">Package 2: VR Video Produktion</h3>
+                    <p class="package-description" data-en="High-quality VR video content for immersive product presentations and virtual tours" data-de="Hochwertige VR-Video-Inhalte für immersive Produktpräsentationen und virtuelle Rundgänge" data-es="Contenido de vídeo en RV de alta calidad para presentaciones de producto inmersivas y recorridos virtuales">Hochwertige VR-Video-Inhalte für immersive Produktpräsentationen und virtuelle Rundgänge</p>
                     <ul class="package-features">
-                        <li data-en="360° video production" data-de="360°-Video-Produktion">360°-Video-Produktion</li>
-                        <li data-en="Professional editing and post-production" data-de="Professionelle Bearbeitung und Nachbearbeitung">Professionelle Bearbeitung und Nachbearbeitung</li>
-                        <li data-en="Multi-platform compatibility" data-de="Multi-Plattform-Kompatibilität">Multi-Plattform-Kompatibilität</li>
-                        <li data-en="Interactive hotspots and annotations" data-de="Interaktive Hotspots und Annotationen">Interaktive Hotspots und Annotationen</li>
-                        <li data-en="Trade show ready formats" data-de="Messefertige Formate">Messefertige Formate</li>
+                        <li data-en="360° video production" data-de="360°-Video-Produktion" data-es="Producción de vídeo en 360°">360°-Video-Produktion</li>
+                        <li data-en="Professional editing and post-production" data-de="Professionelle Bearbeitung und Nachbearbeitung" data-es="Edición y postproducción profesionales">Professionelle Bearbeitung und Nachbearbeitung</li>
+                        <li data-en="Multi-platform compatibility" data-de="Multi-Plattform-Kompatibilität" data-es="Compatibilidad multiplataforma">Multi-Plattform-Kompatibilität</li>
+                        <li data-en="Interactive hotspots and annotations" data-de="Interaktive Hotspots und Annotationen" data-es="Puntos interactivos y anotaciones">Interaktive Hotspots und Annotationen</li>
+                        <li data-en="Trade show ready formats" data-de="Messefertige Formate" data-es="Formatos listos para ferias">Messefertige Formate</li>
                     </ul>
-                    <button class="package-btn" onclick="contactUs('VR Video Production Package')" data-en="Request Quote" data-de="Angebot anfordern">Angebot anfordern</button>
+                    <button class="package-btn" onclick="contactUs('VR Video Production Package')" data-en="Request Quote" data-de="Angebot anfordern" data-es="Solicitar presupuesto">Angebot anfordern</button>
                 </div>
 
                 <div class="package-card fade-in">
                     <div class="package-icon">
                         <i class="fas fa-desktop"></i>
                     </div>
-                    <h3 class="package-title" data-en="Package 3: frontline.io Platform" data-de="Package 3: frontline.io Plattform">Package 3: frontline.io Plattform</h3>
-                    <p class="package-description" data-en="Complete access to the frontline.io platform with enterprise-grade VR/AR solutions" data-de="Vollständiger Zugang zur frontline.io-Plattform mit VR/AR-Lösungen auf Unternehmensebene">Vollständiger Zugang zur frontline.io-Plattform mit VR/AR-Lösungen auf Unternehmensebene</p>
+                    <h3 class="package-title" data-en="Package 3: frontline.io Platform" data-de="Package 3: frontline.io Plattform" data-es="Paquete 3: plataforma frontline.io">Package 3: frontline.io Plattform</h3>
+                    <p class="package-description" data-en="Complete access to the frontline.io platform with enterprise-grade VR/AR solutions" data-de="Vollständiger Zugang zur frontline.io-Plattform mit VR/AR-Lösungen auf Unternehmensebene" data-es="Acceso completo a la plataforma frontline.io con soluciones de RV/RA de nivel empresarial">Vollständiger Zugang zur frontline.io-Plattform mit VR/AR-Lösungen auf Unternehmensebene</p>
                     <ul class="package-features">
-                        <li data-en="Full platform access and licensing" data-de="Vollständiger Plattformzugang und Lizenzierung">Vollständiger Plattformzugang und Lizenzierung</li>
-                        <li data-en="Remote support capabilities" data-de="Remote-Support-Funktionen">Remote-Support-Funktionen</li>
-                        <li data-en="Real-time analytics and reporting" data-de="Echtzeit-Analytik und Berichterstattung">Echtzeit-Analytik und Berichterstattung</li>
-                        <li data-en="Multi-user collaboration tools" data-de="Multi-User-Kollaborationstools">Multi-User-Kollaborationstools</li>
-                        <li data-en="Ongoing support and updates" data-de="Laufender Support und Updates">Laufender Support und Updates</li>
+                        <li data-en="Full platform access and licensing" data-de="Vollständiger Plattformzugang und Lizenzierung" data-es="Acceso y licencia completos de la plataforma">Vollständiger Plattformzugang und Lizenzierung</li>
+                        <li data-en="Remote support capabilities" data-de="Remote-Support-Funktionen" data-es="Capacidades de soporte remoto">Remote-Support-Funktionen</li>
+                        <li data-en="Real-time analytics and reporting" data-de="Echtzeit-Analytik und Berichterstattung" data-es="Analítica e informes en tiempo real">Echtzeit-Analytik und Berichterstattung</li>
+                        <li data-en="Multi-user collaboration tools" data-de="Multi-User-Kollaborationstools" data-es="Herramientas de colaboración multiusuario">Multi-User-Kollaborationstools</li>
+                        <li data-en="Ongoing support and updates" data-de="Laufender Support und Updates" data-es="Soporte y actualizaciones continuas">Laufender Support und Updates</li>
                     </ul>
-                    <button class="package-btn" onclick="contactUs('frontline.io Platform Package')" data-en="Request Quote" data-de="Angebot anfordern">Angebot anfordern</button>
+                    <button class="package-btn" onclick="contactUs('frontline.io Platform Package')" data-en="Request Quote" data-de="Angebot anfordern" data-es="Solicitar presupuesto">Angebot anfordern</button>
                 </div>
             </div>
         </div>
@@ -176,8 +181,8 @@
     <!-- Gallery Section -->
     <section class="section" id="gallery" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
-            <h2 class="section-title fade-in" data-en="VR & AR in Action" data-de="VR & AR in Aktion">VR & AR in Aktion</h2>
-            <p class="section-subtitle fade-in" data-en="Experience the diversity of our VR solutions in various application areas" data-de="Erleben Sie die Vielfalt unserer VR-Lösungen in verschiedenen Anwendungsbereichen">Erleben Sie die Vielfalt unserer VR-Lösungen in verschiedenen Anwendungsbereichen</p>
+            <h2 class="section-title fade-in" data-en="VR & AR in Action" data-de="VR & AR in Aktion" data-es="RV y RA en acción">VR & AR in Aktion</h2>
+            <p class="section-subtitle fade-in" data-en="Experience the diversity of our VR solutions in various application areas" data-de="Erleben Sie die Vielfalt unserer VR-Lösungen in verschiedenen Anwendungsbereichen" data-es="Descubra la variedad de nuestras soluciones de RV en distintos ámbitos de aplicación">Erleben Sie die Vielfalt unserer VR-Lösungen in verschiedenen Anwendungsbereichen</p>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 <!-- Digital Twin -->
@@ -186,8 +191,8 @@
                         <video class="frontline-loop" src="videos/frontline/digital-twin.mp4" poster="videos/frontline/digital-twin-poster.webp" width="738" height="414" autoplay muted loop playsinline preload="none" aria-label="Digital Twin" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></video>
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h3 style="color: var(--heading); margin-bottom: 1rem;" data-en="Digital Twins" data-de="Digitale Zwillinge">Digitale Zwillinge</h3>
-                        <p style="color: #6c757d;" data-en="Virtual replicas of your machines for immersive training and simulation" data-de="Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation">Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation</p>
+                        <h3 style="color: var(--heading); margin-bottom: 1rem;" data-en="Digital Twins" data-de="Digitale Zwillinge" data-es="Gemelos digitales">Digitale Zwillinge</h3>
+                        <p style="color: #6c757d;" data-en="Virtual replicas of your machines for immersive training and simulation" data-de="Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation" data-es="Réplicas virtuales de sus máquinas para formación y simulación inmersivas">Virtuelle Abbilder Ihrer Maschinen für immersives Training und Simulation</p>
                     </div>
                 </div>
 
@@ -197,8 +202,8 @@
                         <video class="frontline-loop" src="videos/frontline/helicopter.mp4" poster="videos/frontline/helicopter-poster.webp" width="738" height="414" autoplay muted loop playsinline preload="none" aria-label="Interactive Helicopter" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></video>
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="Interactive Parts Catalogs" data-de="Interaktive Teilekataloge">Interaktive Teilekataloge</h4>
-                        <p style="color: #6c757d;" data-en="Complete 3D representation with metadata for quick part identification" data-de="Vollständige 3D-Darstellung mit Metadaten für schnelle Teileidentifikation">Vollständige 3D-Darstellung mit Metadaten für schnelle Teileidentifikation</p>
+                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="Interactive Parts Catalogs" data-de="Interaktive Teilekataloge" data-es="Catálogos de piezas interactivos">Interaktive Teilekataloge</h4>
+                        <p style="color: #6c757d;" data-en="Complete 3D representation with metadata for quick part identification" data-de="Vollständige 3D-Darstellung mit Metadaten für schnelle Teileidentifikation" data-es="Representación 3D completa con metadatos para identificar piezas rápidamente">Vollständige 3D-Darstellung mit Metadaten für schnelle Teileidentifikation</p>
                     </div>
                 </div>
 
@@ -208,8 +213,8 @@
                         <video class="frontline-loop" src="videos/frontline/remote-support.mp4" poster="videos/frontline/remote-support-poster.webp" width="738" height="414" autoplay muted loop playsinline preload="none" aria-label="Remote Support" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></video>
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="AR Remote Support" data-de="AR Remote Support">AR Remote Support</h4>
-                        <p style="color: #6c757d;" data-en="Real-time expert assistance through AR-supported remote maintenance" data-de="Expertenhilfe in Echtzeit durch AR-gestützte Fernwartung">Expertenhilfe in Echtzeit durch AR-gestützte Fernwartung</p>
+                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="AR Remote Support" data-de="AR Remote Support" data-es="Soporte remoto con RA">AR Remote Support</h4>
+                        <p style="color: #6c757d;" data-en="Real-time expert assistance through AR-supported remote maintenance" data-de="Expertenhilfe in Echtzeit durch AR-gestützte Fernwartung" data-es="Asistencia experta en tiempo real mediante mantenimiento remoto asistido por RA">Expertenhilfe in Echtzeit durch AR-gestützte Fernwartung</p>
                     </div>
                 </div>
 
@@ -219,8 +224,8 @@
                         <video class="frontline-loop" src="videos/frontline/interactive-flows.mp4" poster="videos/frontline/interactive-flows-poster.webp" width="738" height="414" autoplay muted loop playsinline preload="none" aria-label="Interactive Flows" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></video>
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="Interactive Processes" data-de="Interaktive Prozesse">Interaktive Prozesse</h4>
-                        <p style="color: #6c757d;" data-en="Step-by-step 3D instructions for optimal training results" data-de="Schritt-für-Schritt 3D-Anleitungen für optimale Schulungsergebnisse">Schritt-für-Schritt 3D-Anleitungen für optimale Schulungsergebnisse</p>
+                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="Interactive Processes" data-de="Interaktive Prozesse" data-es="Procesos interactivos">Interaktive Prozesse</h4>
+                        <p style="color: #6c757d;" data-en="Step-by-step 3D instructions for optimal training results" data-de="Schritt-für-Schritt 3D-Anleitungen für optimale Schulungsergebnisse" data-es="Instrucciones 3D paso a paso para obtener los mejores resultados de formación">Schritt-für-Schritt 3D-Anleitungen für optimale Schulungsergebnisse</p>
                     </div>
                 </div>
 
@@ -230,8 +235,8 @@
                         <img loading="lazy" decoding="async" width="769" height="487" src="images/frontline/frontline.io - analytics2.jpg" alt="Analytics" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="Real-time Analytics" data-de="Echtzeit Analytics">Echtzeit Analytics</h4>
-                        <p style="color: #6c757d;" data-en="Data collection and analysis for continuous improvement" data-de="Datenerfassung und Analyse für kontinuierliche Verbesserung">Datenerfassung und Analyse für kontinuierliche Verbesserung</p>
+                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="Real-time Analytics" data-de="Echtzeit Analytics" data-es="Analítica en tiempo real">Echtzeit Analytics</h4>
+                        <p style="color: #6c757d;" data-en="Data collection and analysis for continuous improvement" data-de="Datenerfassung und Analyse für kontinuierliche Verbesserung" data-es="Recogida y análisis de datos para la mejora continua">Datenerfassung und Analyse für kontinuierliche Verbesserung</p>
                     </div>
                 </div>
 
@@ -241,8 +246,8 @@
                         <video class="frontline-loop" src="videos/frontline/ar.mp4" poster="videos/frontline/ar-poster.webp" width="480" height="332" autoplay muted loop playsinline preload="none" aria-label="AR Custom Solutions" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></video>
                     </div>
                     <div style="padding: 1.5rem; text-align: center;">
-                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="Custom AR Solutions" data-de="Maßgeschneiderte AR">Maßgeschneiderte AR</h4>
-                        <p style="color: #6c757d;" data-en="Individual AR solutions for your specific requirements" data-de="Individuelle AR-Lösungen für Ihre spezifischen Anforderungen">Individuelle AR-Lösungen für Ihre spezifischen Anforderungen</p>
+                        <h4 style="color: var(--heading); margin-bottom: 1rem;" data-en="Custom AR Solutions" data-de="Maßgeschneiderte AR" data-es="Soluciones de RA a medida">Maßgeschneiderte AR</h4>
+                        <p style="color: #6c757d;" data-en="Individual AR solutions for your specific requirements" data-de="Individuelle AR-Lösungen für Ihre spezifischen Anforderungen" data-es="Soluciones de RA individuales para sus requisitos específicos">Individuelle AR-Lösungen für Ihre spezifischen Anforderungen</p>
                     </div>
                 </div>
             </div>
@@ -254,27 +259,27 @@
         <div class="container">
             <div class="newsletter-content">
                 <div class="newsletter-text fade-in">
-                    <h3 data-en="🎯 Your VR success at trade shows starts here" data-de="🎯 Ihr VR-Erfolg auf Messen startet hier">🎯 Ihr VR-Erfolg auf Messen startet hier</h3>
-                    <p data-en="Get the exclusive 'VR/AR/MR Trade Show Guide' with proven strategies, ROI calculations and practical tips for maximum trade show success." data-de="Erhalten Sie den exklusiven 'VR/AR/MR Messe-Guide' mit bewährten Strategien, ROI-Berechnungen und praktischen Tipps für maximalen Messeerfolg.">Erhalten Sie den exklusiven <strong>"VR/AR/MR Messe-Guide"</strong> mit bewährten Strategien, ROI-Berechnungen und praktischen Tipps für maximalen Messeerfolg.</p>
+                    <h3 data-en="🎯 Your VR success at trade shows starts here" data-de="🎯 Ihr VR-Erfolg auf Messen startet hier" data-es="🎯 Su éxito con RV en ferias empieza aquí">🎯 Ihr VR-Erfolg auf Messen startet hier</h3>
+                    <p data-en="Get the exclusive 'VR/AR/MR Trade Show Guide' with proven strategies, ROI calculations and practical tips for maximum trade show success." data-de="Erhalten Sie den exklusiven 'VR/AR/MR Messe-Guide' mit bewährten Strategien, ROI-Berechnungen und praktischen Tipps für maximalen Messeerfolg." data-es="Reciba la exclusiva 'Guía de ferias con RV/RA/RM' con estrategias probadas, cálculos de ROI y consejos prácticos para el máximo éxito en ferias.">Erhalten Sie den exklusiven <strong>"VR/AR/MR Messe-Guide"</strong> mit bewährten Strategien, ROI-Berechnungen und praktischen Tipps für maximalen Messeerfolg.</p>
                     
                     <div class="newsletter-benefits">
-                        <div class="newsletter-benefit" data-en="15+ practical examples" data-de="15+ Praxisbeispiele">15+ Praxisbeispiele</div>
-                        <div class="newsletter-benefit" data-en="ROI calculators" data-de="ROI-Kalkulatoren">ROI-Kalkulatoren</div>
-                        <div class="newsletter-benefit" data-en="Setup checklists" data-de="Setup-Checklisten">Setup-Checklisten</div>
-                        <div class="newsletter-benefit" data-en="Technology comparisons" data-de="Technologie-Vergleiche">Technologie-Vergleiche</div>
-                        <div class="newsletter-benefit" data-en="Cost optimization" data-de="Kosten-Optimierung">Kosten-Optimierung</div>
-                        <div class="newsletter-benefit" data-en="Success metrics" data-de="Erfolgs-Metriken">Erfolgs-Metriken</div>
+                        <div class="newsletter-benefit" data-en="15+ practical examples" data-de="15+ Praxisbeispiele" data-es="Más de 15 ejemplos prácticos">15+ Praxisbeispiele</div>
+                        <div class="newsletter-benefit" data-en="ROI calculators" data-de="ROI-Kalkulatoren" data-es="Calculadoras de ROI">ROI-Kalkulatoren</div>
+                        <div class="newsletter-benefit" data-en="Setup checklists" data-de="Setup-Checklisten" data-es="Listas de verificación de montaje">Setup-Checklisten</div>
+                        <div class="newsletter-benefit" data-en="Technology comparisons" data-de="Technologie-Vergleiche" data-es="Comparativas de tecnologías">Technologie-Vergleiche</div>
+                        <div class="newsletter-benefit" data-en="Cost optimization" data-de="Kosten-Optimierung" data-es="Optimización de costos">Kosten-Optimierung</div>
+                        <div class="newsletter-benefit" data-en="Success metrics" data-de="Erfolgs-Metriken" data-es="Métricas de éxito">Erfolgs-Metriken</div>
                     </div>
                     
-                    <p style="font-size: 0.9rem; opacity: 0.8;" data-en="Bonus: Monthly updates on VR trends and new case studies directly to your inbox." data-de="Bonus: Monatliche Updates zu VR-Trends und neue Case Studies direkt in Ihr Postfach."><strong>Bonus:</strong> Monatliche Updates zu VR-Trends und neue Case Studies direkt in Ihr Postfach.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;" data-en="Bonus: Monthly updates on VR trends and new case studies directly to your inbox." data-de="Bonus: Monatliche Updates zu VR-Trends und neue Case Studies direkt in Ihr Postfach." data-es="Extra: novedades mensuales sobre tendencias de RV y nuevos casos de estudio directamente en su buzón."><strong>Bonus:</strong> Monatliche Updates zu VR-Trends und neue Case Studies direkt in Ihr Postfach.</p>
                 </div>
                 
                 <div class="newsletter-form-container fade-in">
-                    <h4 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.3rem;" data-en="Download Free Guide" data-de="Kostenlosen Guide herunterladen">Kostenlosen Guide herunterladen</h4>
+                    <h4 style="margin-bottom: 1.5rem; text-align: center; font-size: 1.3rem;" data-en="Download Free Guide" data-de="Kostenlosen Guide herunterladen" data-es="Descargar la guía gratis">Kostenlosen Guide herunterladen</h4>
                     <form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/myzgvodd" method="POST">
-                        <input type="text" class="newsletter-input" name="name" placeholder="Ihr Name" required id="nameInput" data-en="Your Name" data-de="Ihr Name" aria-label="Ihr Name">
-                        <input type="email" class="newsletter-input" name="email" placeholder="Ihre E-Mail-Adresse" required id="emailInput" data-en="Your Email Address" data-de="Ihre E-Mail-Adresse" aria-label="Ihre E-Mail-Adresse">
-                        <input type="text" class="newsletter-input" name="company" placeholder="Unternehmen (optional)" id="companyInput" data-en="Company (optional)" data-de="Unternehmen (optional)" aria-label="Unternehmen (optional)">
+                        <input type="text" class="newsletter-input" name="name" placeholder="Ihr Name" required id="nameInput" data-en="Your Name" data-de="Ihr Name" data-es="Su nombre" aria-label="Ihr Name">
+                        <input type="email" class="newsletter-input" name="email" placeholder="Ihre E-Mail-Adresse" required id="emailInput" data-en="Your Email Address" data-de="Ihre E-Mail-Adresse" data-es="Su correo electrónico" aria-label="Ihre E-Mail-Adresse">
+                        <input type="text" class="newsletter-input" name="company" placeholder="Unternehmen (optional)" id="companyInput" data-en="Company (optional)" data-de="Unternehmen (optional)" data-es="Empresa (opcional)" aria-label="Unternehmen (optional)">
                         
                         <!-- Hidden fields for tracking -->
                         <input type="hidden" name="_subject" value="Neue VR-Guide Anfrage von der Website">
@@ -284,13 +289,13 @@
                         <input type="hidden" name="timestamp" id="timestamp">
                         <input type="hidden" name="source" value="VR Website Newsletter Section">
                         
-                        <button type="submit" class="newsletter-submit" data-en="📧 Get Free Guide" data-de="📧 Guide kostenlos erhalten">📧 Guide kostenlos erhalten</button>
+                        <button type="submit" class="newsletter-submit" data-en="📧 Get Free Guide" data-de="📧 Guide kostenlos erhalten" data-es="📧 Obtener la guía gratis">📧 Guide kostenlos erhalten</button>
                     </form>
                     <div class="success-message" id="successMessage">
-                        <strong data-en="🎉 Thank you!" data-de="🎉 Vielen Dank!">🎉 Vielen Dank!</strong><br>
-                        <span data-en="Your VR Trade Show Guide request has been sent! We'll send you the guide and contact you soon." data-de="Ihre VR-Messe-Guide Anfrage wurde gesendet! Wir senden Ihnen den Guide und kontaktieren Sie bald.">Ihre VR-Messe-Guide Anfrage wurde gesendet! Wir senden Ihnen den Guide und kontaktieren Sie bald.</span>
+                        <strong data-en="🎉 Thank you!" data-de="🎉 Vielen Dank!" data-es="🎉 ¡Muchas gracias!">🎉 Vielen Dank!</strong><br>
+                        <span data-en="Your VR Trade Show Guide request has been sent! We'll send you the guide and contact you soon." data-de="Ihre VR-Messe-Guide Anfrage wurde gesendet! Wir senden Ihnen den Guide und kontaktieren Sie bald." data-es="¡Su solicitud de la guía de ferias con RV se ha enviado! Le enviaremos la guía y le contactaremos en breve.">Ihre VR-Messe-Guide Anfrage wurde gesendet! Wir senden Ihnen den Guide und kontaktieren Sie bald.</span>
                     </div>
-                    <p class="privacy-note" data-en="🔒 Your data is secure. No sharing with third parties. Unsubscribe anytime." data-de="🔒 Ihre Daten sind sicher. Keine Weitergabe an Dritte. Abmeldung jederzeit möglich.">
+                    <p class="privacy-note" data-en="🔒 Your data is secure. No sharing with third parties. Unsubscribe anytime." data-de="🔒 Ihre Daten sind sicher. Keine Weitergabe an Dritte. Abmeldung jederzeit möglich." data-es="🔒 Sus datos están seguros. Sin cesión a terceros. Puede darse de baja cuando quiera.">
                         <i class="fas fa-lock"></i> Ihre Daten sind sicher. Keine Weitergabe an Dritte. Abmeldung jederzeit möglich.
                     </p>
                 </div>
@@ -303,16 +308,16 @@
         <div class="container">
             <div class="messe-content">
                 <div class="messe-text fade-in">
-                    <h3 data-en="VR at Trade Shows: The Crowd Magnet" data-de="VR auf Messen: Der Publikumsmagnet">VR auf Messen: Der Publikumsmagnet</h3>
-                    <p style="color: #6c757d; margin-bottom: 2rem;" data-en="Harness the power of Virtual Reality at trade shows and events to captivate visitors and create lasting impressions." data-de="Nutzen Sie die Kraft der Virtual Reality auf Messen und Events, um Besucher zu begeistern und bleibende Eindrücke zu hinterlassen.">Nutzen Sie die Kraft der Virtual Reality auf Messen und Events, um Besucher zu begeistern und bleibende Eindrücke zu hinterlassen.</p>
+                    <h3 data-en="VR at Trade Shows: The Crowd Magnet" data-de="VR auf Messen: Der Publikumsmagnet" data-es="RV en ferias: el imán de público">VR auf Messen: Der Publikumsmagnet</h3>
+                    <p style="color: #6c757d; margin-bottom: 2rem;" data-en="Harness the power of Virtual Reality at trade shows and events to captivate visitors and create lasting impressions." data-de="Nutzen Sie die Kraft der Virtual Reality auf Messen und Events, um Besucher zu begeistern und bleibende Eindrücke zu hinterlassen." data-es="Aproveche la fuerza de la realidad virtual en ferias y eventos para cautivar a los visitantes y dejar una impresión duradera.">Nutzen Sie die Kraft der Virtual Reality auf Messen und Events, um Besucher zu begeistern und bleibende Eindrücke zu hinterlassen.</p>
                     <ul class="package-features" style="margin-bottom: 2rem;">
-                        <li data-en="Up to 10x longer booth visits" data-de="Bis zu 10x länger Standbesuch">Bis zu 10x länger Standbesuch</li>
-                        <li data-en="Interactive product experiences" data-de="Interaktive Produkterlebnisse">Interaktive Produkterlebnisse</li>
-                        <li data-en="Measurable lead generation" data-de="Messbare Lead-Generierung">Messbare Lead-Generierung</li>
-                        <li data-en="Unique brand experiences" data-de="Einzigartige Markenerlebnisse">Einzigartige Markenerlebnisse</li>
-                        <li data-en="Social media-worthy content" data-de="Social Media-worthy Content">Social Media-worthy Content</li>
+                        <li data-en="Up to 10x longer booth visits" data-de="Bis zu 10x länger Standbesuch" data-es="Visitas al stand hasta 10 veces más largas">Bis zu 10x länger Standbesuch</li>
+                        <li data-en="Interactive product experiences" data-de="Interaktive Produkterlebnisse" data-es="Experiencias de producto interactivas">Interaktive Produkterlebnisse</li>
+                        <li data-en="Measurable lead generation" data-de="Messbare Lead-Generierung" data-es="Generación de leads medible">Messbare Lead-Generierung</li>
+                        <li data-en="Unique brand experiences" data-de="Einzigartige Markenerlebnisse" data-es="Experiencias de marca únicas">Einzigartige Markenerlebnisse</li>
+                        <li data-en="Social media-worthy content" data-de="Social Media-worthy Content" data-es="Contenido digno de redes sociales">Social Media-worthy Content</li>
                     </ul>
-                    <p style="color: #495057;" data-en="Application of our VR packages: All three packages can be seamlessly adapted for trade show presentations - from interactive VR demos to impressive video presentations." data-de="Anwendung unserer VR-Pakete: Alle drei Pakete können nahtlos für Messepräsentationen adaptiert werden - von interaktiven VR-Demos bis hin zu beeindruckenden Video-Präsentationen."><strong>Anwendung unserer VR-Pakete:</strong> Alle drei Pakete können nahtlos für Messepräsentationen adaptiert werden - von interaktiven VR-Demos bis hin zu beeindruckenden Video-Präsentationen.</p>
+                    <p style="color: #495057;" data-en="Application of our VR packages: All three packages can be seamlessly adapted for trade show presentations - from interactive VR demos to impressive video presentations." data-de="Anwendung unserer VR-Pakete: Alle drei Pakete können nahtlos für Messepräsentationen adaptiert werden - von interaktiven VR-Demos bis hin zu beeindruckenden Video-Präsentationen." data-es="Aplicación de nuestros paquetes de RV: los tres paquetes pueden adaptarse sin fricción a presentaciones en ferias, desde demos de RV interactivas hasta impactantes presentaciones en vídeo."><strong>Anwendung unserer VR-Pakete:</strong> Alle drei Pakete können nahtlos für Messepräsentationen adaptiert werden - von interaktiven VR-Demos bis hin zu beeindruckenden Video-Präsentationen.</p>
                 </div>
                 <div class="messe-image fade-in">
                     <img loading="lazy" decoding="async" width="850" height="566" src="images/frontline/02-Portfolio2.jpg" alt="VR auf Messen" style="width: 100%; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
@@ -324,29 +329,29 @@
     <!-- Frontline Section -->
     <section class="section frontline" id="frontline">
         <div class="container">
-            <h2 class="section-title fade-in" data-en="Powered by frontline.io" data-de="Powered by frontline.io">Powered by frontline.io</h2>
-            <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);" data-en="The leading platform for industrial VR applications and digital twins" data-de="Die führende Plattform für industrielle VR-Anwendungen und digitale Zwillinge">Die führende Plattform für industrielle VR-Anwendungen und digitale Zwillinge</p>
+            <h2 class="section-title fade-in" data-en="Powered by frontline.io" data-de="Powered by frontline.io" data-es="Con tecnología de frontline.io">Powered by frontline.io</h2>
+            <p class="section-subtitle fade-in" style="color: rgba(255,255,255,0.8);" data-en="The leading platform for industrial VR applications and digital twins" data-de="Die führende Plattform für industrielle VR-Anwendungen und digitale Zwillinge" data-es="La plataforma líder para aplicaciones industriales de RV y gemelos digitales">Die führende Plattform für industrielle VR-Anwendungen und digitale Zwillinge</p>
             
             <div class="frontline-features">
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-cube"></i>
-                    <h3 data-en="Digital Twins" data-de="Digitale Zwillinge">Digitale Zwillinge</h3>
-                    <p data-en="Create virtual replicas of your machines and processes in hours" data-de="Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden">Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden</p>
+                    <h3 data-en="Digital Twins" data-de="Digitale Zwillinge" data-es="Gemelos digitales">Digitale Zwillinge</h3>
+                    <p data-en="Create virtual replicas of your machines and processes in hours" data-de="Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden" data-es="Cree réplicas virtuales de sus máquinas y procesos en cuestión de horas">Erstellen Sie virtuelle Abbilder Ihrer Maschinen und Prozesse in wenigen Stunden</p>
                 </div>
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-headset"></i>
-                    <h3 data-en="Remote Support" data-de="Remote Support">Remote Support</h3>
-                    <p data-en="Real-time expert assistance through AR/VR-supported remote maintenance" data-de="Expertenhilfe in Echtzeit durch AR/VR-gestützte Fernwartung">Expertenhilfe in Echtzeit durch AR/VR-gestützte Fernwartung</p>
+                    <h3 data-en="Remote Support" data-de="Remote Support" data-es="Soporte remoto">Remote Support</h3>
+                    <p data-en="Real-time expert assistance through AR/VR-supported remote maintenance" data-de="Expertenhilfe in Echtzeit durch AR/VR-gestützte Fernwartung" data-es="Asistencia experta en tiempo real mediante mantenimiento remoto asistido por RA/RV">Expertenhilfe in Echtzeit durch AR/VR-gestützte Fernwartung</p>
                 </div>
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-chart-line"></i>
-                    <h3 data-en="Analytics" data-de="Analytics">Analytics</h3>
-                    <p data-en="Real-time monitoring and AI-compatible data collection for continuous improvement" data-de="Echtzeit-Überwachung und KI-kompatible Datenerfassung für kontinuierliche Verbesserung">Echtzeit-Überwachung und KI-kompatible Datenerfassung für kontinuierliche Verbesserung</p>
+                    <h3 data-en="Analytics" data-de="Analytics" data-es="Analítica">Analytics</h3>
+                    <p data-en="Real-time monitoring and AI-compatible data collection for continuous improvement" data-de="Echtzeit-Überwachung und KI-kompatible Datenerfassung für kontinuierliche Verbesserung" data-es="Supervisión en tiempo real y recogida de datos compatible con IA para la mejora continua">Echtzeit-Überwachung und KI-kompatible Datenerfassung für kontinuierliche Verbesserung</p>
                 </div>
                 <div class="frontline-feature fade-in">
                     <i class="fas fa-play-circle"></i>
-                    <h3 data-en="Interactive Workflows" data-de="Interaktive Abläufe">Interaktive Abläufe</h3>
-                    <p data-en="Step-by-step 3D instructions for training and troubleshooting" data-de="Schritt-für-Schritt 3D-Anleitungen für Training und Fehlerbehebung">Schritt-für-Schritt 3D-Anleitungen für Training und Fehlerbehebung</p>
+                    <h3 data-en="Interactive Workflows" data-de="Interaktive Abläufe" data-es="Flujos interactivos">Interaktive Abläufe</h3>
+                    <p data-en="Step-by-step 3D instructions for training and troubleshooting" data-de="Schritt-für-Schritt 3D-Anleitungen für Training und Fehlerbehebung" data-es="Instrucciones 3D paso a paso para formación y resolución de incidencias">Schritt-für-Schritt 3D-Anleitungen für Training und Fehlerbehebung</p>
                 </div>
             </div>
         </div>
@@ -355,8 +360,8 @@
     <!-- Contact Section -->
     <section class="section contact" id="contact">
         <div class="container fade-in">
-            <h2 class="section-title" data-en="Ready for the VR Revolution?" data-de="Bereit für die VR-Revolution?">Bereit für die VR-Revolution?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;" data-en="Contact us for a free consultation and discover how VR can transform your business" data-de="Kontaktieren Sie uns für eine kostenlose Beratung und erfahren Sie, wie VR Ihr Business transformieren kann">Kontaktieren Sie uns für eine kostenlose Beratung und erfahren Sie, wie VR Ihr Business transformieren kann</p>
+            <h2 class="section-title" data-en="Ready for the VR Revolution?" data-de="Bereit für die VR-Revolution?" data-es="¿Listo para la revolución de la RV?">Bereit für die VR-Revolution?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;" data-en="Contact us for a free consultation and discover how VR can transform your business" data-de="Kontaktieren Sie uns für eine kostenlose Beratung und erfahren Sie, wie VR Ihr Business transformieren kann" data-es="Contáctenos para una consulta gratuita y descubra cómo la RV puede transformar su negocio">Kontaktieren Sie uns für eine kostenlose Beratung und erfahren Sie, wie VR Ihr Business transformieren kann</p>
             <a href="mailto:info@gfinnov.com" class="contact-btn">info@gfinnov.com</a>
         </div>
     </section>
@@ -364,25 +369,25 @@
     <!-- Contact Info Section -->
     <section class="contact-info">
         <div class="container">
-            <h3 data-en="Get in Touch" data-de="Kontakt">Kontakt</h3>
+            <h3 data-en="Get in Touch" data-de="Kontakt" data-es="Contacto">Kontakt</h3>
             <div class="contact-details">
                 <div class="contact-detail">
-                    <h4 data-en="Email" data-de="E-Mail">E-Mail</h4>
+                    <h4 data-en="Email" data-de="E-Mail" data-es="Correo electrónico">E-Mail</h4>
                     <p>info@gfinnov.com</p>
                 </div>
                 <div class="contact-detail">
-                    <h4 data-en="Phone" data-de="Telefon">Telefon</h4>
+                    <h4 data-en="Phone" data-de="Telefon" data-es="Teléfono">Telefon</h4>
                     <p>+49 172 95 123 76</p>
                 </div>
                 <div class="contact-detail">
-                    <h4 data-en="Address" data-de="Adresse">Adresse</h4>
+                    <h4 data-en="Address" data-de="Adresse" data-es="Dirección">Adresse</h4>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
                 <div class="contact-detail">
-                    <h4 data-en="Consultation" data-de="Beratung">Beratung</h4>
+                    <h4 data-en="Consultation" data-de="Beratung" data-es="Consultoría">Beratung</h4>
                     <p>
                         <a href="https://calendly.com/gfinnov-info/30min" target="_blank" style="color: var(--innovation-green); text-decoration: none; font-weight: 600;">
-                            <span data-en="Schedule a Call" data-de="Termin vereinbaren">Termin vereinbaren</span>
+                            <span data-en="Schedule a Call" data-de="Termin vereinbaren" data-es="Agendar una llamada">Termin vereinbaren</span>
                         </a>
                     </p>
                 </div>
@@ -394,20 +399,20 @@
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
         <div class="cookie-banner__inner">
             <div class="cookie-banner__text">
-                <strong data-en="We value your privacy" data-de="Wir respektieren Ihre Privatsphäre">Wir respektieren Ihre Privatsphäre</strong>
-                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren.">Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren.</p>
+                <strong data-en="We value your privacy" data-de="Wir respektieren Ihre Privatsphäre" data-es="Valoramos su privacidad">Wir respektieren Ihre Privatsphäre</strong>
+                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren." data-es="Este sitio web utiliza cookies para mejorar su experiencia y ofrecer análisis. Puede elegir qué cookies acepta.">Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren.</p>
             </div>
             <div class="cookie-banner__actions">
-                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren">Alle akzeptieren</button>
-                <button id="cookie-reject" class="btn btn-secondary" data-en="Essential Only" data-de="Nur notwendige">Nur notwendige</button>
-                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen">Anpassen</button>
+                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren" data-es="Aceptar todas">Alle akzeptieren</button>
+                <button id="cookie-reject" class="btn btn-secondary" data-en="Essential Only" data-de="Nur notwendige" data-es="Solo necesarias">Nur notwendige</button>
+                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen" data-es="Personalizar">Anpassen</button>
             </div>
         </div>
     </div>
 
     <!-- Cookie Settings Entry Point -->
     <div class="cookie-settings-entry">
-        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen">Cookie-Einstellungen</button>
+        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen" data-es="Configuración de cookies">Cookie-Einstellungen</button>
     </div>
 
     <!-- Cookie Modal -->
@@ -415,16 +420,16 @@
         <div class="cookie-modal__backdrop" onclick="closeModal()"></div>
         <div class="cookie-modal__dialog">
             <div class="cookie-modal__header">
-                <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen">Cookie-Einstellungen</h3>
+                <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen" data-es="Preferencias de cookies">Cookie-Einstellungen</h3>
                 <button id="cookie-close" class="modal-close" aria-label="Close">&times;</button>
             </div>
             <div class="cookie-modal__body">
-                <p data-en="We use cookies to improve your experience on our website. You can customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen.">Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen.</p>
+                <p data-en="We use cookies to improve your experience on our website. You can customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen." data-es="Utilizamos cookies para mejorar su experiencia en nuestro sitio web. Puede ajustar sus preferencias a continuación.">Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen.</p>
                 
                 <div class="cookie-toggle">
                     <div>
-                        <strong data-en="Essential Cookies" data-de="Notwendige Cookies">Notwendige Cookies</strong>
-                        <p data-en="Required for the website to function properly." data-de="Erforderlich für das ordnungsgemäße Funktionieren der Website.">Erforderlich für das ordnungsgemäße Funktionieren der Website.</p>
+                        <strong data-en="Essential Cookies" data-de="Notwendige Cookies" data-es="Cookies esenciales">Notwendige Cookies</strong>
+                        <p data-en="Required for the website to function properly." data-de="Erforderlich für das ordnungsgemäße Funktionieren der Website." data-es="Necesarias para el correcto funcionamiento del sitio web.">Erforderlich für das ordnungsgemäße Funktionieren der Website.</p>
                     </div>
                     <div class="switch disabled">
                         <input type="checkbox" checked disabled aria-label="Notwendige Cookies (immer aktiv)">
@@ -433,8 +438,8 @@
                 
                 <div class="cookie-toggle">
                     <div>
-                        <strong data-en="Analytics Cookies" data-de="Analyse-Cookies">Analyse-Cookies</strong>
-                        <p data-en="Help us understand how visitors interact with our website." data-de="Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.">Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.</p>
+                        <strong data-en="Analytics Cookies" data-de="Analyse-Cookies" data-es="Cookies de análisis">Analyse-Cookies</strong>
+                        <p data-en="Help us understand how visitors interact with our website." data-de="Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren." data-es="Nos ayudan a entender cómo interactúan los visitantes con nuestro sitio web.">Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.</p>
                     </div>
                     <div class="switch">
                         <input type="checkbox" id="toggle-analytics" aria-label="Analyse-Cookies">
@@ -442,7 +447,7 @@
                 </div>
             </div>
             <div class="cookie-modal__footer">
-                <button id="cookie-save" class="btn btn-primary" data-en="Save Preferences" data-de="Einstellungen speichern">Einstellungen speichern</button>
+                <button id="cookie-save" class="btn btn-primary" data-en="Save Preferences" data-de="Einstellungen speichern" data-es="Guardar preferencias">Einstellungen speichern</button>
             </div>
         </div>
     </div>

@@ -110,22 +110,62 @@ p {
     color: var(--innovation-green);
 }
 
-/* Language Toggle */
-.language-toggle {
+/* Language switch — three separate buttons rather than one cycling control.
+   With EN/DE a toggle was fine; with a third language a cycler hides ES
+   behind two clicks and never shows which languages exist.
+   Light-navbar variant; styles.css carries the dark one. */
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
     background: transparent;
     border: 1px solid var(--medium-gray);
-    padding: 8px 12px;
     border-radius: var(--border-radius);
-    cursor: pointer;
-    font-family: var(--font-primary);
-    font-weight: 600;
-    color: var(--primary-blue);
-    transition: var(--transition);
 }
 
-.language-toggle:hover {
-    border-color: var(--innovation-green);
+.lang-switch .lang-opt {
+    /* They are links now: kill the default underline and centre the label
+       the way a button box did for free. */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 6px 9px;
+    border-radius: 5px;
+    font-family: var(--font-primary);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--dark-gray);
+    cursor: pointer;
+    /* Only the two properties that actually change between states. `all`
+       would also animate padding and min-width when the coarse-pointer and
+       breakpoint rules below kick in. */
+    transition: color .2s ease, background-color .2s ease;
+    min-height: 32px;
+}
+
+.lang-switch .lang-opt:hover {
+    background: var(--light-gray);
     color: var(--innovation-green);
+}
+
+/* Solid chip for the current language: the only cue that survives for
+   colour-blind visitors. */
+.lang-switch .lang-opt.active {
+    background: var(--innovation-green);
+    color: var(--pure-white);
+    cursor: default;
+}
+
+@media (pointer: coarse) {
+    .lang-switch .lang-opt { min-width: 44px; min-height: 44px; }
 }
 
 /* Email Capture Modal */
@@ -889,7 +929,7 @@ p {
         padding: 8px 12px;
     }
     
-    .language-toggle {
+    .lang-switch .lang-opt {
         font-size: 12px;
         padding: 6px 10px;
     }
@@ -942,9 +982,12 @@ p {
         display: block;
     }
     
-    .language-toggle {
+    .lang-switch {
         margin-top: 20px;
-        padding: 12px 20px;
+    }
+
+    .lang-switch .lang-opt {
+        padding: 12px 16px;
         font-size: 14px;
     }
     

@@ -21,9 +21,12 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -36,10 +39,12 @@
                 <span></span>
             </button>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link" data-en="← Back to Home" data-de="← Zurück zur Startseite">← Zurück zur Startseite</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
-                </button>
+                <a href="index.html" class="nav-link" data-en="← Back to Home" data-de="← Zurück zur Startseite" data-es="← Volver al inicio">← Zurück zur Startseite</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -53,7 +58,7 @@
                         <img loading="lazy" decoding="async" width="300" height="300" src="images/opt/team-martin-arias.webp" alt="Martín Arias" class="team-photo" />
                     </div>
                     <h1>Martín Arias</h1>
-                    <p class="member-role" data-en="Coordinator, AI Expert" data-de="Koordinator, KI-Experte">Koordinator, KI-Experte</p>
+                    <p class="member-role" data-en="Coordinator, AI Expert" data-de="Koordinator, KI-Experte" data-es="Coordinador, experto en IA">Koordinator, KI-Experte</p>
                 </div>
                 <div class="profile-body">
                     <div class="profile-text" data-lang="de">
@@ -84,6 +89,20 @@
                             <li>Invoice Automation</li>
                         </ul>
                     </div>
+                    <div class="profile-text" data-lang="es" style="display: none;">
+                        <p>Ayudo a las empresas a reducir sus costos operativos convirtiendo tareas repetitivas en flujos de trabajo automatizados con IA que se integran sin fricción en los sistemas que ya usan.</p>
+                        <p>Soy ingeniero por convicción y desarrollador por vocación. Me gradué como primero de mi promoción en Ingeniería Industrial y Mecánica en Uruguay, dirigí grandes proyectos industriales en UPM y después me mudé a Alemania para cursar un máster en desarrollo, donde me gradué con distinción y recibí el Premio Bosch al mejor egresado de mi promoción.</p>
+                        <p>Desde entonces trabajo en la intersección entre ingeniería, automatización e innovación. He acompañado a startups de IA y robótica en Europa dentro de la incubadora EIT y he desarrollado soluciones de automatización para entornos industriales y de automoción, entre otros en Evomotiv.</p>
+                        <p>Hoy mi foco está en aplicar la IA donde genera valor real: en procesos internos, operaciones y flujos de trabajo técnicos. Mi objetivo es reducir la complejidad, minimizar el trabajo manual y hacer que las empresas sean más eficientes y escalables mediante sistemas inteligentes.</p>
+                        <h2>Áreas de especialización</h2>
+                        <p>Innovación, inteligencia artificial y desarrollo de ingeniería.</p>
+                        <h3>Productos disponibles <span style="font-size: 14px; font-weight: 400;">(7 días de prueba gratuita)</span></h3>
+                        <ul class="profile-products">
+                            <li>Generador de carruseles para Instagram</li>
+                            <li>Scraper de LinkedIn y automatización de contacto por email</li>
+                            <li>Automatización de facturación</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -95,20 +114,20 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Von Technologie geleitet, von Menschen angetrieben.</p>
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Von Technologie geleitet, von Menschen angetrieben.</p>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt">Kontakt</h2>
+                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Kontakt</h2>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten.">&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten.</p>
+                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten." data-es="&copy; 2026 GF Innovative Solutions. Todos los derechos reservados.">&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten.</p>
                 <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> |
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Datenschutzerklärung</a>
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> |
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Datenschutzerklärung</a>
                 </div>
             </div>
         </div>
@@ -134,37 +153,17 @@
         })();
     </script>
     <script>
-        // Language toggle for profile page
-        let currentLanguage = 'de';
-
-        // Initialize language on page load
-        (function initLanguage() {
-            const saved = localStorage.getItem('preferred-language');
-            if (saved === 'en' || saved === 'de') currentLanguage = saved;
-            applyLanguage();
+        // The bio exists as three sibling blocks rather than data-* attributes,
+        // so lang.js's attribute pass cannot swap it. Show the matching one.
+        (function () {
+            function showBio(lang) {
+                document.querySelectorAll('.profile-text').forEach(function (el) {
+                    el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+                });
+            }
+            document.addEventListener('gf:langchange', function (e) { showBio(e.detail.lang); });
+            if (window.GFLang) showBio(window.GFLang.get());
         })();
-
-        function applyLanguage() {
-            const altLang = currentLanguage === 'de' ? 'en' : 'de';
-            document.getElementById('current-lang').textContent = currentLanguage.toUpperCase();
-            document.getElementById('alt-lang').textContent = altLang.toUpperCase();
-            document.querySelectorAll('.profile-text').forEach(el => {
-                el.style.display = el.dataset.lang === currentLanguage ? 'block' : 'none';
-            });
-            document.querySelectorAll('[data-en][data-de]').forEach(el => {
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.placeholder = el.dataset[currentLanguage];
-                } else {
-                    el.textContent = el.dataset[currentLanguage];
-                }
-            });
-        }
-
-        document.querySelector('.language-toggle').addEventListener('click', function() {
-            currentLanguage = currentLanguage === 'de' ? 'en' : 'de';
-            localStorage.setItem('preferred-language', currentLanguage);
-            applyLanguage();
-        });
     </script>
 </body>
 </html>

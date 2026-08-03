@@ -21,9 +21,12 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -31,15 +34,17 @@
                 <a href="index.html" aria-label="GF Innovative Solutions — Startseite / home"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
             </div>
             <div class="nav-menu">
-                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
-                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform">AI Platform</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
-                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team">Team</a>
-                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
-                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
-                </button>
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform" data-es="Plataforma de IA">AI Platform</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns" data-es="Quiénes somos">About</a>
+                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
             <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false">
                 <span></span>
@@ -53,8 +58,8 @@
     <section id="main" tabindex="-1" class="hero" style="min-height: auto; padding: 120px 0 64px 0;">
         <div class="hero-container" style="grid-template-columns: 1fr;">
             <div class="hero-content" style="text-align: center;">
-                <h1 class="hero-title" data-en="Industry Use Cases" data-de="Branchenanwendungsfälle">Industry Use Cases</h1>
-                <p class="hero-subtitle" data-en="AI automation that solves real operational problems across industries." data-de="KI-Automatisierung, die echte operative Probleme branchenübergreifend löst.">
+                <h1 class="hero-title" data-en="Industry Use Cases" data-de="Branchenanwendungsfälle" data-es="Casos de uso por sector">Industry Use Cases</h1>
+                <p class="hero-subtitle" data-en="AI automation that solves real operational problems across industries." data-de="KI-Automatisierung, die echte operative Probleme branchenübergreifend löst." data-es="Automatización con IA que resuelve problemas operativos reales en distintos sectores.">
                     AI automation that solves real operational problems across industries.
                 </p>
             </div>
@@ -68,68 +73,68 @@
 
                 <!-- Manufacturing -->
                 <div class="service-card">
-                    <h2 data-en="Manufacturing" data-de="Fertigung">Manufacturing</h2>
+                    <h2 data-en="Manufacturing" data-de="Fertigung" data-es="Industria manufacturera">Manufacturing</h2>
                     <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Production reporting automation" data-de="Produktionsberichtsautomatisierung">Production reporting automation</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Visual QC with AI" data-de="Visuelle Qualitätskontrolle mit KI">Visual QC with AI</li>
-                        <li style="padding: 8px 0;" data-en="Automated order processing" data-de="Automatisierte Auftragsverarbeitung">Automated order processing</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Production reporting automation" data-de="Produktionsberichtsautomatisierung" data-es="Automatización de informes de producción">Production reporting automation</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Visual QC with AI" data-de="Visuelle Qualitätskontrolle mit KI" data-es="Control de calidad visual con IA">Visual QC with AI</li>
+                        <li style="padding: 8px 0;" data-en="Automated order processing" data-de="Automatisierte Auftragsverarbeitung" data-es="Procesamiento automatizado de pedidos">Automated order processing</li>
                     </ul>
-                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten">Assess your processes</a>
+                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten" data-es="Evaluar sus procesos">Assess your processes</a>
                 </div>
 
                 <!-- Logistics -->
                 <div class="service-card">
-                    <h2 data-en="Logistics" data-de="Logistik">Logistics</h2>
+                    <h2 data-en="Logistics" data-de="Logistik" data-es="Logística">Logistics</h2>
                     <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Route optimisation" data-de="Routenoptimierung">Route optimisation</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Smart stock alerts" data-de="Intelligente Lagerbenachrichtigungen">Smart stock alerts</li>
-                        <li style="padding: 8px 0;" data-en="Automated delivery tracking" data-de="Automatisierte Lieferverfolgung">Automated delivery tracking</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Route optimisation" data-de="Routenoptimierung" data-es="Optimización de rutas">Route optimisation</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Smart stock alerts" data-de="Intelligente Lagerbenachrichtigungen" data-es="Alertas inteligentes de inventario">Smart stock alerts</li>
+                        <li style="padding: 8px 0;" data-en="Automated delivery tracking" data-de="Automatisierte Lieferverfolgung" data-es="Seguimiento automatizado de entregas">Automated delivery tracking</li>
                     </ul>
-                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten">Assess your processes</a>
+                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten" data-es="Evaluar sus procesos">Assess your processes</a>
                 </div>
 
                 <!-- Healthcare -->
                 <div class="service-card">
-                    <h2 data-en="Healthcare" data-de="Gesundheitswesen">Healthcare</h2>
+                    <h2 data-en="Healthcare" data-de="Gesundheitswesen" data-es="Salud">Healthcare</h2>
                     <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Clinical documentation automation" data-de="Automatisierung klinischer Dokumentation">Clinical documentation automation</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Smart scheduling" data-de="Intelligente Terminplanung">Smart scheduling</li>
-                        <li style="padding: 8px 0;" data-en="Compliance reporting" data-de="Compliance-Berichterstattung">Compliance reporting</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Clinical documentation automation" data-de="Automatisierung klinischer Dokumentation" data-es="Automatización de la documentación clínica">Clinical documentation automation</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Smart scheduling" data-de="Intelligente Terminplanung" data-es="Agendamiento inteligente">Smart scheduling</li>
+                        <li style="padding: 8px 0;" data-en="Compliance reporting" data-de="Compliance-Berichterstattung" data-es="Informes de cumplimiento">Compliance reporting</li>
                     </ul>
-                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten">Assess your processes</a>
+                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten" data-es="Evaluar sus procesos">Assess your processes</a>
                 </div>
 
                 <!-- SaaS & Platforms -->
                 <div class="service-card">
-                    <h2 data-en="SaaS & Platforms" data-de="SaaS & Plattformen">SaaS &amp; Platforms</h2>
+                    <h2 data-en="SaaS & Platforms" data-de="SaaS & Plattformen" data-es="SaaS y plataformas">SaaS &amp; Platforms</h2>
                     <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Automated onboarding flows" data-de="Automatisierte Onboarding-Prozesse">Automated onboarding flows</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="AI-powered support tier" data-de="KI-gestützter Support">AI-powered support tier</li>
-                        <li style="padding: 8px 0;" data-en="Automated reporting" data-de="Automatisiertes Reporting">Automated reporting</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Automated onboarding flows" data-de="Automatisierte Onboarding-Prozesse" data-es="Flujos de incorporación automatizados">Automated onboarding flows</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="AI-powered support tier" data-de="KI-gestützter Support" data-es="Nivel de soporte con IA">AI-powered support tier</li>
+                        <li style="padding: 8px 0;" data-en="Automated reporting" data-de="Automatisiertes Reporting" data-es="Informes automatizados">Automated reporting</li>
                     </ul>
-                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten">Assess your processes</a>
+                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten" data-es="Evaluar sus procesos">Assess your processes</a>
                 </div>
 
                 <!-- Hospitality -->
                 <div class="service-card">
-                    <h2 data-en="Hospitality" data-de="Gastgewerbe">Hospitality</h2>
+                    <h2 data-en="Hospitality" data-de="Gastgewerbe" data-es="Hostelería y turismo">Hospitality</h2>
                     <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Guest operations automation" data-de="Automatisierung des Gastbetriebs">Guest operations automation</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Review management" data-de="Bewertungsmanagement">Review management</li>
-                        <li style="padding: 8px 0;" data-en="Internal workflow automation" data-de="Automatisierung interner Workflows">Internal workflow automation</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Guest operations automation" data-de="Automatisierung des Gastbetriebs" data-es="Automatización de la operativa con huéspedes">Guest operations automation</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Review management" data-de="Bewertungsmanagement" data-es="Gestión de reseñas">Review management</li>
+                        <li style="padding: 8px 0;" data-en="Internal workflow automation" data-de="Automatisierung interner Workflows" data-es="Automatización de flujos internos">Internal workflow automation</li>
                     </ul>
-                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten">Assess your processes</a>
+                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten" data-es="Evaluar sus procesos">Assess your processes</a>
                 </div>
 
                 <!-- Finance & Admin -->
                 <div class="service-card">
-                    <h2 data-en="Finance & Admin" data-de="Finanzen & Verwaltung">Finance &amp; Admin</h2>
+                    <h2 data-en="Finance & Admin" data-de="Finanzen & Verwaltung" data-es="Finanzas y administración">Finance &amp; Admin</h2>
                     <ul style="list-style: none; padding: 0; margin-bottom: 24px;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Invoice processing" data-de="Rechnungsverarbeitung">Invoice processing</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Automated contract generation" data-de="Automatisierte Vertragsgenerierung">Automated contract generation</li>
-                        <li style="padding: 8px 0;" data-en="Financial reporting" data-de="Finanzberichterstattung">Financial reporting</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Invoice processing" data-de="Rechnungsverarbeitung" data-es="Procesamiento de facturas">Invoice processing</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--medium-gray);" data-en="Automated contract generation" data-de="Automatisierte Vertragsgenerierung" data-es="Generación automatizada de contratos">Automated contract generation</li>
+                        <li style="padding: 8px 0;" data-en="Financial reporting" data-de="Finanzberichterstattung" data-es="Informes financieros">Financial reporting</li>
                     </ul>
-                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten">Assess your processes</a>
+                    <a href="process-screening.html" class="btn btn-primary" data-en="Assess your processes" data-de="Prozesse bewerten" data-es="Evaluar sus procesos">Assess your processes</a>
                 </div>
 
             </div>
@@ -139,9 +144,9 @@
     <!-- CTA Section -->
     <section class="section-secondary" style="padding: 64px 0;">
         <div class="container text-center">
-            <h2 class="section-title" data-en="Don't see your industry?" data-de="Ihre Branche nicht dabei?">Don't see your industry?</h2>
-            <p class="section-subtitle" data-en="AI automation applies to any process-heavy operation. Let us assess yours." data-de="KI-Automatisierung eignet sich für jeden prozessintensiven Betrieb. Lassen Sie uns Ihre Prozesse bewerten.">AI automation applies to any process-heavy operation. Let us assess yours.</p>
-            <a href="process-screening.html" class="btn btn-primary btn-large" data-en="Book Free AI Assessment" data-de="Kostenlose KI-Bewertung buchen">Book Free AI Assessment</a>
+            <h2 class="section-title" data-en="Don't see your industry?" data-de="Ihre Branche nicht dabei?" data-es="¿No ve su sector?">Don't see your industry?</h2>
+            <p class="section-subtitle" data-en="AI automation applies to any process-heavy operation. Let us assess yours." data-de="KI-Automatisierung eignet sich für jeden prozessintensiven Betrieb. Lassen Sie uns Ihre Prozesse bewerten." data-es="La automatización con IA sirve para cualquier operación intensiva en procesos. Déjenos evaluar los suyos.">AI automation applies to any process-heavy operation. Let us assess yours.</p>
+            <a href="process-screening.html" class="btn btn-primary btn-large" data-en="Book Free AI Assessment" data-de="Kostenlose KI-Bewertung buchen" data-es="Reservar evaluación de IA gratuita">Book Free AI Assessment</a>
         </div>
     </section>
 
@@ -151,29 +156,29 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Guided by tech, powered by people.</p>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Services" data-de="Leistungen">Services</h2>
+                    <h2 data-en="Services" data-de="Leistungen" data-es="Servicios">Services</h2>
                     <ul>
-                        <li><a href="index.html#services" data-en="AI Implementation & Strategy" data-de="KI-Implementierung & Strategie">AI Implementation & Strategy</a></li>
-                        <li><a href="index.html#services" data-en="Custom AI Agents & Automation" data-de="Individuelle KI-Agenten & Automatisierung">Custom AI Agents & Automation</a></li>
-                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung">VR/AR Development</a></li>
-                        <li><a href="index.html#services" data-en="Fractional CTO Services" data-de="Fractional CTO Services">Fractional CTO Services</a></li>
+                        <li><a href="index.html#services" data-en="AI Implementation & Strategy" data-de="KI-Implementierung & Strategie" data-es="Implementación y estrategia de IA">AI Implementation & Strategy</a></li>
+                        <li><a href="index.html#services" data-en="Custom AI Agents & Automation" data-de="Individuelle KI-Agenten & Automatisierung" data-es="Agentes de IA y automatización a medida">Custom AI Agents & Automation</a></li>
+                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung" data-es="Desarrollo de RV/RA">VR/AR Development</a></li>
+                        <li><a href="index.html#services" data-en="Fractional CTO Services" data-de="Fractional CTO Services" data-es="Servicios de CTO a tiempo parcial">Fractional CTO Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt">Contact</h2>
+                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
                 <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> |
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> |
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>
