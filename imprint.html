@@ -21,9 +21,12 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -37,9 +40,11 @@
             </button>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">← Back to Home</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">EN</span> | <span id="alt-lang">DE</span>
-                </button>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -47,11 +52,11 @@
     <!-- Main Content -->
     <section id="main" tabindex="-1" class="section-primary" style="margin-top: 80px; padding-top: 48px;">
         <div class="container">
-            <h1 data-en="Imprint" data-de="Impressum">Impressum</h1>
-            <p class="section-subtitle" data-en="Information according to § 5 TMG" data-de="Angaben gemäß § 5 TMG">Information according to § 5 TMG</p>
+            <h1 data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</h1>
+            <p class="section-subtitle" data-en="Information according to § 5 TMG" data-de="Angaben gemäß § 5 TMG" data-es="Información conforme al § 5 de la TMG">Information according to § 5 TMG</p>
             
             <div class="imprint-content">
-                <h2 data-en="Company Information" data-de="Firmeninformationen">Company Information</h2>
+                <h2 data-en="Company Information" data-de="Firmeninformationen" data-es="Datos de la empresa">Company Information</h2>
                 <p>
                     <strong>GF Innovative Solutions GmbH</strong><br><br>
                     Omar Garcia Urdiales<br>
@@ -61,29 +66,29 @@
                     Germany
                 </p>
 
-                <h2 data-en="Contact" data-de="Kontakt">Contact</h2>
+                <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
                 <p>
-                    <strong data-en="Email:" data-de="E-Mail:">Email:</strong> info@gfinnov.com<br>
-                    <strong data-en="Phone:" data-de="Telefon:">Phone:</strong> +49 172 95 123 76
+                    <strong data-en="Email:" data-de="E-Mail:" data-es="Correo electrónico:">Email:</strong> info@gfinnov.com<br>
+                    <strong data-en="Phone:" data-de="Telefon:" data-es="Teléfono:">Phone:</strong> +49 172 95 123 76
                 </p>
 
-                <h2 data-en="Liability for Content" data-de="Haftung für Inhalte">Liability for Content</h2>
-                <p data-en="As service providers, we are liable for own contents of these websites according to Sec. 7, paragraph 1 German Telemedia Act (TMG). However, according to Sec. 8 to 10 German Telemedia Act (TMG), service providers are not under obligation to permanently monitor submitted or stored information or to search for evidences that indicate illegal activities." data-de="Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.">
+                <h2 data-en="Liability for Content" data-de="Haftung für Inhalte" data-es="Responsabilidad sobre los contenidos">Liability for Content</h2>
+                <p data-en="As service providers, we are liable for own contents of these websites according to Sec. 7, paragraph 1 German Telemedia Act (TMG). However, according to Sec. 8 to 10 German Telemedia Act (TMG), service providers are not under obligation to permanently monitor submitted or stored information or to search for evidences that indicate illegal activities." data-de="Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen." data-es="Como prestadores de servicios, somos responsables de los contenidos propios de estas páginas conforme al § 7, apartado 1, de la Ley alemana de Telemedios (TMG). No obstante, conforme a los §§ 8 a 10 de la TMG, los prestadores de servicios no están obligados a supervisar de forma permanente la información transmitida o almacenada, ni a investigar circunstancias que apunten a una actividad ilícita.">
                     As service providers, we are liable for own contents of these websites according to Sec. 7, paragraph 1 German Telemedia Act (TMG). However, according to Sec. 8 to 10 German Telemedia Act (TMG), service providers are not under obligation to permanently monitor submitted or stored information or to search for evidences that indicate illegal activities.
                 </p>
 
-                <h2 data-en="Liability for Links" data-de="Haftung für Links">Liability for Links</h2>
-                <p data-en="Our offer includes links to external third party websites. We have no influence on the contents of those websites, therefore we cannot guarantee for those contents. Providers or administrators of linked websites are always responsible for contents of linked websites." data-de="Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.">
+                <h2 data-en="Liability for Links" data-de="Haftung für Links" data-es="Responsabilidad sobre los enlaces">Liability for Links</h2>
+                <p data-en="Our offer includes links to external third party websites. We have no influence on the contents of those websites, therefore we cannot guarantee for those contents. Providers or administrators of linked websites are always responsible for contents of linked websites." data-de="Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich." data-es="Nuestra oferta incluye enlaces a sitios web externos de terceros. No tenemos influencia sobre sus contenidos, por lo que no podemos asumir ninguna garantía sobre ellos. Del contenido de las páginas enlazadas responde siempre su respectivo proveedor o gestor.">
                     Our offer includes links to external third party websites. We have no influence on the contents of those websites, therefore we cannot guarantee for those contents. Providers or administrators of linked websites are always responsible for contents of linked websites.
                 </p>
 
-                <h2 data-en="Copyright" data-de="Urheberrecht">Copyright</h2>
-                <p data-en="Contents and compilations published on these websites by the providers are subject to German copyright laws. Reproduction, editing, distribution as well as the use of any kind outside the scope of the copyright law require a written permission of the author or originator." data-de="Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.">
+                <h2 data-en="Copyright" data-de="Urheberrecht" data-es="Derechos de autor">Copyright</h2>
+                <p data-en="Contents and compilations published on these websites by the providers are subject to German copyright laws. Reproduction, editing, distribution as well as the use of any kind outside the scope of the copyright law require a written permission of the author or originator." data-de="Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers." data-es="Los contenidos y las obras publicados en estas páginas por sus responsables están sujetos a la legislación alemana sobre derechos de autor. La reproducción, edición, distribución y cualquier forma de explotación fuera de los límites de la ley de propiedad intelectual requieren la autorización por escrito de su autor o creador.">
                     Contents and compilations published on these websites by the providers are subject to German copyright laws. Reproduction, editing, distribution as well as the use of any kind outside the scope of the copyright law require a written permission of the author or originator.
                 </p>
 
                 <p class="source-note">
-                    <small data-en="Source:" data-de="Quelle:">Source:</small> 
+                    <small data-en="Source:" data-de="Quelle:" data-es="Fuente:">Source:</small> 
                     <a href="https://www.e-recht24.de" target="_blank" rel="noopener">https://www.e-recht24.de</a>
                 </p>
             </div>
@@ -96,20 +101,20 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Guided by tech, powered by people.</p>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt">Contact</h2>
+                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
                 <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> | 
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> | 
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>

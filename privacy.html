@@ -21,9 +21,12 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -37,9 +40,11 @@
             </button>
             <div class="nav-menu">
                 <a href="index.html" class="nav-link">← Back to Home</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">EN</span> | <span id="alt-lang">DE</span>
-                </button>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -47,62 +52,62 @@
     <!-- Main Content -->
     <section id="main" tabindex="-1" class="section-primary" style="margin-top: 80px; padding-top: 48px;">
         <div class="container">
-            <h1 data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</h1>
+            <h1 data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</h1>
             
             <div class="privacy-content">
-                <h2 data-en="General Information" data-de="Allgemeine Hinweise">General Information</h2>
-                <p data-en="The following information provides a simple overview of what happens to your personal information when you visit this website. Personal information is all data with which you could be personally identified." data-de="Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.">
+                <h2 data-en="General Information" data-de="Allgemeine Hinweise" data-es="Información general">General Information</h2>
+                <p data-en="The following information provides a simple overview of what happens to your personal information when you visit this website. Personal information is all data with which you could be personally identified." data-de="Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können." data-es="La siguiente información ofrece una visión sencilla de qué ocurre con sus datos personales cuando visita este sitio web. Son datos personales todos aquellos que permiten identificarle personalmente.">
                     The following information provides a simple overview of what happens to your personal information when you visit this website. Personal information is all data with which you could be personally identified.
                 </p>
 
-                <h2 data-en="Data Protection" data-de="Datenschutz">Data Protection</h2>
-                <p data-en="The operators of this website take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy." data-de="Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.">
+                <h2 data-en="Data Protection" data-de="Datenschutz" data-es="Protección de datos">Data Protection</h2>
+                <p data-en="The operators of this website take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy." data-de="Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung." data-es="Los responsables de este sitio web se toman muy en serio la protección de sus datos personales. Tratamos sus datos personales de forma confidencial y conforme a la normativa legal de protección de datos y a esta política de privacidad.">
                     The operators of this website take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.
                 </p>
                 
-                <p data-en="The use of our website is usually possible without providing personal data. Insofar as personal data (for example name, address or email addresses) is collected on our pages, this is always done on a voluntary basis. This data will not be passed on to third parties without your express consent." data-de="Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.">
+                <p data-en="The use of our website is usually possible without providing personal data. Insofar as personal data (for example name, address or email addresses) is collected on our pages, this is always done on a voluntary basis. This data will not be passed on to third parties without your express consent." data-de="Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben." data-es="El uso de nuestro sitio web es posible, por regla general, sin facilitar datos personales. Cuando en nuestras páginas se recojan datos personales (por ejemplo, nombre, dirección o direcciones de correo electrónico), esto se hará siempre, en la medida de lo posible, de forma voluntaria. Estos datos no se transmitirán a terceros sin su consentimiento expreso.">
                     The use of our website is usually possible without providing personal data. Insofar as personal data (for example name, address or email addresses) is collected on our pages, this is always done on a voluntary basis. This data will not be passed on to third parties without your express consent.
                 </p>
 
-                <h2 data-en="Cookies" data-de="Cookies">Cookies</h2>
-                <p data-en="The Internet pages use cookies in part. Cookies do not harm your computer and do not contain viruses. Cookies serve to make our offer more user-friendly, effective and secure. Cookies are small text files that are stored on your computer and saved by your browser." data-de="Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.">
+                <h2 data-en="Cookies" data-de="Cookies" data-es="Cookies">Cookies</h2>
+                <p data-en="The Internet pages use cookies in part. Cookies do not harm your computer and do not contain viruses. Cookies serve to make our offer more user-friendly, effective and secure. Cookies are small text files that are stored on your computer and saved by your browser." data-de="Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert." data-es="Estas páginas de Internet utilizan en parte las llamadas cookies. Las cookies no dañan su equipo ni contienen virus. Sirven para hacer nuestra oferta más útil, eficaz y segura. Las cookies son pequeños archivos de texto que se depositan en su equipo y que su navegador almacena.">
                     The Internet pages use cookies in part. Cookies do not harm your computer and do not contain viruses. Cookies serve to make our offer more user-friendly, effective and secure. Cookies are small text files that are stored on your computer and saved by your browser.
                 </p>
 
-                <p data-en="Most of the cookies we use are so-called 'session cookies'. They are automatically deleted after the end of your visit. Other cookies remain stored on your terminal device until you delete them. These cookies enable us to recognize your browser the next time you visit." data-de="Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies". Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.">
+                <p data-en="Most of the cookies we use are so-called 'session cookies'. They are automatically deleted after the end of your visit. Other cookies remain stored on your terminal device until you delete them. These cookies enable us to recognize your browser the next time you visit." data-de="Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies“. Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen." data-es="La mayoría de las cookies que utilizamos son las llamadas «cookies de sesión». Se eliminan automáticamente al terminar su visita. Otras cookies permanecen almacenadas en su dispositivo hasta que usted las borra. Estas cookies nos permiten reconocer su navegador en la siguiente visita.">
                     Most of the cookies we use are so-called "session cookies". They are automatically deleted after the end of your visit. Other cookies remain stored on your terminal device until you delete them. These cookies enable us to recognize your browser the next time you visit.
                 </p>
 
-                <h2 data-en="Server Log Files" data-de="Server-LogFiles">Server Log Files</h2>
-                <p data-en="The website provider automatically collects and stores information in server log files, which your browser automatically transmits to us. These are:" data-de="Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log Files, die Ihr Browser automatisch an uns übermittelt. Dies sind:">
+                <h2 data-en="Server Log Files" data-de="Server-LogFiles" data-es="Archivos de registro del servidor">Server Log Files</h2>
+                <p data-en="The website provider automatically collects and stores information in server log files, which your browser automatically transmits to us. These are:" data-de="Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log Files, die Ihr Browser automatisch an uns übermittelt. Dies sind:" data-es="El proveedor de las páginas recopila y almacena automáticamente información en los llamados archivos de registro del servidor, que su navegador nos transmite de forma automática. Se trata de:">
                     The website provider automatically collects and stores information in server log files, which your browser automatically transmits to us. These are:
                 </p>
                 <ul>
-                    <li data-en="Browser type and browser version" data-de="Browsertyp und Browserversion">Browser type and browser version</li>
-                    <li data-en="Operating system used" data-de="verwendetes Betriebssystem">Operating system used</li>
-                    <li data-en="Time of server request" data-de="Uhrzeit der Serveranfrage">Time of server request</li>
-                    <li data-en="Referrer URL" data-de="Referrer URL">Referrer URL</li>
-                    <li data-en="Hostname of the accessing computer" data-de="Hostname des zugreifenden Rechners">Hostname of the accessing computer</li>
-                    <li data-en="IP address" data-de="IP-Adresse">IP address</li>
+                    <li data-en="Browser type and browser version" data-de="Browsertyp und Browserversion" data-es="Tipo y versión del navegador">Browser type and browser version</li>
+                    <li data-en="Operating system used" data-de="verwendetes Betriebssystem" data-es="Sistema operativo utilizado">Operating system used</li>
+                    <li data-en="Time of server request" data-de="Uhrzeit der Serveranfrage" data-es="Hora de la petición al servidor">Time of server request</li>
+                    <li data-en="Referrer URL" data-de="Referrer URL" data-es="URL de procedencia">Referrer URL</li>
+                    <li data-en="Hostname of the accessing computer" data-de="Hostname des zugreifenden Rechners" data-es="Nombre de host del equipo que accede">Hostname of the accessing computer</li>
+                    <li data-en="IP address" data-de="IP-Adresse" data-es="Dirección IP">IP address</li>
                 </ul>
 
-                <h2 data-en="Contact Form" data-de="Kontaktformular">Contact Form</h2>
-                <p data-en="If you send us inquiries via contact form, your details from the inquiry form including the contact data you provided there will be stored with us for the purpose of processing the inquiry and in case of follow-up questions. We do not pass on this data without your consent." data-de="Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.">
+                <h2 data-en="Contact Form" data-de="Kontaktformular" data-es="Formulario de contacto">Contact Form</h2>
+                <p data-en="If you send us inquiries via contact form, your details from the inquiry form including the contact data you provided there will be stored with us for the purpose of processing the inquiry and in case of follow-up questions. We do not pass on this data without your consent." data-de="Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter." data-es="Si nos envía consultas a través del formulario de contacto, sus datos del formulario, incluidos los datos de contacto que indique en él, quedarán almacenados con el fin de tramitar la consulta y por si hubiera preguntas posteriores. No cedemos estos datos sin su consentimiento.">
                     If you send us inquiries via contact form, your details from the inquiry form including the contact data you provided there will be stored with us for the purpose of processing the inquiry and in case of follow-up questions. We do not pass on this data without your consent.
                 </p>
 
-                <h2 data-en="SSL Encryption" data-de="SSL-Verschlüsselung">SSL Encryption</h2>
-                <p data-en="This site uses SSL encryption for security reasons and to protect the transmission of confidential content, such as the inquiries you send to us as the site operator. You can recognize an encrypted connection by the fact that the address line of the browser changes from 'http://' to 'https://' and by the lock symbol in your browser line." data-de="Diese Seite nutzt aus Gründen der Sicherheit und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel der Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.">
+                <h2 data-en="SSL Encryption" data-de="SSL-Verschlüsselung" data-es="Cifrado SSL">SSL Encryption</h2>
+                <p data-en="This site uses SSL encryption for security reasons and to protect the transmission of confidential content, such as the inquiries you send to us as the site operator. You can recognize an encrypted connection by the fact that the address line of the browser changes from 'http://' to 'https://' and by the lock symbol in your browser line." data-de="Diese Seite nutzt aus Gründen der Sicherheit und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel der Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile." data-es="Por motivos de seguridad y para proteger la transmisión de contenidos confidenciales, como las consultas que usted nos envía como responsables del sitio, esta página utiliza cifrado SSL. Reconocerá una conexión cifrada porque la barra de direcciones del navegador cambia de «http://» a «https://» y por el símbolo del candado en la barra del navegador.">
                     This site uses SSL encryption for security reasons and to protect the transmission of confidential content, such as the inquiries you send to us as the site operator. You can recognize an encrypted connection by the fact that the address line of the browser changes from "http://" to "https://" and by the lock symbol in your browser line.
                 </p>
 
-                <h2 data-en="Right to Information, Deletion, Blocking" data-de="Recht auf Auskunft, Löschung, Sperrung">Right to Information, Deletion, Blocking</h2>
-                <p data-en="You have the right at any time to free information about your stored personal data, their origin and recipients and the purpose of data processing as well as a right to correction, blocking or deletion of this data. For this as well as for further questions on the subject of personal data, you can contact us at any time at the address given in the imprint." data-de="Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.">
+                <h2 data-en="Right to Information, Deletion, Blocking" data-de="Recht auf Auskunft, Löschung, Sperrung" data-es="Derecho de información, supresión y bloqueo">Right to Information, Deletion, Blocking</h2>
+                <p data-en="You have the right at any time to free information about your stored personal data, their origin and recipients and the purpose of data processing as well as a right to correction, blocking or deletion of this data. For this as well as for further questions on the subject of personal data, you can contact us at any time at the address given in the imprint." data-de="Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden." data-es="Tiene derecho en todo momento a obtener información gratuita sobre sus datos personales almacenados, su origen y sus destinatarios y la finalidad del tratamiento, así como derecho a la rectificación, el bloqueo o la supresión de dichos datos. Para ello, y para cualquier otra cuestión relativa a los datos personales, puede dirigirse a nosotros en cualquier momento en la dirección indicada en el aviso legal.">
                     You have the right at any time to free information about your stored personal data, their origin and recipients and the purpose of data processing as well as a right to correction, blocking or deletion of this data. For this as well as for further questions on the subject of personal data, you can contact us at any time at the address given in the imprint.
                 </p>
 
                 <p class="source-note">
-                    <small data-en="Source:" data-de="Quelle:">Source:</small> 
+                    <small data-en="Source:" data-de="Quelle:" data-es="Fuente:">Source:</small> 
                     <a href="https://www.e-recht24.de" target="_blank" rel="noopener">https://www.e-recht24.de</a>
                 </p>
             </div>
@@ -115,20 +120,20 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Guided by tech, powered by people.</p>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt">Contact</h2>
+                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
                 <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> | 
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> | 
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>

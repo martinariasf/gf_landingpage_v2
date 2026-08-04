@@ -201,9 +201,12 @@
             .form-wrapper { padding: 32px 20px; margin: 0 16px; }
         }
     </style>
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -211,13 +214,15 @@
                 <a href="index.html"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
-                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
-                <a href="index.html#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Contact</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language" onclick="toggleLang()">
-                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
-                </button>
+                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite" data-es="Inicio">Home</a>
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
             <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
                 <span></span><span></span><span></span>
@@ -229,9 +234,9 @@
     <section id="main" tabindex="-1" class="webinar-hero">
         <div class="container">
             <div class="date-badge">📅 To be Discussed</div>
-            <h1 data-en="Webinar: AI Agents" data-de="Webinar: KI-Agenten">Webinar: AI Agents</h1>
+            <h1 data-en="Webinar: AI Agents" data-de="Webinar: KI-Agenten" data-es="Webinar: agentes de IA">Webinar: AI Agents</h1>
             <p data-en="Join us for an exclusive webinar on AI Agents — how they work, what they can automate, and how your startup or SME can use them today."
-               data-de="Melde dich jetzt an und entdecke, wie KI-Agenten dein Unternehmen automatisieren können.">
+               data-de="Melde dich jetzt an und entdecke, wie KI-Agenten dein Unternehmen automatisieren können." data-es="Apúntate ahora y descubre cómo los agentes de IA pueden automatizar tu empresa.">
                 Join us for an exclusive webinar on AI Agents — how they work, what they can automate, and how your startup or SME can use them today.
             </p>
         </div>
@@ -240,28 +245,28 @@
     <!-- Form -->
     <section class="form-section section-secondary">
         <div class="form-wrapper" id="formWrapper">
-            <h2 data-en="Register Now" data-de="Jetzt anmelden">Register Now</h2>
+            <h2 data-en="Register Now" data-de="Jetzt anmelden" data-es="Inscribirme ahora">Register Now</h2>
             <form id="registrationForm" novalidate>
                 <div class="form-group">
-                    <label data-en="Full Name *" data-de="Vollständiger Name *" for="f-fullName">Full Name *</label>
+                    <label data-en="Full Name *" data-de="Vollständiger Name *" data-es="Nombre completo *" for="f-fullName">Full Name *</label>
                     <input id="f-fullName" type="text" name="fullName" required>
                 </div>
                 <div class="form-group">
-                    <label data-en="Email Address *" data-de="E-Mail-Adresse *" for="f-email">Email Address *</label>
+                    <label data-en="Email Address *" data-de="E-Mail-Adresse *" data-es="Correo electrónico *" for="f-email">Email Address *</label>
                     <input id="f-email" type="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label data-en="Company *" data-de="Unternehmen *" for="f-company">Company *</label>
+                    <label data-en="Company *" data-de="Unternehmen *" data-es="Empresa *" for="f-company">Company *</label>
                     <input id="f-company" type="text" name="company" required>
                 </div>
                 <div class="form-group">
-                    <label data-en="Your Role" data-de="Deine Position" for="f-role">Your Role</label>
+                    <label data-en="Your Role" data-de="Deine Position" data-es="Tu puesto" for="f-role">Your Role</label>
                     <input id="f-role" type="text" name="role">
                 </div>
                 <div class="form-group">
-                    <label data-en="Company Size" data-de="Unternehmensgröße" for="f-companySize">Company Size</label>
+                    <label data-en="Company Size" data-de="Unternehmensgröße" data-es="Tamaño de la empresa" for="f-companySize">Company Size</label>
                     <select id="f-companySize" name="companySize">
-                        <option value="" data-en="— Select —" data-de="— Auswählen —">— Select —</option>
+                        <option value="" data-en="— Select —" data-de="— Auswählen —" data-es="— Selecciona —">— Select —</option>
                         <option value="1-10">1–10</option>
                         <option value="11-50">11–50</option>
                         <option value="51-200">51–200</option>
@@ -269,72 +274,72 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label data-en="Current AI Usage" data-de="Aktuelle KI-Nutzung">Current AI Usage</label>
+                    <label data-en="Current AI Usage" data-de="Aktuelle KI-Nutzung" data-es="Uso actual de IA">Current AI Usage</label>
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="aiUsage" value="not-yet">
-                            <span data-en="Not yet" data-de="Noch nicht">Not yet</span>
+                            <span data-en="Not yet" data-de="Noch nicht" data-es="Todavía no">Not yet</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="aiUsage" value="exploring">
-                            <span data-en="Exploring" data-de="Erforsche es gerade">Exploring</span>
+                            <span data-en="Exploring" data-de="Erforsche es gerade" data-es="Lo estoy explorando">Exploring</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="aiUsage" value="using">
-                            <span data-en="Already using AI" data-de="Nutze KI bereits">Already using AI</span>
+                            <span data-en="Already using AI" data-de="Nutze KI bereits" data-es="Ya uso IA">Already using AI</span>
                         </label>
                         <label class="radio-option">
                             <input type="radio" name="aiUsage" value="building">
-                            <span data-en="Actively building with AI" data-de="Baue aktiv mit KI">Actively building with AI</span>
+                            <span data-en="Actively building with AI" data-de="Baue aktiv mit KI" data-es="Construyo activamente con IA">Actively building with AI</span>
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label data-en="Which languages do you speak fluently?" data-de="Welche Sprachen sprichst du fließend?">Which languages do you speak fluently?</label>
+                    <label data-en="Which languages do you speak fluently?" data-de="Welche Sprachen sprichst du fließend?" data-es="¿Qué idiomas hablas con fluidez?">Which languages do you speak fluently?</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
                             <input type="checkbox" name="fluentLanguages" value="German">
-                            <span data-en="German" data-de="Deutsch">German</span>
+                            <span data-en="German" data-de="Deutsch" data-es="Alemán">German</span>
                         </label>
                         <label class="checkbox-option">
                             <input type="checkbox" name="fluentLanguages" value="English">
-                            <span data-en="English" data-de="Englisch">English</span>
+                            <span data-en="English" data-de="Englisch" data-es="Inglés">English</span>
                         </label>
                         <label class="checkbox-option">
                             <input type="checkbox" name="fluentLanguages" value="Spanish">
-                            <span data-en="Spanish" data-de="Spanisch">Spanish</span>
+                            <span data-en="Spanish" data-de="Spanisch" data-es="Español">Spanish</span>
                         </label>
                         <label class="checkbox-option">
                             <input type="checkbox" name="fluentLanguages" value="Other">
-                            <span data-en="Other" data-de="Andere">Other</span>
+                            <span data-en="Other" data-de="Andere" data-es="Otro">Other</span>
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label data-en="What do you hope to learn?" data-de="Was erhoffst du dir vom Webinar?" for="f-hopes">What do you hope to learn?</label>
+                    <label data-en="What do you hope to learn?" data-de="Was erhoffst du dir vom Webinar?" data-es="¿Qué esperas del webinar?" for="f-hopes">What do you hope to learn?</label>
                     <textarea id="f-hopes" name="hopes"></textarea>
                 </div>
                 <div class="form-group">
-                    <label data-en="How did you hear about us?" data-de="Wie hast du von uns erfahren?" for="f-source">How did you hear about us?</label>
+                    <label data-en="How did you hear about us?" data-de="Wie hast du von uns erfahren?" data-es="¿Cómo nos conociste?" for="f-source">How did you hear about us?</label>
                     <input id="f-source" type="text" name="source">
                 </div>
                 <div class="form-group">
-                    <label data-en="Accept conditions *" data-de="Bedingungen akzeptieren *">Accept conditions *</label>
+                    <label data-en="Accept conditions *" data-de="Bedingungen akzeptieren *" data-es="Aceptar las condiciones *">Accept conditions *</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
                             <input type="checkbox" name="acceptConditions" value="yes" required>
-                            <span data-en="I understand that the webinar may be recorded and that GF Innovative Solutions may publish the video on its platforms. I consent to the processing of my registration data for webinar organization." data-de="Ich verstehe, dass das Webinar aufgezeichnet werden kann und dass GF Innovative Solutions das Video auf seinen Plattformen veröffentlichen darf. Ich stimme der Verarbeitung meiner Registrierungsdaten zur Organisation des Webinars zu.">I understand that the webinar may be recorded and that GF Innovative Solutions may publish the video on its platforms. I consent to the processing of my registration data for webinar organization.</span>
+                            <span data-en="I understand that the webinar may be recorded and that GF Innovative Solutions may publish the video on its platforms. I consent to the processing of my registration data for webinar organization." data-de="Ich verstehe, dass das Webinar aufgezeichnet werden kann und dass GF Innovative Solutions das Video auf seinen Plattformen veröffentlichen darf. Ich stimme der Verarbeitung meiner Registrierungsdaten zur Organisation des Webinars zu." data-es="Entiendo que el webinar puede grabarse y que GF Innovative Solutions puede publicar el vídeo en sus plataformas. Doy mi consentimiento para el tratamiento de mis datos de inscripción con el fin de organizar el webinar.">I understand that the webinar may be recorded and that GF Innovative Solutions may publish the video on its platforms. I consent to the processing of my registration data for webinar organization.</span>
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="submit-btn" data-en="Register for Webinar" data-de="Zum Webinar anmelden">Register for Webinar</button>
-                <div class="error-msg" id="errorMsg" data-en="Something went wrong. Please try again." data-de="Etwas ist schiefgelaufen. Bitte versuche es erneut.">Something went wrong. Please try again.</div>
+                <button type="submit" class="submit-btn" data-en="Register for Webinar" data-de="Zum Webinar anmelden" data-es="Inscribirme al webinar">Register for Webinar</button>
+                <div class="error-msg" id="errorMsg" data-en="Something went wrong. Please try again." data-de="Etwas ist schiefgelaufen. Bitte versuche es erneut." data-es="Algo ha salido mal. Vuelve a intentarlo.">Something went wrong. Please try again.</div>
             </form>
         </div>
         <div class="thank-you" id="thankYou">
             <div class="check-icon">✓</div>
-            <h2 data-en="You're registered!" data-de="Du bist angemeldet!">You're registered!</h2>
-            <p data-en="We'll send you all the details before the webinar. The date is to be discussed." data-de="Wir senden dir alle Details vor dem Webinar. Der Termin wird noch abgestimmt.">We'll send you all the details before the webinar. The date is to be discussed.</p>
+            <h2 data-en="You're registered!" data-de="Du bist angemeldet!" data-es="¡Estás inscrito!">You're registered!</h2>
+            <p data-en="We'll send you all the details before the webinar. The date is to be discussed." data-de="Wir senden dir alle Details vor dem Webinar. Der Termin wird noch abgestimmt." data-es="Te enviaremos todos los detalles antes del webinar. La fecha aún está por confirmar.">We'll send you all the details before the webinar. The date is to be discussed.</p>
         </div>
     </section>
 
@@ -351,20 +356,30 @@
     </footer>
 
     <script>
-    // === Language Toggle ===
-    let lang = 'de';
-    function toggleLang() {
-        lang = lang === 'en' ? 'de' : 'en';
-        document.getElementById('current-lang').textContent = lang.toUpperCase();
-        document.getElementById('alt-lang').textContent = lang === 'en' ? 'DE' : 'EN';
-        document.querySelectorAll('[data-en]').forEach(el => {
-            const text = el.getAttribute('data-' + lang);
-            if (text) {
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = text;
-                else el.textContent = text;
-            }
-        });
-    }
+    // === Language ===
+    // Switching itself is lang.js's job; this page only needs the current
+    // choice for the messages it builds in JS.
+    const activeLanguage = () => (window.GFLang && window.GFLang.get()) || 'de';
+
+    const FORM_COPY = {
+        en: {
+            missing: 'Please fill in all required fields and accept the conditions.',
+            submitting: 'Submitting\u2026',
+            submit: 'Register for Webinar'
+        },
+        de: {
+            missing: 'Bitte f\u00fclle alle Pflichtfelder aus und akzeptiere die Bedingungen.',
+            submitting: 'Wird gesendet\u2026',
+            submit: 'Zum Webinar anmelden'
+        },
+        es: {
+            missing: 'Completa todos los campos obligatorios y acepta las condiciones.',
+            submitting: 'Enviando\u2026',
+            submit: 'Inscribirme al seminario'
+        }
+    };
+
+    const formCopy = () => FORM_COPY[activeLanguage()] || FORM_COPY.en;
 
     // === Form Submission ===
     const WEBHOOK_URL = 'https://n8n.ai.gfinnov.com/webhook/webinar-register';
@@ -379,15 +394,13 @@
         // Basic validation
         const fd = new FormData(form);
         if (!fd.get('fullName') || !fd.get('email') || !fd.get('company') || !fd.get('acceptConditions')) {
-            errorMsg.textContent = lang === 'de'
-                ? 'Bitte fülle alle Pflichtfelder aus und akzeptiere die Bedingungen.'
-                : 'Please fill in all required fields and accept the conditions.';
+            errorMsg.textContent = formCopy().missing;
             errorMsg.style.display = 'block';
             return;
         }
 
         btn.disabled = true;
-        btn.textContent = lang === 'de' ? 'Wird gesendet…' : 'Submitting…';
+        btn.textContent = formCopy().submitting;
 
         const payload = {
             fullName: fd.get('fullName'),
@@ -401,7 +414,7 @@
             source: fd.get('source') || '',
             acceptConditions: fd.get('acceptConditions') === 'yes',
             submittedAt: new Date().toISOString(),
-            language: lang
+            language: activeLanguage()
         };
 
         try {
@@ -417,7 +430,7 @@
         } catch (err) {
             errorMsg.style.display = 'block';
             btn.disabled = false;
-            btn.textContent = lang === 'de' ? 'Zum Webinar anmelden' : 'Register for Webinar';
+            btn.textContent = formCopy().submit;
         }
     });
     </script>

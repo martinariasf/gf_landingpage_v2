@@ -30,15 +30,7 @@
             border-bottom: 1px solid rgba(255,255,255,0.12);
         }
         .nav-link,
-        .language-toggle { color: #f1f5f9; }
         .nav-link:hover,
-        .language-toggle:hover { color: #dbeafe; border-color: rgba(255,255,255,0.35); }
-        .language-toggle {
-            border: 1px solid rgba(255,255,255,0.22);
-            background: rgba(255,255,255,0.08);
-        }
-        .language-toggle .lang-opt { opacity: 0.55; }
-        .language-toggle .lang-opt.active { opacity: 1; font-weight: 700; }
         .nav-toggle span { background: #f1f5f9; }
         @media (max-width: 768px) {
             .nav-menu { background: rgba(21, 96, 178, 0.96); }
@@ -425,9 +417,12 @@
             .pilot-section { padding: 56px 0; }
         }
     </style>
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -439,11 +434,11 @@
                 <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
                 <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
                 <a href="index.html#contact" class="nav-link" data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</a>
-                <button class="language-toggle" type="button" aria-label="Change language" onclick="cycleLang()">
-                    <span class="lang-opt" id="lang-en">EN</span> ·
-                    <span class="lang-opt" id="lang-de">DE</span> ·
-                    <span class="lang-opt" id="lang-es">ES</span>
-                </button>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
             <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
                 <span></span><span></span><span></span>
@@ -985,7 +980,6 @@
 
         var WEBHOOK_URL = 'https://n8n.ai.gfinnov.com/webhook/pilot-register';
         var DRAFT_KEY = 'gf-pilot:draft:v1';
-        var LANG_KEY = 'gf-pilot:lang';
         var LANGS = ['en', 'de', 'es'];
         var MIN_SECONDS = 15;          // faster than this = almost certainly a bot
         var TOTAL_STEPS = 5;
@@ -1017,40 +1011,16 @@
             }
         };
 
-        // ── Language ────────────────────────────────────────────────────
-        var lang = 'en';
+        // ── Language ────────────────────────────────────
+        // Swapping the data-* copy and persisting the choice is lang.js's job.
+        // The wizard only needs the current code for the T table above and a
+        // nudge to redraw the progress line when it changes.
+        var lang = (window.GFLang && window.GFLang.get()) || 'en';
 
-        function applyLang(l) {
-            if (LANGS.indexOf(l) === -1) l = 'en';
-            lang = l;
-            document.documentElement.setAttribute('lang', l);
-            document.querySelectorAll('[data-en]').forEach(function (el) {
-                var text = el.getAttribute('data-' + l);
-                if (text === null) return;
-                var attr = el.getAttribute('data-i18n-attr');
-                if (attr) el.setAttribute(attr, text);
-                else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = text;
-                else el.textContent = text;
-            });
-            LANGS.forEach(function (code) {
-                var el = document.getElementById('lang-' + code);
-                if (el) el.classList.toggle('active', code === l);
-            });
-            try { localStorage.setItem(LANG_KEY, l); } catch (e) { /* private mode */ }
+        document.addEventListener('gf:langchange', function (e) {
+            lang = e.detail.lang;
             renderProgress();
-        }
-
-        window.cycleLang = function () {
-            applyLang(LANGS[(LANGS.indexOf(lang) + 1) % LANGS.length]);
-        };
-
-        function initLang() {
-            var fromUrl = (new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
-            if (LANGS.indexOf(fromUrl) !== -1) return applyLang(fromUrl);
-            var stored = null;
-            try { stored = localStorage.getItem(LANG_KEY); } catch (e) { /* ignore */ }
-            applyLang(LANGS.indexOf(stored) !== -1 ? stored : 'en');
-        }
+        });
 
         // ── Wizard state ────────────────────────────────────────────────
         var form = document.getElementById('pilotForm');
@@ -1307,7 +1277,7 @@
 
         // ── Boot ────────────────────────────────────────────────────────
         restoreDraft();
-        initLang();
+        renderProgress();
         syncConditional();
         goTo(current);
     })();

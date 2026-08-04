@@ -284,23 +284,28 @@
             }
         }
     </style>
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="index.html"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
             </div>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
-                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
-                <a href="webinar-video.html" class="nav-link" data-en="Replay" data-de="Replay">Replay</a>
-                <a href="index.html#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Contact</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language" onclick="toggleLang()">
-                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
-                </button>
+                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite" data-es="Inicio">Home</a>
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
+                <a href="webinar-video.html" class="nav-link" data-en="Replay" data-de="Replay" data-es="Repetición">Replay</a>
+                <a href="index.html#contact" class="nav-link" data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
             <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
                 <span></span><span></span><span></span>
@@ -310,10 +315,10 @@
 
     <section id="main" tabindex="-1" class="video-hero">
         <div class="container">
-            <div class="video-badge" data-en="🎥 Webinar Replay" data-de="🎥 Webinar-Aufzeichnung">🎥 Webinar Replay</div>
-            <h1 data-en="Watch our AI Agents webinar" data-de="Sieh dir unser Webinar zu KI-Agenten an">Watch our AI Agents webinar</h1>
+            <div class="video-badge" data-en="🎥 Webinar Replay" data-de="🎥 Webinar-Aufzeichnung" data-es="🎥 Repetición del webinar">🎥 Webinar Replay</div>
+            <h1 data-en="Watch our AI Agents webinar" data-de="Sieh dir unser Webinar zu KI-Agenten an" data-es="Mira nuestro webinar sobre agentes de IA">Watch our AI Agents webinar</h1>
             <p data-en="Explore how AI agents work, where they create business value, and how startups and SMEs can start implementing them today."
-               data-de="Erfahre, wie KI-Agenten funktionieren, wo sie geschäftlichen Mehrwert schaffen und wie Startups und KMUs sie heute einsetzen können.">
+               data-de="Erfahre, wie KI-Agenten funktionieren, wo sie geschäftlichen Mehrwert schaffen und wie Startups und KMUs sie heute einsetzen können." data-es="Descubre cómo funcionan los agentes de IA, dónde generan valor de negocio y cómo las startups y pymes pueden empezar a usarlos hoy.">
                 Explore how AI agents work, where they create business value, and how startups and SMEs can start implementing them today.
             </p>
         </div>
@@ -333,18 +338,18 @@
                 </div>
                 <div class="video-meta">
                     <div class="video-copy">
-                        <h2 data-en="AI agents without the hype" data-de="KI-Agenten ohne Hype">AI agents without the hype</h2>
+                        <h2 data-en="AI agents without the hype" data-de="KI-Agenten ohne Hype" data-es="Agentes de IA sin el hype">AI agents without the hype</h2>
                         <p data-en="This replay walks through practical AI-agent use cases, implementation logic, and how GF Innovative Solutions helps teams move from ideas to working systems. A short access form will appear automatically after a few seconds so viewers can continue watching."
-                           data-de="Diese Aufzeichnung zeigt praxisnahe Anwendungsfälle für KI-Agenten, die Umsetzungslogik und wie GF Innovative Solutions Teams von der Idee bis zum funktionierenden System begleitet. Nach ein paar Sekunden erscheint automatisch ein kurzes Zugangsformular, damit Zuschauer weitersehen können.">
+                           data-de="Diese Aufzeichnung zeigt praxisnahe Anwendungsfälle für KI-Agenten, die Umsetzungslogik und wie GF Innovative Solutions Teams von der Idee bis zum funktionierenden System begleitet. Nach ein paar Sekunden erscheint automatisch ein kurzes Zugangsformular, damit Zuschauer weitersehen können." data-es="Esta grabación recorre casos de uso prácticos de agentes de IA, la lógica de implementación y cómo GF Innovative Solutions acompaña a los equipos desde la idea hasta un sistema que funciona. Tras unos segundos aparecerá automáticamente un breve formulario de acceso para poder seguir viéndola.">
                             This replay walks through practical AI-agent use cases, implementation logic, and how GF Innovative Solutions helps teams move from ideas to working systems. A short access form will appear automatically after a few seconds so viewers can continue watching.
                         </p>
                     </div>
                     <aside class="video-card">
-                        <h3 data-en="What you'll learn" data-de="Das erwartet dich">What you'll learn</h3>
+                        <h3 data-en="What you'll learn" data-de="Das erwartet dich" data-es="Lo que vas a aprender">What you'll learn</h3>
                         <ul>
-                            <li data-en="Where AI agents create measurable ROI" data-de="Wo KI-Agenten messbaren ROI liefern">Where AI agents create measurable ROI</li>
-                            <li data-en="How automation fits into startup and SME workflows" data-de="Wie Automatisierung in Startup- und KMU-Workflows passt">How automation fits into startup and SME workflows</li>
-                            <li data-en="What secure implementation looks like in practice" data-de="Wie sichere Implementierung in der Praxis aussieht">What secure implementation looks like in practice</li>
+                            <li data-en="Where AI agents create measurable ROI" data-de="Wo KI-Agenten messbaren ROI liefern" data-es="Dónde los agentes de IA generan un ROI medible">Where AI agents create measurable ROI</li>
+                            <li data-en="How automation fits into startup and SME workflows" data-de="Wie Automatisierung in Startup- und KMU-Workflows passt" data-es="Cómo encaja la automatización en los flujos de startups y pymes">How automation fits into startup and SME workflows</li>
+                            <li data-en="What secure implementation looks like in practice" data-de="Wie sichere Implementierung in der Praxis aussieht" data-es="Cómo es una implementación segura en la práctica">What secure implementation looks like in practice</li>
                         </ul>
                     </aside>
                 </div>
@@ -354,26 +359,26 @@
 
     <div class="gate-overlay" id="gateOverlay" aria-hidden="true">
         <div class="gate-modal" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
-            <h2 id="gateTitle" data-en="Continue watching" data-de="Weiter ansehen">Continue watching</h2>
+            <h2 id="gateTitle" data-en="Continue watching" data-de="Weiter ansehen" data-es="Seguir viendo">Continue watching</h2>
             <p data-en="To keep watching the webinar replay, please enter your email address and accept the terms below."
-               data-de="Um die Webinar-Aufzeichnung weiter anzusehen, gib bitte deine E-Mail-Adresse ein und akzeptiere die folgenden Bedingungen.">
+               data-de="Um die Webinar-Aufzeichnung weiter anzusehen, gib bitte deine E-Mail-Adresse ein und akzeptiere die folgenden Bedingungen." data-es="Para seguir viendo la grabación del webinar, introduce tu correo electrónico y acepta las condiciones.">
                 To keep watching the webinar replay, please enter your email address and accept the terms below.
             </p>
             <form id="videoGateForm" class="gate-form" novalidate>
                 <div>
-                    <label for="gateEmail" data-en="Email address *" data-de="E-Mail-Adresse *">Email address *</label>
+                    <label for="gateEmail" data-en="Email address *" data-de="E-Mail-Adresse *" data-es="Correo electrónico *">Email address *</label>
                     <input id="gateEmail" name="email" type="email" required>
                 </div>
                 <label class="gate-consent">
                     <input type="checkbox" id="gateConsent" name="consent" value="yes" required>
                     <span data-en="I accept that my email will be stored in GF Innovative Solutions' databases for webinar access and follow-up communication."
-                          data-de="Ich akzeptiere, dass meine E-Mail-Adresse in den Datenbanken von GF Innovative Solutions für den Zugriff auf das Webinar und die Nachverfolgung gespeichert wird.">
+                          data-de="Ich akzeptiere, dass meine E-Mail-Adresse in den Datenbanken von GF Innovative Solutions für den Zugriff auf das Webinar und die Nachverfolgung gespeichert wird." data-es="Acepto que mi correo electrónico se almacene en las bases de datos de GF Innovative Solutions para dar acceso al webinar y para comunicaciones de seguimiento.">
                         I accept that my email will be stored in GF Innovative Solutions' databases for webinar access and follow-up communication.
                     </span>
                 </label>
-                <div class="gate-error" id="gateError" data-en="Please enter a valid email and accept the terms to continue." data-de="Bitte gib eine gültige E-Mail-Adresse ein und akzeptiere die Bedingungen, um fortzufahren.">Please enter a valid email and accept the terms to continue.</div>
-                <div class="gate-success" id="gateSuccess" data-en="Thanks — access granted. Enjoy the webinar." data-de="Danke — Zugriff freigeschaltet. Viel Spaß beim Webinar.">Thanks — access granted. Enjoy the webinar.</div>
-                <button type="submit" class="gate-button" id="gateButton" data-en="Accept and continue" data-de="Akzeptieren und weiter">Accept and continue</button>
+                <div class="gate-error" id="gateError" data-en="Please enter a valid email and accept the terms to continue." data-de="Bitte gib eine gültige E-Mail-Adresse ein und akzeptiere die Bedingungen, um fortzufahren." data-es="Introduce un correo válido y acepta las condiciones para continuar.">Please enter a valid email and accept the terms to continue.</div>
+                <div class="gate-success" id="gateSuccess" data-en="Thanks — access granted. Enjoy the webinar." data-de="Danke — Zugriff freigeschaltet. Viel Spaß beim Webinar." data-es="Gracias — acceso concedido. Disfruta del webinar.">Thanks — access granted. Enjoy the webinar.</div>
+                <button type="submit" class="gate-button" id="gateButton" data-en="Accept and continue" data-de="Akzeptieren und weiter" data-es="Aceptar y continuar">Accept and continue</button>
             </form>
         </div>
     </div>
@@ -390,26 +395,38 @@
     </footer>
 
     <script>
-    let lang = 'de';
+    // Switching itself is lang.js's job; this page only needs the current
+    // choice for the messages it builds in JS.
+    const activeLanguage = () => (window.GFLang && window.GFLang.get()) || 'de';
+
+    const GATE_COPY = {
+        en: {
+            invalid: 'Please enter a valid email and accept the terms to continue.',
+            saving: 'Saving\u2026',
+            granted: 'Thanks \u2014 access granted. Enjoy the webinar.',
+            failed: 'We could not save your access right now. Please try again.',
+            accept: 'Accept and continue'
+        },
+        de: {
+            invalid: 'Bitte gib eine g\u00fcltige E-Mail-Adresse ein und akzeptiere die Bedingungen, um fortzufahren.',
+            saving: 'Wird gespeichert\u2026',
+            granted: 'Danke \u2014 Zugriff freigeschaltet. Viel Spa\u00df beim Webinar.',
+            failed: 'Die Speicherung konnte gerade nicht abgeschlossen werden. Bitte versuche es erneut.',
+            accept: 'Akzeptieren und weiter'
+        },
+        es: {
+            invalid: 'Introduce un correo v\u00e1lido y acepta las condiciones para continuar.',
+            saving: 'Guardando\u2026',
+            granted: 'Gracias \u2014 acceso concedido. Disfruta del seminario.',
+            failed: 'No pudimos guardar tu acceso en este momento. Int\u00e9ntalo de nuevo.',
+            accept: 'Aceptar y continuar'
+        }
+    };
+
+    const gateCopy = () => GATE_COPY[activeLanguage()] || GATE_COPY.en;
     let gateUnlocked = false;
     let gateShown = false;
     const GATE_WEBHOOK_URL = 'https://n8n.ai.gfinnov.com/webhook/webinar-video-access';
-
-    function setText(el, text) {
-        if (!el) return;
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = text;
-        else el.textContent = text;
-    }
-
-    function toggleLang() {
-        lang = lang === 'en' ? 'de' : 'en';
-        document.getElementById('current-lang').textContent = lang.toUpperCase();
-        document.getElementById('alt-lang').textContent = lang === 'en' ? 'DE' : 'EN';
-        document.querySelectorAll('[data-en]').forEach(el => {
-            const text = el.getAttribute('data-' + lang);
-            if (text) setText(el, text);
-        });
-    }
 
     function showGate() {
         if (gateUnlocked || gateShown) return;
@@ -442,15 +459,13 @@
 
         const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         if (!emailValid || !consent) {
-            error.textContent = lang === 'de'
-                ? 'Bitte gib eine gültige E-Mail-Adresse ein und akzeptiere die Bedingungen, um fortzufahren.'
-                : 'Please enter a valid email and accept the terms to continue.';
+            error.textContent = gateCopy().invalid;
             error.style.display = 'block';
             return;
         }
 
         button.disabled = true;
-        button.textContent = lang === 'de' ? 'Wird gespeichert…' : 'Saving…';
+        button.textContent = gateCopy().saving;
 
         const payload = {
             email,
@@ -458,7 +473,7 @@
             source: 'webinar-video.html',
             videoUrl: 'https://youtu.be/k0G8yrhtBeQ',
             submittedAt: new Date().toISOString(),
-            language: lang,
+            language: activeLanguage(),
             page: window.location.href
         };
 
@@ -472,22 +487,18 @@
             if (!res.ok) throw new Error('Webhook failed');
 
             gateUnlocked = true;
-            success.textContent = lang === 'de'
-                ? 'Danke — Zugriff freigeschaltet. Viel Spaß beim Webinar.'
-                : 'Thanks — access granted. Enjoy the webinar.';
+            success.textContent = gateCopy().granted;
             success.style.display = 'block';
 
             setTimeout(() => {
                 closeGate();
             }, 900);
         } catch (err) {
-            error.textContent = lang === 'de'
-                ? 'Die Speicherung konnte gerade nicht abgeschlossen werden. Bitte versuche es erneut.'
-                : 'We could not save your access right now. Please try again.';
+            error.textContent = gateCopy().failed;
             error.style.display = 'block';
         } finally {
             button.disabled = false;
-            button.textContent = lang === 'de' ? 'Akzeptieren und weiter' : 'Accept and continue';
+            button.textContent = gateCopy().accept;
         }
     });
     </script>

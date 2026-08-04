@@ -1,7 +1,12 @@
 // VR Website JavaScript - Following GF Corporate Standards
 
 // Global variables
-let currentLanguage = 'de';
+// Language lives in lang.js; this file only reads the active choice
+// for the few strings it builds in JS.
+function activeLanguage() {
+    return (window.GFLang && window.GFLang.get()) || 'de';
+}
+
 let modalShown = false;
 let emailCaptured = false;
 
@@ -15,10 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeVRWebsite() {
     initializeNavigation();
     initializeSmoothScrolling();
-    initializeLanguageToggle();
     initializeEmailCapture();
-    loadLanguagePreference();
-    updateLanguage(currentLanguage || 'de');
 }
 
 // Navigation functionality
@@ -78,76 +80,27 @@ function initializeSmoothScrolling() {
     });
 }
 
-// Language toggle functionality
-function toggleLanguage() {
-    currentLanguage = currentLanguage === 'en' ? 'de' : 'en';
-    updateLanguage(currentLanguage);
-}
+// Copy that is built in JS rather than swapped from data-* attributes.
+const SENDING = {
+    en: 'Sending...',
+    de: 'Wird gesendet...',
+    es: 'Enviando...'
+};
 
-function initializeLanguageToggle() {
-    const languageToggle = document.querySelector('.language-toggle');
-    
-    if (languageToggle) {
-        languageToggle.removeEventListener('click', toggleLanguage);
-        languageToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleLanguage();
-        });
-        
-        languageToggle.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                toggleLanguage();
-            }
-        });
-    } else {
+const FEEDBACK = {
+    en: {
+        popup: 'Thank you! Your request has been sent. We\'ll contact you soon with the VR Guide.',
+        newsletter: 'Thank you! Your newsletter request has been sent.'
+    },
+    de: {
+        popup: 'Vielen Dank! Ihre Anfrage wurde gesendet. Wir kontaktieren Sie bald mit dem VR-Guide.',
+        newsletter: 'Vielen Dank! Ihre Newsletter-Anfrage wurde gesendet.'
+    },
+    es: {
+        popup: '¡Gracias! Hemos recibido su solicitud. Le enviaremos la guía de RV en breve.',
+        newsletter: '¡Gracias! Hemos recibido su solicitud de newsletter.'
     }
-}
-
-function updateLanguage(lang) {
-    
-    // Update language toggle button
-    const currentLangElement = document.getElementById('current-lang');
-    const altLangElement = document.getElementById('alt-lang');
-    
-    if (currentLangElement && altLangElement) {
-        currentLangElement.textContent = lang.toUpperCase();
-        altLangElement.textContent = lang === 'en' ? 'DE' : 'EN';
-    } else {
-    }
-    
-    // Update all elements with language attributes
-    const elementsWithLang = document.querySelectorAll('[data-en][data-de]');
-    
-    elementsWithLang.forEach((element, index) => {
-        const text = element.getAttribute(`data-${lang}`);
-        if (text) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.placeholder = text;
-            } else {
-                element.textContent = text;
-            }
-        }
-    });
-    
-    // Update document language
-    document.documentElement.lang = lang;
-    
-    // Store language preference
-    localStorage.setItem('preferred-language', lang);
-    
-}
-
-// Load saved language preference
-function loadLanguagePreference() {
-    const savedLanguage = localStorage.getItem('preferred-language');
-    
-    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'de')) {
-        currentLanguage = savedLanguage;
-    } else {
-        currentLanguage = 'de'; // Default to German for VR website
-    }
-}
+};
 
 // Email Capture Modal and Newsletter functionality
 function initializeEmailCapture() {
@@ -204,7 +157,7 @@ function initializeEmailCapture() {
             const submitBtn = e.target.querySelector('.email-submit');
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.textContent = currentLanguage === 'de' ? 'Wird gesendet...' : 'Sending...';
+                submitBtn.textContent = SENDING[activeLanguage()] || SENDING.en;
             }
             
             // Close modal after a brief delay to allow form submission
@@ -235,7 +188,7 @@ function initializeEmailCapture() {
             const submitBtn = e.target.querySelector('.newsletter-submit');
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.textContent = currentLanguage === 'de' ? 'Wird gesendet...' : 'Sending...';
+                submitBtn.textContent = SENDING[activeLanguage()] || SENDING.en;
             }
             
             // Form will submit normally to Formspree
@@ -280,16 +233,8 @@ function setFormTimestamps() {
 }
 
 function showSubmissionFeedback(source) {
-    let message;
-    if (currentLanguage === 'de') {
-        message = source === 'popup' 
-            ? 'Vielen Dank! Ihre Anfrage wurde gesendet. Wir kontaktieren Sie bald mit dem VR-Guide.'
-            : 'Vielen Dank! Ihre Newsletter-Anfrage wurde gesendet.';
-    } else {
-        message = source === 'popup'
-            ? 'Thank you! Your request has been sent. We\'ll contact you soon with the VR Guide.'
-            : 'Thank you! Your newsletter request has been sent.';
-    }
+    const copy = FEEDBACK[activeLanguage()] || FEEDBACK.en;
+    const message = source === 'popup' ? copy.popup : copy.newsletter;
     
     // Create and show temporary notification
     const notification = document.createElement('div');
@@ -420,9 +365,8 @@ function adjustLayoutForScreenSize() {
 }
 
 // Export functions for global use
+// Language is no longer exported here — use window.GFLang (lang.js).
 window.VRWebsite = {
-    toggleLanguage,
-    updateLanguage,
     contactUs,
     showModal,
     closeModal,

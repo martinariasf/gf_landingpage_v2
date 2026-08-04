@@ -21,9 +21,12 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -31,15 +34,17 @@
                 <a href="index.html" aria-label="GF Innovative Solutions — Startseite / home"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
             </div>
             <div class="nav-menu">
-                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen">Services</a>
-                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform">AI Platform</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot">Pilot</a>
-                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team">Team</a>
-                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns">About</a>
-                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment">Free AI Assessment</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
-                </button>
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform" data-es="Plataforma de IA">AI Platform</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns" data-es="Quiénes somos">About</a>
+                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
             <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false">
                 <span></span>
@@ -53,8 +58,8 @@
     <section id="main" tabindex="-1" class="hero" style="min-height: auto; padding: 120px 0 64px 0;">
         <div class="hero-container" style="grid-template-columns: 1fr;">
             <div class="hero-content" style="text-align: center;">
-                <h1 class="hero-title" data-en="Free AI Assessment" data-de="Kostenlose KI-Bewertung">Free AI Assessment</h1>
-                <p class="hero-subtitle" data-en="We analyse your highest-burden processes and show you exactly where AI creates measurable value — before you spend a cent." data-de="Wir analysieren Ihre aufwändigsten Prozesse und zeigen Ihnen genau, wo KI messbaren Mehrwert schafft — bevor Sie einen Cent ausgeben.">
+                <h1 class="hero-title" data-en="Free AI Assessment" data-de="Kostenlose KI-Bewertung" data-es="Evaluación de IA gratuita">Free AI Assessment</h1>
+                <p class="hero-subtitle" data-en="We analyse your highest-burden processes and show you exactly where AI creates measurable value — before you spend a cent." data-de="Wir analysieren Ihre aufwändigsten Prozesse und zeigen Ihnen genau, wo KI messbaren Mehrwert schafft — bevor Sie einen Cent ausgeben." data-es="Analizamos los procesos que más le pesan y le mostramos exactamente dónde la IA genera valor medible, antes de que gaste un céntimo.">
                     We analyse your highest-burden processes and show you exactly where AI creates measurable value — before you spend a cent.
                 </p>
             </div>
@@ -64,33 +69,33 @@
     <!-- Express Tier (€0) -->
     <section class="section-primary" style="padding-top: 64px;">
         <div class="container">
-            <h2 class="section-title" data-en="Express Tier — €0" data-de="Express-Stufe — €0">Express Tier — €0</h2>
+            <h2 class="section-title" data-en="Express Tier — €0" data-de="Express-Stufe — €0" data-es="Nivel Express — 0 €">Express Tier — €0</h2>
 
             <div class="differences-grid">
                 <div class="difference-item">
                     <div class="difference-icon"><span style="font-weight:700;font-size:16px;">1</span></div>
-                    <h3 data-en="Validation Meeting" data-de="Validierungsgespräch">Validation Meeting</h3>
-                    <p data-en="20-minute call to qualify your processes and confirm fit." data-de="20-minütiges Gespräch, um Ihre Prozesse zu qualifizieren und die Eignung zu bestätigen.">20-minute call to qualify your processes and confirm fit.</p>
+                    <h3 data-en="Validation Meeting" data-de="Validierungsgespräch" data-es="Reunión de validación">Validation Meeting</h3>
+                    <p data-en="20-minute call to qualify your processes and confirm fit." data-de="20-minütiges Gespräch, um Ihre Prozesse zu qualifizieren und die Eignung zu bestätigen." data-es="Llamada de 20 minutos para calificar sus procesos y confirmar el encaje.">20-minute call to qualify your processes and confirm fit.</p>
                 </div>
                 <div class="difference-item">
                     <div class="difference-icon"><span style="font-weight:700;font-size:16px;">2</span></div>
-                    <h3 data-en="Client Submission" data-de="Einreichung">Client Submission</h3>
-                    <p data-en="You submit your process documentation for analysis." data-de="Sie reichen Ihre Prozessdokumentation zur Analyse ein.">You submit your process documentation for analysis.</p>
+                    <h3 data-en="Client Submission" data-de="Einreichung" data-es="Envío del cliente">Client Submission</h3>
+                    <p data-en="You submit your process documentation for analysis." data-de="Sie reichen Ihre Prozessdokumentation zur Analyse ein." data-es="Usted envía la documentación de sus procesos para el análisis.">You submit your process documentation for analysis.</p>
                 </div>
                 <div class="difference-item">
                     <div class="difference-icon"><span style="font-weight:700;font-size:16px;">3</span></div>
-                    <h3 data-en="AI Analysis (48–72h)" data-de="KI-Analyse (48–72h)">AI Analysis (48–72h)</h3>
-                    <p data-en="We run a structured AI analysis on your submitted processes." data-de="Wir führen eine strukturierte KI-Analyse Ihrer eingereichten Prozesse durch.">We run a structured AI analysis on your submitted processes.</p>
+                    <h3 data-en="AI Analysis (48–72h)" data-de="KI-Analyse (48–72h)" data-es="Análisis de IA (48-72 h)">AI Analysis (48–72h)</h3>
+                    <p data-en="We run a structured AI analysis on your submitted processes." data-de="Wir führen eine strukturierte KI-Analyse Ihrer eingereichten Prozesse durch." data-es="Realizamos un análisis estructurado con IA sobre los procesos que nos envió.">We run a structured AI analysis on your submitted processes.</p>
                 </div>
                 <div class="difference-item">
                     <div class="difference-icon"><span style="font-weight:700;font-size:16px;">4</span></div>
-                    <h3 data-en="Results Presentation" data-de="Ergebnispräsentation">Results Presentation</h3>
-                    <p data-en="45-minute debrief where we present findings and recommendations." data-de="45-minütiges Debriefing, in dem wir Ergebnisse und Empfehlungen vorstellen.">45-minute debrief where we present findings and recommendations.</p>
+                    <h3 data-en="Results Presentation" data-de="Ergebnispräsentation" data-es="Presentación de resultados">Results Presentation</h3>
+                    <p data-en="45-minute debrief where we present findings and recommendations." data-de="45-minütiges Debriefing, in dem wir Ergebnisse und Empfehlungen vorstellen." data-es="Sesión de 45 minutos en la que presentamos hallazgos y recomendaciones.">45-minute debrief where we present findings and recommendations.</p>
                 </div>
             </div>
 
             <div class="text-center mt-32">
-                <a href="https://calendly.com/gfinnovative/ai-assessment" class="btn btn-primary btn-large" data-en="Book Free Assessment" data-de="Kostenlose Bewertung buchen">Book Free Assessment</a>
+                <a href="https://calendly.com/gfinnovative/ai-assessment" class="btn btn-primary btn-large" data-en="Book Free Assessment" data-de="Kostenlose Bewertung buchen" data-es="Reservar evaluación gratuita">Book Free Assessment</a>
             </div>
         </div>
     </section>
@@ -98,7 +103,7 @@
     <!-- Premium Tiers -->
     <section class="section-secondary">
         <div class="container">
-            <h2 class="section-title" data-en="Premium Tiers" data-de="Premium-Stufen">Premium Tiers</h2>
+            <h2 class="section-title" data-en="Premium Tiers" data-de="Premium-Stufen" data-es="Niveles Premium">Premium Tiers</h2>
 
             <!-- overflow-x on the wrapper: the 3-column table pushed the page
                  20px wider than a 375px viewport. -->
@@ -106,28 +111,28 @@
                 <table style="width: 100%; min-width: 520px; border-collapse: collapse; background: var(--pure-white); border-radius: var(--border-radius-large); overflow: hidden; box-shadow: 0 4px 20px rgba(140, 190, 125, 0.08);">
                     <thead>
                         <tr style="background: var(--primary-blue); color: var(--pure-white);">
-                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Tier" data-de="Stufe">Tier</th>
-                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Price" data-de="Preis">Price</th>
-                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Includes" data-de="Enthält">Includes</th>
+                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Tier" data-de="Stufe" data-es="Nivel">Tier</th>
+                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Price" data-de="Preis" data-es="Precio">Price</th>
+                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Includes" data-de="Enthält" data-es="Incluye">Includes</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr style="border-bottom: 1px solid var(--medium-gray);">
                             <td style="padding: 16px 24px; font-weight: 600;">Tier 1</td>
-                            <td style="padding: 16px 24px;" data-en="from €1,000" data-de="ab €1.000">from €1,000</td>
-                            <td style="padding: 16px 24px;" data-en="Process Screening + Process Map" data-de="Prozess-Screening + Prozesslandkarte">Process Screening + Process Map</td>
+                            <td style="padding: 16px 24px;" data-en="from €1,000" data-de="ab €1.000" data-es="desde 1.000 €">from €1,000</td>
+                            <td style="padding: 16px 24px;" data-en="Process Screening + Process Map" data-de="Prozess-Screening + Prozesslandkarte" data-es="Diagnóstico de procesos + mapa de procesos">Process Screening + Process Map</td>
                         </tr>
                         <tr>
                             <td style="padding: 16px 24px; font-weight: 600;">Tier 2</td>
-                            <td style="padding: 16px 24px;" data-en="from €1,600" data-de="ab €1.600">from €1,600</td>
-                            <td style="padding: 16px 24px;" data-en="Screening + Process Map + Roadmap + On-site visit" data-de="Screening + Prozesslandkarte + Roadmap + Vor-Ort-Besuch">Screening + Process Map + Roadmap + On-site visit</td>
+                            <td style="padding: 16px 24px;" data-en="from €1,600" data-de="ab €1.600" data-es="desde 1.600 €">from €1,600</td>
+                            <td style="padding: 16px 24px;" data-en="Screening + Process Map + Roadmap + On-site visit" data-de="Screening + Prozesslandkarte + Roadmap + Vor-Ort-Besuch" data-es="Diagnóstico + mapa de procesos + hoja de ruta + visita presencial">Screening + Process Map + Roadmap + On-site visit</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div class="text-center mt-32">
-                <a href="index.html#contact" class="btn btn-primary btn-large" data-en="Contact us for Premium" data-de="Kontaktieren Sie uns für Premium">Contact us for Premium</a>
+                <a href="index.html#contact" class="btn btn-primary btn-large" data-en="Contact us for Premium" data-de="Kontaktieren Sie uns für Premium" data-es="Contáctenos para Premium">Contact us for Premium</a>
             </div>
         </div>
     </section>
@@ -138,29 +143,29 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Guided by tech, powered by people.</p>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Services" data-de="Leistungen">Services</h2>
+                    <h2 data-en="Services" data-de="Leistungen" data-es="Servicios">Services</h2>
                     <ul>
-                        <li><a href="index.html#services" data-en="AI Implementation & Strategy" data-de="KI-Implementierung & Strategie">AI Implementation & Strategy</a></li>
-                        <li><a href="index.html#services" data-en="Custom AI Agents & Automation" data-de="Individuelle KI-Agenten & Automatisierung">Custom AI Agents & Automation</a></li>
-                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung">VR/AR Development</a></li>
-                        <li><a href="index.html#services" data-en="Fractional CTO Services" data-de="Fractional CTO Services">Fractional CTO Services</a></li>
+                        <li><a href="index.html#services" data-en="AI Implementation & Strategy" data-de="KI-Implementierung & Strategie" data-es="Implementación y estrategia de IA">AI Implementation & Strategy</a></li>
+                        <li><a href="index.html#services" data-en="Custom AI Agents & Automation" data-de="Individuelle KI-Agenten & Automatisierung" data-es="Agentes de IA y automatización a medida">Custom AI Agents & Automation</a></li>
+                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung" data-es="Desarrollo de RV/RA">VR/AR Development</a></li>
+                        <li><a href="index.html#services" data-en="Fractional CTO Services" data-de="Fractional CTO Services" data-es="Servicios de CTO a tiempo parcial">Fractional CTO Services</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt">Contact</h2>
+                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
                 <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> |
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> |
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>

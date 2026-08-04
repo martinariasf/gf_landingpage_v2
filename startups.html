@@ -33,9 +33,12 @@
       window.__GA_MEASUREMENT_ID__ = 'G-2D1MXJ2SMZ';
       window.__CONSENT_VERSION__ = 'startup-v1';
     </script>
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
+         page scripts below, which read the active language. -->
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen">Skip to content</a>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -48,12 +51,14 @@
                 <span></span>
             </button>
             <div class="nav-menu">
-                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite">Home</a>
-                <a href="#growth-journey" class="nav-link" data-en="Growth Journey" data-de="Wachstumsreise">Growth Journey</a>
-                <a href="#contact" class="nav-link" data-en="Contact" data-de="Kontakt">Contact</a>
-                <button class="language-toggle" type="button" aria-label="Toggle Language">
-                    <span id="current-lang">DE</span> | <span id="alt-lang">EN</span>
-                </button>
+                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite" data-es="Inicio">Home</a>
+                <a href="#growth-journey" class="nav-link" data-en="Growth Journey" data-de="Wachstumsreise" data-es="Recorrido de crecimiento">Growth Journey</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -62,17 +67,17 @@
     <section id="main" tabindex="-1" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title" data-en="From Idea to Scale-Up" data-de="Von der Idee zum Scale-Up">
+                <h1 class="hero-title" data-en="From Idea to Scale-Up" data-de="Von der Idee zum Scale-Up" data-es="De la idea al scale-up">
                     From Idea to Scale-Up
                 </h1>
-                <p class="hero-subtitle" data-en="Navigate your startup journey with AI-powered insights and German engineering precision." data-de="Navigieren Sie Ihre Startup-Reise mit KI-gestützten Erkenntnissen und deutscher Ingenieursgenauigkeit.">
+                <p class="hero-subtitle" data-en="Navigate your startup journey with AI-powered insights and German engineering precision." data-de="Navigieren Sie Ihre Startup-Reise mit KI-gestützten Erkenntnissen und deutscher Ingenieursgenauigkeit." data-es="Recorra el camino de su startup con análisis impulsados por IA y la precisión de la ingeniería alemana.">
                     Navigate your startup journey with AI-powered insights and German engineering precision.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#growth-journey" class="btn btn-primary" data-en="Start Your Journey" data-de="Beginnen Sie Ihre Reise">
+                    <a href="#growth-journey" class="btn btn-primary" data-en="Start Your Journey" data-de="Beginnen Sie Ihre Reise" data-es="Comenzar el recorrido">
                         Start Your Journey
                     </a>
-                    <a href="#contact" class="btn btn-secondary" data-en="Book Consultation" data-de="Beratung buchen">
+                    <a href="#contact" class="btn btn-secondary" data-en="Book Consultation" data-de="Beratung buchen" data-es="Reservar consultoría">
                         Book Consultation
                     </a>
                 </div>
@@ -91,8 +96,8 @@
     <!-- Growth Journey Section -->
     <section id="growth-journey" class="section-primary" style="background: url('images/opt/bg-consulting-4.webp') no-repeat center center/cover;">
         <div class="container">
-            <h2 class="section-title" data-en="Your Startup Growth Journey" data-de="Ihre Startup-Wachstumsreise" style="margin-bottom: 24px;">Your Startup Growth Journey</h2>
-            <p class="section-description" data-en="Click on each stage to explore the strategic elements that will accelerate your startup's growth." data-de="Klicken Sie auf jede Phase, um die strategischen Elemente zu erkunden, die das Wachstum Ihres Startups beschleunigen werden." style="margin-bottom: 40px; font-size: 1.2rem;">
+            <h2 class="section-title" data-en="Your Startup Growth Journey" data-de="Ihre Startup-Wachstumsreise" data-es="El recorrido de crecimiento de su startup" style="margin-bottom: 24px;">Your Startup Growth Journey</h2>
+            <p class="section-description" data-en="Click on each stage to explore the strategic elements that will accelerate your startup's growth." data-de="Klicken Sie auf jede Phase, um die strategischen Elemente zu erkunden, die das Wachstum Ihres Startups beschleunigen werden." data-es="Haga clic en cada etapa para explorar los elementos estratégicos que acelerarán el crecimiento de su startup." style="margin-bottom: 40px; font-size: 1.2rem;">
                 Click on each stage to explore the strategic elements that will accelerate your startup's growth.
             </p>
 
@@ -102,19 +107,19 @@
                  220px box at left:45% pushed the page 16px past a 375px screen. -->
             <div class="growth-stage" style="position:relative; min-height: 700px; width:100%;">
                 <div class="growth-box" data-step="startup-clarity" style="position:absolute;left:5%;top:600px;width:220px;cursor:pointer;">
-                    <strong data-en="Startup Clarity" data-de="Startup-Klarheit">Startup Clarity</strong>
+                    <strong data-en="Startup Clarity" data-de="Startup-Klarheit" data-es="Claridad de startup">Startup Clarity</strong>
                 </div>
                 <div class="growth-box" data-step="revenue-engine" style="position:absolute;left:15%;top:530px;width:220px;cursor:pointer;">
-                    <strong data-en="Revenue Engine" data-de="Umsatzmotor">Revenue Engine</strong>
+                    <strong data-en="Revenue Engine" data-de="Umsatzmotor" data-es="Motor de ingresos">Revenue Engine</strong>
                 </div>
                 <div class="growth-box" data-step="sales-boost" style="position:absolute;left:25%;top:460px;width:220px;cursor:pointer;">
-                    <strong data-en="Sales Boost" data-de="Verkaufssteigerung">Sales Boost</strong>
+                    <strong data-en="Sales Boost" data-de="Verkaufssteigerung" data-es="Impulso comercial">Sales Boost</strong>
                 </div>
                 <div class="growth-box" data-step="growth-capabilities" style="position:absolute;left:35%;top:390px;width:220px;cursor:pointer;">
-                    <strong data-en="Growth Capabilities" data-de="Wachstumsfähigkeiten">Growth Capabilities</strong>
+                    <strong data-en="Growth Capabilities" data-de="Wachstumsfähigkeiten" data-es="Capacidades de crecimiento">Growth Capabilities</strong>
                 </div>
                 <div class="growth-box" data-step="scale-strategy" style="position:absolute;left:45%;top:320px;width:220px;cursor:pointer;">
-                    <strong data-en="Scale Strategy" data-de="Skalierungsstrategie">Scale Strategy</strong>
+                    <strong data-en="Scale Strategy" data-de="Skalierungsstrategie" data-es="Estrategia de escalado">Scale Strategy</strong>
                 </div>
             </div>
 
@@ -132,7 +137,7 @@
     <!-- Why Choose GF Section -->
     <section class="section-secondary">
         <div class="container">
-            <h2 class="section-title" data-en="Why Startups Choose GF" data-de="Warum Startups GF wählen">Why Startups Choose GF</h2>
+            <h2 class="section-title" data-en="Why Startups Choose GF" data-de="Warum Startups GF wählen" data-es="Por qué las startups eligen GF">Why Startups Choose GF</h2>
             <div class="features-grid">
                 <div class="feature-item">
                     <div class="feature-icon">
@@ -140,8 +145,8 @@
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                         </svg>
                     </div>
-                    <h3 data-en="Rapid Prototyping" data-de="Rapid Prototyping">Rapid Prototyping</h3>
-                    <p data-en="From concept to MVP in weeks, not months." data-de="Vom Konzept zum MVP in Wochen, nicht Monaten.">From concept to MVP in weeks, not months.</p>
+                    <h3 data-en="Rapid Prototyping" data-de="Rapid Prototyping" data-es="Prototipado rápido">Rapid Prototyping</h3>
+                    <p data-en="From concept to MVP in weeks, not months." data-de="Vom Konzept zum MVP in Wochen, nicht Monaten." data-es="Del concepto al MVP en semanas, no en meses.">From concept to MVP in weeks, not months.</p>
                 </div>
                 
                 <div class="feature-item">
@@ -151,8 +156,8 @@
                             <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
                         </svg>
                     </div>
-                    <h3 data-en="AI Integration" data-de="KI-Integration">AI Integration</h3>
-                    <p data-en="Smart automation from day one." data-de="Intelligente Automatisierung von Tag eins.">Smart automation from day one.</p>
+                    <h3 data-en="AI Integration" data-de="KI-Integration" data-es="Integración de IA">AI Integration</h3>
+                    <p data-en="Smart automation from day one." data-de="Intelligente Automatisierung von Tag eins." data-es="Automatización inteligente desde el primer día.">Smart automation from day one.</p>
                 </div>
                 
                 <div class="feature-item">
@@ -161,8 +166,8 @@
                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                         </svg>
                     </div>
-                    <h3 data-en="Investor Ready" data-de="Investor-bereit">Investor Ready</h3>
-                    <p data-en="Pitch decks that secure funding." data-de="Pitch Decks, die Finanzierung sichern.">Pitch decks that secure funding.</p>
+                    <h3 data-en="Investor Ready" data-de="Investor-bereit" data-es="Listos para inversores">Investor Ready</h3>
+                    <p data-en="Pitch decks that secure funding." data-de="Pitch Decks, die Finanzierung sichern." data-es="Presentaciones que consiguen financiación.">Pitch decks that secure funding.</p>
                 </div>
             </div>
         </div>
@@ -171,13 +176,13 @@
     <!-- Contact Section -->
     <section id="contact" class="section-cta">
         <div class="container">
-            <h2 class="section-title" data-en="Ready to Scale Your Startup?" data-de="Bereit, Ihr Startup zu skalieren?">Ready to Scale Your Startup?</h2>
-            <p class="cta-description" data-en="Let's discuss your vision and create a roadmap for success." data-de="Lassen Sie uns über Ihre Vision sprechen und eine Roadmap für den Erfolg erstellen.">
+            <h2 class="section-title" data-en="Ready to Scale Your Startup?" data-de="Bereit, Ihr Startup zu skalieren?" data-es="¿Listo para escalar su startup?">Ready to Scale Your Startup?</h2>
+            <p class="cta-description" data-en="Let's discuss your vision and create a roadmap for success." data-de="Lassen Sie uns über Ihre Vision sprechen und eine Roadmap für den Erfolg erstellen." data-es="Hablemos de su visión y creemos una hoja de ruta hacia el éxito.">
                 Let's discuss your vision and create a roadmap for success.
             </p>
             
             <div class="calendly-container">
-                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary btn-large" target="_blank" data-en="Book Your Strategy Call" data-de="Buchen Sie Ihr Strategiegespräch">
+                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary btn-large" target="_blank" data-en="Book Your Strategy Call" data-de="Buchen Sie Ihr Strategiegespräch" data-es="Reserve su llamada de estrategia">
                     Book Your Strategy Call
                 </a>
             </div>
@@ -190,28 +195,28 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben.">Guided by tech, powered by people.</p>
+                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Guided by tech, powered by people.</p>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="For Startups" data-de="Für Startups">For Startups</h2>
+                    <h2 data-en="For Startups" data-de="Für Startups" data-es="Para startups">For Startups</h2>
                     <ul>
-                        <li><a href="#" data-en="MVP Development" data-de="MVP-Entwicklung">MVP Development</a></li>
-                        <li><a href="#" data-en="AI Integration" data-de="KI-Integration">AI Integration</a></li>
-                        <li><a href="#" data-en="Investor Preparation" data-de="Investor-Vorbereitung">Investor Preparation</a></li>
+                        <li><a href="#" data-en="MVP Development" data-de="MVP-Entwicklung" data-es="Desarrollo de MVP">MVP Development</a></li>
+                        <li><a href="#" data-en="AI Integration" data-de="KI-Integration" data-es="Integración de IA">AI Integration</a></li>
+                        <li><a href="#" data-en="Investor Preparation" data-de="Investor-Vorbereitung" data-es="Preparación para inversores">Investor Preparation</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt">Contact</h2>
+                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
                     <p>info@gfinnov.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten.">All rights reserved.</span></p>
+                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
                 <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum">Impressum</a> | 
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung">Privacy Policy</a>
+                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> | 
+                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -221,20 +226,20 @@
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
         <div class="cookie-banner__inner">
             <div class="cookie-banner__text">
-                <strong data-en="We value your privacy" data-de="Wir respektieren Ihre Privatsphäre">We value your privacy</strong>
-                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren.">This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept.</p>
+                <strong data-en="We value your privacy" data-de="Wir respektieren Ihre Privatsphäre" data-es="Valoramos su privacidad">We value your privacy</strong>
+                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können wählen, welche Cookies Sie akzeptieren." data-es="Este sitio web utiliza cookies para mejorar su experiencia y ofrecer análisis. Puede elegir qué cookies acepta.">This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept.</p>
             </div>
             <div class="cookie-banner__actions">
-                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren">Accept All</button>
-                <button id="cookie-reject" class="btn btn-secondary" data-en="Essential Only" data-de="Nur notwendige">Essential Only</button>
-                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen">Customize</button>
+                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren" data-es="Aceptar todas">Accept All</button>
+                <button id="cookie-reject" class="btn btn-secondary" data-en="Essential Only" data-de="Nur notwendige" data-es="Solo necesarias">Essential Only</button>
+                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen" data-es="Personalizar">Customize</button>
             </div>
         </div>
     </div>
 
     <!-- Cookie Settings Entry Point -->
     <div class="cookie-settings-entry">
-        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen">Cookie Settings</button>
+        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen" data-es="Configuración de cookies">Cookie Settings</button>
     </div>
 
     <!-- Cookie Modal -->
@@ -242,16 +247,16 @@
         <div class="cookie-modal__backdrop" onclick="closeModal()"></div>
         <div class="cookie-modal__dialog">
             <div class="cookie-modal__header">
-                <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen">Cookie Preferences</h3>
+                <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen" data-es="Preferencias de cookies">Cookie Preferences</h3>
                 <button id="cookie-close" class="modal-close" aria-label="Close">&times;</button>
             </div>
             <div class="cookie-modal__body">
-                <p data-en="We use cookies to improve your experience on our website. You can customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen.">We use cookies to improve your experience on our website. You can customize your preferences below.</p>
+                <p data-en="We use cookies to improve your experience on our website. You can customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Sie können Ihre Präferenzen unten anpassen." data-es="Utilizamos cookies para mejorar su experiencia en nuestro sitio web. Puede ajustar sus preferencias a continuación.">We use cookies to improve your experience on our website. You can customize your preferences below.</p>
                 
                 <div class="cookie-toggle">
                     <div>
-                        <strong data-en="Essential Cookies" data-de="Notwendige Cookies">Essential Cookies</strong>
-                        <p data-en="Required for the website to function properly." data-de="Erforderlich für das ordnungsgemäße Funktionieren der Website.">Required for the website to function properly.</p>
+                        <strong data-en="Essential Cookies" data-de="Notwendige Cookies" data-es="Cookies esenciales">Essential Cookies</strong>
+                        <p data-en="Required for the website to function properly." data-de="Erforderlich für das ordnungsgemäße Funktionieren der Website." data-es="Necesarias para el correcto funcionamiento del sitio web.">Required for the website to function properly.</p>
                     </div>
                     <div class="switch disabled">
                         <input type="checkbox" checked disabled aria-label="Notwendige Cookies (immer aktiv)">
@@ -260,8 +265,8 @@
                 
                 <div class="cookie-toggle">
                     <div>
-                        <strong data-en="Analytics Cookies" data-de="Analyse-Cookies">Analytics Cookies</strong>
-                        <p data-en="Help us understand how visitors interact with our website." data-de="Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.">Help us understand how visitors interact with our website.</p>
+                        <strong data-en="Analytics Cookies" data-de="Analyse-Cookies" data-es="Cookies de análisis">Analytics Cookies</strong>
+                        <p data-en="Help us understand how visitors interact with our website." data-de="Helfen uns zu verstehen, wie Besucher mit unserer Website interagieren." data-es="Nos ayudan a entender cómo interactúan los visitantes con nuestro sitio web.">Help us understand how visitors interact with our website.</p>
                     </div>
                     <div class="switch">
                         <input type="checkbox" id="toggle-analytics" aria-label="Analyse-Cookies">
@@ -269,7 +274,7 @@
                 </div>
             </div>
             <div class="cookie-modal__footer">
-                <button id="cookie-save" class="btn btn-primary" data-en="Save Preferences" data-de="Einstellungen speichern">Save Preferences</button>
+                <button id="cookie-save" class="btn btn-primary" data-en="Save Preferences" data-de="Einstellungen speichern" data-es="Guardar preferencias">Save Preferences</button>
             </div>
         </div>
     </div>
