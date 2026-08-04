@@ -1,4 +1,4 @@
-/* Site-wide language switching — EN / DE / ES.
+/* Site-wide language switching: EN / DE / ES.
  *
  * This replaces the eight near-identical copies that used to live in
  * script.js, startup-script.js, script-vr.js and inline in index.html,
@@ -43,7 +43,7 @@
     }
 
     // Returns [lang, persist]. ?lang= wins over a stored choice, so a campaign
-    // link can force a language for someone who once clicked a different one —
+    // link can force a language for someone who once clicked a different one,
     // and it persists, or the choice would be lost on the first internal link.
     function detect() {
         var fromUrl = '';

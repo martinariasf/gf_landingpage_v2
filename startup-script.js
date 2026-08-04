@@ -19,8 +19,8 @@ const MODAL_LABELS = {
 const growthContent = {
     'startup-clarity': {
         title: { 
-            en: "1. Startup Clarity – Building on solid foundation", 
-            de: "1. Startup Klarheit – Aufbau auf solidem Fundament",
+            en: "1. Startup Clarity: Building on solid foundation", 
+            de: "1. Startup Klarheit: Aufbau auf solidem Fundament",
             es: "1. Claridad de startup: construir sobre bases sólidas" 
         },
         text: { 
@@ -31,49 +31,49 @@ const growthContent = {
     },
     'revenue-engine': {
         title: { 
-            en: "2. Revenue Engine – Get your business model running", 
-            de: "2. Umsatzmotor – Ihr Geschäftsmodell in Gang bringen",
+            en: "2. Revenue Engine: Get your business model running", 
+            de: "2. Umsatzmotor: Ihr Geschäftsmodell in Gang bringen",
             es: "2. Motor de ingresos: ponga en marcha su modelo de negocio" 
         },
         text: { 
-            en: "For startups ready to turn traction into money.\n\nKey Areas:\n• Revenue strategy: Define scalable income streams and unlock smart monetization paths\n• Strategic partnerships: Discover who can open doors and fuel your growth\n• Business model optimization: Validate and refine your path to profitability\n• Market fit assessment: Ensure your product meets real market demand\n\nWhy it matters: A great idea is only half the journey. This package helps you make money faster – with the right partners and a revenue model that works.",
-            de: "Für Start-ups, die bereit sind, aus der Traktion Geld zu machen.\n\nKernbereiche:\n• Umsatzstrategie: Definieren Sie skalierbare Einkommensströme und erschließen Sie intelligente Monetarisierungspfade\n• Strategische Partnerschaften: Finden Sie heraus, wer Türen öffnen und Ihr Wachstum beflügeln kann\n• Geschäftsmodell-Optimierung: Validieren und verfeinern Sie Ihren Weg zur Profitabilität\n• Marktfit-Bewertung: Stellen Sie sicher, dass Ihr Produkt echte Marktnachfrage erfüllt\n\nWarum es wichtig ist: Eine großartige Idee ist nur die halbe Miete. Dieses Paket hilft Ihnen, schneller Geld zu verdienen – mit den richtigen Partnern und einem funktionierenden Geschäftsmodell.",
+            en: "For startups ready to turn traction into money.\n\nKey Areas:\n• Revenue strategy: Define scalable income streams and unlock smart monetization paths\n• Strategic partnerships: Discover who can open doors and fuel your growth\n• Business model optimization: Validate and refine your path to profitability\n• Market fit assessment: Ensure your product meets real market demand\n\nWhy it matters: A great idea is only half the journey. This package helps you make money faster, with the right partners and a revenue model that works.",
+            de: "Für Start-ups, die bereit sind, aus der Traktion Geld zu machen.\n\nKernbereiche:\n• Umsatzstrategie: Definieren Sie skalierbare Einkommensströme und erschließen Sie intelligente Monetarisierungspfade\n• Strategische Partnerschaften: Finden Sie heraus, wer Türen öffnen und Ihr Wachstum beflügeln kann\n• Geschäftsmodell-Optimierung: Validieren und verfeinern Sie Ihren Weg zur Profitabilität\n• Marktfit-Bewertung: Stellen Sie sicher, dass Ihr Produkt echte Marktnachfrage erfüllt\n\nWarum es wichtig ist: Eine großartige Idee ist nur die halbe Miete. Dieses Paket hilft Ihnen, schneller Geld zu verdienen, mit den richtigen Partnern und einem funktionierenden Geschäftsmodell.",
             es: "Para startups listas para convertir la tracción en dinero.\n\nÁreas clave:\n• Estrategia de ingresos: defina fuentes de ingresos escalables y abra vías de monetización inteligentes\n• Alianzas estratégicas: descubra quién puede abrirle puertas e impulsar su crecimiento\n• Optimización del modelo de negocio: valide y refine su camino a la rentabilidad\n• Evaluación del encaje con el mercado: asegúrese de que su producto responde a una demanda real\n\nPor qué importa: una buena idea es solo la mitad del camino. Este paquete le ayuda a ganar dinero antes, con los socios adecuados y un modelo de ingresos que funciona."
         }
     },
     'sales-boost': {
         title: { 
-            en: "3. Sales Boost – Turn interest into income", 
-            de: "3. Verkaufs-Schub – Interesse in Einkommen umwandeln",
+            en: "3. Sales Boost: Turn interest into income", 
+            de: "3. Verkaufsschub: Interesse in Einkommen umwandeln",
             es: "3. Impulso comercial: convierta el interés en ingresos" 
         },
         text: { 
-            en: "For growing startups ready to scale customer acquisition.\n\nKey Areas:\n• Sales acceleration: Optimize your channels and sharpen your pitch-to-close journey\n• Pitch readiness: Build a compelling deck and message that resonates with investors and customers alike\n• Customer acquisition: Develop systematic approaches to finding and converting prospects\n• Sales process optimization: Streamline your sales funnel for maximum efficiency\n\nWhy it matters: You have attention – now convert it. This package gives you the tools and confidence to sell, close, and grow.",
-            de: "Für wachsende Start-ups, die bereit sind, ihre Kundenakquise zu skalieren.\n\nKernbereiche:\n• Verkaufsbeschleunigung: Optimieren Sie Ihre Kanäle und verfeinern Sie Ihre Verkaufspräsentation\n• Überzeugende Ansprache: Erstellen Sie ein überzeugendes Pitch-Deck und eine Botschaft, die bei Investoren und Kunden ankommt\n• Kundenakquise: Entwickeln Sie systematische Ansätze zum Finden und Konvertieren von Interessenten\n• Verkaufsprozess-Optimierung: Optimieren Sie Ihren Verkaufstrichter für maximale Effizienz\n\nWarum es wichtig ist: Sie haben Aufmerksamkeit – jetzt geht es darum, diese in Umsatz umzuwandeln. Dieses Paket gibt Ihnen die Werkzeuge und das Selbstvertrauen, zu verkaufen, abzuschließen und zu wachsen.",
+            en: "For growing startups ready to scale customer acquisition.\n\nKey Areas:\n• Sales acceleration: Optimize your channels and sharpen your pitch-to-close journey\n• Pitch readiness: Build a compelling deck and message that resonates with investors and customers alike\n• Customer acquisition: Develop systematic approaches to finding and converting prospects\n• Sales process optimization: Streamline your sales funnel for maximum efficiency\n\nWhy it matters: You have attention. Now convert it. This package gives you the tools and confidence to sell, close, and grow.",
+            de: "Für wachsende Start-ups, die bereit sind, ihre Kundenakquise zu skalieren.\n\nKernbereiche:\n• Verkaufsbeschleunigung: Optimieren Sie Ihre Kanäle und verfeinern Sie Ihre Verkaufspräsentation\n• Überzeugende Ansprache: Erstellen Sie ein überzeugendes Pitch-Deck und eine Botschaft, die bei Investoren und Kunden ankommt\n• Kundenakquise: Entwickeln Sie systematische Ansätze zum Finden und Konvertieren von Interessenten\n• Verkaufsprozess-Optimierung: Optimieren Sie Ihren Verkaufstrichter für maximale Effizienz\n\nWarum es wichtig ist: Sie haben Aufmerksamkeit. Jetzt geht es darum, diese in Umsatz umzuwandeln. Dieses Paket gibt Ihnen die Werkzeuge und das Selbstvertrauen, zu verkaufen, abzuschließen und zu wachsen.",
             es: "Para startups en crecimiento listas para escalar la captación de clientes.\n\nÁreas clave:\n• Aceleración de ventas: optimice sus canales y afine el recorrido del pitch al cierre\n• Preparación del pitch: construya una presentación y un mensaje que convenzan tanto a inversores como a clientes\n• Captación de clientes: desarrolle métodos sistemáticos para encontrar y convertir prospectos\n• Optimización del proceso comercial: simplifique su embudo de ventas para ganar eficiencia\n\nPor qué importa: ya tiene la atención; ahora toca convertirla. Este paquete le da las herramientas y la confianza para vender, cerrar y crecer."
         }
     },
     'growth-capabilities': {
         title: { 
-            en: "4. Growth Capabilities – Build what makes you unstoppable", 
-            de: "4. Wachstumsfähigkeiten – Bauen Sie auf, was Sie unaufhaltsam macht",
+            en: "4. Growth Capabilities: Build what makes you unstoppable", 
+            de: "4. Wachstumsfähigkeiten: Bauen Sie auf, was Sie unaufhaltsam macht",
             es: "4. Capacidades de crecimiento: construya lo que le hace imparable" 
         },
         text: { 
-            en: "For scaling startups investing in long-term strength.\n\nKey Areas:\n• Strategic capabilities: Identify and build the talents, systems, and technologies that power your mission\n• Cost efficiency: Improve margins by working smarter, not just harder\n• AI Tools workshops: Equip your team with practical know-how to leverage cutting-edge AI tools for productivity and innovation\n• System optimization: Build processes that scale with your growth\n\nWhy it matters: Scaling isn't just about more customers – it's about stronger systems. This package helps you grow sustainably while staying agile.",
-            de: "Für wachstumsorientierte Start-ups, die in langfristige Stärke investieren.\n\nKernbereiche:\n• Strategische Fähigkeiten: Identifizieren und entwickeln Sie die Talente, Systeme und Technologien, die Ihre Mission antreiben\n• Kosteneffizienz: Verbessern Sie Ihre Margen, indem Sie klüger und nicht nur härter arbeiten\n• KI-Tools Workshops: Rüsten Sie Ihr Team mit praktischem Know-how aus, um moderne KI-Tools für Produktivität und Innovation zu nutzen\n• Systemoptimierung: Bauen Sie Prozesse auf, die mit Ihrem Wachstum skalieren\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden – es geht um stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben.",
+            en: "For scaling startups investing in long-term strength.\n\nKey Areas:\n• Strategic capabilities: Identify and build the talents, systems, and technologies that power your mission\n• Cost efficiency: Improve margins by working smarter, not just harder\n• AI Tools workshops: Equip your team with practical know-how to leverage cutting-edge AI tools for productivity and innovation\n• System optimization: Build processes that scale with your growth\n\nWhy it matters: Scaling isn't just about more customers. It's about stronger systems. This package helps you grow sustainably while staying agile.",
+            de: "Für wachstumsorientierte Start-ups, die in langfristige Stärke investieren.\n\nKernbereiche:\n• Strategische Fähigkeiten: Identifizieren und entwickeln Sie die Talente, Systeme und Technologien, die Ihre Mission antreiben\n• Kosteneffizienz: Verbessern Sie Ihre Margen, indem Sie klüger und nicht nur härter arbeiten\n• KI-Tools Workshops: Rüsten Sie Ihr Team mit praktischem Know-how aus, um moderne KI-Tools für Produktivität und Innovation zu nutzen\n• Systemoptimierung: Bauen Sie Prozesse auf, die mit Ihrem Wachstum skalieren\n\nWarum es wichtig ist: Skalierung bedeutet nicht nur mehr Kunden. Es geht um stärkere Systeme. Dieses Paket hilft Ihnen, nachhaltig zu wachsen und agil zu bleiben.",
             es: "Para startups en escalado que invierten en fortaleza a largo plazo.\n\nÁreas clave:\n• Capacidades estratégicas: identifique y desarrolle el talento, los sistemas y las tecnologías que sostienen su misión\n• Eficiencia de costos: mejore sus márgenes trabajando de forma más inteligente, no solo más duro\n• Talleres de herramientas de IA: dote a su equipo del conocimiento práctico para aprovechar la IA en productividad e innovación\n• Optimización de sistemas: construya procesos que escalen con su crecimiento\n\nPor qué importa: escalar no es solo tener más clientes, es tener sistemas más sólidos. Este paquete le ayuda a crecer de forma sostenible sin perder agilidad."
         }
     },
     'scale-strategy': {
         title: { 
-            en: "5. Scale Strategy – Become the category leader", 
-            de: "5. Skalierungsstrategie – Werden Sie zum Branchenführer",
+            en: "5. Scale Strategy: Become the category leader", 
+            de: "5. Skalierungsstrategie: Werden Sie zum Branchenführer",
             es: "5. Estrategia de escalado: conviértase en líder de su categoría" 
         },
         text: { 
             en: "For mature startups ready to lead, launch larger funding rounds or expand globally.\n\nKey Areas:\n• AI Tools mastery: Advanced AI integration to automate operations and build competitive advantages\n• Comprehensive strategy: All of the above packages fully tailored to your current scaling challenges\n• Senior advisor access: Tailored workshops and strategy sessions with experienced advisors\n• Market expansion: Strategic planning for geographic and vertical growth\n• Leadership development: Build the leadership capabilities needed for scale\n\nWhy it matters: When you're ready to scale up, you need more than just advice - you need strategic clout. This flagship package turns ambition into execution.",
-            de: "Für etablierte Start-ups, die bereit sind, zu führen, größere Finanzierungsrunden zu starten oder global zu expandieren.\n\nKernbereiche:\n• KI-Tools Mastery: Fortgeschrittene KI-Integration zur Automatisierung und Aufbau von Wettbewerbsvorteilen\n• Umfassende Strategie: All das oben Genannte – maßgeschneidert auf Ihre aktuellen Skalierungsherausforderungen\n• Senior-Berater-Zugang: Maßgeschneiderte Workshops und Strategiesitzungen mit erfahrenen Beratern\n• Markterweiterung: Strategische Planung für geografisches und vertikales Wachstum\n• Führungskräfteentwicklung: Bauen Sie die Führungskompetenzen auf, die für Skalierung erforderlich sind\n\nWarum es wichtig ist: Wenn Sie bereit sind zu wachsen, brauchen Sie mehr als nur Ratschläge – Sie brauchen strategische Schlagkraft. Dieses Flaggschiff-Paket verwandelt Ambitionen in Umsetzung.",
+            de: "Für etablierte Start-ups, die bereit sind, zu führen, größere Finanzierungsrunden zu starten oder global zu expandieren.\n\nKernbereiche:\n• KI-Tools Mastery: Fortgeschrittene KI-Integration zur Automatisierung und Aufbau von Wettbewerbsvorteilen\n• Umfassende Strategie: All das oben Genannte, maßgeschneidert auf Ihre aktuellen Skalierungsherausforderungen\n• Senior-Berater-Zugang: Maßgeschneiderte Workshops und Strategiesitzungen mit erfahrenen Beratern\n• Markterweiterung: Strategische Planung für geografisches und vertikales Wachstum\n• Führungskräfteentwicklung: Bauen Sie die Führungskompetenzen auf, die für Skalierung erforderlich sind\n\nWarum es wichtig ist: Wenn Sie bereit sind zu wachsen, brauchen Sie mehr als nur Ratschläge. Sie brauchen strategische Schlagkraft. Dieses Flaggschiff-Paket verwandelt Ambitionen in Umsetzung.",
             es: "Para startups maduras listas para liderar, levantar rondas mayores o expandirse globalmente.\n\nÁreas clave:\n• Dominio de las herramientas de IA: integración avanzada de IA para automatizar operaciones y crear ventajas competitivas\n• Estrategia integral: todos los paquetes anteriores, adaptados a sus retos actuales de escalado\n• Acceso a asesores sénior: talleres y sesiones de estrategia a medida con asesores experimentados\n• Expansión de mercado: planificación estratégica para el crecimiento geográfico y vertical\n• Desarrollo del liderazgo: construya las capacidades de dirección que exige el escalado\n\nPor qué importa: cuando está listo para escalar necesita más que consejos, necesita peso estratégico. Este paquete insignia convierte la ambición en ejecución."
         }
     }
@@ -382,7 +382,7 @@ function debounce(func, wait) {
 }
 
 // Export functions for potential use.
-// Language is no longer exported here — use window.GFLang (lang.js).
+// Language is no longer exported here; use window.GFLang (lang.js).
 window.StartupWebsite = {
     openGrowthModal,
     closeGrowthModal

@@ -1,6 +1,6 @@
 /* CSS Variables following Corporate Identity */
 :root {
-    /* NOTE: --primary-blue is green, not blue — the name is a fossil.
+    /* NOTE: --primary-blue is green, not blue; the name is a fossil.
        Both brand greens were #8BC07C/#8cbe7d, which fails WCAG AA in BOTH
        directions: 2.15:1 as text on white, and 2.12:1 as a ground under white
        text. They are used for both jobs throughout this stylesheet, so the fix
@@ -168,7 +168,7 @@ p {
     color: var(--innovation-green);
 }
 
-/* Language switch — three separate buttons rather than one cycling control.
+/* Language switch: three separate buttons rather than one cycling control.
    With EN/DE a toggle was fine; with a third language a cycler hides ES
    behind two clicks and never shows which languages exist.
    Light-navbar variant; styles.css carries the dark one. */
@@ -954,7 +954,7 @@ input[type="radio"] {
 
 /* Footer sits on the deep-green ground, so text there must be white. Without
    these, .footer-bottom links fell back to the global link colour and
-   .footer-section headings to --heading — both near-invisible on green. */
+   .footer-section headings to --heading, both near-invisible on green. */
 .footer-bottom,
 .footer-bottom a,
 .footer-bottom p,

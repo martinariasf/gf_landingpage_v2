@@ -1,5 +1,5 @@
 // Global variables
-// Language lives entirely in lang.js now — this file only reads the current
+// Language lives entirely in lang.js now; this file only reads the current
 // choice to pick the right copy for the growth modal, whose text is in JS
 // rather than in data-* attributes.
 let testimonialIndex = 0;
@@ -406,7 +406,7 @@ function addFloatingAnimations() {
 document.addEventListener('DOMContentLoaded', addFloatingAnimations);
 
 // Export functions for potential use in other scripts.
-// Language is no longer exported here — use window.GFLang (lang.js).
+// Language is no longer exported here; use window.GFLang (lang.js).
 window.GFWebsite = {
     switchTab,
     handleContactForm,

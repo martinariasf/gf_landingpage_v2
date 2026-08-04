@@ -1,6 +1,6 @@
 /* CSS Variables following Corporate Identity */
 :root {
-    /* NOTE: --primary-blue is green, not blue — the name is a fossil.
+    /* NOTE: --primary-blue is green, not blue; the name is a fossil.
        Both brand greens were #8BC07C/#8cbe7d, which fails WCAG AA in BOTH
        directions: 2.15:1 as text on white, and 2.12:1 as a ground under white
        text. They are used for both jobs throughout this stylesheet, so the fix
@@ -163,7 +163,7 @@ p {
     color: #dbeafe;
 }
 
-/* Language switch — three separate buttons rather than one cycling control.
+/* Language switch: three separate buttons rather than one cycling control.
    With EN/DE a toggle was fine; with a third language a cycler hides ES
    behind two clicks and never shows which languages exist. */
 .lang-switch {
@@ -216,7 +216,7 @@ p {
 }
 
 /* Focus ring comes from the .navbar :focus-visible rule in the accessibility
-   section below — don't fork it here. */
+   section below; don't fork it here. */
 
 .nav-toggle,
 .nav-hamburger {
@@ -1441,7 +1441,7 @@ p {
 .mt-32 { margin-top: 32px; }
 .mt-48 { margin-top: 48px; }
 
-/* Digital Workers Section – compact rectangular layout */
+/* Digital Workers Section: compact rectangular layout */
 #digital-workers .member-photo {
     width: 160px;
     height: 160px;
@@ -1559,7 +1559,7 @@ button.nav-toggle {
     min-height: 44px;
 }
 /* Each language is its own tap target, so the floor belongs on the options,
-   not on the group. Full 44px only where the pointer is a finger — forcing it
+   not on the group. Full 44px only where the pointer is a finger; forcing it
    on desktop would make a 52px-tall control sit in the navbar. */
 .lang-switch .lang-opt { min-height: 32px; }
 @media (pointer: coarse) {

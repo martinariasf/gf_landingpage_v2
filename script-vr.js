@@ -365,7 +365,7 @@ function adjustLayoutForScreenSize() {
 }
 
 // Export functions for global use
-// Language is no longer exported here — use window.GFLang (lang.js).
+// Language is no longer exported here; use window.GFLang (lang.js).
 window.VRWebsite = {
     contactUs,
     showModal,
