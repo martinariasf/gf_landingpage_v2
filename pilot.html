@@ -20,27 +20,193 @@
     <meta name="description" content="Three free spots: pilot the Viktor AI marketing platform with one real client for three weeks. Apply in about 3 minutes.">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* This page still rides on styles.css (the legacy sheet the other
+           subpages use), but index.html was rebuilt on Inter with a dark navy
+           chrome. Re-point the legacy font token instead of forking every
+           rule, then override the shell (navbar + footer) below so the pilot
+           page reads as the same site as the homepage. */
+        :root {
+            --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        /* styles.css already carries --accent-green: #15803d, the homepage
+           green. Use that rather than minting a second token for it. */
+
+        /* ── Navigation: ported from index.html ───────────────── */
         .navbar {
-            background: linear-gradient(135deg, #1560B2 0%, #2a4a9e 55%, #4D8DB4 100%);
+            background: rgba(11,22,40,0.95);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 2px 20px rgba(21, 96, 178, 0.18);
-            border-bottom: 1px solid rgba(255,255,255,0.12);
+            box-shadow: none;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 0;
+            z-index: 10100;
+            transition: background .3s;
         }
-        .nav-link,
-        .nav-link:hover,
-        .nav-toggle span { background: #f1f5f9; }
-        @media (max-width: 768px) {
-            .nav-menu { background: rgba(21, 96, 178, 0.96); }
+        .nav-container {
+            height: 68px;
+            position: relative;
+        }
+        .nav-logo .logo { height: 36px; width: auto; }
+        .nav-menu { gap: 28px; }
+        .nav-link {
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color .2s;
+        }
+        .nav-link:hover { color: #f1f5f9; }
+        .nav-cta {
+            background: var(--accent-green);
+            color: #fff !important;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all .25s;
+        }
+        .nav-cta:hover {
+            background: #16a34a;
+            color: #fff !important;
+            transform: translateY(-1px);
+        }
+        /* The dark-navbar variant of the language switch. */
+        .lang-switch {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 8px;
+        }
+        .lang-switch .lang-opt {
+            color: #94a3b8;      /* 5.3:1 on the dark navbar */
+            font-weight: 500;
+            min-height: 32px;
+        }
+        .lang-switch .lang-opt:hover {
+            color: #f1f5f9;
+            background: rgba(255,255,255,0.08);
+        }
+        .lang-switch .lang-opt.active {
+            color: #0b1628;
+            background: #f1f5f9;
+            font-weight: 700;
+        }
+        @media (pointer: coarse) {
+            .lang-switch .lang-opt { min-width: 44px; min-height: 44px; }
+        }
+        /* Mobile-only twin of the language switch, next to the hamburger. */
+        .nav-mobile-lang {
+            display: none;
+            align-items: center;
+            margin-left: auto;
+            margin-right: 8px;
+            min-height: 44px;
+        }
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+            gap: 5px;
+            /* 44x44 minimum tap target (WCAG 2.5.5); bars stay 28px wide. */
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 11px 8px;
+            z-index: 10102;
+        }
+        .nav-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            margin: 0;
+            background: #f1f5f9;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        /* Bars are 2px with 5px gaps, so each outer bar is 7px off centre. */
+        .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .nav-menu.open {
+            display: flex !important;
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            top: 68px;
+            left: 0;
+            right: 0;
+            background: rgba(11,22,40,0.98);
+            padding: 20px 24px;
+            gap: 16px;
+            z-index: 10101;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        @media (max-width: 920px) {
+            .nav-menu { display: none; }
+            .nav-hamburger { display: flex; }
+            /* The language switch is the one control a German visitor may
+               need before anything else: keep it out of the collapsed menu. */
+            .nav-mobile-lang { display: inline-flex; }
+            .nav-menu .lang-switch { display: none; }
+            .nav-menu.open .nav-link,
+            .nav-menu.open .nav-cta { display: block; padding: 12px 0; }
+            .nav-menu.open .nav-cta { padding: 10px 16px; }
+        }
+
+        /* ── Footer: ported from index.html ───────────────────── */
+        .footer {
+            background: #0b1628;
+            color: #f1f5f9;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-logo { height: 32px; width: auto; margin-bottom: 12px; }
+        .footer-tagline { color: #94a3b8; font-size: 14px; }
+        .footer h4 { font-size: 14px; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; color: #f1f5f9; }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 8px; }
+        .footer ul a { color: #94a3b8; font-size: 14px; text-decoration: none; }
+        .footer ul a:hover { color: var(--accent-green); }
+        .footer-grid ul a { display: inline-block; padding: 5px 0; }
+        .footer-contact p { color: #94a3b8; font-size: 14px; margin-bottom: 4px; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+        /* 24x24 minimum target (WCAG 2.5.8). */
+        .footer-bottom a {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-block;
+            padding: 6px 4px;
+        }
+        .footer-bottom a:hover { color: var(--accent-green); }
+        @media (max-width: 920px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
 
         /* ── Hero ─────────────────────────────────────────────── */
         .pilot-hero {
             background: linear-gradient(135deg, #1560B2 0%, #2a4a9e 52%, var(--innovation-green) 100%);
             padding: 140px 0 64px 0;
-            margin-top: 80px;
+            margin-top: 68px;   /* the navbar is a fixed 68px bar, as on index.html */
             text-align: center;
             color: var(--pure-white);
         }
@@ -424,25 +590,36 @@
 <body>
     <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
+                <a href="index.html" aria-label="GF Innovative Solutions, home">
+                    <img src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" class="logo" width="340" height="72">
+                </a>
             </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite" data-es="Inicio">Home</a>
-                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
-                <a href="index.html#contact" class="nav-link" data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</a>
+            <div class="nav-mobile-lang">
                 <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
                     <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
                     <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
                     <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
                 </div>
             </div>
-            <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+            <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
                 <span></span><span></span><span></span>
             </button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="index.html#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform" data-es="Plataforma de IA">AI Platform</a>
+                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
+                <a href="index.html#about" class="nav-link" data-en="About" data-de="Über uns" data-es="Quiénes somos">About</a>
+                <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -965,10 +1142,34 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img loading="lazy" decoding="async" width="340" height="72" src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" class="footer-logo">
+                    <p class="footer-tagline" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie." data-es="Guiados por personas, impulsados por la tecnología.">Guided by people, powered by tech.</p>
+                </div>
+                <div>
+                    <h4 data-en="Explore" data-de="Entdecken" data-es="Explorar">Explore</h4>
+                    <ul>
+                        <li><a href="index.html#services" data-en="Our Services" data-de="Unsere Leistungen" data-es="Nuestros servicios">Our Services</a></li>
+                        <li><a href="how-we-work.html" data-en="How We Work" data-de="Wie wir arbeiten" data-es="Cómo trabajamos">How We Work</a></li>
+                        <li><a href="use-cases.html" data-en="Use Cases" data-de="Anwendungsfälle" data-es="Casos de uso">Use Cases</a></li>
+                        <li><a href="process-screening.html" data-en="Process Screening" data-de="Prozess-Screening" data-es="Diagnóstico de procesos">Process Screening</a></li>
+                        <li><a href="openclawd-agents.html">OpenClawd AI Agents</a></li>
+                        <li><a href="resources.html" data-en="Resources" data-de="Ressourcen" data-es="Recursos">Resources</a></li>
+                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung" data-es="Desarrollo de RV/RA">VR/AR Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h4>
+                    <p>info@gf-innovative.com</p>
+                    <p>+49 172 95 123 76</p>
+                    <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
+                </div>
+            </div>
             <div class="footer-bottom">
-                <p>© 2026 GF Innovative Solutions. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="privacy.html">Privacy Policy</a> · <a href="imprint.html">Impressum</a>
+                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten." data-es="&copy; 2026 GF Innovative Solutions. Todos los derechos reservados.">&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div>
+                    <a href="imprint.html">Impressum</a> | <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutz" data-es="Privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>
@@ -1280,6 +1481,40 @@
         renderProgress();
         syncConditional();
         goTo(current);
+    })();
+    </script>
+
+    <!-- Mobile navigation, same behaviour as index.html. -->
+    <script>
+    (function () {
+        var hamburger = document.getElementById('nav-hamburger');
+        var navMenu = document.getElementById('nav-menu');
+        if (!hamburger || !navMenu) return;
+
+        function closeMenu() {
+            hamburger.classList.remove('open');
+            navMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('open');
+            navMenu.classList.toggle('open');
+            this.setAttribute('aria-expanded', navMenu.classList.contains('open'));
+        });
+
+        // Close on any menu item, not just links.
+        navMenu.querySelectorAll('a, button').forEach(function (el) {
+            el.addEventListener('click', closeMenu);
+        });
+
+        // Escape is the expected way out of an open overlay menu.
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+                closeMenu();
+                hamburger.focus();
+            }
+        });
     })();
     </script>
 </body>
