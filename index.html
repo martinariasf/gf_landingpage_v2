@@ -212,8 +212,7 @@
         gap: 32px;
         flex-wrap: wrap;
         background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-left: 4px solid var(--green);
+        border: 1px solid var(--green);
         border-radius: var(--radius);
         padding: 32px 36px;
     }
@@ -755,6 +754,65 @@
         color: var(--gray);
     }
 
+
+    /* ── Pricing ── */
+    .visually-hidden {
+        position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+        overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    .plans {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+        margin: 40px 0 28px;
+        align-items: stretch;
+    }
+    .plan {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 28px 24px 24px;
+    }
+    .plan--featured {
+        border-color: var(--green);
+        box-shadow: 0 10px 28px rgba(15, 23, 42, .10);
+    }
+    .plan-badge {
+        position: absolute;
+        top: -12px;
+        left: 24px;
+        background: var(--green);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+        padding: 6px 10px;
+        border-radius: 999px;
+    }
+    .plan__name { font-size: 20px; font-weight: 800; }
+    .plan__who { font-size: 14px; color: var(--gray); margin: 6px 0 20px; min-height: 4.8em; line-height: 1.6; }
+    .plan__price { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 6px; margin: 0; }
+    .plan__amount { font-size: 36px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+    .plan__amount small { font-size: 14px; font-weight: 600; letter-spacing: 0; color: var(--gray); }
+    .plan__per { font-size: 14px; color: var(--gray); }
+    .plan__annual { font-size: 13.5px; color: var(--gray); margin: 6px 0 24px; min-height: 2.8em; }
+    .plan .btn { margin-top: auto; width: 100%; padding: 12px 16px; }
+    .plans-included { font-size: 15px; color: var(--gray); max-width: 820px; margin: 0 0 36px; }
+    .plans-included strong { color: var(--white); }
+    .plans-compare { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); }
+    .plan-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+    .plan-table th, .plan-table td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .plan-table thead th { font-size: 14px; font-weight: 700; background: var(--bg-light); }
+    .plan-table tbody th { font-weight: 600; width: 26%; }
+    .plan-table tbody tr:last-child th, .plan-table tbody tr:last-child td { border-bottom: 0; }
+    .plan-table td { color: var(--gray); }
+    .pt-yes { color: var(--green); display: block; }
+    .pt-no { color: var(--gray-dim); }
+    .plans-note { font-size: 13.5px; color: var(--gray); max-width: 820px; margin-top: 20px; }
+
     /* ── Trust ── */
     .trust-grid {
         display: grid;
@@ -902,9 +960,8 @@
     .testimonial-card {
         background: var(--bg-card);
         border: 1px solid var(--border);
-        border-left: 3px solid var(--green);
         border-radius: var(--radius-sm);
-        padding: 28px 28px 28px 32px;
+        padding: 28px;
     }
     .testimonial-card blockquote {
         font-size: 16px;
@@ -1235,6 +1292,8 @@
             max-width: 420px;
         }
         .platform-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+        .plan__who, .plan__annual { min-height: 0; }
         .platform-cta { padding: 24px; }
         .testimonials-grid { grid-template-columns: 1fr; }
         .footer-grid { grid-template-columns: 1fr; }
@@ -1250,6 +1309,16 @@
         .digital-grid > :last-child:nth-child(odd) { width: 100%; }
         .extended-grid { grid-template-columns: 1fr; }
         .platform-capabilities { grid-template-columns: 1fr; }
+        .plans { grid-template-columns: 1fr; }
+        .plans-compare { overflow: visible; border: 0; background: none; }
+        .plan-table, .plan-table tbody, .plan-table tr, .plan-table th, .plan-table td { display: block; }
+        .plan-table thead { display: none; }
+        .plan-table tr { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 12px; }
+        .plan-table th, .plan-table td { padding: 0; border: 0; width: auto; }
+        .plan-table tbody th { margin-bottom: 8px; }
+        .plan-table td { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; border-top: 1px solid var(--border); }
+        .plan-table td::before { content: attr(data-plan); color: var(--white); font-weight: 600; flex: 0 0 auto; }
+        .plan-table td > :last-child { text-align: right; }
         .platform-cta { flex-direction: column; align-items: flex-start; }
         .platform-cta .btn { width: 100%; }
     }
@@ -1283,6 +1352,7 @@
             <div class="nav-menu" id="nav-menu">
                 <a href="#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
                 <a href="#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform" data-es="Plataforma de IA">AI Platform</a>
+                <a href="#pricing" class="nav-link" data-en="Pricing" data-de="Preise" data-es="Precios">Pricing</a>
                 <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
                 <a href="#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
                 <a href="#about" class="nav-link" data-en="About" data-de="Über uns" data-es="Quiénes somos">About</a>
@@ -1314,7 +1384,6 @@
     <!-- About Section -->
     <section id="about" class="section section--darker">
         <div class="container">
-            <span class="section-tag" data-en="Who We Are" data-de="Wer wir sind" data-es="Quiénes somos">Who We Are</span>
             <h2 class="section-title" data-en="About Us" data-de="Über uns" data-es="Sobre nosotros">About Us</h2>
             <div class="about-grid">
                 <div class="about-text">
@@ -1352,7 +1421,6 @@
     <!-- What Makes Us Different -->
     <section class="section section--gradient">
         <div class="container">
-            <span class="section-tag" data-en="Our Edge" data-de="Unser Vorteil" data-es="Nuestra ventaja">Our Edge</span>
             <h2 class="section-title" data-en="What Makes Us Different" data-de="Was uns unterscheidet" data-es="Qué nos diferencia">What Makes Us Different</h2>
             <p class="section-subtitle" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie." data-es="Guiados por personas, impulsados por la tecnología.">Guided by people, powered by tech.</p>
             <div class="diff-grid">
@@ -1395,7 +1463,6 @@
     <!-- Services Section -->
     <section id="services" class="section section--darker">
         <div class="container">
-            <span class="section-tag" data-en="What We Do" data-de="Was wir tun" data-es="Qué hacemos">What We Do</span>
             <h2 class="section-title" data-en="Our Services" data-de="Unsere Leistungen" data-es="Nuestros servicios">Our Services</h2>
             <p class="section-subtitle" data-en="A structured portfolio built around practical AI implementation, from free assessment to full automation." data-de="Ein strukturiertes Portfolio rund um praktische KI-Implementierung, vom kostenlosen Assessment bis zur vollständigen Automatisierung." data-es="Un portafolio estructurado en torno a la implementación práctica de IA, desde la evaluación gratuita hasta la automatización completa.">A structured portfolio built around practical AI implementation, from free assessment to full automation.</p>
 
@@ -1457,7 +1524,6 @@
     <!-- AI Marketing Platform -->
     <section id="platform" class="section section--gradient">
         <div class="container">
-            <span class="section-tag" data-en="Our Product" data-de="Unser Produkt" data-es="Nuestro producto">Our Product</span>
             <h2 class="section-title" data-en="The AI Marketing Platform" data-de="Die KI-Marketing-Plattform" data-es="La plataforma de marketing con IA">The AI Marketing Platform</h2>
             <div class="platform-lede">
                 <p data-en="Built for marketing agencies and in-house marketing teams. Every client's posts live in one content calendar. Your AI agent drafts the copy and the visuals, you review them, and the client approves with a single link. No email threads, no &quot;is this the final version?&quot;." data-de="Gebaut für Marketing-Agenturen und Inhouse-Marketingteams. Alle Posts eines Kunden liegen in einem Content-Kalender. Ihr KI-Agent entwirft Text und Bild, Sie prüfen, und der Kunde gibt per Link frei. Keine E-Mail-Ketten, kein &quot;ist das die finale Version?&quot;." data-es="Creada para agencias de marketing y equipos de marketing internos. Todas las publicaciones de cada cliente viven en un mismo calendario de contenidos. Su agente de IA redacta los textos y crea las imágenes, usted los revisa y el cliente aprueba con un solo enlace: sin cadenas de correos ni &quot;¿esta es la versión final?&quot;.">Built for marketing agencies and in-house marketing teams. Every client's posts live in one content calendar. Your AI agent drafts the copy and the visuals, you review them, and the client approves with a single link. No email threads, no "is this the final version?".</p>
@@ -1522,10 +1588,77 @@
         </div>
     </section>
 
+    <!-- Pricing -->
+    <section id="pricing" class="section section--darker">
+        <div class="container">
+            <h2 class="section-title" data-en="What the platform costs" data-de="Was die Plattform kostet" data-es="Cuánto cuesta la plataforma">What the platform costs</h2>
+            <div class="platform-lede">
+                <p data-en="One flat monthly price per workspace, no per-seat fees. All prices exclude VAT." data-de="Ein fester Monatspreis pro Workspace, keine Gebühr pro Nutzer. Alle Preise zzgl. MwSt." data-es="Un precio mensual fijo por workspace, sin cobro por usuario. Todos los precios sin IVA.">One flat monthly price per workspace, no per-seat fees. All prices exclude VAT.</p>
+            </div>
+
+            <div class="plans">
+                <article class="plan">
+                    
+                    <h3 class="plan__name">Solo</h3>
+                    <p class="plan__who" data-en="One brand, one person" data-de="Eine Marke, eine Person" data-es="Una marca, una persona">One brand, one person</p>
+                    <p class="plan__price"><span class="plan__amount" data-en="€19" data-de="19 €" data-es="19 €">€19</span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
+                    <p class="plan__annual" data-en="or €190 a year, two months free" data-de="oder 190 € pro Jahr, zwei Monate gratis" data-es="o 190 € al año, dos meses gratis">or €190 a year, two months free</p>
+                    <a href="pilot.html" class="btn btn-ghost" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben" data-es="Postular al piloto">Apply for the Pilot</a>
+                </article>
+                <article class="plan plan--featured">
+                    <span class="plan-badge" data-en="Most agencies start here" data-de="Hier starten die meisten Agenturen" data-es="Aquí empiezan la mayoría de agencias">Most agencies start here</span>
+                    <h3 class="plan__name">Basic</h3>
+                    <p class="plan__who" data-en="For agencies: 3 people, extra clients at €12" data-de="Für Agenturen: 3 Personen, weitere Kunden für 12 €" data-es="Para agencias: 3 personas, clientes extra por 12 €">For agencies: 3 people, extra clients at €12</p>
+                    <p class="plan__price"><span class="plan__amount" data-en="€29" data-de="29 €" data-es="29 €">€29</span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
+                    <p class="plan__annual" data-en="or €290 a year, two months free" data-de="oder 290 € pro Jahr, zwei Monate gratis" data-es="o 290 € al año, dos meses gratis">or €290 a year, two months free</p>
+                    <a href="pilot.html" class="btn btn-primary" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben" data-es="Postular al piloto">Apply for the Pilot</a>
+                </article>
+                <article class="plan">
+                    
+                    <h3 class="plan__name">Standard</h3>
+                    <p class="plan__who" data-en="Adds the AI chat agent and an AI budget. In development." data-de="Mit KI-Chat-Agent und KI-Budget. In Entwicklung." data-es="Con agente de chat y presupuesto de IA. En desarrollo.">Adds the AI chat agent and an AI budget. In development.</p>
+                    <p class="plan__price"><span class="plan__amount" data-en="€79" data-de="79 €" data-es="79 €">€79</span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
+                    <p class="plan__annual" data-en="or €790 a year, two months free" data-de="oder 790 € pro Jahr, zwei Monate gratis" data-es="o 790 € al año, dos meses gratis">or €790 a year, two months free</p>
+                    <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-ghost" target="_blank" rel="noopener" data-en="Book a demo" data-de="Demo buchen" data-es="Reservar una demo">Book a demo</a>
+                </article>
+                <article class="plan">
+                    
+                    <h3 class="plan__name">Enterprise</h3>
+                    <p class="plan__who" data-en="5 or more clients, a dedicated agent, onboarding" data-de="5 oder mehr Kunden, eigener Agent, Onboarding" data-es="5 o más clientes, agente dedicado, onboarding">5 or more clients, a dedicated agent, onboarding</p>
+                    <p class="plan__price"><span class="plan__amount" data-en="&lt;small&gt;from&lt;/small&gt; €399" data-de="&lt;small&gt;ab&lt;/small&gt; 399 €" data-es="&lt;small&gt;desde&lt;/small&gt; 399 €"><small>from</small> €399</span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
+                    <p class="plan__annual" data-en="annual quote" data-de="Jahresangebot" data-es="oferta anual">annual quote</p>
+                    <a href="#contact" class="btn btn-ghost" data-en="Contact sales" data-de="Vertrieb kontaktieren" data-es="Contactar con ventas">Contact sales</a>
+                </article>
+            </div>
+
+            <p class="plans-included" data-en="<strong>In every plan:</strong> unlimited posts, 22 networks, client review links, brand kit and voice, MCP access, 10 social accounts per workspace." data-de="<strong>In jedem Tarif:</strong> unbegrenzt Posts, 22 Netzwerke, Freigabe-Links für Kunden, Brand Kit und Markenstimme, MCP-Zugang, 10 Social-Media-Konten pro Workspace." data-es="<strong>En todos los planes:</strong> publicaciones ilimitadas, 22 redes, enlaces de revisión para clientes, brand kit y voz de marca, acceso MCP, 10 cuentas sociales por workspace."><strong>In every plan:</strong> unlimited posts, 22 networks, client review links, brand kit and voice, MCP access, 10 social accounts per workspace.</p>
+
+            <div class="plans-compare" role="region" aria-labelledby="compare-title" tabindex="0">
+                <table class="plan-table">
+                    <caption id="compare-title" class="visually-hidden" data-en="Plan comparison" data-de="Tarifvergleich" data-es="Comparación de planes">Plan comparison</caption>
+                    <thead>
+                        <tr><th scope="col" class="visually-hidden" data-en="Feature" data-de="Funktion" data-es="Función">Feature</th><th scope="col">Solo</th><th scope="col">Basic</th><th scope="col">Standard</th><th scope="col">Enterprise</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row" data-en="Client workspaces" data-de="Kunden-Workspaces" data-es="Espacios de cliente">Client workspaces</th><td data-plan="Solo"><span data-en="1" data-de="1" data-es="1">1</span></td><td data-plan="Basic"><span data-en="1, extra €12 per month" data-de="1, weitere 12 € pro Monat" data-es="1, adicional 12 € al mes">1, extra €12 per month</span></td><td data-plan="Standard"><span data-en="1, extra €12 per month" data-de="1, weitere 12 € pro Monat" data-es="1, adicional 12 € al mes">1, extra €12 per month</span></td><td data-plan="Enterprise"><span data-en="5 or more included" data-de="5 oder mehr inklusive" data-es="5 o más incluidos">5 or more included</span></td></tr>
+                        <tr><th scope="row" data-en="Team members" data-de="Teammitglieder" data-es="Miembros del equipo">Team members</th><td data-plan="Solo"><span data-en="1" data-de="1" data-es="1">1</span></td><td data-plan="Basic"><span data-en="3" data-de="3" data-es="3">3</span></td><td data-plan="Standard"><span data-en="Unlimited" data-de="Unbegrenzt" data-es="Ilimitados">Unlimited</span></td><td data-plan="Enterprise"><span data-en="Unlimited" data-de="Unbegrenzt" data-es="Ilimitados">Unlimited</span></td></tr>
+                        <tr><th scope="row" data-en="Approvals board" data-de="Freigabe-Board" data-es="Tablero de aprobaciones">Approvals board</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Basic"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Standard"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Enterprise"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td></tr>
+                        <tr><th scope="row" data-en="AI chat agent and document parsing" data-de="KI-Chat-Agent und Dokumentenanalyse" data-es="Agente de chat con IA y análisis de documentos">AI chat agent and document parsing</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Basic"><span data-en="Upgrade" data-de="Upgrade" data-es="Upgrade">Upgrade</span></td><td data-plan="Standard"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Enterprise"><span data-en="Yes, dedicated agent" data-de="Ja, eigener Agent" data-es="Sí, agente dedicado">Yes, dedicated agent</span></td></tr>
+                        <tr><th scope="row" data-en="AI budget (hard cap)" data-de="KI-Budget (fest begrenzt)" data-es="Presupuesto de IA (tope fijo)">AI budget (hard cap)</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Basic"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Standard"><span data-en="€15 per month" data-de="15 € pro Monat" data-es="15 € al mes">€15 per month</span></td><td data-plan="Enterprise"><span data-en="€100 per month, shared" data-de="100 € pro Monat, gemeinsam" data-es="100 € al mes, compartidos">€100 per month, shared</span></td></tr>
+                        <tr><th scope="row" data-en="Telegram and WhatsApp agent" data-de="Telegram- und WhatsApp-Agent" data-es="Agente de Telegram y WhatsApp">Telegram and WhatsApp agent</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Basic"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Standard"><span data-en="Add-on, €169 per month" data-de="Zusatzpaket, 169 € pro Monat" data-es="Complemento, 169 € al mes">Add-on, €169 per month</span></td><td data-plan="Enterprise"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td></tr>
+                        <tr><th scope="row" data-en="Free trial" data-de="Kostenlose Testphase" data-es="Prueba gratuita">Free trial</th><td data-plan="Solo"><span data-en="14 days, no card" data-de="14 Tage, ohne Karte" data-es="14 días, sin tarjeta">14 days, no card</span></td><td data-plan="Basic"><span data-en="14 days, no card" data-de="14 Tage, ohne Karte" data-es="14 días, sin tarjeta">14 days, no card</span></td><td data-plan="Standard"><span data-en="14 days, card required" data-de="14 Tage, mit Karte" data-es="14 días, con tarjeta">14 days, card required</span></td><td data-plan="Enterprise"><span data-en="Demo and paid pilot" data-de="Demo und bezahlter Pilot" data-es="Demo y piloto de pago">Demo and paid pilot</span></td></tr>
+                        <tr><th scope="row" data-en="Support" data-de="Support" data-es="Soporte">Support</th><td data-plan="Solo"><span data-en="Email" data-de="E-Mail" data-es="Correo">Email</span></td><td data-plan="Basic"><span data-en="Email" data-de="E-Mail" data-es="Correo">Email</span></td><td data-plan="Standard"><span data-en="Email" data-de="E-Mail" data-es="Correo">Email</span></td><td data-plan="Enterprise"><span data-en="Priority and onboarding" data-de="Priorisiert, mit Onboarding" data-es="Prioritario, con onboarding">Priority and onboarding</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="plans-note" data-en="Standard, the AI budget and the Telegram and WhatsApp agent are still in development. Pilot agencies get Solo and Basic features while we finish self-serve signup. Extra AI budget is billed at cost plus 20%." data-de="Standard, das KI-Budget und der Telegram- und WhatsApp-Agent sind noch in Entwicklung. Pilot-Agenturen erhalten die Funktionen von Solo und Basic, bis die Selbstregistrierung fertig ist. Zusätzliches KI-Budget wird zu Kosten plus 20 % berechnet." data-es="Standard, el presupuesto de IA y el agente de Telegram y WhatsApp siguen en desarrollo. Las agencias del piloto reciben las funciones de Solo y Basic hasta que terminemos el registro autónomo. El presupuesto de IA adicional se factura a coste más 20 %.">Standard, the AI budget and the Telegram and WhatsApp agent are still in development. Pilot agencies get Solo and Basic features while we finish self-serve signup. Extra AI budget is billed at cost plus 20%.</p>
+        </div>
+    </section>
+
     <!-- Trust & Compliance -->
     <section id="trust" class="section section--darker">
         <div class="container">
-            <span class="section-tag" data-en="Security" data-de="Sicherheit" data-es="Seguridad">Security</span>
             <h2 class="section-title" data-en="Trust &amp; Compliance" data-de="Vertrauen &amp; Compliance" data-es="Confianza y cumplimiento">Trust &amp; Compliance</h2>
             <p class="section-subtitle" data-en="Designed for the German B2B market. Security and compliance are not afterthoughts." data-de="Entwickelt für den deutschen B2B-Markt. Sicherheit und Compliance sind keine Nebensache." data-es="Diseñado para el mercado B2B alemán. La seguridad y el cumplimiento no son un añadido.">Designed for the German B2B market. Security and compliance are not afterthoughts.</p>
             <div class="trust-grid">
@@ -1566,7 +1699,6 @@
     <!-- Team Section -->
     <section id="team" class="section section--gradient">
         <div class="container">
-            <span class="section-tag" data-en="The People" data-de="Die Menschen" data-es="Las personas">The People</span>
             <h2 class="section-title" data-en="Our Team" data-de="Unser Team" data-es="Nuestro equipo">Our Team</h2>
             <p class="section-subtitle" data-en="Engineers who understand business. Business people who understand technology." data-de="Ingenieure, die Geschäft verstehen. Geschäftsleute, die Technologie verstehen." data-es="Ingenieros que entienden de negocio. Perfiles de negocio que entienden de tecnología.">Engineers who understand business. Business people who understand technology.</p>
 
@@ -1647,7 +1779,6 @@
     <!-- Digital Team Section -->
     <section id="digital-team" class="section section--darker">
         <div class="container">
-            <span class="section-tag" data-en="AI Team Members" data-de="KI-Teammitglieder" data-es="Miembros del equipo de IA">AI Team Members</span>
             <h2 class="section-title" data-en="Our Digital Team" data-de="Unser digitales Team" data-es="Nuestro equipo digital">Our Digital Team</h2>
             <p class="section-subtitle" data-en="Meet our AI-powered team members, always on, always learning." data-de="Lernen Sie unsere KI-gestützten Teammitglieder kennen, immer aktiv, immer lernend." data-es="Conozca a los miembros de nuestro equipo impulsados por IA: siempre activos, siempre aprendiendo.">Meet our AI-powered team members, always on, always learning.</p>
             <div class="digital-grid">
@@ -1718,7 +1849,6 @@
     <!-- Ethics Section -->
     <section class="section section--gradient">
         <div class="container">
-            <span class="section-tag" data-en="Ethics" data-de="Ethik" data-es="Ética">Ethics</span>
             <h2 class="section-title" data-en="Our Commitment to Ethical AI" data-de="Unser Engagement für ethische KI" data-es="Nuestro compromiso con una IA ética">Our Commitment to Ethical AI</h2>
             <p class="section-subtitle" data-en="Responsible AI isn't optional. It's how we build." data-de="Verantwortungsvolle KI ist keine Option. So bauen wir." data-es="La IA responsable no es opcional. Es nuestra forma de construir.">Responsible AI isn't optional. It's how we build.</p>
             <div class="ethics-grid">
@@ -1741,7 +1871,6 @@
     <!-- Testimonials Section -->
     <section class="section section--darker">
         <div class="container">
-            <span class="section-tag" data-en="Testimonials" data-de="Referenzen" data-es="Testimonios">Testimonials</span>
             <h2 class="section-title" data-en="What Our Clients Say" data-de="Was unsere Kunden sagen" data-es="Lo que dicen nuestros clientes">What Our Clients Say</h2>
             <p class="section-subtitle" style="margin-bottom:32px;" data-en="Named where our clients allowed it. Reference calls available on request." data-de="Namentlich, wo unsere Kunden es erlaubt haben. Referenzgespräche auf Anfrage." data-es="Con nombre allí donde el cliente lo autorizó. Llamadas de referencia disponibles a petición.">Named where our clients allowed it. Reference calls available on request.</p>
             <div class="testimonials-grid">
@@ -1762,7 +1891,7 @@
         <div class="container">
             <div class="pilot-band">
                 <div class="pilot-band__copy">
-                    <span class="pilot-band__badge" data-en="3 spots · August / September 2026" data-de="3 Plätze · August / September 2026" data-es="3 plazas · agosto / septiembre de 2026">3 spots · August / September 2026</span>
+                    <span class="pilot-band__badge" data-en="3 spots" data-de="3 Plätze" data-es="3 plazas">3 spots</span>
                     <h2 class="section-title" data-en="Pilot our AI marketing platform" data-de="Teste unsere KI-Marketing-Plattform" data-es="Prueba nuestra plataforma de marketing con IA">Pilot our AI marketing platform</h2>
                     <p data-en="For marketing agencies: three weeks with one real client, free, in exchange for your feedback." data-de="Für Marketing-Agenturen: drei Wochen mit einem echten Kunden, kostenlos, im Austausch für dein Feedback." data-es="Para agencias de marketing: tres semanas con un cliente real, gratis, a cambio de tu feedback.">For marketing agencies: three weeks with one real client, free, in exchange for your feedback.</p>
                 </div>
@@ -1774,7 +1903,6 @@
     <!-- Contact Section -->
     <section id="contact" class="section section--gradient contact-section">
         <div class="container">
-            <span class="section-tag" data-en="Get Started" data-de="Loslegen" data-es="Empezar">Get Started</span>
             <h2 class="section-title" data-en="Let's Start Your Journey" data-de="Starten Sie Ihre Reise" data-es="Empecemos su recorrido">Let's Start Your Journey</h2>
 
             <div class="tab-buttons" role="tablist">
