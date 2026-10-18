@@ -1,814 +1,967 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GF Innovative Solutions, Digital Agent Team</title>
+  <title>Local Agents | GF Innovative Solutions</title>
     <meta name="description" content="Autonomous AI agents on your private VPS, powered by Anthropic Claude. Integrates with Telegram, WhatsApp, calendars, CRMs and n8n.">
     <link rel="canonical" href="https://www.gfinnov.com/openclawd-agents.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="GF Innovative Solutions">
     <meta property="og:url" content="https://www.gfinnov.com/openclawd-agents.html">
-    <meta property="og:title" content="OpenClawd AI Agents | GF Innovative Solutions">
+    <meta property="og:title" content="Local Agents | GF Innovative Solutions">
     <meta property="og:description" content="Autonomous AI agents on your private VPS, powered by Anthropic Claude. Integrates with Telegram, WhatsApp, calendars, CRMs and n8n.">
     <meta property="og:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="OpenClawd AI Agents | GF Innovative Solutions">
+    <meta name="twitter:title" content="Local Agents | GF Innovative Solutions">
     <meta name="twitter:description" content="Autonomous AI agents on your private VPS, powered by Anthropic Claude. Integrates with Telegram, WhatsApp, calendars, CRMs and n8n.">
     <meta name="twitter:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
+    <!-- Google Analytics Consent Stub -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', { ad_storage: 'denied', analytics_storage: 'denied' });
+      window.__GA_MEASUREMENT_ID__ = 'G-2D1MXJ2SMZ';
+      window.__CONSENT_VERSION__ = 'v1';
+    </script>
+    <style>
+    /* ── CSS Custom Properties ── */
     :root {
-      --navy: #0b1628;
-      --blue: #1560B2;
-      --sky: #4D8DB4;
-      --teal: #5BA8A0;
-      --mint: #8ECD8A;
-      --green: #22c55e;
-      --text: #eaf2ff;
-      --text-soft: rgba(234,242,255,0.78);
-      --card: rgba(255,255,255,0.08);
-      --card-border: rgba(255,255,255,0.14);
-      --glow: rgba(142,205,138,0.22);
-      --shadow: 0 20px 60px rgba(3,10,24,0.35);
-      --radius: 24px;
-      --font: 'Inter', system-ui, -apple-system, sans-serif;
-      --max: 1240px;
+        --bg: #ffffff;
+        --bg-light: #f8f9fa;
+        --bg-card: #ffffff;
+        /* --green is the accessible text/CTA green (5.1:1 on white).
+           --green-bright is decorative only: fills, hovers, rules. Never text. */
+        --green: #15803d;
+        --green-bright: #22c55e;
+        --teal: #0f766e;
+        --white: #1a1a1a;
+        --gray: #4b5563;
+        --gray-dim: #6b7280;
+        --border: #e5e7eb;
+        --border-hover: #d1d5db;
+        --glass: rgba(255,255,255,0.92);
+        --glass-border: #e5e7eb;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --font: 'Inter', system-ui, -apple-system, sans-serif;
+        --max-w: 1200px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: var(--font);
-      color: var(--text);
-      background:
-        radial-gradient(circle at 15% 20%, rgba(91,168,160,0.22), transparent 30%),
-        radial-gradient(circle at 85% 18%, rgba(142,205,138,0.16), transparent 26%),
-        radial-gradient(circle at 50% 90%, rgba(21,96,178,0.24), transparent 34%),
-        linear-gradient(135deg, #08111f 0%, #0b1628 38%, #123867 72%, #1a5d74 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--white);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
     }
+    a { color: var(--green); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--teal); }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
 
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: auto;
-      width: 42vw;
-      height: 42vw;
-      border-radius: 50%;
-      filter: blur(70px);
-      opacity: 0.25;
-      pointer-events: none;
-      z-index: 0;
-      animation: drift 16s ease-in-out infinite alternate;
-    }
-
-    body::before {
-      top: -8vw;
-      left: -10vw;
-      background: rgba(77,141,180,0.28);
-    }
-
-    body::after {
-      right: -12vw;
-      bottom: -12vw;
-      background: rgba(142,205,138,0.18);
-      animation-duration: 18s;
-    }
-
-    @keyframes drift {
-      from { transform: translate3d(0,0,0) scale(1); }
-      to { transform: translate3d(3vw,2vw,0) scale(1.08); }
-    }
-
-    .orbital-grid {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: radial-gradient(circle at center, black 44%, transparent 100%);
-      pointer-events: none;
-      opacity: 0.35;
-      z-index: 0;
-    }
-
-    /* width + calc() resolved against the pre-scrollbar width and pushed the
-       page 4px past a 375px viewport (masked by body{overflow-x:hidden}).
-       max-width + padding measures correctly instead of being clipped. */
-    .container {
-      width: 100%;
-      max-width: var(--max);
-      padding-inline: 20px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 24px 0 12px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    .logo img { height: 38px; width: auto; }
-    .logo span {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.72);
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text-soft);
-      font-size: 0.86rem;
-      backdrop-filter: blur(12px);
-    }
-
-    /* Literal status LED ("workforce active"), so the halo is meaning, not
-       decoration, but softened, and the pulse stops under reduced motion. */
-    .badge::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--mint);
-      box-shadow: 0 0 8px rgba(142,205,138,0.55);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.35); opacity: 0.7; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .badge::before { animation: none; }
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .12s !important;
-      }
-    }
-
+    /* ── Focus & keyboard access ── */
     :focus-visible {
-      outline: 3px solid #8ECD8A;
-      outline-offset: 3px;
-      border-radius: 4px;
+        outline: 3px solid var(--green);
+        outline-offset: 3px;
+        border-radius: 4px;
     }
-
+    /* On the dark navbar and the coloured hero the green ring is too low-contrast. */
+    .navbar :focus-visible,
+    .hero :focus-visible {
+        outline-color: #ffffff;
+        box-shadow: 0 0 0 5px rgba(15, 23, 42, .55);
+    }
     .skip-link {
-      position: absolute;
-      left: 12px;
-      top: -100px;
-      z-index: 200;
-      background: #15803d;
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: top .18s ease;
+        position: absolute;
+        left: 12px;
+        top: -100px;
+        z-index: 10200;
+        background: var(--green);
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: var(--radius-sm);
+        font-size: 15px;
+        font-weight: 600;
+        transition: top .18s ease;
     }
-    .skip-link:focus { top: 12px; }
-
-    .hero {
-      padding: 56px 0 48px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
-      align-items: center;
+    .skip-link:focus {
+        top: 12px;
+        color: #fff;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--mint);
+    /* ── Reduced motion ──
+       Keep state changes legible; only stop the decorative, looping motion. */
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .hero-label::after {
+            animation: none;
+            width: 100%;
+        }
+        *, *::before, *::after {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: .12s !important;
+        }
+        .btn:hover,
+        .service-card:hover,
+        .glass-card:hover { transform: none; }
     }
 
-    h1 {
-      font-size: clamp(2.8rem, 6vw, 5.6rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      margin-bottom: 20px;
-      max-width: 11ch;
+    /* ── Utility ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .section-tag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 12px;
     }
-
-    .hero p {
-      max-width: 62ch;
-      color: var(--text-soft);
-      font-size: 1.08rem;
-      line-height: 1.8;
-      margin-bottom: 28px;
+    .section-title {
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 800;
+        margin-bottom: 12px;
+        line-height: 1.2;
     }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 26px;
+    .section-subtitle {
+        color: var(--gray);
+        font-size: 17px;
+        max-width: 640px;
+        margin-bottom: 48px;
     }
+    /* German compound nouns are long enough to overflow narrow viewports at
+       heading sizes; hyphenation keys off the lang attribute. */
+    h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
 
+    /* ── Buttons ── */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 20px;
-      border-radius: 14px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        border-radius: var(--radius-sm);
+        font-family: var(--font);
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .25s;
+        border: none;
+        text-decoration: none;
     }
-
     .btn-primary {
-      background: linear-gradient(135deg, var(--green), var(--mint));
-      color: #082012;
-      box-shadow: 0 14px 34px rgba(34,197,94,0.22);
+        background: var(--green);
+        color: #fff;
+    }
+    .btn-primary:hover { color: #fff;
+        background: #166534;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(15, 23, 42, .18);
+    }
+    .btn-ghost {
+        background: transparent;
+        color: var(--white);
+        border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+        border-color: var(--green);
+        color: var(--green);
+        transform: translateY(-2px);
     }
 
-    .btn-secondary {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: var(--text);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      max-width: 560px;
-    }
-
-    .metric {
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.4rem;
-      margin-bottom: 4px;
-    }
-
-    .metric span {
-      color: var(--text-soft);
-      font-size: 0.9rem;
-    }
-
-    .hero-visual {
-      position: relative;
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .system-core {
-      position: relative;
-      width: min(78vw, 440px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.12), rgba(255,255,255,0.03) 58%, transparent 72%);
-      box-shadow: inset 0 0 60px rgba(255,255,255,0.04);
-    }
-
-    .system-core::before,
-    .system-core::after {
-      content: "";
-      position: absolute;
-      inset: 10%;
-      border-radius: 50%;
-      border: 1px dashed rgba(255,255,255,0.12);
-      animation: spin 22s linear infinite;
-    }
-
-    .system-core::after {
-      inset: 24%;
-      animation-direction: reverse;
-      animation-duration: 16s;
-      border-style: solid;
-      border-color: rgba(142,205,138,0.18);
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .core-center {
-      position: absolute;
-      inset: 50%;
-      width: 160px;
-      height: 160px;
-      margin: -80px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
-      border: 1px solid rgba(255,255,255,0.16);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      box-shadow: 0 0 40px rgba(142,205,138,0.12), inset 0 0 30px rgba(255,255,255,0.05);
-      backdrop-filter: blur(14px);
-    }
-
-    .core-center strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-      letter-spacing: -0.02em;
-    }
-
-    .core-center span {
-      color: var(--text-soft);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    .orbit-agent {
-      --size: 112px;
-      position: absolute;
-      width: var(--size);
-      height: var(--size);
-      margin: calc(var(--size) / -2);
-      border-radius: 50%;
-      overflow: hidden;
-      background: rgba(255,255,255,0.08);
-      border: 2px solid rgba(255,255,255,0.16);
-      box-shadow: 0 14px 36px rgba(0,0,0,0.22), 0 0 0 8px rgba(255,255,255,0.03);
-      animation: float 5.4s ease-in-out infinite;
-    }
-
-    .orbit-agent::after {
-      content: attr(data-name);
-      position: absolute;
-      left: 50%;
-      bottom: -34px;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.9);
-      text-shadow: 0 4px 16px rgba(0,0,0,0.45);
-    }
-
-    .orbit-agent img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.04);
-    }
-
-    .agent-1 { top: 14%; left: 50%; animation-delay: -0.2s; }
-    .agent-2 { top: 34%; left: 84%; animation-delay: -2s; }
-    .agent-3 { top: 79%; left: 70%; animation-delay: -1.1s; }
-    .agent-4 { top: 80%; left: 28%; animation-delay: -3.1s; }
-    .agent-5 { top: 34%; left: 16%; animation-delay: -2.4s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-
+    /* ── Section backgrounds ── */
     .section {
-      padding: 38px 0 80px;
+        padding: 100px 0;
+        position: relative;
+    }
+    .section--dark {
+        background: var(--bg);
+    }
+    .section--darker {
+        background: var(--bg-light);
+    }
+    .section--gradient {
+        background: var(--bg);
     }
 
-    .section-header {
-      max-width: 760px;
-      margin-bottom: 28px;
+    /* ── Navigation ── */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10100;
+        background: rgba(11,22,40,0.95);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        transition: background .3s;
+    }
+    .nav-container {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+        position: relative;
+    }
+    .nav-logo .logo {
+        height: 36px;
+        width: auto;
+    }
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+    .nav-link {
+        color: #94a3b8;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color .2s;
+    }
+    .nav-link:hover { color: #f1f5f9; }
+    .nav-cta {
+        background: var(--green);
+        color: #fff !important;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        transition: all .25s;
+    }
+    .nav-cta:hover { color: #fff;
+        background: #166534;
+        color: #fff !important;
+        transform: translateY(-1px);
+    }
+    /* Language switch: three separate buttons rather than one cycling
+       control. With EN/DE a toggle was fine; with a third language a cycler
+       hides ES behind two clicks and never shows which languages exist.
+       Sits on the dark navbar, rgba(11,22,40,.95). */
+    .lang-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        padding: 3px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        background: transparent;
+    }
+    .lang-switch .lang-opt {
+        /* They are links now: kill the default underline and centre the
+           label the way a button box did for free. */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        -webkit-appearance: none;
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: #94a3b8;  /* 5.3:1 on the dark navbar */
+        font-family: var(--font);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1;
+        padding: 6px 9px;
+        border-radius: 5px;
+        cursor: pointer;
+        min-height: 32px;
+        transition: color .2s, background .2s;
+    }
+    .lang-switch .lang-opt:hover {
+        color: #f1f5f9;
+        background: rgba(255,255,255,0.08);
+    }
+    /* Solid chip, not an underline: the active language has to survive both
+       colour-blindness and a glance. */
+    .lang-switch .lang-opt.active {
+        color: #0b1628;
+        background: #f1f5f9;
+        font-weight: 700;
+        cursor: default;
+    }
+    @media (pointer: coarse) {
+        .lang-switch .lang-opt { min-width: 44px; min-height: 44px; }
+    }
+    /* Mobile-only twin of the language switch, shown next to the hamburger. */
+    .nav-mobile-lang {
+        display: none;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 8px;
+        min-height: 44px;
     }
 
-    .section-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.05;
-      margin-bottom: 14px;
-      letter-spacing: -0.03em;
+    /* ── Digital Team ── */
+    .digital-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+    }
+    .digital-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 24px;
+        text-align: center;
+        transition: border-color .3s;
+    }
+    .digital-card:hover { border-color: var(--border-hover); }
+    .digital-photo {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 12px;
+        border: 2px solid var(--border);
+    }
+    .digital-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .digital-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .digital-card .digi-role { color: var(--teal); font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+    .digital-card ul { font-size: 12px; color: var(--gray); text-align: left; }
+    .digital-card li { margin-bottom: 2px; }
+
+    /* ── Footer ── */
+    .footer {
+        background: #0b1628;
+        color: #f1f5f9;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 60px 0 30px;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+    .footer-logo {
+        height: 32px;
+        width: auto;
+        margin-bottom: 12px;
+    }
+    .footer-tagline { color: #94a3b8; font-size: 14px; }
+    .footer h4 { font-size: 14px; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; color: #f1f5f9; }
+    .footer ul li { margin-bottom: 8px; }
+    .footer ul a { color: #94a3b8; font-size: 14px; }
+    .footer ul a:hover { color: var(--green); }
+    .footer-contact p { color: #94a3b8; font-size: 14px; margin-bottom: 4px; }
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: #94a3b8;  /* was #64748b: 3.81:1 on the dark footer */
+    }
+    /* 24x24 minimum target (WCAG 2.5.8); these were 16px tall. */
+    .footer-bottom a {
+        color: #94a3b8;  /* was #64748b: 3.81:1 on the dark footer */
+        display: inline-block;
+        padding: 6px 4px;
+    }
+    .footer-bottom a:hover { color: var(--green); }
+    .footer-grid ul a {
+        display: inline-block;
+        padding: 5px 0;
     }
 
-    .section-header p {
-      color: var(--text-soft);
-      line-height: 1.8;
+    /* ── Cookie Banner ── */
+    .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid var(--border);
+        padding: 14px 24px;
+        box-shadow: 0 -4px 20px rgba(0,0,0,.06);
     }
+    .cookie-banner__inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .cookie-banner__text strong { color: #1a1a1a; font-size: 15px; }
+    .cookie-banner__text p { color: var(--gray); font-size: 13px; margin-top: 4px; }
+    .cookie-banner__actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .cookie-banner__actions .btn { padding: 10px 18px; font-size: 13px; }
+    /* "Customize" is the rare third choice, so demote it to a link so the two
+       real answers stay side by side instead of wrapping to a third row. */
+    .cookie-banner__actions .btn-outline {
+        background: none;
+        border: none;
+        padding: 10px 4px;
+        color: var(--gray);
+        text-decoration: underline;
+        min-height: 44px;
+    }
+    .cookie-banner__actions .btn-outline:hover { color: var(--green); }
 
-    .agents-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
+    @media (max-width: 920px) {
+        /* Compact bar: the previous stacked layout ran 248px tall and covered
+           both hero CTAs on a 375x812 screen. */
+        .cookie-banner { padding: 10px 16px; }
+        .cookie-banner__inner {
+            flex-wrap: nowrap;
+            align-items: center;
+            gap: 12px;
+        }
+        .cookie-banner__text strong { font-size: 13px; }
+        .cookie-banner__text p {
+            font-size: 11px;
+            margin-top: 2px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .cookie-banner__actions {
+            flex-direction: column;
+            flex: 0 0 auto;
+            gap: 6px;
+        }
+        .cookie-banner__actions .btn {
+            padding: 8px 14px;
+            font-size: 12px;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .cookie-banner__actions .btn-outline { min-height: 24px; padding: 4px; font-size: 11px; }
     }
+    .btn-outline {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--gray);
+    }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
 
-    .agent-card {
-      position: relative;
-      display: grid;
-      grid-template-columns: 112px 1fr;
-      gap: 22px;
-      padding: 24px;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
-      border: 1px solid var(--card-border);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      overflow: hidden;
+    /* ── Cookie Modal ── */
+    .cookie-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
     }
+    .cookie-modal.open { display: flex; align-items: center; justify-content: center; }
+    .cookie-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,.6);
+    }
+    .cookie-modal__dialog {
+        position: relative;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        max-width: 480px;
+        width: 90%;
+        padding: 28px;
+    }
+    .cookie-modal__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+    }
+    .cookie-modal__header h3 { font-size: 18px; }
+    .modal-close {
+        background: none;
+        border: none;
+        color: var(--gray);
+        font-size: 24px;
+        cursor: pointer;
+    }
+    .cookie-modal__body p { color: var(--gray); font-size: 14px; margin-bottom: 20px; }
+    .cookie-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .cookie-toggle strong { font-size: 14px; }
+    .cookie-toggle p { font-size: 12px; color: var(--gray-dim); margin-top: 2px; }
+    .cookie-modal__footer {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+    .switch input { width: 40px; height: 20px; cursor: pointer; }
+    .cookie-settings-entry {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        z-index: 999;
+    }
+    .link-like {
+        background: none;
+        border: none;
+        color: var(--gray-dim);
+        font-size: 12px;
+        cursor: pointer;
+        font-family: var(--font);
+    }
+    .link-like:hover { color: var(--green); }
+    /* was 14px tall */
+    .link-like { padding: 6px 4px; min-height: 24px; }
 
-    .agent-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -10% -55% auto;
-      width: 220px;
-      height: 220px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--glow), transparent 65%);
-      pointer-events: none;
-    }
-
-    .agent-avatar-wrap {
-      position: relative;
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      padding: 5px;
-      background: linear-gradient(135deg, rgba(142,205,138,0.75), rgba(77,141,180,0.65));
-      box-shadow: 0 10px 34px rgba(0,0,0,0.24);
-      animation: avatarPulse 4.8s ease-in-out infinite;
-    }
-
-    @keyframes avatarPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-
-    .agent-avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.18);
-      background: #0f2037;
-    }
-
-    .agent-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .role-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.88);
-      margin-bottom: 14px;
-    }
-
-    .agent-content h3 {
-      font-size: 1.55rem;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .agent-content p {
-      color: var(--text-soft);
-      margin-bottom: 16px;
-      line-height: 1.75;
-    }
-
-    .agent-content ul {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .agent-content li {
-      position: relative;
-      padding-left: 18px;
-      color: rgba(255,255,255,0.86);
-      line-height: 1.6;
-    }
-
-    .agent-content li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0.72em;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--mint), var(--green));
-      box-shadow: 0 0 14px rgba(142,205,138,0.65);
-    }
-
-    .system-strip {
-      margin-top: 30px;
-      padding: 20px 22px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      backdrop-filter: blur(14px);
-    }
-
-    .system-strip div strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.98rem;
-    }
-
-    .system-strip div span {
-      color: var(--text-soft);
-      font-size: 0.92rem;
-      line-height: 1.65;
-    }
-
-    footer {
-      padding: 34px 0 56px;
-      /* was 0.58 alpha on a dark ground, under 4.5:1 */
-      color: rgba(255,255,255,0.78);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.10);
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 22px;
-      margin-top: 14px;
-    }
-    .footer-links a {
-      color: #A8DCA3;
-      text-decoration: none;
-      padding: 6px 0;
-    }
-    .footer-links a:hover { text-decoration: underline; }
-
-    @media (max-width: 1080px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .hero-visual {
-        order: -1;
-        min-height: 460px;
-      }
-      .agents-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .topbar {
+    /* ── Hamburger Menu ── */
+    .nav-hamburger {
+        display: none;
         flex-direction: column;
-        align-items: flex-start;
-      }
-      .hero {
-        padding-top: 30px;
-      }
-      .hero-metrics,
-      .system-strip {
-        grid-template-columns: 1fr;
-      }
-      .agent-card {
-        grid-template-columns: 1fr;
-      }
-      .agent-avatar-wrap {
-        width: 96px;
-        height: 96px;
-      }
-      .system-core {
-        width: min(92vw, 380px);
-      }
-      .orbit-agent {
-        --size: 84px;
-      }
-      .core-center {
-        width: 132px;
-        height: 132px;
-        margin: -66px;
-        padding: 18px;
-      }
-      .agent-1 { top: 12%; left: 50%; }
-      .agent-2 { top: 35%; left: 83%; }
-      .agent-3 { top: 77%; left: 68%; }
-      .agent-4 { top: 78%; left: 30%; }
-      .agent-5 { top: 35%; left: 17%; }
+        justify-content: center;
+        align-items: stretch;
+        gap: 5px;
+        /* 44x44 minimum tap target (WCAG 2.5.5); the bars stay 28px wide. */
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 11px 8px;
+        z-index: 10102;
+        pointer-events: auto;
     }
-  </style>
+    .nav-hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #f1f5f9;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    /* Bars are 2px with 5px gaps, so each outer bar is 7px off centre. */
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-menu.open {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(11,22,40,0.98);
+        padding: 20px 24px;
+        gap: 16px;
+        z-index: 10101;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        pointer-events: auto;
+    }
+
+    /* -- Local Agents page -- */
+    .la-hero { background: #0b1628; color: #fff; padding: 150px 0 80px; }
+    .la-hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 800; line-height: 1.1; margin-bottom: 10px; }
+    .la-harness { color: #86efac; font-weight: 600; font-size: 17px; margin-bottom: 20px; }
+    .la-lead { color: #cbd5e1; font-size: 18px; max-width: 56ch; margin-bottom: 32px; }
+    .la-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .la-hero .btn-ghost { color: #fff; border-color: rgba(255,255,255,.4); }
+    .la-hero .btn-ghost:hover { color: #fff; border-color: #fff; }
+    .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+    .fact .capability__icon { display: block; color: var(--green); margin-bottom: 12px; line-height: 0; }
+    .fact .capability__icon svg { width: 28px; height: 28px; }
+    .fact h2 { font-weight: 700; font-size: 19px; margin-bottom: 6px; }
+    .fact p { color: var(--gray); }
+    .digital-card h3 { font-size: 18px; }
+    .digital-card .digi-role { font-size: 14px; }
+    .digital-card ul { font-size: 14px; }
+    .la-cta { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+    .la-cta h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; }
+    @media (max-width: 920px) {
+        .nav-menu { display: none; }
+        .nav-hamburger { display: flex; }
+        .nav-mobile-lang { display: inline-flex; }
+        .nav-menu .lang-switch { display: none; }
+        .nav-menu.open .nav-link, .nav-menu.open .nav-cta { display: block; padding: 12px 0; pointer-events: auto; }
+        .facts { grid-template-columns: 1fr; gap: 32px; }
+        .digital-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .digital-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 10px); margin-inline: auto; }
+        .footer-grid { grid-template-columns: 1fr; }
+        .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+        .section { padding: 64px 0; }
+        .la-hero { padding: 120px 0 132px; }
+    }
+    @media (max-width: 620px) {
+        .digital-grid { grid-template-columns: 1fr; }
+        .digital-grid > :last-child:nth-child(odd) { width: 100%; }
+    }
+    </style>
+    <script src="lang.js"></script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to content</a>
-  <div class="orbital-grid"></div>
+    <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
 
-  <div class="container">
-    <header class="topbar">
-      <a class="logo" href="/">
-        <img width="340" height="72" src="images/opt/gf-logo-white.webp" alt="GF Innovative Solutions logo">
-        <span>GF Innovative Solutions</span>
-      </a>
-      <div class="badge">Digital workforce active across the business</div>
-    </header>
-    <span id="main" tabindex="-1"></span>
-
-    <section class="hero">
-      <div>
-        <span class="eyebrow">Digital Agents</span>
-        <h1>The AI team behind GF operations.</h1>
-        <p>
-          Meet the digital workforce of GF Innovative Solutions: a coordinated set of specialized agents designed to support infrastructure, sales, project delivery, operations, and finance. Each agent has a clearly defined mission, works within secure boundaries, and contributes to a more responsive, efficient company.
-        </p>
-        <div class="hero-actions">
-          <a href="#agents" class="btn btn-primary">Explore the team</a>
-          <a href="/" class="btn btn-secondary">Back to main site</a>
-        </div>
-        <div class="hero-metrics">
-          <div class="metric"><strong>5</strong><span>specialized agents</span></div>
-          <div class="metric"><strong>24/7</strong><span>availability and continuity</span></div>
-          <div class="metric"><strong>1</strong><span>coordinated digital system</span></div>
-        </div>
-      </div>
-
-      <div class="hero-visual" aria-hidden="true">
-        <div class="system-core">
-          <div class="core-center">
-            <div>
-              <strong>GF Agent Core</strong>
-              <span>Specialized roles, shared standards, one coordinated operating model.</span>
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" aria-label="GF Innovative Solutions, home">
+                    <img src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" width="340" height="72" fetchpriority="high" style="height:36px; width:auto;">
+                </a>
             </div>
-          </div>
-          <div class="orbit-agent agent-1" data-name="Otto"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-otto.webp" alt="Otto"></div>
-          <div class="orbit-agent agent-2" data-name="Viktor"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-viktor.webp" alt="Viktor"></div>
-          <div class="orbit-agent agent-3" data-name="Camila"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-camila.webp" alt="Camila"></div>
-          <div class="orbit-agent agent-4" data-name="Carlos"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-carlos.webp" alt="Carlos"></div>
-          <div class="orbit-agent agent-5" data-name="Molly"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-molly.webp" alt="Molly"></div>
+            <div class="nav-mobile-lang">
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
+            </div>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="index.html#how" class="nav-link" data-en="How we work" data-de="So arbeiten wir" data-es="Cómo trabajamos">How we work</a>
+                <a href="marketing.html" class="nav-link" data-en="AI Marketing" data-de="KI-Marketing" data-es="Marketing con IA">AI Marketing</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
+                <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
+            </div>
         </div>
-      </div>
+    </nav>
+
+    <main id="main">
+    <section class="la-hero">
+        <div class="container">
+            <h1 data-en="Local Agents" data-de="Lokale Agenten" data-es="Agentes locales">Local Agents</h1>
+            <p class="la-harness" data-en="Agent harness: OpenClaw and Hermes" data-de="Agent-Harness: OpenClaw und Hermes" data-es="Harness de agentes: OpenClaw y Hermes">Agent harness: OpenClaw and Hermes</p>
+            <p class="la-lead" data-en="AI agents with one clear job each, running around the clock on your own server." data-de="KI-Agenten mit je einer klaren Aufgabe, rund um die Uhr auf Ihrem eigenen Server." data-es="Agentes de IA con una tarea clara cada uno, activos día y noche en tu propio servidor.">AI agents with one clear job each, running around the clock on your own server.</p>
+            <div class="la-actions">
+                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+                <a href="#agents" class="btn btn-ghost" data-en="Meet our agents" data-de="Unsere Agenten" data-es="Conoce a nuestros agentes">Meet our agents</a>
+            </div>
+        </div>
     </section>
 
-    <section id="agents" class="section">
-      <div class="section-header">
-        <span class="eyebrow">Who does what</span>
-        <h2>A specialized team, designed to move work forward.</h2>
-        <p>
-          These agents are not generic chatbots. They are role-based digital team members with explicit responsibilities, operational guardrails, and practical business outcomes. Together they help GF implement AI in a way that is structured, secure, and useful.
-        </p>
-      </div>
-
-      <div class="agents-grid">
-        <article class="agent-card">
-          <div class="agent-avatar-wrap">
-            <div class="agent-avatar"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-otto.webp" alt="Otto portrait"></div>
-          </div>
-          <div class="agent-content">
-            <div class="role-chip">Otto · Infrastructure &amp; DevOps</div>
-            <h3>Otto</h3>
-            <p>Otto builds and maintains the technical backbone. He handles deployment, automation, server workflows, and the infrastructure that keeps the rest of the digital team running reliably.</p>
-            <ul>
-              <li>Manages servers, deployments, automation scripts, and technical operations</li>
-              <li>Strengthens security, repeatability, and operational resilience</li>
-              <li>Bridges staging work into production through structured release workflows</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="agent-card">
-          <div class="agent-avatar-wrap">
-            <div class="agent-avatar"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-viktor.webp" alt="Viktor portrait"></div>
-          </div>
-          <div class="agent-content">
-            <div class="role-chip">Viktor · Sales &amp; Business Development</div>
-            <h3>Viktor</h3>
-            <p>Viktor supports growth activities across pipeline, outreach, and proposals. He helps structure commercial momentum while keeping human approval in the loop for external communication.</p>
-            <ul>
-              <li>Supports CRM workflows, lead tracking, outreach preparation, and proposals</li>
-              <li>Helps keep sales pipelines organized and actionable</li>
-              <li>Transforms commercial intent into consistent follow-up and visibility</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="agent-card">
-          <div class="agent-avatar-wrap">
-            <div class="agent-avatar"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-camila.webp" alt="Camila portrait"></div>
-          </div>
-          <div class="agent-content">
-            <div class="role-chip">Camila · Project Management &amp; Delivery</div>
-            <h3>Camila</h3>
-            <p>Camila keeps delivery organized. She supports project tracking, documentation, client-facing materials, and execution quality so that implementation stays visible and coordinated.</p>
-            <ul>
-              <li>Organizes project reporting, deliverables, documentation, and follow-through</li>
-              <li>Supports structured execution for web and AI implementation work</li>
-              <li>Helps maintain clarity between planning, progress, and delivery</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="agent-card">
-          <div class="agent-avatar-wrap">
-            <div class="agent-avatar"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-carlos.webp" alt="Carlos portrait"></div>
-          </div>
-          <div class="agent-content">
-            <div class="role-chip">Carlos · Operations &amp; AI Strategy</div>
-            <h3>Carlos</h3>
-            <p>Carlos focuses on operational thinking, technical problem-solving, and applied AI strategy. He helps translate ideas into systems, processes, and practical internal leverage.</p>
-            <ul>
-              <li>Supports operations, automation logic, technical research, and internal systems thinking</li>
-              <li>Helps evaluate how AI can improve workflows and decisions</li>
-              <li>Acts as a structured assistant for execution, coordination, and insight generation</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="agent-card">
-          <div class="agent-avatar-wrap">
-            <div class="agent-avatar"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-molly.webp" alt="Molly portrait"></div>
-          </div>
-          <div class="agent-content">
-            <div class="role-chip">Molly · Finance &amp; Administration</div>
-            <h3>Molly</h3>
-            <p>Molly supports financial structure and administrative discipline. She helps with invoicing, reporting, and orderly finance operations while respecting strict boundaries around sensitive records.</p>
-            <ul>
-              <li>Supports invoicing, expense structure, reporting, and administrative processes</li>
-              <li>Works with finance-related workflows under clear approval rules</li>
-              <li>Improves consistency and visibility in back-office operations</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-
-      <div class="system-strip">
-        <div>
-          <strong>Built with role clarity</strong>
-          <span>Each agent is scoped to a business function instead of trying to do everything at once.</span>
+    <section class="section">
+        <div class="container">
+            <div class="facts">
+                <div class="fact">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M3 4m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /> <path d="M3 12m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /> </svg></span>
+                    <h2 data-en="Your own VPS" data-de="Ihr eigener VPS" data-es="Tu propio VPS">Your own VPS</h2>
+                    <p data-en="The agents run on a private server, not a shared platform." data-de="Die Agenten laufen auf einem privaten Server, nicht auf einer geteilten Plattform." data-es="Los agentes funcionan en un servidor privado, no en una plataforma compartida.">The agents run on a private server, not a shared platform.</p>
+                </div>
+                <div class="fact">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 5m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" /> <path d="M9 9h6v6h-6z" /> <path d="M3 10h2" /> <path d="M3 14h2" /> <path d="M10 3v2" /> <path d="M14 3v2" /> <path d="M21 10h-2" /> <path d="M21 14h-2" /> <path d="M14 21v-2" /> <path d="M10 21v-2" /> </svg></span>
+                    <h2 data-en="Powered by Claude" data-de="Mit Claude" data-es="Con Claude">Powered by Claude</h2>
+                    <p data-en="Anthropic Claude does the thinking." data-de="Anthropic Claude übernimmt das Denken." data-es="Anthropic Claude hace el razonamiento.">Anthropic Claude does the thinking.</p>
+                </div>
+                <div class="fact">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5z" /> <path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5z" /> <path d="M3 21l2.5 -2.5" /> <path d="M18.5 5.5l2.5 -2.5" /> <path d="M10 11l-2 2" /> <path d="M13 14l-2 2" /> </svg></span>
+                    <h2 data-en="Fits your tools" data-de="Passt zu Ihren Tools" data-es="Encaja con tus herramientas">Fits your tools</h2>
+                    <p data-en="Telegram, WhatsApp, calendars, CRMs and n8n." data-de="Telegram, WhatsApp, Kalender, CRMs und n8n." data-es="Telegram, WhatsApp, calendarios, CRMs y n8n.">Telegram, WhatsApp, calendars, CRMs and n8n.</p>
+                </div>
+            </div>
         </div>
-        <div>
-          <strong>Guardrails by design</strong>
-          <span>Access, actions, and workflows are aligned with business risk and operational responsibility.</span>
-        </div>
-        <div>
-          <strong>Designed for real work</strong>
-          <span>The focus is not novelty, but useful execution across the company’s daily operations.</span>
-        </div>
-      </div>
     </section>
 
-    <footer>
-      <p>GF Innovative Solutions: specialized digital agents for modern business operations.</p>
-      <!-- This page previously ended with no way forward and no way back
-           except the logo. -->
-      <p class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="index.html#services">Services</a>
-        <a href="marketing.html">AI Marketing</a>
-        <a href="https://calendly.com/gfinnov-info/30min" target="_blank" rel="noopener">Book a free AI assessment</a>
-        <a href="imprint.html">Impressum</a>
-        <a href="privacy.html">Privacy</a>
-      </p>
+    <section id="agents" class="section section--darker">
+        <div class="container">
+            <h2 class="section-title" data-en="The agents that run GF" data-de="Die Agenten hinter GF" data-es="Los agentes que hacen funcionar GF">The agents that run GF</h2>
+            <p class="section-subtitle" data-en="Five agents, one role each, with guardrails on what they can touch." data-de="Fünf Agenten, je eine Rolle, mit klaren Grenzen für ihre Zugriffe." data-es="Cinco agentes, un rol cada uno, con límites claros sobre lo que pueden tocar.">Five agents, one role each, with guardrails on what they can touch.</p>
+            <div class="digital-grid">
+                <article class="digital-card">
+                    <div class="digital-photo"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-otto.webp" alt="Otto"></div>
+                    <h3>Otto</h3>
+                    <p class="digi-role" data-en="Infrastructure and DevOps" data-de="Infrastruktur und DevOps" data-es="Infraestructura y DevOps">Infrastructure and DevOps</p>
+                    <ul>
+                        <li data-en="Servers, deployments and automation" data-de="Server, Deployments und Automatisierung" data-es="Servidores, despliegues y automatización">Servers, deployments and automation</li>
+                        <li data-en="Moves staging work into production" data-de="Bringt Staging-Arbeit in Produktion" data-es="Lleva el trabajo de staging a producción">Moves staging work into production</li>
+                    </ul>
+                </article>
+                <article class="digital-card">
+                    <div class="digital-photo"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-viktor.webp" alt="Viktor"></div>
+                    <h3>Viktor</h3>
+                    <p class="digi-role" data-en="Sales and business development" data-de="Vertrieb und Geschäftsentwicklung" data-es="Ventas y desarrollo de negocio">Sales and business development</p>
+                    <ul>
+                        <li data-en="CRM, leads, outreach and proposals" data-de="CRM, Leads, Akquise und Angebote" data-es="CRM, leads, prospección y propuestas">CRM, leads, outreach and proposals</li>
+                        <li data-en="A human approves every external message" data-de="Jede externe Nachricht gibt ein Mensch frei" data-es="Una persona aprueba cada mensaje externo">A human approves every external message</li>
+                    </ul>
+                </article>
+                <article class="digital-card">
+                    <div class="digital-photo"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-camila.webp" alt="Camila"></div>
+                    <h3>Camila</h3>
+                    <p class="digi-role" data-en="Project management and delivery" data-de="Projektmanagement und Umsetzung" data-es="Gestión de proyectos y entrega">Project management and delivery</p>
+                    <ul>
+                        <li data-en="Tracking, reports and documentation" data-de="Tracking, Berichte und Dokumentation" data-es="Seguimiento, informes y documentación">Tracking, reports and documentation</li>
+                        <li data-en="Keeps delivery visible" data-de="Hält die Umsetzung sichtbar" data-es="Mantiene la entrega visible">Keeps delivery visible</li>
+                    </ul>
+                </article>
+                <article class="digital-card">
+                    <div class="digital-photo"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-carlos.webp" alt="Carlos"></div>
+                    <h3>Carlos</h3>
+                    <p class="digi-role" data-en="Operations and AI strategy" data-de="Betrieb und KI-Strategie" data-es="Operaciones y estrategia de IA">Operations and AI strategy</p>
+                    <ul>
+                        <li data-en="Automation logic and technical research" data-de="Automatisierungslogik und technische Recherche" data-es="Lógica de automatización e investigación técnica">Automation logic and technical research</li>
+                        <li data-en="Finds where AI improves a workflow" data-de="Findet, wo KI einen Ablauf verbessert" data-es="Detecta dónde la IA mejora un proceso">Finds where AI improves a workflow</li>
+                    </ul>
+                </article>
+                <article class="digital-card">
+                    <div class="digital-photo"><img loading="lazy" decoding="async" width="220" height="220" src="images/opt/dw-molly.webp" alt="Molly"></div>
+                    <h3>Molly</h3>
+                    <p class="digi-role" data-en="Finance and administration" data-de="Finanzen und Verwaltung" data-es="Finanzas y administración">Finance and administration</p>
+                    <ul>
+                        <li data-en="Invoicing, expenses and reporting" data-de="Rechnungen, Ausgaben und Berichte" data-es="Facturación, gastos e informes">Invoicing, expenses and reporting</li>
+                        <li data-en="Works under clear approval rules" data-de="Arbeitet nach klaren Freigaberegeln" data-es="Trabaja con reglas claras de aprobación">Works under clear approval rules</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container la-cta">
+            <h2 data-en="Want agents like these for your company?" data-de="Solche Agenten für Ihr Unternehmen?" data-es="¿Quieres agentes así para tu empresa?">Want agents like these for your company?</h2>
+            <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img loading="lazy" decoding="async" width="340" height="72" src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" style="height:36px; width:auto;">
+                    <p class="footer-tagline" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie." data-es="Guiados por personas, impulsados por la tecnología.">Guided by people, powered by tech.</p>
+                </div>
+                <div>
+                    <h4 data-en="Explore" data-de="Entdecken" data-es="Explorar">Explore</h4>
+                    <ul>
+                        <li><a href="index.html#services" data-en="Our Services" data-de="Unsere Leistungen" data-es="Nuestros servicios">Our Services</a></li>
+                        <li><a href="marketing.html" data-en="AI Marketing Platform" data-de="KI-Marketing-Plattform" data-es="Plataforma de marketing con IA">AI Marketing Platform</a></li>
+                        <li><a href="how-we-work.html" data-en="How We Work" data-de="Wie wir arbeiten" data-es="Cómo trabajamos">How We Work</a></li>
+                        <li><a href="use-cases.html" data-en="Use Cases" data-de="Anwendungsfälle" data-es="Casos de uso">Use Cases</a></li>
+                        <li><a href="process-screening.html" data-en="Process Screening" data-de="Prozess-Screening" data-es="Diagnóstico de procesos">Process Screening</a></li>
+                        <li><a href="openclawd-agents.html" data-en="Local Agents" data-de="Lokale Agenten" data-es="Agentes locales">Local Agents</a></li>
+                        <li><a href="resources.html" data-en="Resources" data-de="Ressourcen" data-es="Recursos">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h4>
+                    <p>info@gf-innovative.com</p>
+                    <p>+49 172 95 123 76</p>
+                    <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten." data-es="&copy; 2026 GF Innovative Solutions. Todos los derechos reservados.">&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div>
+                    <a href="imprint.html">Impressum</a> | <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutz" data-es="Privacidad">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
     </footer>
-  </div>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-banner__inner">
+            <div class="cookie-banner__text">
+                <strong data-en="We value your privacy" data-de="Wir schätzen Ihre Privatsphäre" data-es="Valoramos su privacidad">We value your privacy</strong>
+                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können auswählen, welche Cookies Sie akzeptieren möchten." data-es="Este sitio web utiliza cookies para mejorar su experiencia y ofrecer análisis. Puede elegir qué cookies acepta.">This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept.</p>
+            </div>
+            <div class="cookie-banner__actions">
+                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren" data-es="Aceptar todas">Accept All</button>
+                <button id="cookie-reject" class="btn btn-ghost" data-en="Essential Only" data-de="Nur essenzielle" data-es="Solo esenciales">Essential Only</button>
+                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen" data-es="Personalizar">Customize</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Entry Point -->
+    <div class="cookie-settings-entry">
+        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen" data-es="Configuración de cookies">Cookie Settings</button>
+    </div>
+
+    <!-- Cookie Modal -->
+    <div id="cookie-modal" class="cookie-modal" aria-hidden="true">
+        <div class="cookie-modal__backdrop" onclick="closeCookieModal()"></div>
+        <div class="cookie-modal__dialog">
+            <div class="cookie-modal__header">
+                <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen" data-es="Preferencias de cookies">Cookie Preferences</h3>
+                <button class="modal-close" onclick="closeCookieModal()" aria-label="Schließen / Close">&times;</button>
+            </div>
+            <div class="cookie-modal__body">
+                <p data-en="We use cookies to improve your experience. Customize your preferences below." data-de="Wir verwenden Cookies, um Ihr Erlebnis zu verbessern. Passen Sie unten Ihre Einstellungen an." data-es="Utilizamos cookies para mejorar su experiencia. Ajuste sus preferencias a continuación.">We use cookies to improve your experience. Customize your preferences below.</p>
+                <div class="cookie-toggle">
+                    <div>
+                        <strong id="label-essential" data-en="Essential Cookies" data-de="Notwendige Cookies" data-es="Cookies esenciales">Essential Cookies</strong>
+                        <p id="desc-essential" data-en="Required for the website to function properly." data-de="Erforderlich, damit die Website ordnungsgemäß funktioniert." data-es="Necesarias para que el sitio web funcione correctamente.">Required for the website to function properly.</p>
+                    </div>
+                    <div class="switch"><input type="checkbox" id="toggle-essential" checked disabled aria-labelledby="label-essential" aria-describedby="desc-essential"></div>
+                </div>
+                <div class="cookie-toggle">
+                    <div>
+                        <strong id="label-analytics" data-en="Analytics Cookies" data-de="Analyse-Cookies" data-es="Cookies de análisis">Analytics Cookies</strong>
+                        <p id="desc-analytics" data-en="Used for site analytics and performance metrics." data-de="Wird für Website-Analysen und Leistungskennzahlen verwendet." data-es="Se usan para analítica del sitio y métricas de rendimiento.">Used for site analytics and performance metrics.</p>
+                    </div>
+                    <div class="switch"><input type="checkbox" id="toggle-analytics" aria-labelledby="label-analytics" aria-describedby="desc-analytics"></div>
+                </div>
+            </div>
+            <div class="cookie-modal__footer">
+                <button class="btn btn-ghost" onclick="saveCookiePrefs()" data-en="Save Preferences" data-de="Einstellungen speichern" data-es="Guardar preferencias">Save Preferences</button>
+                <button class="btn btn-primary" onclick="acceptAllCookies()" data-en="Accept All" data-de="Alle akzeptieren" data-es="Aceptar todas">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+    /* Smooth scroll for anchor links */
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    /* Tab switching. Takes the event explicitly, because the implicit global `event`
+       is non-standard and breaks the active state where it is unsupported. */
+    function switchTab(tab, evt) {
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-pane').forEach(function(pane) {
+            pane.classList.remove('active');
+            pane.hidden = true;
+        });
+        var pane = document.getElementById(tab + '-tab');
+        pane.classList.add('active');
+        pane.hidden = false;
+        var btn = (evt && evt.currentTarget) || document.querySelector('[data-tab="' + tab + '"]');
+        if (btn) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+        }
+    }
+
+    /* Cookie consent */
+    (function() {
+        var consent = localStorage.getItem('cookie-consent');
+        if (!consent) {
+            document.getElementById('cookie-banner').style.display = '';
+        }
+
+        document.getElementById('cookie-accept').addEventListener('click', function() {
+            localStorage.setItem('cookie-consent', 'all');
+            document.getElementById('cookie-banner').style.display = 'none';
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', { analytics_storage: 'granted' });
+            }
+        });
+
+        document.getElementById('cookie-reject').addEventListener('click', function() {
+            localStorage.setItem('cookie-consent', 'essential');
+            document.getElementById('cookie-banner').style.display = 'none';
+        });
+
+        document.getElementById('cookie-customize').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            openCookieModal();
+        });
+
+        document.getElementById('cookie-settings').addEventListener('click', function() {
+            openCookieModal();
+        });
+    })();
+
+    function openCookieModal() {
+        document.getElementById('cookie-modal').classList.add('open');
+        document.getElementById('cookie-modal').setAttribute('aria-hidden', 'false');
+    }
+
+    function closeCookieModal() {
+        document.getElementById('cookie-modal').classList.remove('open');
+        document.getElementById('cookie-modal').setAttribute('aria-hidden', 'true');
+    }
+
+    function saveCookiePrefs() {
+        var analytics = document.getElementById('toggle-analytics').checked;
+        localStorage.setItem('cookie-consent', analytics ? 'all' : 'essential');
+        if (analytics && typeof gtag === 'function') {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+        }
+        closeCookieModal();
+    }
+
+    function acceptAllCookies() {
+        localStorage.setItem('cookie-consent', 'all');
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', { analytics_storage: 'granted' });
+        }
+        closeCookieModal();
+    }
+
+</script>
+<script>
+    const hamburger = document.getElementById('nav-hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    function closeMenu() {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+    }
+
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('open');
+        navMenu.classList.toggle('open');
+        this.setAttribute('aria-expanded', navMenu.classList.contains('open'));
+    });
+
+    // Close on any menu item, not just links. The language toggle is a
+    // <button> and used to leave the menu open across the whole page.
+    navMenu.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('click', closeMenu);
+    });
+
+    // Escape is the expected way out of an open overlay menu.
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            if (navMenu.classList.contains('open')) {
+                closeMenu();
+                hamburger.focus();
+            }
+            const modal = document.getElementById('cookie-modal');
+            if (modal && modal.classList.contains('open')) closeCookieModal();
+        }
+    });
+</script>
 </body>
 </html>
+

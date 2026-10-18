@@ -474,7 +474,7 @@
             color: #2f6b1f;
             font-weight: 600;
         }
-        .chip .chip-mark { visibility: hidden; font-weight: 700; color: var(--innovation-green); }
+        .chip .chip-mark { visibility: hidden; display: inline-flex; line-height: 0; color: var(--innovation-green); }
         .chip[aria-checked="true"] .chip-mark { visibility: visible; }
         .chip:focus-visible,
         .radio-option input:focus-visible,
@@ -569,11 +569,9 @@
         .thank-you { display: none; text-align: center; padding: 40px 8px; }
         .thank-you .check-icon {
             width: 72px; height: 72px;
-            background: var(--innovation-green);
-            border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 24px;
-            font-size: 36px; color: white;
+            color: var(--accent-green, #15803d);
         }
         .thank-you h2 { color: var(--primary-blue); margin-bottom: 12px; }
         .thank-you p { color: var(--dark-gray); font-size: 16px; }
@@ -589,12 +587,13 @@
 </head>
 <body>
     <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
+
     <!-- Navigation -->
     <nav class="navbar" aria-label="Main">
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="index.html" aria-label="GF Innovative Solutions, home">
-                    <img src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" class="logo" width="340" height="72">
+                    <img src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" width="340" height="72" fetchpriority="high" style="height:36px; width:auto;">
                 </a>
             </div>
             <div class="nav-mobile-lang">
@@ -604,16 +603,14 @@
                     <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
                 </div>
             </div>
-            <button class="nav-hamburger" id="nav-hamburger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
                 <span></span><span></span><span></span>
             </button>
             <div class="nav-menu" id="nav-menu">
                 <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
-                <a href="marketing.html" class="nav-link" data-en="AI Marketing" data-de="KI-Marketing" data-es="Marketing con IA">AI Marketing</a>
-                <a href="marketing.html#pricing" class="nav-link" data-en="Pricing" data-de="Preise" data-es="Precios">Pricing</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
-                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
                 <a href="index.html#how" class="nav-link" data-en="How we work" data-de="So arbeiten wir" data-es="Cómo trabajamos">How we work</a>
+                <a href="marketing.html" class="nav-link" data-en="AI Marketing" data-de="KI-Marketing" data-es="Marketing con IA">AI Marketing</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
                 <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
                 <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
                     <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
@@ -713,9 +710,9 @@
                     </svg>
                 </div>
                 <div class="pain-side">
-                    <h3 data-en="Chaotic client ↔ agency communication"
+                    <h3 data-en="Chaotic client and agency communication"
                         data-de="Chaotische Kommunikation zwischen Kunde und Agentur"
-                        data-es="Comunicación caótica entre cliente y agencia">Chaotic client ↔ agency communication</h3>
+                        data-es="Comunicación caótica entre cliente y agencia">Chaotic client and agency communication</h3>
                     <p data-en="Many voices, contradicting each other across three channels. Nobody is sure what was approved, or by whom."
                        data-de="Viele Stimmen, die sich über drei Kanäle widersprechen. Niemand weiß sicher, was freigegeben wurde und von wem."
                        data-es="Muchas voces que se contradicen en tres canales. Nadie sabe con certeza qué se aprobó, ni quién lo aprobó.">Many voices, contradicting each other across three channels. Nobody is sure what was approved, or by whom.</p>
@@ -995,14 +992,14 @@
                             <span class="field-hint" data-en="Optional · pick as many as apply" data-de="Optional · beliebig viele auswählen" data-es="Opcional · elige todas las que apliquen">Optional · pick as many as apply</span>
                         </span>
                         <div class="chip-group" role="group" data-chips="aiAreas">
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="copywriting"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Copywriting" data-de="Texten" data-es="Copywriting">Copywriting</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="images"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Images" data-de="Bilder" data-es="Imágenes">Images</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="video"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Video" data-de="Video" data-es="Vídeo">Video</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="research"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Research" data-de="Recherche" data-es="Investigación">Research</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="scheduling"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Scheduling" data-de="Planung" data-es="Programación">Scheduling</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="client-support"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Client support" data-de="Kundenbetreuung" data-es="Atención al cliente">Client support</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="reporting"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Reporting" data-de="Reporting" data-es="Reporting">Reporting</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="other"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Other" data-de="Anderes" data-es="Otro">Other</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="copywriting"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Copywriting" data-de="Texten" data-es="Copywriting">Copywriting</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="images"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Images" data-de="Bilder" data-es="Imágenes">Images</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="video"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Video" data-de="Video" data-es="Vídeo">Video</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="research"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Research" data-de="Recherche" data-es="Investigación">Research</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="scheduling"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Scheduling" data-de="Planung" data-es="Programación">Scheduling</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="client-support"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Client support" data-de="Kundenbetreuung" data-es="Atención al cliente">Client support</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="reporting"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Reporting" data-de="Reporting" data-es="Reporting">Reporting</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="other"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Other" data-de="Anderes" data-es="Otro">Other</span></button>
                         </div>
                     </div>
 
@@ -1040,11 +1037,11 @@
                             <span class="field-hint" data-en="Optional · pick as many as apply" data-de="Optional · beliebig viele auswählen" data-es="Opcional · elige todas las que apliquen">Optional · pick as many as apply</span>
                         </span>
                         <div class="chip-group" role="group" data-chips="blockers">
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="time"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="No time" data-de="Keine Zeit" data-es="Falta de tiempo">No time</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="where-to-start"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Don't know where to start" data-de="Wissen nicht, wo anfangen" data-es="No sabemos por dónde empezar">Don't know where to start</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="trust"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Don't trust the output" data-de="Vertrauen dem Ergebnis nicht" data-es="No confiamos en el resultado">Don't trust the output</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="brand-consistency"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Brand consistency" data-de="Markenkonsistenz" data-es="Consistencia de marca">Brand consistency</span></button>
-                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="cost"><span class="chip-mark" aria-hidden="true">✓</span><span data-en="Cost" data-de="Kosten" data-es="Coste">Cost</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="time"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="No time" data-de="Keine Zeit" data-es="Falta de tiempo">No time</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="where-to-start"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Don't know where to start" data-de="Wissen nicht, wo anfangen" data-es="No sabemos por dónde empezar">Don't know where to start</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="trust"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Don't trust the output" data-de="Vertrauen dem Ergebnis nicht" data-es="No confiamos en el resultado">Don't trust the output</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="brand-consistency"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Brand consistency" data-de="Markenkonsistenz" data-es="Consistencia de marca">Brand consistency</span></button>
+                            <button type="button" class="chip" role="checkbox" aria-checked="false" data-value="cost"><span class="chip-mark" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></span><span data-en="Cost" data-de="Kosten" data-es="Coste">Cost</span></button>
                         </div>
                     </div>
 
@@ -1128,7 +1125,7 @@
         </div>
 
         <div class="form-wrapper thank-you" id="thankYou">
-            <div class="check-icon" aria-hidden="true">✓</div>
+            <div class="check-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12l5 5l10 -10" /> </svg></div>
             <h2 data-en="Application received" data-de="Bewerbung eingegangen" data-es="Solicitud recibida">Application received</h2>
             <p data-en="Thank you. We review every application personally and will reply within 3 business days, whether it is a yes or a no."
                data-de="Danke. Wir prüfen jede Bewerbung persönlich und antworten innerhalb von 3 Werktagen, ob ja oder nein."
@@ -1141,19 +1138,19 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <img loading="lazy" decoding="async" width="340" height="72" src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" class="footer-logo">
+                    <img loading="lazy" decoding="async" width="340" height="72" src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" style="height:36px; width:auto;">
                     <p class="footer-tagline" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie." data-es="Guiados por personas, impulsados por la tecnología.">Guided by people, powered by tech.</p>
                 </div>
                 <div>
                     <h4 data-en="Explore" data-de="Entdecken" data-es="Explorar">Explore</h4>
                     <ul>
                         <li><a href="index.html#services" data-en="Our Services" data-de="Unsere Leistungen" data-es="Nuestros servicios">Our Services</a></li>
+                        <li><a href="marketing.html" data-en="AI Marketing Platform" data-de="KI-Marketing-Plattform" data-es="Plataforma de marketing con IA">AI Marketing Platform</a></li>
                         <li><a href="how-we-work.html" data-en="How We Work" data-de="Wie wir arbeiten" data-es="Cómo trabajamos">How We Work</a></li>
                         <li><a href="use-cases.html" data-en="Use Cases" data-de="Anwendungsfälle" data-es="Casos de uso">Use Cases</a></li>
                         <li><a href="process-screening.html" data-en="Process Screening" data-de="Prozess-Screening" data-es="Diagnóstico de procesos">Process Screening</a></li>
-                        <li><a href="openclawd-agents.html">OpenClawd AI Agents</a></li>
+                        <li><a href="openclawd-agents.html" data-en="Local Agents" data-de="Lokale Agenten" data-es="Agentes locales">Local Agents</a></li>
                         <li><a href="resources.html" data-en="Resources" data-de="Ressourcen" data-es="Recursos">Resources</a></li>
-                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung" data-es="Desarrollo de RV/RA">VR/AR Development</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">

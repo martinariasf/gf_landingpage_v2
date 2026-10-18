@@ -16,162 +16,575 @@
     <meta name="twitter:title" content="Process Screening | GF Innovative Solutions">
     <meta name="twitter:description" content="We map your highest-burden manual processes and show exactly where AI creates measurable ROI. The Express tier is free.">
     <meta name="twitter:image" content="https://www.gfinnov.com/images/gallery-pretty-ai-team.jpg">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
-         page scripts below, which read the active language. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Shell CSS copied from index.html (tokens, buttons, navbar, footer,
+         hamburger). This page no longer loads the legacy styles.css. -->
+    <style>
+    /* ── CSS Custom Properties ── */
+    :root {
+        --bg: #ffffff;
+        --bg-light: #f8f9fa;
+        --bg-card: #ffffff;
+        /* --green is the accessible text/CTA green (5.1:1 on white).
+           --green-bright is decorative only: fills, hovers, rules. Never text. */
+        --green: #15803d;
+        --green-bright: #22c55e;
+        --teal: #0f766e;
+        --white: #1a1a1a;
+        --gray: #4b5563;
+        --gray-dim: #6b7280;
+        --border: #e5e7eb;
+        --border-hover: #d1d5db;
+        --glass: rgba(255,255,255,0.92);
+        --glass-border: #e5e7eb;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --font: 'Inter', system-ui, -apple-system, sans-serif;
+        --max-w: 1200px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--white);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--teal); }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Focus & keyboard access ── */
+    :focus-visible {
+        outline: 3px solid var(--green);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+    /* On the dark navbar and the coloured hero the green ring is too low-contrast. */
+    .navbar :focus-visible,
+    .hero :focus-visible {
+        outline-color: #ffffff;
+        box-shadow: 0 0 0 5px rgba(15, 23, 42, .55);
+    }
+    .skip-link {
+        position: absolute;
+        left: 12px;
+        top: -100px;
+        z-index: 10200;
+        background: var(--green);
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: var(--radius-sm);
+        font-size: 15px;
+        font-weight: 600;
+        transition: top .18s ease;
+    }
+    .skip-link:focus {
+        top: 12px;
+        color: #fff;
+    }
+
+    /* ── Reduced motion ──
+       Keep state changes legible; only stop the decorative, looping motion. */
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .hero-label::after {
+            animation: none;
+            width: 100%;
+        }
+        *, *::before, *::after {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: .12s !important;
+        }
+        .btn:hover,
+        .service-card:hover,
+        .glass-card:hover { transform: none; }
+    }
+
+    /* ── Utility ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .section-tag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 12px;
+    }
+    .section-title {
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 800;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+    .section-subtitle {
+        color: var(--gray);
+        font-size: 17px;
+        max-width: 640px;
+        margin-bottom: 48px;
+    }
+    /* German compound nouns are long enough to overflow narrow viewports at
+       heading sizes; hyphenation keys off the lang attribute. */
+    h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ── Buttons ── */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        border-radius: var(--radius-sm);
+        font-family: var(--font);
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .25s;
+        border: none;
+        text-decoration: none;
+    }
+    .btn-primary {
+        background: var(--green);
+        color: #fff;
+    }
+    .btn-primary:hover { color: #fff;
+        background: #166534;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(15, 23, 42, .18);
+    }
+    .btn-ghost {
+        background: transparent;
+        color: var(--white);
+        border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+        border-color: var(--green);
+        color: var(--green);
+        transform: translateY(-2px);
+    }
+
+    /* ── Navigation ── */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10100;
+        background: rgba(11,22,40,0.95);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        transition: background .3s;
+    }
+    .nav-container {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+        position: relative;
+    }
+    .nav-logo .logo {
+        height: 36px;
+        width: auto;
+    }
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+    .nav-link {
+        color: #94a3b8;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color .2s;
+    }
+    .nav-link:hover { color: #f1f5f9; }
+    .nav-cta {
+        background: var(--green);
+        color: #fff !important;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        transition: all .25s;
+    }
+    .nav-cta:hover { color: #fff;
+        background: #166534;
+        color: #fff !important;
+        transform: translateY(-1px);
+    }
+    /* Language switch: three separate buttons rather than one cycling
+       control. With EN/DE a toggle was fine; with a third language a cycler
+       hides ES behind two clicks and never shows which languages exist.
+       Sits on the dark navbar, rgba(11,22,40,.95). */
+    .lang-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        padding: 3px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        background: transparent;
+    }
+    .lang-switch .lang-opt {
+        /* They are links now: kill the default underline and centre the
+           label the way a button box did for free. */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        -webkit-appearance: none;
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: #94a3b8;  /* 5.3:1 on the dark navbar */
+        font-family: var(--font);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1;
+        padding: 6px 9px;
+        border-radius: 5px;
+        cursor: pointer;
+        min-height: 32px;
+        transition: color .2s, background .2s;
+    }
+    .lang-switch .lang-opt:hover {
+        color: #f1f5f9;
+        background: rgba(255,255,255,0.08);
+    }
+    /* Solid chip, not an underline: the active language has to survive both
+       colour-blindness and a glance. */
+    .lang-switch .lang-opt.active {
+        color: #0b1628;
+        background: #f1f5f9;
+        font-weight: 700;
+        cursor: default;
+    }
+    @media (pointer: coarse) {
+        .lang-switch .lang-opt { min-width: 44px; min-height: 44px; }
+    }
+    /* Mobile-only twin of the language switch, shown next to the hamburger. */
+    .nav-mobile-lang {
+        display: none;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 8px;
+        min-height: 44px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+        background: #0b1628;
+        color: #f1f5f9;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 60px 0 30px;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+    .footer-logo {
+        height: 32px;
+        width: auto;
+        margin-bottom: 12px;
+    }
+    .footer-tagline { color: #94a3b8; font-size: 14px; }
+    .footer h4 { font-size: 14px; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; color: #f1f5f9; }
+    .footer ul li { margin-bottom: 8px; }
+    .footer ul a { color: #94a3b8; font-size: 14px; }
+    .footer ul a:hover { color: var(--green); }
+    .footer-contact p { color: #94a3b8; font-size: 14px; margin-bottom: 4px; }
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: #94a3b8;  /* was #64748b: 3.81:1 on the dark footer */
+    }
+    /* 24x24 minimum target (WCAG 2.5.8); these were 16px tall. */
+    .footer-bottom a {
+        color: #94a3b8;  /* was #64748b: 3.81:1 on the dark footer */
+        display: inline-block;
+        padding: 6px 4px;
+    }
+    .footer-bottom a:hover { color: var(--green); }
+    .footer-grid ul a {
+        display: inline-block;
+        padding: 5px 0;
+    }
+
+    /* ── Hamburger Menu ── */
+    .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 5px;
+        /* 44x44 minimum tap target (WCAG 2.5.5); the bars stay 28px wide. */
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 11px 8px;
+        z-index: 10102;
+        pointer-events: auto;
+    }
+    .nav-hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #f1f5f9;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    /* Bars are 2px with 5px gaps, so each outer bar is 7px off centre. */
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-menu.open {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(11,22,40,0.98);
+        padding: 20px 24px;
+        gap: 16px;
+        z-index: 10101;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        pointer-events: auto;
+    }
+
+    /* ── Subpage shell ── */
+    .section { padding: 96px 0; }
+    .section--darker { background: var(--bg-light); }
+    .page-hero {
+        padding: 148px 0 72px;
+        background: linear-gradient(135deg, #0F4C8A 0%, #1560B2 35%, #2F6F98 70%, #2F7A73 100%);
+        color: #f1f5f9;
+    }
+    .page-hero :focus-visible { outline-color: #fff; }
+    .page-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; max-width: 760px; margin-bottom: 16px; text-wrap: balance; }
+    .page-hero p { font-size: 18px; color: #fff; max-width: 600px; }
+    .section-title { text-wrap: balance; }
+    .lead { color: var(--gray); font-size: 17px; max-width: 600px; margin-bottom: 40px; }
+    .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .card h2 { font-size: 21px; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+    .card-icon { display: block; color: var(--green); margin-bottom: 14px; line-height: 0; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .checklist li { padding: 9px 0; border-bottom: 1px solid var(--border); color: var(--gray); }
+    .checklist li:last-child { border-bottom: 0; }
+    .steps { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px 32px; counter-reset: step; }
+    .steps li { counter-increment: step; border-top: 2px solid var(--green); padding-top: 18px; }
+    .steps li::before { content: counter(step); display: block; font-size: 14px; font-weight: 700; color: var(--green); margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+    .steps h3 { font-size: 21px; margin-bottom: 6px; line-height: 1.3; text-wrap: balance; }
+    .steps p { color: var(--gray); max-width: 34ch; }
+    .cta-band { text-align: center; }
+    .cta-band .lead { margin: 0 auto 28px; }
+    .table-wrap { max-width: 800px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: var(--radius); }
+    .price-table { width: 100%; min-width: 480px; border-collapse: collapse; background: var(--bg-card); }
+    .price-table th, .price-table td { padding: 16px 22px; text-align: left; border-bottom: 1px solid var(--border); }
+    .price-table thead th { font-size: 14px; color: var(--gray); font-weight: 600; background: var(--bg-light); }
+    .price-table tbody tr:last-child td { border-bottom: 0; }
+    .price-table td:first-child { font-weight: 600; }
+    .mt-32 { margin-top: 32px; }
+    @media (max-width: 920px) {
+        .nav-menu { display: none; }
+        .nav-hamburger { display: flex; }
+        .nav-mobile-lang { display: inline-flex; }
+        .nav-menu .lang-switch { display: none; }
+        .nav-menu.open .nav-link,
+        .nav-menu.open .nav-cta { display: block; padding: 12px 0; pointer-events: auto; }
+        .footer-grid { grid-template-columns: 1fr; }
+        .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+        .grid-3 { grid-template-columns: 1fr; }
+        .section { padding: 64px 0; }
+        .page-hero { padding: 120px 0 56px; }
+    }
+    @media (min-width: 921px) and (max-width: 1100px) { .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    </style>
+    <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists. -->
     <script src="lang.js"></script>
 </head>
 <body>
     <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html" aria-label="GF Innovative Solutions, Startseite / home"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
+                <a href="index.html" aria-label="GF Innovative Solutions, home">
+                    <img src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" width="340" height="72" fetchpriority="high" style="height:36px; width:auto;">
+                </a>
             </div>
-            <div class="nav-menu">
-                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
-                <a href="marketing.html" class="nav-link" data-en="AI Marketing" data-de="KI-Marketing" data-es="Marketing con IA">AI Marketing</a>
-                <a href="marketing.html#pricing" class="nav-link" data-en="Pricing" data-de="Preise" data-es="Precios">Pricing</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
-                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
-                <a href="index.html#how" class="nav-link" data-en="How we work" data-de="So arbeiten wir" data-es="Cómo trabajamos">How we work</a>
-                <a href="index.html#contact" class="nav-link nav-cta" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+            <div class="nav-mobile-lang">
                 <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
                     <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
                     <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
                     <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
                 </div>
             </div>
-            <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
             </button>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="index.html#how" class="nav-link" data-en="How we work" data-de="So arbeiten wir" data-es="Cómo trabajamos">How we work</a>
+                <a href="marketing.html" class="nav-link" data-en="AI Marketing" data-de="KI-Marketing" data-es="Marketing con IA">AI Marketing</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
+                <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="main" tabindex="-1" class="hero" style="min-height: auto; padding: 120px 0 64px 0;">
-        <div class="hero-container" style="grid-template-columns: 1fr;">
-            <div class="hero-content" style="text-align: center;">
-                <h1 class="hero-title" data-en="Free AI Assessment" data-de="Kostenlose KI-Bewertung" data-es="Evaluación de IA gratuita">Free AI Assessment</h1>
-                <p class="hero-subtitle" data-en="We analyse your highest-burden processes and show you exactly where AI creates measurable value, before you spend a cent." data-de="Wir analysieren Ihre aufwändigsten Prozesse und zeigen Ihnen genau, wo KI messbaren Mehrwert schafft, bevor Sie einen Cent ausgeben." data-es="Analizamos los procesos que más le pesan y le mostramos exactamente dónde la IA genera valor medible, antes de que gaste un céntimo.">
-                    We analyse your highest-burden processes and show you exactly where AI creates measurable value, before you spend a cent.
-                </p>
+    <main id="main" tabindex="-1">
+        <section class="page-hero">
+            <div class="container">
+                <h1 data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</h1>
+                <p data-en="We find where AI saves you real time and money, before you spend a cent." data-de="Wir zeigen, wo KI Ihnen Zeit und Geld spart, bevor Sie einen Cent ausgeben." data-es="Le mostramos dónde la IA le ahorra tiempo y dinero, antes de gastar un céntimo.">We find where AI saves you real time and money, before you spend a cent.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Express Tier (€0) -->
-    <section class="section-primary" style="padding-top: 64px;">
-        <div class="container">
-            <h2 class="section-title" data-en="Express Tier: €0" data-de="Express-Stufe: €0" data-es="Nivel Express: 0 €">Express Tier: €0</h2>
-
-            <div class="differences-grid">
-                <div class="difference-item">
-                    <div class="difference-icon"><span style="font-weight:700;font-size:16px;">1</span></div>
-                    <h3 data-en="Validation Meeting" data-de="Validierungsgespräch" data-es="Reunión de validación">Validation Meeting</h3>
-                    <p data-en="20-minute call to qualify your processes and confirm fit." data-de="20-minütiges Gespräch, um Ihre Prozesse zu qualifizieren und die Eignung zu bestätigen." data-es="Llamada de 20 minutos para calificar sus procesos y confirmar el encaje.">20-minute call to qualify your processes and confirm fit.</p>
-                </div>
-                <div class="difference-item">
-                    <div class="difference-icon"><span style="font-weight:700;font-size:16px;">2</span></div>
-                    <h3 data-en="Client Submission" data-de="Einreichung" data-es="Envío del cliente">Client Submission</h3>
-                    <p data-en="You submit your process documentation for analysis." data-de="Sie reichen Ihre Prozessdokumentation zur Analyse ein." data-es="Usted envía la documentación de sus procesos para el análisis.">You submit your process documentation for analysis.</p>
-                </div>
-                <div class="difference-item">
-                    <div class="difference-icon"><span style="font-weight:700;font-size:16px;">3</span></div>
-                    <h3 data-en="AI Analysis (48-72h)" data-de="KI-Analyse (48-72h)" data-es="Análisis de IA (48-72 h)">AI Analysis (48-72h)</h3>
-                    <p data-en="We run a structured AI analysis on your submitted processes." data-de="Wir führen eine strukturierte KI-Analyse Ihrer eingereichten Prozesse durch." data-es="Realizamos un análisis estructurado con IA sobre los procesos que nos envió.">We run a structured AI analysis on your submitted processes.</p>
-                </div>
-                <div class="difference-item">
-                    <div class="difference-icon"><span style="font-weight:700;font-size:16px;">4</span></div>
-                    <h3 data-en="Results Presentation" data-de="Ergebnispräsentation" data-es="Presentación de resultados">Results Presentation</h3>
-                    <p data-en="45-minute debrief where we present findings and recommendations." data-de="45-minütiges Debriefing, in dem wir Ergebnisse und Empfehlungen vorstellen." data-es="Sesión de 45 minutos en la que presentamos hallazgos y recomendaciones.">45-minute debrief where we present findings and recommendations.</p>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title" data-en="Express: €0" data-de="Express: 0 €" data-es="Express: 0 €">Express: €0</h2>
+                <p class="lead" data-en="Four steps from first call to results." data-de="Vier Schritte vom ersten Gespräch bis zum Ergebnis." data-es="Cuatro pasos de la primera llamada a los resultados.">Four steps from first call to results.</p>
+                <ol class="steps">
+                    <li><h3 data-en="Validation call" data-de="Validierungsgespräch" data-es="Reunión de validación">Validation call</h3><p data-en="20 minutes to check your processes and fit." data-de="20 Minuten, um Prozesse und Eignung zu prüfen." data-es="20 minutos para revisar sus procesos y el encaje.">20 minutes to check your processes and fit.</p></li>
+                    <li><h3 data-en="You send documents" data-de="Sie senden Unterlagen" data-es="Usted envía documentos">You send documents</h3><p data-en="Your process documentation, as it is." data-de="Ihre Prozessdokumentation, so wie sie ist." data-es="Su documentación de procesos, tal como está.">Your process documentation, as it is.</p></li>
+                    <li><h3 data-en="AI analysis, 48-72h" data-de="KI-Analyse, 48-72h" data-es="Análisis de IA, 48-72 h">AI analysis, 48-72h</h3><p data-en="A structured analysis of the processes you sent." data-de="Eine strukturierte Analyse Ihrer Prozesse." data-es="Un análisis estructurado de los procesos enviados.">A structured analysis of the processes you sent.</p></li>
+                    <li><h3 data-en="Results, 45 min" data-de="Ergebnisse, 45 Min." data-es="Resultados, 45 min">Results, 45 min</h3><p data-en="Findings and recommendations in one debrief." data-de="Ergebnisse und Empfehlungen in einem Termin." data-es="Hallazgos y recomendaciones en una sesión.">Findings and recommendations in one debrief.</p></li>
+                </ol>
+                <div class="mt-32">
+                    <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" data-en="Book free assessment" data-de="Kostenloses Assessment buchen" data-es="Reservar evaluación gratuita">Book free assessment</a>
                 </div>
             </div>
+        </section>
 
-            <div class="text-center mt-32">
-                <a href="https://calendly.com/gfinnovative/ai-assessment" class="btn btn-primary btn-large" data-en="Book Free Assessment" data-de="Kostenlose Bewertung buchen" data-es="Reservar evaluación gratuita">Book Free Assessment</a>
+        <section class="section section--darker">
+            <div class="container">
+                <h2 class="section-title" data-en="Premium" data-de="Premium" data-es="Premium">Premium</h2>
+                <p class="lead" data-en="A deeper process map, plus a roadmap on Tier 2." data-de="Eine tiefere Prozesslandkarte, bei Stufe 2 mit Roadmap." data-es="Un mapa de procesos más profundo, con hoja de ruta en el Nivel 2.">A deeper process map, plus a roadmap on Tier 2.</p>
+                <div class="table-wrap">
+                    <table class="price-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" data-en="Tier" data-de="Stufe" data-es="Nivel">Tier</th>
+                                <th scope="col" data-en="Price" data-de="Preis" data-es="Precio">Price</th>
+                                <th scope="col" data-en="Includes" data-de="Enthält" data-es="Incluye">Includes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-en="Tier 1" data-de="Stufe 1" data-es="Nivel 1">Tier 1</td>
+                                <td data-en="from €1,000" data-de="ab 1.000 €" data-es="desde 1.000 €">from €1,000</td>
+                                <td data-en="Process screening, process map" data-de="Prozess-Screening, Prozesslandkarte" data-es="Diagnóstico de procesos, mapa de procesos">Process screening, process map</td>
+                            </tr>
+                            <tr>
+                                <td data-en="Tier 2" data-de="Stufe 2" data-es="Nivel 2">Tier 2</td>
+                                <td data-en="from €1,600" data-de="ab 1.600 €" data-es="desde 1.600 €">from €1,600</td>
+                                <td data-en="Screening, process map, roadmap, on-site visit" data-de="Screening, Prozesslandkarte, Roadmap, Vor-Ort-Besuch" data-es="Diagnóstico, mapa de procesos, hoja de ruta, visita presencial">Screening, process map, roadmap, on-site visit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-32">
+                    <a href="index.html#contact" class="btn btn-ghost" data-en="Ask about Premium" data-de="Premium anfragen" data-es="Consultar Premium">Ask about Premium</a>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Premium Tiers -->
-    <section class="section-secondary">
-        <div class="container">
-            <h2 class="section-title" data-en="Premium Tiers" data-de="Premium-Stufen" data-es="Niveles Premium">Premium Tiers</h2>
-
-            <!-- overflow-x on the wrapper: the 3-column table pushed the page
-                 20px wider than a 375px viewport. -->
-            <div style="max-width: 800px; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                <table style="width: 100%; min-width: 520px; border-collapse: collapse; background: var(--pure-white); border-radius: var(--border-radius-large); overflow: hidden; box-shadow: 0 4px 20px rgba(140, 190, 125, 0.08);">
-                    <thead>
-                        <tr style="background: var(--primary-blue); color: var(--pure-white);">
-                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Tier" data-de="Stufe" data-es="Nivel">Tier</th>
-                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Price" data-de="Preis" data-es="Precio">Price</th>
-                            <th style="padding: 16px 24px; text-align: left; font-weight: 700;" data-en="Includes" data-de="Enthält" data-es="Incluye">Includes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid var(--medium-gray);">
-                            <td style="padding: 16px 24px; font-weight: 600;">Tier 1</td>
-                            <td style="padding: 16px 24px;" data-en="from €1,000" data-de="ab €1.000" data-es="desde 1.000 €">from €1,000</td>
-                            <td style="padding: 16px 24px;" data-en="Process Screening + Process Map" data-de="Prozess-Screening + Prozesslandkarte" data-es="Diagnóstico de procesos + mapa de procesos">Process Screening + Process Map</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 16px 24px; font-weight: 600;">Tier 2</td>
-                            <td style="padding: 16px 24px;" data-en="from €1,600" data-de="ab €1.600" data-es="desde 1.600 €">from €1,600</td>
-                            <td style="padding: 16px 24px;" data-en="Screening + Process Map + Roadmap + On-site visit" data-de="Screening + Prozesslandkarte + Roadmap + Vor-Ort-Besuch" data-es="Diagnóstico + mapa de procesos + hoja de ruta + visita presencial">Screening + Process Map + Roadmap + On-site visit</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="text-center mt-32">
-                <a href="index.html#contact" class="btn btn-primary btn-large" data-en="Contact us for Premium" data-de="Kontaktieren Sie uns für Premium" data-es="Contáctenos para Premium">Contact us for Premium</a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Guided by tech, powered by people.</p>
+            <div class="footer-grid">
+                <div>
+                    <img loading="lazy" decoding="async" width="340" height="72" src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" style="height:36px; width:auto;">
+                    <p class="footer-tagline" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie." data-es="Guiados por personas, impulsados por la tecnología.">Guided by people, powered by tech.</p>
                 </div>
-                <div class="footer-section">
-                    <h2 data-en="Services" data-de="Leistungen" data-es="Servicios">Services</h2>
+                <div>
+                    <h4 data-en="Explore" data-de="Entdecken" data-es="Explorar">Explore</h4>
                     <ul>
-                        <li><a href="index.html#services" data-en="AI Implementation & Strategy" data-de="KI-Implementierung & Strategie" data-es="Implementación y estrategia de IA">AI Implementation & Strategy</a></li>
-                        <li><a href="index.html#services" data-en="Custom AI Agents & Automation" data-de="Individuelle KI-Agenten & Automatisierung" data-es="Agentes de IA y automatización a medida">Custom AI Agents & Automation</a></li>
-                        <li><a href="vr_website.html" data-en="VR/AR Development" data-de="VR/AR-Entwicklung" data-es="Desarrollo de RV/RA">VR/AR Development</a></li>
-                        <li><a href="index.html#services" data-en="Fractional CTO Services" data-de="Fractional CTO Services" data-es="Servicios de CTO a tiempo parcial">Fractional CTO Services</a></li>
+                        <li><a href="index.html#services" data-en="Our Services" data-de="Unsere Leistungen" data-es="Nuestros servicios">Our Services</a></li>
+                        <li><a href="marketing.html" data-en="AI Marketing Platform" data-de="KI-Marketing-Plattform" data-es="Plataforma de marketing con IA">AI Marketing Platform</a></li>
+                        <li><a href="how-we-work.html" data-en="How We Work" data-de="Wie wir arbeiten" data-es="Cómo trabajamos">How We Work</a></li>
+                        <li><a href="use-cases.html" data-en="Use Cases" data-de="Anwendungsfälle" data-es="Casos de uso">Use Cases</a></li>
+                        <li><a href="process-screening.html" data-en="Process Screening" data-de="Prozess-Screening" data-es="Diagnóstico de procesos">Process Screening</a></li>
+                        <li><a href="openclawd-agents.html" data-en="Local Agents" data-de="Lokale Agenten" data-es="Agentes locales">Local Agents</a></li>
+                        <li><a href="resources.html" data-en="Resources" data-de="Ressourcen" data-es="Recursos">Resources</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
-                    <p>info@gfinnov.com</p>
+                <div class="footer-contact">
+                    <h4 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h4>
+                    <p>info@gf-innovative.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
-                <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> |
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</a>
+                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten." data-es="&copy; 2026 GF Innovative Solutions. Todos los derechos reservados.">&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div>
+                    <a href="imprint.html">Impressum</a> | <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutz" data-es="Privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+    (function () {
+        var hamburger = document.getElementById('nav-hamburger');
+        var navMenu = document.getElementById('nav-menu');
+        if (!hamburger || !navMenu) return;
+        function closeMenu() {
+            hamburger.classList.remove('open');
+            navMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('open');
+            navMenu.classList.toggle('open');
+            this.setAttribute('aria-expanded', navMenu.classList.contains('open'));
+        });
+        navMenu.querySelectorAll('a, button').forEach(function (el) {
+            el.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+                closeMenu();
+                hamburger.focus();
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
