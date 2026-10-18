@@ -172,7 +172,7 @@
         background: var(--green);
         color: #fff;
     }
-    .btn-primary:hover {
+    .btn-primary:hover { color: #fff;
         background: #166534;
         color: #fff;
         transform: translateY(-2px);
@@ -323,8 +323,8 @@
         font-size: 0.8rem;
         transition: all .25s;
     }
-    .nav-cta:hover {
-        background: #16a34a;
+    .nav-cta:hover { color: #fff;
+        background: #166534;
         color: #fff !important;
         transform: translateY(-1px);
     }
@@ -396,7 +396,7 @@
         overflow: hidden;
         padding-top: 68px;
         /* Terminus pulled off green so the primary CTA has a field to stand on. */
-        background: linear-gradient(135deg, #0F4C8A 0%, #1560B2 35%, #3F82AC 70%, #5BA8A0 100%);
+        background: linear-gradient(135deg, #0F4C8A 0%, #1560B2 35%, #2F6F98 70%, #2F7A73 100%);
         color: #f1f5f9;
     }
     .hero::before {
@@ -684,10 +684,8 @@
     .reel-card__body { padding: 22px 24px 26px; }
     .reel-card__step {
         display: inline-block;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 600;
         color: var(--teal);
         margin-bottom: 8px;
     }
@@ -709,10 +707,7 @@
         gap: 20px;
         margin-bottom: 44px;
     }
-    .capability {
-        border-top: 2px solid var(--green);
-        padding-top: 16px;
-    }
+    .capability { }
     .capability h3 {
         font-size: 15px;
         font-weight: 700;
@@ -1322,6 +1317,20 @@
         .platform-cta { flex-direction: column; align-items: flex-start; }
         .platform-cta .btn { width: 100%; }
     }
+    
+    .capability__icon { display: block; color: var(--green); margin-bottom: 12px; line-height: 0; }
+    .capability__icon svg { width: 30px; height: 30px; stroke-width: 1.6; }
+    .complementary-card .capability__icon svg { width: 26px; height: 26px; }
+    /* How we work: three steps, a real sequence */
+    .steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; counter-reset: step; }
+    .steps li { counter-increment: step; border-top: 2px solid var(--green); padding-top: 20px; }
+    .steps li::before { content: counter(step); display: block; font-size: 14px; font-weight: 700; color: var(--green); margin-bottom: 12px; font-variant-numeric: tabular-nums; }
+    .steps h3 { font-size: 22px; margin: 0 0 8px; text-wrap: balance; }
+    .steps p { color: var(--gray); margin: 0; max-width: 34ch; }
+    .human-note { margin-top: 48px; font-size: 20px; font-weight: 600; max-width: 40ch; text-wrap: balance; }
+    @media (max-width: 800px) { .steps { grid-template-columns: 1fr; gap: 32px; } }
+    .service-card--platform { border-color: var(--green); }
+    .steps li::before { display: none; }
     </style>
     <!-- Shared EN/DE/ES switching. In <head> so window.GFLang exists for the
          page scripts below, which read the active language. -->
@@ -1351,11 +1360,9 @@
             </button>
             <div class="nav-menu" id="nav-menu">
                 <a href="#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
-                <a href="#platform" class="nav-link" data-en="AI Platform" data-de="KI-Plattform" data-es="Plataforma de IA">AI Platform</a>
-                <a href="#pricing" class="nav-link" data-en="Pricing" data-de="Preise" data-es="Precios">Pricing</a>
-                <a href="pilot.html" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
+                <a href="#how" class="nav-link" data-en="How we work" data-de="So arbeiten wir" data-es="Cómo trabajamos">How we work</a>
+                <a href="marketing.html" class="nav-link" data-en="AI Marketing" data-de="KI-Marketing" data-es="Marketing con IA">AI Marketing</a>
                 <a href="#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
-                <a href="#about" class="nav-link" data-en="About" data-de="Über uns" data-es="Quiénes somos">About</a>
                 <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
                 <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
                     <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
@@ -1371,131 +1378,84 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-inner">
-            <span class="hero-label" data-en="AI Implementation Partner" data-de="KI-Implementierungspartner" data-es="Socio de implementación de IA">AI Implementation Partner</span>
-            <h1 data-en="Your first AI team without the hiring cost." data-de="Ihr erstes KI-Team ohne Einstellungskosten." data-es="Su primer equipo de IA sin costos de contratación.">Your first AI team without the hiring cost.</h1>
-            <p class="hero-sub" data-en="We build custom AI agents for <strong>companies of 4-50 people</strong>, no internal dev team required. From automating manual work to handling customer flows, we deliver results <strong>from month one</strong>." data-de="Wir entwickeln maßgeschneiderte KI-Agenten für <strong>Unternehmen mit 4-50 Mitarbeitern</strong>, kein internes Entwicklerteam erforderlich. Von der Automatisierung manueller Arbeit bis zur Bearbeitung von Kundenabläufen liefern wir Ergebnisse <strong>ab dem ersten Monat</strong>." data-es="Creamos agentes de IA a medida para <strong>empresas de 4 a 50 personas</strong>, sin necesidad de un equipo de desarrollo interno. Desde automatizar trabajo manual hasta gestionar flujos con clientes, entregamos resultados <strong>desde el primer mes</strong>.">We build custom AI agents for <strong>companies of 4-50 people</strong>, no internal dev team required. From automating manual work to handling customer flows, we deliver results <strong>from month one</strong>.</p>
+            <h1 data-en="We find where AI saves your team time. Then we build it." data-de="Wir finden, wo KI Ihrem Team Zeit spart. Dann bauen wir es." data-es="Encontramos dónde la IA le ahorra tiempo a su equipo. Y lo construimos.">We find where AI saves your team time. Then we build it.</h1>
+            <p class="hero-sub" data-en="AI agents and automation for companies of 4 to 50 people. Your people stay in charge." data-de="KI-Agenten und Automatisierung für Unternehmen mit 4 bis 50 Mitarbeitern. Ihre Leute behalten die Kontrolle." data-es="Agentes de IA y automatización para empresas de 4 a 50 personas. Su equipo sigue al mando.">AI agents and automation for companies of 4 to 50 people. Your people stay in charge.</p>
             <div class="hero-buttons">
-                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" data-en="Book Free AI Assessment" data-de="Kostenloses KI-Assessment buchen" data-es="Reservar evaluación gratuita">Book Free AI Assessment</a>
-                <a href="pilot.html" class="btn btn-ghost" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben" data-es="Postular al piloto">Apply for the Pilot</a>
+                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" rel="noopener" data-en="Book Free AI Assessment" data-de="Kostenloses KI-Assessment buchen" data-es="Reservar evaluación gratuita">Book Free AI Assessment</a>
+                <a href="#how" class="btn btn-ghost" data-en="How we work" data-de="So arbeiten wir" data-es="Cómo trabajamos">How we work</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section section--darker">
+    <!-- How We Work -->
+    <section id="how" class="section section--darker">
         <div class="container">
-            <h2 class="section-title" data-en="About Us" data-de="Über uns" data-es="Sobre nosotros">About Us</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p data-en="GF Innovative Solutions is a German-based AI consultancy and implementation partner. We help startups and SMEs unlock the real capabilities of artificial intelligence, not with slide decks, but with working systems." data-de="GF Innovative Solutions ist eine in Deutschland ansässige KI-Beratung, die auch umsetzt. Wir helfen Startups und KMUs, die echten Möglichkeiten der künstlichen Intelligenz zu erschließen, nicht mit Folienpräsentationen, sondern mit funktionierenden Systemen." data-es="GF Innovative Solutions es una consultora de IA con sede en Alemania que además implementa. Ayudamos a startups y pymes a aprovechar las capacidades reales de la inteligencia artificial: no con presentaciones, sino con sistemas que funcionan."><strong>GF Innovative Solutions</strong> is a German-based AI consultancy and implementation partner. We help startups and SMEs unlock the real capabilities of artificial intelligence, not with slide decks, but with working systems.</p>
-                    <p data-en="We don't just consult. We implement. We build AI systems that automate operations, reduce costs, and free up your team for higher-value work. From custom AI agents to process automation and secure infrastructure, we handle the strategy and the code." data-de="Wir beraten nicht nur. Wir setzen um. Wir bauen KI-Systeme, die Abläufe automatisieren, Kosten senken und Ihr Team für wertschöpfendere Arbeit freisetzen. Von maßgeschneiderten KI-Agenten über Prozessautomatisierung bis hin zu sicherer Infrastruktur. Wir übernehmen Strategie und Code." data-es="No solo asesoramos. Implementamos. Construimos sistemas de IA que automatizan operaciones, reducen costos y liberan a su equipo para trabajo de mayor valor. Desde agentes de IA a medida hasta automatización de procesos e infraestructura segura, nos ocupamos de la estrategia y del código.">We don't just consult. <strong>We implement.</strong> We build AI systems that automate operations, reduce costs, and free up your team for higher-value work. From custom AI agents to process automation and secure infrastructure, we handle the strategy and the code.</p>
-                    <p data-en="Made in Germany. Built for businesses that want results, not presentations. Bridging Germany and Israel, international perspective, local implementation." data-de="Made in Germany. Gebaut für Unternehmen, die Ergebnisse wollen, keine Präsentationen. Brücke zwischen Deutschland und Israel, internationale Perspektive, lokale Umsetzung." data-es="Made in Germany. Hecho para empresas que quieren resultados, no presentaciones. Un puente entre Alemania e Israel: perspectiva internacional, ejecución local."><strong>Made in Germany.</strong> Built for businesses that want results, not presentations. Bridging Germany and Israel, international perspective, local implementation.</p>
-                </div>
-                <div class="about-badges">
-                    <div class="badge-card">
-                        <div class="badge-icon">&#x1F91D;</div>
-                        <div>
-                            <h3 data-en="Implementation Partner" data-de="Implementierungspartner" data-es="Socio de implementación">Implementation Partner</h3>
-                            <p data-en="We build it. We don't just advise." data-de="Wir bauen es. Wir beraten nicht nur." data-es="Lo construimos. No solo asesoramos.">We build it. We don't just advise.</p>
-                        </div>
-                    </div>
-                    <div class="badge-card">
-                        <div class="badge-icon">&#x1F680;</div>
-                        <div>
-                            <h3 data-en="Startup-Friendly" data-de="Startup-freundlich" data-es="Cercanos a las startups">Startup-Friendly</h3>
-                            <p data-en="Lean, fast, budget-conscious delivery." data-de="Schlank, schnell, budgetbewusst." data-es="Entrega ágil, rápida y ajustada al presupuesto.">Lean, fast, budget-conscious delivery.</p>
-                        </div>
-                    </div>
-                    <div class="badge-card">
-                        <div class="badge-icon">&#x1F30D;</div>
-                        <div>
-                            <h3 data-en="German Precision" data-de="Deutsche Präzision" data-es="Precisión alemana">German Precision</h3>
-                            <p data-en="Quality engineering with global perspective." data-de="Ingenieursqualität mit globaler Perspektive." data-es="Ingeniería de calidad con perspectiva global.">Quality engineering with global perspective.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What Makes Us Different -->
-    <section class="section section--gradient">
-        <div class="container">
-            <h2 class="section-title" data-en="What Makes Us Different" data-de="Was uns unterscheidet" data-es="Qué nos diferencia">What Makes Us Different</h2>
-            <p class="section-subtitle" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie." data-es="Guiados por personas, impulsados por la tecnología.">Guided by people, powered by tech.</p>
-            <div class="diff-grid">
-                <div class="glass-card diff-card">
-                    <div class="diff-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    </div>
-                    <h3 data-en="We speak startup and scale-up" data-de="Wir sprechen Startup und Scale-up" data-es="Hablamos el idioma de las startups y las scale-ups">We speak startup and scale-up</h3>
-                    <p data-en="Our team blends deep technical expertise with real-world experience helping early-stage founders launch functional MVPs. Whether you're building your first AI-powered prototype or scaling existing operations, we guide you with clarity, speed and precision." data-de="Unser Team vereint tiefes technisches Know-how mit praktischer Erfahrung bei der Unterstützung von Gründern beim Launch funktionaler MVPs. Ob Sie Ihren ersten KI-Prototyp bauen oder bestehende Abläufe skalieren, wir begleiten Sie mit Klarheit, Geschwindigkeit und Präzision." data-es="Nuestro equipo combina un profundo dominio técnico con experiencia real acompañando a fundadores en el lanzamiento de MVP funcionales. Tanto si construye su primer prototipo con IA como si escala operaciones existentes, le acompañamos con claridad, rapidez y precisión.">Our team blends deep technical expertise with real-world experience helping early-stage founders launch functional MVPs. Whether you're building your first AI-powered prototype or scaling existing operations, we guide you with clarity, speed and precision.</p>
-                </div>
-                <div class="glass-card diff-card">
-                    <div class="diff-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/></svg>
-                    </div>
-                    <h3 data-en="AI implementation, not just strategy" data-de="KI-Implementierung, nicht nur Strategie" data-es="Implementación de IA, no solo estrategia">AI implementation, not just strategy</h3>
-                    <p data-en="We don't sell the hype. We show you what's possible today, with your data, in your context. Then we build it. Behind every AI system we deploy, a human team monitors, adjusts, and ensures real results." data-de="Wir verkaufen keinen Hype. Wir zeigen Ihnen, was heute möglich ist, mit Ihren Daten und in Ihrem Kontext. Dann bauen wir es. Hinter jedem KI-System, das wir einsetzen, überwacht ein menschliches Team, passt an und stellt echte Ergebnisse sicher." data-es="No vendemos humo. Le mostramos lo que hoy es posible con sus datos y en su contexto. Y después lo construimos. Detrás de cada sistema de IA que ponemos en marcha hay un equipo humano que supervisa, ajusta y garantiza resultados reales.">We don't sell the hype. We show you what's possible today, with your data, in your context. Then we build it. Behind every AI system we deploy, a human team monitors, adjusts, and ensures real results.</p>
-                </div>
-                <div class="glass-card diff-card">
-                    <div class="diff-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3 data-en="Security and compliance built-in" data-de="Sicherheit und Compliance integriert" data-es="Seguridad y cumplimiento desde el diseño">Security and compliance built-in</h3>
-                    <p data-en="Every AI system we build is designed with GDPR compliance and German data protection standards. We work with secure hosting, implement proper access controls, and ensure your data never leaves your control." data-de="Jedes KI-System, das wir bauen, ist mit DSGVO-Konformität und deutschen Datenschutzstandards konzipiert. Wir arbeiten mit sicherem Hosting, implementieren Zugriffskontrollen und stellen sicher, dass Ihre Daten unter Ihrer Kontrolle bleiben." data-es="Cada sistema de IA que construimos se diseña conforme al RGPD y a los estándares alemanes de protección de datos. Trabajamos con alojamiento seguro, aplicamos controles de acceso adecuados y garantizamos que sus datos nunca salgan de su control.">Every AI system we build is designed with GDPR compliance and German data protection standards. We work with secure hosting, implement proper access controls, and ensure your data never leaves your control.</p>
-                </div>
-                <div class="glass-card diff-card">
-                    <div class="diff-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/></svg>
-                    </div>
-                    <h3 data-en="From concept to continuity" data-de="Vom Konzept zur Kontinuität" data-es="Del concepto a la continuidad">From concept to continuity</h3>
-                    <p data-en="We don't &quot;launch and leave.&quot; We accompany your journey, iterating, testing, and scaling, until your ideas generate measurable impact. Whether you need a technical advisor or go-to-market support, we're here for the long game." data-de="Wir starten und verschwinden nicht. Wir begleiten Ihre Reise, iterierend, testend und skalierend, bis Ihre Ideen messbare Wirkung erzielen. Ob technischer Berater oder Go-to-Market-Unterstützung, wir sind langfristig dabei." data-es="No hacemos &quot;entregar y desaparecer&quot;. Le acompañamos durante todo el recorrido, iterando, probando y escalando, hasta que sus ideas generen un impacto medible. Ya necesite un asesor técnico o apoyo comercial, estamos para el largo plazo.">We don't "launch and leave." We accompany your journey, iterating, testing, and scaling, until your ideas generate measurable impact. Whether you need a technical advisor or go-to-market support, we're here for the long game.</p>
-                </div>
-            </div>
-            <div class="cta-strip">
-                <h3 data-en="Ready to build something that lasts?" data-de="Bereit, etwas Bleibendes zu schaffen?" data-es="¿Listo para construir algo que perdure?">Ready to build something that lasts?</h3>
-                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" data-en="Book Free AI Assessment" data-de="Kostenloses KI-Assessment buchen" data-es="Reservar evaluación gratuita">Book Free AI Assessment</a>
-            </div>
+            <h2 class="section-title" data-en="How we work" data-de="So arbeiten wir" data-es="Cómo trabajamos">How we work</h2>
+            <ol class="steps">
+                <li>
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /> <path d="M21 21l-6 -6" /> </svg></span>
+                    <h3 data-en="Find the gap" data-de="Die Lücke finden" data-es="Encontrar el hueco">Find the gap</h3>
+                    <p data-en="We look at where your team loses hours and what AI can realistically take over." data-de="Wir sehen uns an, wo Ihr Team Stunden verliert und was KI realistisch übernehmen kann." data-es="Vemos dónde pierde horas su equipo y qué puede asumir la IA de forma realista.">We look at where your team loses hours and what AI can realistically take over.</p>
+                </li>
+                <li>
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" /> <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" /> <path d="M9.7 17l4.6 0" /> </svg></span>
+                    <h3 data-en="Design the fix" data-de="Die Lösung entwerfen" data-es="Diseñar la solución">Design the fix</h3>
+                    <p data-en="You get options, an estimate of the time saved, and a price. You decide." data-de="Sie bekommen Optionen, eine Schätzung der Zeitersparnis und einen Preis. Sie entscheiden." data-es="Recibe opciones, una estimación del tiempo ahorrado y un precio. Usted decide.">You get options, an estimate of the time saved, and a price. You decide.</p>
+                </li>
+                <li>
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" /> </svg></span>
+                    <h3 data-en="Build and run it" data-de="Bauen und betreiben" data-es="Construir y operar">Build and run it</h3>
+                    <p data-en="We implement it on EU infrastructure and stay on to adjust it. Or your team takes it from there." data-de="Wir setzen es auf EU-Infrastruktur um und passen es laufend an. Oder Ihr Team übernimmt." data-es="Lo implementamos en infraestructura europea y seguimos ajustándolo. O su equipo toma el relevo.">We implement it on EU infrastructure and stay on to adjust it. Or your team takes it from there.</p>
+                </li>
+            </ol>
+            <p class="human-note" data-en="AI does the repetitive work. People make the decisions." data-de="KI erledigt die Routine. Menschen treffen die Entscheidungen." data-es="La IA hace el trabajo repetitivo. Las personas toman las decisiones.">AI does the repetitive work. People make the decisions.</p>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="section section--darker">
+    <section id="services" class="section section--gradient">
         <div class="container">
             <h2 class="section-title" data-en="Our Services" data-de="Unsere Leistungen" data-es="Nuestros servicios">Our Services</h2>
-            <p class="section-subtitle" data-en="A structured portfolio built around practical AI implementation, from free assessment to full automation." data-de="Ein strukturiertes Portfolio rund um praktische KI-Implementierung, vom kostenlosen Assessment bis zur vollständigen Automatisierung." data-es="Un portafolio estructurado en torno a la implementación práctica de IA, desde la evaluación gratuita hasta la automatización completa.">A structured portfolio built around practical AI implementation, from free assessment to full automation.</p>
 
             <h3 class="services-tier-title" data-en="AI Automation" data-de="KI-Automatisierung" data-es="Automatización con IA">AI Automation</h3>
             <div class="services-grid">
                 <!-- Process Screening (featured) -->
                 <div class="service-card service-card--featured">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M4 8v-2a2 2 0 0 1 2 -2h2" /> <path d="M4 16v2a2 2 0 0 0 2 2h2" /> <path d="M16 4h2a2 2 0 0 1 2 2v2" /> <path d="M16 20h2a2 2 0 0 0 2 -2v-2" /> <path d="M8 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /> <path d="M16 16l-2.5 -2.5" /> </svg></span>
                     <h3 data-en="Process Screening" data-de="Prozess-Screening" data-es="Diagnóstico de procesos">Process Screening</h3>
-                    <p data-en="Our flagship service. We identify your highest-burden manual processes and map exactly where AI creates measurable ROI. Express tier is free." data-de="Unser Flaggschiff-Service. Wir identifizieren Ihre aufwändigsten manuellen Prozesse und zeigen genau, wo KI messbaren ROI erzeugt. Express-Stufe ist kostenlos." data-es="Nuestro servicio insignia. Identificamos los procesos manuales que más le pesan y señalamos exactamente dónde la IA genera un ROI medible. El nivel Express es gratuito.">Our flagship service. We identify your highest-burden manual processes and map exactly where AI creates measurable ROI. Express tier is free.</p>
-                    <p class="service-note" data-en="Express is free. Premium tiers start at €1,000 (process map) and €1,600 (map + roadmap + on-site visit). Full prices on the Process Screening page." data-de="Express ist kostenlos. Premium-Stufen ab €1.000 (Prozesslandkarte) und €1.600 (Landkarte + Roadmap + Vor-Ort-Besuch). Vollständige Preise auf der Prozess-Screening-Seite." data-es="Express es gratuito. Los niveles Premium parten de 1.000 € (mapa de procesos) y 1.600 € (mapa + hoja de ruta + visita presencial). Precios completos en la página de diagnóstico de procesos.">Express is free. Premium tiers start at €1,000 (process map) and €1,600 (map + roadmap + on-site visit). Full prices on the Process Screening page.</p>
+                    <p data-en="We find the manual processes that cost you the most hours and show where AI pays off. The Express version is free." data-de="Wir finden die manuellen Prozesse, die Sie die meisten Stunden kosten, und zeigen, wo sich KI lohnt. Die Express-Version ist kostenlos." data-es="Encontramos los procesos manuales que más horas le cuestan y mostramos dónde compensa la IA. La versión Express es gratuita.">We find the manual processes that cost you the most hours and show where AI pays off. The Express version is free.</p>
                     <a href="process-screening.html" class="btn btn-primary" style="margin-top:10px" data-en="Learn more" data-de="Mehr erfahren" data-es="Más información">Learn more</a>
+                </div>
+
+                <!-- AI Marketing Platform -->
+                <div class="service-card service-card--platform">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M18 8a3 3 0 0 1 0 6" /> <path d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5" /> <path d="M12 8h0l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8" /> </svg></span>
+                    <h3 data-en="AI Marketing Platform" data-de="KI-Marketing-Plattform" data-es="Plataforma de marketing con IA">AI Marketing Platform</h3>
+                    <p data-en="Our own product. An AI agent drafts posts and visuals, your team reviews, the client approves with one link." data-de="Unser eigenes Produkt. Ein KI-Agent entwirft Posts und Visuals, Ihr Team prüft, der Kunde gibt per Link frei." data-es="Nuestro propio producto. Un agente de IA redacta publicaciones e imágenes, su equipo revisa y el cliente aprueba con un enlace.">Our own product. An AI agent drafts posts and visuals, your team reviews, the client approves with one link.</p>
+                    <a href="marketing.html" class="btn btn-primary" style="margin-top:10px" data-en="See more" data-de="Mehr ansehen" data-es="Ver más">See more</a>
                 </div>
 
                 <!-- n8n Automation -->
                 <div class="service-card">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M3 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /> <path d="M15 15m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /> <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" /> <path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1" /> <path d="M12 9l0 3" /> </svg></span>
                     <h3 data-en="AI Workflow Automation (n8n)" data-de="KI-Workflow-Automatisierung (n8n)" data-es="Automatización de flujos con IA (n8n)">AI Workflow Automation (n8n)</h3>
-                    <p data-en="Custom n8n workflow automation tailored to your operations. From simple integrations to complex multi-step automations with full pricing transparency." data-de="Maßgeschneiderte n8n-Workflow-Automatisierung für Ihre Abläufe. Von einfachen Integrationen bis zu komplexen mehrstufigen Automatisierungen mit voller Preistransparenz." data-es="Automatización de flujos n8n a medida de sus operaciones. Desde integraciones sencillas hasta automatizaciones complejas de varios pasos, con total transparencia de precios.">Custom n8n workflow automation tailored to your operations. From simple integrations to complex multi-step automations with full pricing transparency.</p>
-                    <p class="service-note" data-en="Priced per workflow by complexity, plus optional monthly maintenance. A Self-Managed Package includes documentation, team training and on-demand consulting." data-de="Preis pro Workflow nach Komplexität, plus optionale monatliche Wartung. Das Self-Managed-Paket enthält Dokumentation, Teamschulung und Beratung auf Abruf." data-es="Precio por flujo según complejidad, más mantenimiento mensual opcional. El paquete autogestionado incluye documentación, formación del equipo y consultoría a demanda.">Priced per workflow by complexity, plus optional monthly maintenance. A Self-Managed Package includes documentation, team training and on-demand consulting.</p>
+                    <p data-en="Workflows built in n8n around your tools. Priced per workflow." data-de="Workflows in n8n, gebaut um Ihre Tools. Preis pro Workflow." data-es="Flujos en n8n hechos para sus herramientas. Precio por flujo.">Workflows built in n8n around your tools. Priced per workflow.</p>
                     <a href="#contact" class="btn btn-ghost" style="margin-top:10px" data-en="Get a quote" data-de="Angebot anfordern" data-es="Solicitar presupuesto">Get a quote</a>
                 </div>
 
                 <!-- OpenClawd Agents -->
                 <div class="service-card">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M6 4m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z" /> <path d="M12 2v2" /> <path d="M9 12v9" /> <path d="M15 12v9" /> <path d="M5 16l4 -2" /> <path d="M15 14l4 2" /> <path d="M9 18h6" /> <path d="M10 8v.01" /> <path d="M14 8v.01" /> </svg></span>
                     <h3>OpenClawd AI Agents</h3>
-                    <p data-en="Autonomous AI agents deployed on your private VPS. Powered by Anthropic Claude. Integrates with Telegram, WhatsApp, Discord, calendars, CRMs, and n8n." data-de="Autonome KI-Agenten auf Ihrem privaten VPS. Powered by Anthropic Claude. Integration mit Telegram, WhatsApp, Discord, Kalendern, CRMs und n8n." data-es="Agentes de IA autónomos desplegados en su VPS privado. Con tecnología de Anthropic Claude. Se integran con Telegram, WhatsApp, Discord, calendarios, CRM y n8n.">Autonomous AI agents deployed on your private VPS. Powered by Anthropic Claude. Integrates with Telegram, WhatsApp, Discord, calendars, CRMs, and n8n.</p>
-                    <p class="service-note" data-en="Installed on your existing server or on a private VPS we provision for you. Includes skill configuration, n8n integration and optional monthly maintenance." data-de="Installation auf Ihrem bestehenden Server oder auf einem privaten VPS, den wir für Sie bereitstellen. Inkl. Skill-Konfiguration, n8n-Integration und optionaler monatlicher Wartung." data-es="Instalación en su servidor actual o en un VPS privado que aprovisionamos para usted. Incluye configuración de habilidades, integración con n8n y mantenimiento mensual opcional.">Installed on your existing server or on a private VPS we provision for you. Includes skill configuration, n8n integration and optional monthly maintenance.</p>
+                    <p data-en="AI agents on your own server, running on Claude. They connect to Telegram, WhatsApp, calendars and CRMs." data-de="KI-Agenten auf Ihrem eigenen Server, mit Claude. Verbunden mit Telegram, WhatsApp, Kalendern und CRMs." data-es="Agentes de IA en su propio servidor, con Claude. Se conectan a Telegram, WhatsApp, calendarios y CRM.">AI agents on your own server, running on Claude. They connect to Telegram, WhatsApp, calendars and CRMs.</p>
                     <a href="openclawd-agents.html" class="btn btn-ghost" style="margin-top:10px" data-en="Learn more" data-de="Mehr erfahren" data-es="Más información">Learn more</a>
                 </div>
 
                 <!-- AI Security -->
                 <div class="service-card">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06" /> <path d="M15 19l2 2l4 -4" /> </svg></span>
                     <h3 data-en="AI Security &amp; Compliance" data-de="KI-Sicherheit &amp; Compliance" data-es="Seguridad y cumplimiento en IA">AI Security &amp; Compliance</h3>
-                    <p data-en="Hands-on Security Talk workshops and AI Risk Assessments. Fully aligned with EU AI Act requirements: transparency, human oversight, and risk management built into every engagement." data-de="Praxisnahe Security-Talk-Workshops und KI-Risikobewertungen. Vollständig konform mit den Anforderungen des EU AI Act: Transparenz, menschliche Aufsicht und Risikomanagement in jedem Auftrag." data-es="Talleres prácticos de seguridad y evaluaciones de riesgo en IA. Totalmente alineados con el Reglamento Europeo de IA: transparencia, supervisión humana y gestión de riesgos en cada proyecto.">Hands-on Security Talk workshops and AI Risk Assessments. Fully aligned with EU AI Act requirements: transparency, human oversight, and risk management built into every engagement.</p>
+                    <p data-en="Security workshops and AI risk assessments, following the EU AI Act." data-de="Security-Workshops und KI-Risikobewertungen nach dem EU AI Act." data-es="Talleres de seguridad y evaluaciones de riesgo de IA según el Reglamento Europeo de IA.">Security workshops and AI risk assessments, following the EU AI Act.</p>
                     <a href="#contact" class="btn btn-ghost" data-en="Contact us" data-de="Kontaktieren Sie uns" data-es="Contáctenos">Contact us</a>
                 </div>
             </div>
@@ -1503,156 +1463,24 @@
             <h3 class="services-tier-title" data-en="Complementary Services" data-de="Ergänzende Leistungen" data-es="Servicios complementarios">Complementary Services</h3>
             <div class="complementary-grid">
                 <div class="complementary-card">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M8 16l2 -6l6 -2l-2 6l-6 2" /> <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /> <path d="M12 3l0 2" /> <path d="M12 19l0 2" /> <path d="M3 12l2 0" /> <path d="M19 12l2 0" /> </svg></span>
                     <h4 data-en="AI Strategy Consulting" data-de="KI-Strategieberatung" data-es="Consultoría en estrategia de IA">AI Strategy Consulting</h4>
-                    <p data-en="For COOs, Heads of Operations, and AI Managers in Mittelstand companies. Fractional CTO support without the full-time cost." data-de="Für COOs, Betriebsleiter und KI-Manager in Mittelstandsunternehmen. Fractional-CTO-Unterstützung ohne Vollzeitkosten." data-es="Para directores de operaciones y responsables de IA en empresas del Mittelstand. Apoyo de un CTO a tiempo parcial, sin el costo de una posición a jornada completa.">For COOs, Heads of Operations, and AI Managers in Mittelstand companies. Fractional CTO support without the full-time cost.</p>
+                    <p data-en="A part-time CTO for operations leads in Mittelstand companies." data-de="Ein CTO in Teilzeit für Betriebsleiter im Mittelstand." data-es="Un CTO a tiempo parcial para responsables de operaciones en empresas medianas.">A part-time CTO for operations leads in Mittelstand companies.</p>
                     <a href="#contact" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;" data-en="Contact us" data-de="Kontaktieren Sie uns" data-es="Contáctenos">Contact us</a>
                 </div>
                 <div class="complementary-card">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M6 17.6l-2 -1.1v-2.5" /> <path d="M4 10v-2.5l2 -1.1" /> <path d="M10 4.1l2 -1.1l2 1.1" /> <path d="M18 6.4l2 1.1v2.5" /> <path d="M20 14v2.5l-2 1.12" /> <path d="M14 19.9l-2 1.1l-2 -1.1" /> <path d="M12 12l2 -1.1" /> <path d="M18 8.6l2 -1.1" /> <path d="M12 12l0 2.5" /> <path d="M12 18.5l0 2.5" /> <path d="M12 12l-2 -1.12" /> <path d="M6 8.6l-2 -1.1" /> </svg></span>
                     <h4 data-en="VR &amp; Trade Fair Solutions" data-de="VR- &amp; Messelösungen" data-es="Soluciones de RV y ferias">VR &amp; Trade Fair Solutions</h4>
-                    <p data-en="Immersive VR demos and digital twins for industrial clients. Ideal for trade fairs and remote demonstrations." data-de="Immersive VR-Demos und digitale Zwillinge für Industriekunden. Ideal für Messen und Remote-Demonstrationen." data-es="Demos inmersivas de realidad virtual y gemelos digitales para clientes industriales. Ideales para ferias y demostraciones a distancia.">Immersive VR demos and digital twins for industrial clients. Ideal for trade fairs and remote demonstrations.</p>
+                    <p data-en="VR demos and digital twins for trade fairs and remote sales." data-de="VR-Demos und digitale Zwillinge für Messen und Remote-Vertrieb." data-es="Demos de RV y gemelos digitales para ferias y ventas a distancia.">VR demos and digital twins for trade fairs and remote sales.</p>
                     <a href="vr_website.html" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;" data-en="Learn more" data-de="Mehr erfahren" data-es="Más información">Learn more</a>
                 </div>
                 <div class="complementary-card">
+                    <span class="capability__icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /> <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /> <path d="M15 9m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> </svg></span>
                     <h4 data-en="Startup Growth Journey" data-de="Startup-Wachstumsreise" data-es="Recorrido de crecimiento para startups">Startup Growth Journey</h4>
-                    <p data-en="Tailored consulting for early-stage startups. Strategy, product-market fit, and AI integration roadmap." data-de="Maßgeschneiderte Beratung für Startups in der Frühphase. Strategie, Product-Market-Fit und KI-Integrations-Roadmap." data-es="Consultoría a medida para startups en fase temprana. Estrategia, encaje producto-mercado y hoja de ruta de integración de IA.">Tailored consulting for early-stage startups. Strategy, product-market fit, and AI integration roadmap.</p>
+                    <p data-en="Strategy, product-market fit and an AI roadmap for early-stage startups." data-de="Strategie, Product-Market-Fit und KI-Roadmap für Startups in der Frühphase." data-es="Estrategia, encaje producto-mercado y hoja de ruta de IA para startups en fase temprana.">Strategy, product-market fit and an AI roadmap for early-stage startups.</p>
                     <a href="startups.html" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;" data-en="Learn more" data-de="Mehr erfahren" data-es="Más información">Learn more</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- AI Marketing Platform -->
-    <section id="platform" class="section section--gradient">
-        <div class="container">
-            <h2 class="section-title" data-en="The AI Marketing Platform" data-de="Die KI-Marketing-Plattform" data-es="La plataforma de marketing con IA">The AI Marketing Platform</h2>
-            <div class="platform-lede">
-                <p data-en="Built for marketing agencies and in-house marketing teams. Every client's posts live in one content calendar. Your AI agent drafts the copy and the visuals, you review them, and the client approves with a single link. No email threads, no &quot;is this the final version?&quot;." data-de="Gebaut für Marketing-Agenturen und Inhouse-Marketingteams. Alle Posts eines Kunden liegen in einem Content-Kalender. Ihr KI-Agent entwirft Text und Bild, Sie prüfen, und der Kunde gibt per Link frei. Keine E-Mail-Ketten, kein &quot;ist das die finale Version?&quot;." data-es="Creada para agencias de marketing y equipos de marketing internos. Todas las publicaciones de cada cliente viven en un mismo calendario de contenidos. Su agente de IA redacta los textos y crea las imágenes, usted los revisa y el cliente aprueba con un solo enlace: sin cadenas de correos ni &quot;¿esta es la versión final?&quot;.">Built for marketing agencies and in-house marketing teams. Every client's posts live in one content calendar. Your AI agent drafts the copy and the visuals, you review them, and the client approves with a single link. No email threads, no "is this the final version?".</p>
-                <p data-en="It is the same stack we run our own marketing on. The two reels below are the two halves of the workflow." data-de="Es ist derselbe Stack, auf dem wir unser eigenes Marketing betreiben. Die beiden Reels unten zeigen die zwei Hälften des Workflows." data-es="Es el mismo stack sobre el que hacemos nuestro propio marketing. Los dos reels de abajo muestran las dos mitades del flujo de trabajo.">It is the same stack we run our own marketing on. The two reels below are the two halves of the workflow.</p>
-            </div>
-
-            <div class="platform-reels">
-                <div class="reel-card">
-                    <video
-                        src="videos/gf-planner-chat-to-post.mp4"
-                        poster="videos/gf-planner-chat-to-post-poster.webp"
-                        width="1080" height="1920"
-                        controls muted playsinline preload="none"
-                        aria-label="15-second reel: a user asks the GF agent on WhatsApp for a Friday post about a new summer menu, and the agent replies with a finished photo and caption."></video>
-                    <div class="reel-card__body">
-                        <span class="reel-card__step" data-en="Step 1 · Create" data-de="Schritt 1 · Erstellen" data-es="Paso 1 · Crear">Step 1 · Create</span>
-                        <h3 data-en="Message your agent, get a finished post" data-de="Schreiben Sie Ihrem Agenten, erhalten Sie einen fertigen Post" data-es="Escriba a su agente y reciba una publicación terminada">Message your agent, get a finished post</h3>
-                        <p data-en="Ask on WhatsApp or Telegram in plain language. The agent writes the caption, generates the image, and hands back a draft ready to schedule. Drafting that took hours takes minutes." data-de="Fragen Sie auf WhatsApp oder Telegram in normaler Sprache. Der Agent schreibt den Text, erzeugt das Bild und liefert einen Entwurf zurück, der direkt geplant werden kann. Aus Stunden werden Minuten." data-es="Pídalo por WhatsApp o Telegram en lenguaje natural. El agente escribe el texto, genera la imagen y devuelve un borrador listo para programar. Lo que antes llevaba horas ahora lleva minutos.">Ask on WhatsApp or Telegram in plain language. The agent writes the caption, generates the image, and hands back a draft ready to schedule. Drafting that took hours takes minutes.</p>
-                    </div>
-                </div>
-                <div class="reel-card">
-                    <video
-                        src="videos/gf-planner-launch-reel.mp4"
-                        poster="videos/gf-planner-launch-reel-poster.webp"
-                        width="1080" height="1920"
-                        controls muted playsinline preload="none"
-                        aria-label="20-second reel: scattered approval emails and chats resolve into one content calendar where a client approves a post with a single swipe."></video>
-                    <div class="reel-card__body">
-                        <span class="reel-card__step" data-en="Step 2 · Approve" data-de="Schritt 2 · Freigeben" data-es="Paso 2 · Aprobar">Step 2 · Approve</span>
-                        <h3 data-en="One calendar, one link, approved" data-de="Ein Kalender, ein Link, freigegeben" data-es="Un calendario, un enlace, aprobado">One calendar, one link, approved</h3>
-                        <p data-en="The client opens one link and swipes through the month: approve, comment, or request a change. Every decision is logged against the post, so nobody chases a thread to find the latest version." data-de="Der Kunde öffnet einen Link und geht den Monat durch: freigeben, kommentieren oder Änderung anfordern. Jede Entscheidung wird am Post protokolliert, niemand sucht mehr in E-Mail-Ketten nach der aktuellen Version." data-es="El cliente abre un enlace y recorre el mes: aprueba, comenta o pide un cambio. Cada decisión queda registrada junto a la publicación, así nadie tiene que rastrear un hilo para encontrar la última versión.">The client opens one link and swipes through the month: approve, comment, or request a change. Every decision is logged against the post, so nobody chases a thread to find the latest version.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="platform-capabilities">
-                <div class="capability">
-                    <h3 data-en="Multi-client workspaces" data-de="Mandantenfähige Workspaces" data-es="Espacios de trabajo multicliente">Multi-client workspaces</h3>
-                    <p data-en="One login, every client separated. Roles for your team, your client, and read-only stakeholders." data-de="Ein Login, jeder Kunde getrennt. Rollen für Ihr Team, Ihren Kunden und Beteiligte mit Lesezugriff." data-es="Un solo acceso, cada cliente separado. Roles para su equipo, para su cliente y para participantes con permiso de solo lectura.">One login, every client separated. Roles for your team, your client, and read-only stakeholders.</p>
-                </div>
-                <div class="capability">
-                    <h3 data-en="Scheduling &amp; publishing" data-de="Planung &amp; Veröffentlichung" data-es="Programación y publicación">Scheduling &amp; publishing</h3>
-                    <p data-en="Approved posts go out on schedule to the connected channels. Nothing is published without a human yes." data-de="Freigegebene Posts gehen planmäßig an die verbundenen Kanäle. Nichts wird ohne menschliches Ja veröffentlicht." data-es="Las publicaciones aprobadas salen a tiempo hacia los canales conectados. Nada se publica sin un sí humano.">Approved posts go out on schedule to the connected channels. Nothing is published without a human yes.</p>
-                </div>
-                <div class="capability">
-                    <h3 data-en="Your brand, not a template" data-de="Ihre Marke, keine Vorlage" data-es="Su marca, no una plantilla">Your brand, not a template</h3>
-                    <p data-en="The agent works from your brand assets, tone and past posts, so drafts arrive sounding like you." data-de="Der Agent arbeitet mit Ihren Markenassets, Ihrer Tonalität und früheren Posts, sodass Entwürfe von Anfang an nach Ihnen klingen." data-es="El agente trabaja a partir de sus recursos de marca, su tono y sus publicaciones anteriores, así los borradores ya suenan a usted.">The agent works from your brand assets, tone and past posts, so drafts arrive sounding like you.</p>
-                </div>
-                <div class="capability">
-                    <h3 data-en="Hosted in the EU" data-de="Gehostet in der EU" data-es="Alojado en la UE">Hosted in the EU</h3>
-                    <p data-en="Runs on private European infrastructure under the same AVV and GDPR terms as the rest of our work." data-de="Läuft auf privater europäischer Infrastruktur, unter denselben AVV- und DSGVO-Bedingungen wie unsere übrige Arbeit." data-es="Funciona sobre infraestructura europea privada, bajo las mismas condiciones de RGPD y contrato de encargo que el resto de nuestro trabajo.">Runs on private European infrastructure under the same AVV and GDPR terms as the rest of our work.</p>
-                </div>
-            </div>
-
-            <div class="platform-cta">
-                <div>
-                    <p data-en="Three agencies get it free for three weeks." data-de="Drei Agenturen bekommen sie drei Wochen kostenlos." data-es="Tres agencias la reciben gratis durante tres semanas.">Three agencies get it free for three weeks.</p>
-                    <span data-en="Run it with one real client. We want your feedback, not your budget." data-de="Nutzen Sie sie mit einem echten Kunden. Wir wollen Ihr Feedback, nicht Ihr Budget." data-es="Úsela con un cliente real. Queremos su opinión, no su presupuesto.">Run it with one real client. We want your feedback, not your budget.</span>
-                </div>
-                <a href="pilot.html" class="btn btn-primary" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben" data-es="Postular al piloto">Apply for the Pilot</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="section section--darker">
-        <div class="container">
-            <h2 class="section-title" data-en="What the platform costs" data-de="Was die Plattform kostet" data-es="Cuánto cuesta la plataforma">What the platform costs</h2>
-            <div class="platform-lede">
-                <p data-en="One flat monthly price per workspace, no per-seat fees. All prices exclude VAT." data-de="Ein fester Monatspreis pro Workspace, keine Gebühr pro Nutzer. Alle Preise zzgl. MwSt." data-es="Un precio mensual fijo por workspace, sin cobro por usuario. Todos los precios sin IVA.">One flat monthly price per workspace, no per-seat fees. All prices exclude VAT.</p>
-            </div>
-
-            <div class="plans">
-                <article class="plan">
-                    
-                    <h3 class="plan__name">Solo</h3>
-                    <p class="plan__who" data-en="One brand, one person" data-de="Eine Marke, eine Person" data-es="Una marca, una persona">One brand, one person</p>
-                    <p class="plan__price"><span class="plan__amount" data-en="€19" data-de="19 €" data-es="19 €">€19</span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
-                    <p class="plan__annual" data-en="or €190 a year, two months free" data-de="oder 190 € pro Jahr, zwei Monate gratis" data-es="o 190 € al año, dos meses gratis">or €190 a year, two months free</p>
-                    <a href="pilot.html" class="btn btn-ghost" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben" data-es="Postular al piloto">Apply for the Pilot</a>
-                </article>
-                <article class="plan plan--featured">
-                    <span class="plan-badge" data-en="Most agencies start here" data-de="Hier starten die meisten Agenturen" data-es="Aquí empiezan la mayoría de agencias">Most agencies start here</span>
-                    <h3 class="plan__name">Basic</h3>
-                    <p class="plan__who" data-en="For agencies: 3 people, extra clients at €12" data-de="Für Agenturen: 3 Personen, weitere Kunden für 12 €" data-es="Para agencias: 3 personas, clientes extra por 12 €">For agencies: 3 people, extra clients at €12</p>
-                    <p class="plan__price"><span class="plan__amount" data-en="€29" data-de="29 €" data-es="29 €">€29</span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
-                    <p class="plan__annual" data-en="or €290 a year, two months free" data-de="oder 290 € pro Jahr, zwei Monate gratis" data-es="o 290 € al año, dos meses gratis">or €290 a year, two months free</p>
-                    <a href="pilot.html" class="btn btn-primary" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben" data-es="Postular al piloto">Apply for the Pilot</a>
-                </article>
-                <article class="plan">
-                    
-                    <h3 class="plan__name">Standard</h3>
-                    <p class="plan__who" data-en="Adds the AI chat agent and an AI budget. In development." data-de="Mit KI-Chat-Agent und KI-Budget. In Entwicklung." data-es="Con agente de chat y presupuesto de IA. En desarrollo.">Adds the AI chat agent and an AI budget. In development.</p>
-                    <p class="plan__price"><span class="plan__amount" data-en="€79" data-de="79 €" data-es="79 €">€79</span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
-                    <p class="plan__annual" data-en="or €790 a year, two months free" data-de="oder 790 € pro Jahr, zwei Monate gratis" data-es="o 790 € al año, dos meses gratis">or €790 a year, two months free</p>
-                    <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-ghost" target="_blank" rel="noopener" data-en="Book a demo" data-de="Demo buchen" data-es="Reservar una demo">Book a demo</a>
-                </article>
-                <article class="plan">
-                    
-                    <h3 class="plan__name">Enterprise</h3>
-                    <p class="plan__who" data-en="5 or more clients, a dedicated agent, onboarding" data-de="5 oder mehr Kunden, eigener Agent, Onboarding" data-es="5 o más clientes, agente dedicado, onboarding">5 or more clients, a dedicated agent, onboarding</p>
-                    <p class="plan__price"><span class="plan__amount" data-en="&lt;small&gt;from&lt;/small&gt; €399" data-de="&lt;small&gt;ab&lt;/small&gt; 399 €" data-es="&lt;small&gt;desde&lt;/small&gt; 399 €"><small>from</small> €399</span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
-                    <p class="plan__annual" data-en="annual quote" data-de="Jahresangebot" data-es="oferta anual">annual quote</p>
-                    <a href="#contact" class="btn btn-ghost" data-en="Contact sales" data-de="Vertrieb kontaktieren" data-es="Contactar con ventas">Contact sales</a>
-                </article>
-            </div>
-
-            <p class="plans-included" data-en="<strong>In every plan:</strong> unlimited posts, 22 networks, client review links, brand kit and voice, MCP access, 10 social accounts per workspace." data-de="<strong>In jedem Tarif:</strong> unbegrenzt Posts, 22 Netzwerke, Freigabe-Links für Kunden, Brand Kit und Markenstimme, MCP-Zugang, 10 Social-Media-Konten pro Workspace." data-es="<strong>En todos los planes:</strong> publicaciones ilimitadas, 22 redes, enlaces de revisión para clientes, brand kit y voz de marca, acceso MCP, 10 cuentas sociales por workspace."><strong>In every plan:</strong> unlimited posts, 22 networks, client review links, brand kit and voice, MCP access, 10 social accounts per workspace.</p>
-
-            <div class="plans-compare" role="region" aria-labelledby="compare-title" tabindex="0">
-                <table class="plan-table">
-                    <caption id="compare-title" class="visually-hidden" data-en="Plan comparison" data-de="Tarifvergleich" data-es="Comparación de planes">Plan comparison</caption>
-                    <thead>
-                        <tr><th scope="col" class="visually-hidden" data-en="Feature" data-de="Funktion" data-es="Función">Feature</th><th scope="col">Solo</th><th scope="col">Basic</th><th scope="col">Standard</th><th scope="col">Enterprise</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><th scope="row" data-en="Client workspaces" data-de="Kunden-Workspaces" data-es="Espacios de cliente">Client workspaces</th><td data-plan="Solo"><span data-en="1" data-de="1" data-es="1">1</span></td><td data-plan="Basic"><span data-en="1, extra €12 per month" data-de="1, weitere 12 € pro Monat" data-es="1, adicional 12 € al mes">1, extra €12 per month</span></td><td data-plan="Standard"><span data-en="1, extra €12 per month" data-de="1, weitere 12 € pro Monat" data-es="1, adicional 12 € al mes">1, extra €12 per month</span></td><td data-plan="Enterprise"><span data-en="5 or more included" data-de="5 oder mehr inklusive" data-es="5 o más incluidos">5 or more included</span></td></tr>
-                        <tr><th scope="row" data-en="Team members" data-de="Teammitglieder" data-es="Miembros del equipo">Team members</th><td data-plan="Solo"><span data-en="1" data-de="1" data-es="1">1</span></td><td data-plan="Basic"><span data-en="3" data-de="3" data-es="3">3</span></td><td data-plan="Standard"><span data-en="Unlimited" data-de="Unbegrenzt" data-es="Ilimitados">Unlimited</span></td><td data-plan="Enterprise"><span data-en="Unlimited" data-de="Unbegrenzt" data-es="Ilimitados">Unlimited</span></td></tr>
-                        <tr><th scope="row" data-en="Approvals board" data-de="Freigabe-Board" data-es="Tablero de aprobaciones">Approvals board</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Basic"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Standard"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Enterprise"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td></tr>
-                        <tr><th scope="row" data-en="AI chat agent and document parsing" data-de="KI-Chat-Agent und Dokumentenanalyse" data-es="Agente de chat con IA y análisis de documentos">AI chat agent and document parsing</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Basic"><span data-en="Upgrade" data-de="Upgrade" data-es="Upgrade">Upgrade</span></td><td data-plan="Standard"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Enterprise"><span data-en="Yes, dedicated agent" data-de="Ja, eigener Agent" data-es="Sí, agente dedicado">Yes, dedicated agent</span></td></tr>
-                        <tr><th scope="row" data-en="AI budget (hard cap)" data-de="KI-Budget (fest begrenzt)" data-es="Presupuesto de IA (tope fijo)">AI budget (hard cap)</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Basic"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Standard"><span data-en="€15 per month" data-de="15 € pro Monat" data-es="15 € al mes">€15 per month</span></td><td data-plan="Enterprise"><span data-en="€100 per month, shared" data-de="100 € pro Monat, gemeinsam" data-es="100 € al mes, compartidos">€100 per month, shared</span></td></tr>
-                        <tr><th scope="row" data-en="Telegram and WhatsApp agent" data-de="Telegram- und WhatsApp-Agent" data-es="Agente de Telegram y WhatsApp">Telegram and WhatsApp agent</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Basic"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Standard"><span data-en="Add-on, €169 per month" data-de="Zusatzpaket, 169 € pro Monat" data-es="Complemento, 169 € al mes">Add-on, €169 per month</span></td><td data-plan="Enterprise"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td></tr>
-                        <tr><th scope="row" data-en="Free trial" data-de="Kostenlose Testphase" data-es="Prueba gratuita">Free trial</th><td data-plan="Solo"><span data-en="14 days, no card" data-de="14 Tage, ohne Karte" data-es="14 días, sin tarjeta">14 days, no card</span></td><td data-plan="Basic"><span data-en="14 days, no card" data-de="14 Tage, ohne Karte" data-es="14 días, sin tarjeta">14 days, no card</span></td><td data-plan="Standard"><span data-en="14 days, card required" data-de="14 Tage, mit Karte" data-es="14 días, con tarjeta">14 days, card required</span></td><td data-plan="Enterprise"><span data-en="Demo and paid pilot" data-de="Demo und bezahlter Pilot" data-es="Demo y piloto de pago">Demo and paid pilot</span></td></tr>
-                        <tr><th scope="row" data-en="Support" data-de="Support" data-es="Soporte">Support</th><td data-plan="Solo"><span data-en="Email" data-de="E-Mail" data-es="Correo">Email</span></td><td data-plan="Basic"><span data-en="Email" data-de="E-Mail" data-es="Correo">Email</span></td><td data-plan="Standard"><span data-en="Email" data-de="E-Mail" data-es="Correo">Email</span></td><td data-plan="Enterprise"><span data-en="Priority and onboarding" data-de="Priorisiert, mit Onboarding" data-es="Prioritario, con onboarding">Priority and onboarding</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <p class="plans-note" data-en="Standard, the AI budget and the Telegram and WhatsApp agent are still in development. Pilot agencies get Solo and Basic features while we finish self-serve signup. Extra AI budget is billed at cost plus 20%." data-de="Standard, das KI-Budget und der Telegram- und WhatsApp-Agent sind noch in Entwicklung. Pilot-Agenturen erhalten die Funktionen von Solo und Basic, bis die Selbstregistrierung fertig ist. Zusätzliches KI-Budget wird zu Kosten plus 20 % berechnet." data-es="Standard, el presupuesto de IA y el agente de Telegram y WhatsApp siguen en desarrollo. Las agencias del piloto reciben las funciones de Solo y Basic hasta que terminemos el registro autónomo. El presupuesto de IA adicional se factura a coste más 20 %.">Standard, the AI budget and the Telegram and WhatsApp agent are still in development. Pilot agencies get Solo and Basic features while we finish self-serve signup. Extra AI budget is billed at cost plus 20%.</p>
         </div>
     </section>
 
@@ -1660,35 +1488,35 @@
     <section id="trust" class="section section--darker">
         <div class="container">
             <h2 class="section-title" data-en="Trust &amp; Compliance" data-de="Vertrauen &amp; Compliance" data-es="Confianza y cumplimiento">Trust &amp; Compliance</h2>
-            <p class="section-subtitle" data-en="Designed for the German B2B market. Security and compliance are not afterthoughts." data-de="Entwickelt für den deutschen B2B-Markt. Sicherheit und Compliance sind keine Nebensache." data-es="Diseñado para el mercado B2B alemán. La seguridad y el cumplimiento no son un añadido.">Designed for the German B2B market. Security and compliance are not afterthoughts.</p>
+            <p class="section-subtitle" data-en="Built for German B2B rules from day one." data-de="Von Anfang an auf deutsche B2B-Anforderungen ausgelegt." data-es="Pensado desde el primer día para las normas B2B alemanas.">Built for German B2B rules from day one.</p>
             <div class="trust-grid">
                 <div class="trust-card">
-                    <div class="trust-icon">&#x1F6E1;&#xFE0F;</div>
+                    <div class="trust-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M11.46 20.846a12 12 0 0 1 -7.96 -14.846a12 12 0 0 0 8.5 -3a12 12 0 0 0 8.5 3a12 12 0 0 1 -.09 7.06" /> <path d="M15 19l2 2l4 -4" /> </svg></div>
                     <h3 data-en="GDPR Compliant" data-de="DSGVO-konform" data-es="Conforme al RGPD">GDPR Compliant</h3>
                     <p data-en="All data processing under German/EU law. AVV (DPA) signed before any engagement." data-de="Alle Datenverarbeitung nach deutschem/EU-Recht. AVV vor jeder Zusammenarbeit unterzeichnet." data-es="Todo el tratamiento de datos bajo legislación alemana y europea. Contrato de encargo firmado antes de iniciar cualquier proyecto.">All data processing under German/EU law. AVV (DPA) signed before any engagement.</p>
                 </div>
                 <div class="trust-card">
-                    <div class="trust-icon">&#x1F512;</div>
+                    <div class="trust-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M3 4m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /> <path d="M3 12m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /> <path d="M7 8l0 .01" /> <path d="M7 16l0 .01" /> <path d="M11 8h6" /> <path d="M11 16h6" /> </svg></div>
                     <h3 data-en="Private Infrastructure" data-de="Private Infrastruktur" data-es="Infraestructura privada">Private Infrastructure</h3>
                     <p data-en="Your data runs on private VPS, never shared cloud. Not used for AI model training." data-de="Ihre Daten laufen auf privaten VPS, nie in einer geteilten Cloud. Nicht für KI-Modelltraining genutzt." data-es="Sus datos corren en un VPS privado, nunca en una nube compartida. No se usan para entrenar modelos de IA.">Your data runs on private VPS, never shared cloud. Not used for AI model training.</p>
                 </div>
                 <div class="trust-card">
-                    <div class="trust-icon">&#x1F513;</div>
+                    <div class="trust-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M5 11m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" /> <path d="M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /> <path d="M8 11v-5a4 4 0 0 1 8 0" /> </svg></div>
                     <h3 data-en="No Lock-in" data-de="Kein Lock-in" data-es="Sin dependencia forzada">No Lock-in</h3>
                     <p data-en="IP transfers to you on full payment. 30-60 day cancellation. No proprietary dependencies." data-de="IP geht nach vollständiger Zahlung an Sie über. 30-60 Tage Kündigungsfrist. Keine proprietären Abhängigkeiten." data-es="La propiedad intelectual pasa a usted con el pago íntegro. Cancelación con 30 a 60 días. Sin dependencias propietarias.">IP transfers to you on full payment. 30-60 day cancellation. No proprietary dependencies.</p>
                 </div>
                 <div class="trust-card">
-                    <div class="trust-icon">&#x1F4DD;</div>
+                    <div class="trust-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5" /> <path d="M6 14m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /> <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5" /> </svg></div>
                     <h3 data-en="NDA by Default" data-de="NDA standardmäßig" data-es="Acuerdo de confidencialidad por defecto">NDA by Default</h3>
-                    <p data-en="Mutual NDA signed before any process data is shared. Confidentiality is the baseline." data-de="Gegenseitige NDA vor jeder Weitergabe von Prozessdaten. Vertraulichkeit ist der Standard." data-es="Acuerdo de confidencialidad mutuo firmado antes de compartir cualquier dato de proceso. La confidencialidad es el punto de partida.">Mutual NDA signed before any process data is shared. Confidentiality is the baseline.</p>
+                    <p data-en="Mutual NDA signed before we see any process data." data-de="Gegenseitige NDA, bevor wir Prozessdaten sehen." data-es="NDA mutuo firmado antes de ver cualquier dato de procesos.">Mutual NDA signed before we see any process data.</p>
                 </div>
                 <div class="trust-card">
-                    <div class="trust-icon">&#x2696;&#xFE0F;</div>
+                    <div class="trust-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M7 20l10 0" /> <path d="M6 6l6 -1l6 1" /> <path d="M12 3l0 17" /> <path d="M9 12l-3 -6l-3 6a3 3 0 0 0 6 0" /> <path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0" /> </svg></div>
                     <h3 data-en="EU AI Act" data-de="EU AI Act" data-es="Reglamento Europeo de IA">EU AI Act</h3>
                     <p data-en="Our implementations follow EU AI Act requirements for transparency, human oversight, and risk management." data-de="Unsere Implementierungen folgen den Anforderungen des EU AI Act an Transparenz, menschliche Aufsicht und Risikomanagement." data-es="Nuestras implementaciones siguen los requisitos del Reglamento Europeo de IA en transparencia, supervisión humana y gestión de riesgos.">Our implementations follow EU AI Act requirements for transparency, human oversight, and risk management.</p>
                 </div>
                 <div class="trust-card">
-                    <div class="trust-icon">&#x2705;</div>
+                    <div class="trust-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >  <path d="M20.984 12.53a9 9 0 1 0 -7.552 8.355" /> <path d="M12 7v5l3 3" /> <path d="M19 16l-2 3h4l-2 3" /> </svg></div>
                     <h3 data-en="SLA Guaranteed" data-de="SLA garantiert" data-es="SLA garantizado">SLA Guaranteed</h3>
                     <p data-en="4h critical response time. 99% uptime for managed services. Clear contractual terms." data-de="4h Reaktionszeit bei kritischen Fällen. 99 % Uptime für Managed Services. Klare Vertragsbedingungen." data-es="4 h de respuesta ante incidencias críticas. 99 % de disponibilidad en servicios gestionados. Condiciones contractuales claras.">4h critical response time. 99% uptime for managed services. Clear contractual terms.</p>
                 </div>
@@ -1697,10 +1525,10 @@
     </section>
 
     <!-- Team Section -->
-    <section id="team" class="section section--gradient">
+        <section id="team" class="section section--gradient">
         <div class="container">
             <h2 class="section-title" data-en="Our Team" data-de="Unser Team" data-es="Nuestro equipo">Our Team</h2>
-            <p class="section-subtitle" data-en="Engineers who understand business. Business people who understand technology." data-de="Ingenieure, die Geschäft verstehen. Geschäftsleute, die Technologie verstehen." data-es="Ingenieros que entienden de negocio. Perfiles de negocio que entienden de tecnología.">Engineers who understand business. Business people who understand technology.</p>
+            <p class="section-subtitle" data-en="The people you will actually talk to." data-de="Die Menschen, mit denen Sie tatsächlich sprechen." data-es="Las personas con las que realmente hablará.">The people you will actually talk to.</p>
 
             <!-- Co-Founders -->
             <div class="founders-grid">
@@ -1780,7 +1608,7 @@
     <section id="digital-team" class="section section--darker">
         <div class="container">
             <h2 class="section-title" data-en="Our Digital Team" data-de="Unser digitales Team" data-es="Nuestro equipo digital">Our Digital Team</h2>
-            <p class="section-subtitle" data-en="Meet our AI-powered team members, always on, always learning." data-de="Lernen Sie unsere KI-gestützten Teammitglieder kennen, immer aktiv, immer lernend." data-es="Conozca a los miembros de nuestro equipo impulsados por IA: siempre activos, siempre aprendiendo.">Meet our AI-powered team members, always on, always learning.</p>
+            <p class="section-subtitle" data-en="The AI agents we use to run GF every day." data-de="Die KI-Agenten, mit denen wir GF jeden Tag führen." data-es="Los agentes de IA con los que gestionamos GF cada día.">The AI agents we use to run GF every day.</p>
             <div class="digital-grid">
                 <div class="digital-card">
                     <div class="digital-photo">
@@ -1846,64 +1674,10 @@
         </div>
     </section>
 
-    <!-- Ethics Section -->
-    <section class="section section--gradient">
-        <div class="container">
-            <h2 class="section-title" data-en="Our Commitment to Ethical AI" data-de="Unser Engagement für ethische KI" data-es="Nuestro compromiso con una IA ética">Our Commitment to Ethical AI</h2>
-            <p class="section-subtitle" data-en="Responsible AI isn't optional. It's how we build." data-de="Verantwortungsvolle KI ist keine Option. So bauen wir." data-es="La IA responsable no es opcional. Es nuestra forma de construir.">Responsible AI isn't optional. It's how we build.</p>
-            <div class="ethics-grid">
-                <div class="ethics-card">
-                    <h3 data-en="Human-First" data-de="Mensch zuerst" data-es="Las personas primero">Human-First</h3>
-                    <p data-en="AI amplifies human capacity. We never design systems that remove human judgment from critical decisions." data-de="KI verstärkt menschliche Fähigkeiten. Wir entwickeln niemals Systeme, die menschliches Urteilsvermögen aus kritischen Entscheidungen entfernen." data-es="La IA amplifica la capacidad humana. Nunca diseñamos sistemas que aparten el criterio humano de las decisiones críticas.">AI amplifies human capacity. We never design systems that remove human judgment from critical decisions.</p>
-                </div>
-                <div class="ethics-card">
-                    <h3 data-en="Radical Transparency" data-de="Radikale Transparenz" data-es="Transparencia radical">Radical Transparency</h3>
-                    <p data-en="We show you what the AI found, how it found it, and the limits of that analysis. No black boxes." data-de="Wir zeigen Ihnen, was die KI gefunden hat, wie sie es gefunden hat und wo die Grenzen dieser Analyse liegen. Keine Black Boxes." data-es="Le mostramos qué encontró la IA, cómo lo encontró y dónde están los límites de ese análisis. Sin cajas negras.">We show you what the AI found, how it found it, and the limits of that analysis. No black boxes.</p>
-                </div>
-                <div class="ethics-card">
-                    <h3 data-en="EU AI Act Aligned" data-de="Mit EU AI Act abgestimmt" data-es="Alineado con el Reglamento Europeo de IA">EU AI Act Aligned</h3>
-                    <p data-en="Our implementations comply with EU AI Act requirements. We stay current so your systems stay compliant." data-de="Unsere Implementierungen entsprechen den Anforderungen des EU AI Act. Wir bleiben aktuell, damit Ihre Systeme compliant bleiben." data-es="Nuestras implementaciones cumplen los requisitos del Reglamento Europeo de IA. Nos mantenemos al día para que sus sistemas sigan siendo conformes.">Our implementations comply with EU AI Act requirements. We stay current so your systems stay compliant.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section section--darker">
-        <div class="container">
-            <h2 class="section-title" data-en="What Our Clients Say" data-de="Was unsere Kunden sagen" data-es="Lo que dicen nuestros clientes">What Our Clients Say</h2>
-            <p class="section-subtitle" style="margin-bottom:32px;" data-en="Named where our clients allowed it. Reference calls available on request." data-de="Namentlich, wo unsere Kunden es erlaubt haben. Referenzgespräche auf Anfrage." data-es="Con nombre allí donde el cliente lo autorizó. Llamadas de referencia disponibles a petición.">Named where our clients allowed it. Reference calls available on request.</p>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <blockquote data-en="&quot;They challenged our assumptions and helped us build something real.&quot;" data-de="&quot;Sie haben unsere Annahmen hinterfragt und uns geholfen, etwas Echtes zu bauen.&quot;" data-es="&quot;Cuestionaron nuestras suposiciones y nos ayudaron a construir algo real.&quot;">"They challenged our assumptions and helped us build something real."</blockquote>
-                    <cite data-en="Ira, Startup Founder" data-de="Ira, Startup-Gründerin" data-es="Ira, fundadora de startup">Ira, Startup Founder</cite>
-                </div>
-                <div class="testimonial-card">
-                    <blockquote data-en="&quot;GF helped us turn a highly manual process into a visual, scalable VR experience.&quot;" data-de="&quot;GF hat uns geholfen, einen sehr manuellen Prozess in ein visuelles, skalierbares VR-Erlebnis zu verwandeln.&quot;" data-es="&quot;GF nos ayudó a convertir un proceso muy manual en una experiencia de RV visual y escalable.&quot;">"GF helped us turn a highly manual process into a visual, scalable VR experience."</blockquote>
-                    <cite data-en="Client from Manufacturing Sector" data-de="Kunde aus der Fertigungsindustrie" data-es="Cliente del sector manufacturero">Client from Manufacturing Sector</cite>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pilot CTA Band -->
-    <section class="section section--gradient">
-        <div class="container">
-            <div class="pilot-band">
-                <div class="pilot-band__copy">
-                    <span class="pilot-band__badge" data-en="3 spots" data-de="3 Plätze" data-es="3 plazas">3 spots</span>
-                    <h2 class="section-title" data-en="Pilot our AI marketing platform" data-de="Teste unsere KI-Marketing-Plattform" data-es="Prueba nuestra plataforma de marketing con IA">Pilot our AI marketing platform</h2>
-                    <p data-en="For marketing agencies: three weeks with one real client, free, in exchange for your feedback." data-de="Für Marketing-Agenturen: drei Wochen mit einem echten Kunden, kostenlos, im Austausch für dein Feedback." data-es="Para agencias de marketing: tres semanas con un cliente real, gratis, a cambio de tu feedback.">For marketing agencies: three weeks with one real client, free, in exchange for your feedback.</p>
-                </div>
-                <a href="pilot.html" class="btn btn-primary" data-en="Apply for a spot" data-de="Auf einen Platz bewerben" data-es="Postular a una plaza">Apply for a spot</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="section section--gradient contact-section">
         <div class="container">
-            <h2 class="section-title" data-en="Let's Start Your Journey" data-de="Starten Sie Ihre Reise" data-es="Empecemos su recorrido">Let's Start Your Journey</h2>
+            <h2 class="section-title" data-en="Talk to us" data-de="Sprechen Sie mit uns" data-es="Hable con nosotros">Talk to us</h2>
 
             <div class="tab-buttons" role="tablist">
                 <button class="tab-btn active" role="tab" id="tab-startup" data-tab="startup" aria-controls="startup-tab" aria-selected="true" onclick="switchTab('startup', event)" data-en="I'm a startup" data-de="Ich bin ein Startup" data-es="Soy una startup">I'm a startup</button>
@@ -1916,7 +1690,7 @@
             </div>
             <div id="business-tab" class="tab-pane" role="tabpanel" aria-labelledby="tab-business" hidden>
                 <h3 data-en="Ready to automate your operations with AI?" data-de="Bereit, Ihre Abläufe mit KI zu automatisieren?" data-es="¿Listo para automatizar sus operaciones con IA?">Ready to automate your operations with AI?</h3>
-                <p data-en="Book a free assessment. We'll identify processes that waste your team's time and show you what AI can do. Talk directly with our CTO. No fluff, just results." data-de="Buchen Sie ein kostenloses Assessment. Wir identifizieren Prozesse, die Ihr Team Zeit kosten, und zeigen Ihnen, was KI leisten kann. Sprechen Sie direkt mit unserem CTO. Keine leeren Versprechen, nur Ergebnisse." data-es="Reserve una evaluación gratuita. Identificamos los procesos que consumen el tiempo de su equipo y le mostramos qué puede hacer la IA. Hable directamente con nuestro CTO. Sin rodeos, solo resultados.">Book a free assessment. We'll identify processes that waste your team's time and show you what AI can do. Talk directly with our CTO. No fluff, just results.</p>
+                <p data-en="Book a free assessment. We look at where your team loses time and what AI can take over. You talk directly with our CTO." data-de="Buchen Sie ein kostenloses Assessment. Wir sehen uns an, wo Ihr Team Zeit verliert und was KI übernehmen kann. Sie sprechen direkt mit unserem CTO." data-es="Reserve una evaluación gratuita. Vemos dónde pierde tiempo su equipo y qué puede asumir la IA. Habla directamente con nuestro CTO.">Book a free assessment. We look at where your team loses time and what AI can take over. You talk directly with our CTO.</p>
             </div>
 
             <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:8px;" data-en="Schedule Your Intro Call" data-de="Erstgespräch vereinbaren" data-es="Agendar la llamada inicial">Schedule Your Intro Call</a>
@@ -1939,6 +1713,7 @@
                     <h4 data-en="Explore" data-de="Entdecken" data-es="Explorar">Explore</h4>
                     <ul>
                         <li><a href="#services" data-en="Our Services" data-de="Unsere Leistungen" data-es="Nuestros servicios">Our Services</a></li>
+                        <li><a href="marketing.html" data-en="AI Marketing Platform" data-de="KI-Marketing-Plattform" data-es="Plataforma de marketing con IA">AI Marketing Platform</a></li>
                         <li><a href="how-we-work.html" data-en="How We Work" data-de="Wie wir arbeiten" data-es="Cómo trabajamos">How We Work</a></li>
                         <li><a href="use-cases.html" data-en="Use Cases" data-de="Anwendungsfälle" data-es="Casos de uso">Use Cases</a></li>
                         <li><a href="process-screening.html" data-en="Process Screening" data-de="Prozess-Screening" data-es="Diagnóstico de procesos">Process Screening</a></li>
