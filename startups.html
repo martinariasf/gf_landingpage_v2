@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GF Innovative Solutions - Startup Growth Journey</title>
+    <title>Startup Growth Journey | GF Innovative Solutions</title>
     <meta name="description" content="Consulting for early-stage startups: strategy, product-market fit and an AI integration roadmap.">
     <link rel="canonical" href="https://www.gfinnov.com/startups.html">
     <meta property="og:type" content="website">
@@ -19,8 +19,482 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="startup-styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+    /* Shell ported from index.html: tokens, reset, buttons, nav, footer. */
+    /* ── CSS Custom Properties ── */
+    :root {
+        --bg: #ffffff;
+        --bg-light: #f8f9fa;
+        --bg-card: #ffffff;
+        /* --green is the accessible text/CTA green (5.1:1 on white).
+           --green-bright is decorative only: fills, hovers, rules. Never text. */
+        --green: #15803d;
+        --green-bright: #22c55e;
+        --teal: #0f766e;
+        --white: #1a1a1a;
+        --gray: #4b5563;
+        --gray-dim: #6b7280;
+        --border: #e5e7eb;
+        --border-hover: #d1d5db;
+        --glass: rgba(255,255,255,0.92);
+        --glass-border: #e5e7eb;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --font: 'Inter', system-ui, -apple-system, sans-serif;
+        --max-w: 1200px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--white);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--green); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--teal); }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Focus & keyboard access ── */
+    :focus-visible {
+        outline: 3px solid var(--green);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+    /* On the dark navbar and the coloured hero the green ring is too low-contrast. */
+    .navbar :focus-visible,
+    .hero :focus-visible {
+        outline-color: #ffffff;
+        box-shadow: 0 0 0 5px rgba(15, 23, 42, .55);
+    }
+    .skip-link {
+        position: absolute;
+        left: 12px;
+        top: -100px;
+        z-index: 10200;
+        background: var(--green);
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: var(--radius-sm);
+        font-size: 15px;
+        font-weight: 600;
+        transition: top .18s ease;
+    }
+    .skip-link:focus {
+        top: 12px;
+        color: #fff;
+    }
+
+    /* ── Reduced motion ──
+       Keep state changes legible; only stop the decorative, looping motion. */
+    @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .hero-label::after {
+            animation: none;
+            width: 100%;
+        }
+        *, *::before, *::after {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: .12s !important;
+        }
+        .btn:hover,
+        .service-card:hover,
+        .glass-card:hover { transform: none; }
+    }
+
+    /* ── Utility ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .section-tag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 12px;
+    }
+    .section-title {
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 800;
+        margin-bottom: 12px;
+        line-height: 1.2;
+    }
+    .section-subtitle {
+        color: var(--gray);
+        font-size: 17px;
+        max-width: 640px;
+        margin-bottom: 48px;
+    }
+    /* German compound nouns are long enough to overflow narrow viewports at
+       heading sizes; hyphenation keys off the lang attribute. */
+    h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    /* ── Buttons ── */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        border-radius: var(--radius-sm);
+        font-family: var(--font);
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all .25s;
+        border: none;
+        text-decoration: none;
+    }
+    .btn-primary {
+        background: var(--green);
+        color: #fff;
+    }
+    .btn-primary:hover { color: #fff;
+        background: #166534;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(15, 23, 42, .18);
+    }
+    .btn-ghost {
+        background: transparent;
+        color: var(--white);
+        border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+        border-color: var(--green);
+        color: var(--green);
+        transform: translateY(-2px);
+    }
+
+    /* ── Section backgrounds ── */
+    .section {
+        padding: 100px 0;
+        position: relative;
+    }
+    .section--dark {
+        background: var(--bg);
+    }
+    .section--darker {
+        background: var(--bg-light);
+    }
+    .section--gradient {
+        background: var(--bg);
+    }
+    /* ── Navigation ── */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10100;
+        background: rgba(11,22,40,0.95);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        transition: background .3s;
+    }
+    .nav-container {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+        position: relative;
+    }
+    .nav-logo .logo {
+        height: 36px;
+        width: auto;
+    }
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+    }
+    .nav-link {
+        color: #94a3b8;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color .2s;
+    }
+    .nav-link:hover { color: #f1f5f9; }
+    .nav-cta {
+        background: var(--green);
+        color: #fff !important;
+        padding: 6px 14px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        transition: all .25s;
+    }
+    .nav-cta:hover { color: #fff;
+        background: #166534;
+        color: #fff !important;
+        transform: translateY(-1px);
+    }
+    /* Language switch: three separate buttons rather than one cycling
+       control. With EN/DE a toggle was fine; with a third language a cycler
+       hides ES behind two clicks and never shows which languages exist.
+       Sits on the dark navbar, rgba(11,22,40,.95). */
+    .lang-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        padding: 3px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        background: transparent;
+    }
+    .lang-switch .lang-opt {
+        /* They are links now: kill the default underline and centre the
+           label the way a button box did for free. */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        -webkit-appearance: none;
+        appearance: none;
+        border: 0;
+        background: transparent;
+        color: #94a3b8;  /* 5.3:1 on the dark navbar */
+        font-family: var(--font);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1;
+        padding: 6px 9px;
+        border-radius: 5px;
+        cursor: pointer;
+        min-height: 32px;
+        transition: color .2s, background .2s;
+    }
+    .lang-switch .lang-opt:hover {
+        color: #f1f5f9;
+        background: rgba(255,255,255,0.08);
+    }
+    /* Solid chip, not an underline: the active language has to survive both
+       colour-blindness and a glance. */
+    .lang-switch .lang-opt.active {
+        color: #0b1628;
+        background: #f1f5f9;
+        font-weight: 700;
+        cursor: default;
+    }
+    @media (pointer: coarse) {
+        .lang-switch .lang-opt { min-width: 44px; min-height: 44px; }
+    }
+    /* Mobile-only twin of the language switch, shown next to the hamburger. */
+    .nav-mobile-lang {
+        display: none;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 8px;
+        min-height: 44px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+        background: #0b1628;
+        color: #f1f5f9;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 60px 0 30px;
+    }
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+    .footer-logo {
+        height: 32px;
+        width: auto;
+        margin-bottom: 12px;
+    }
+    .footer-tagline { color: #94a3b8; font-size: 14px; }
+    .footer h4 { font-size: 14px; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; color: #f1f5f9; }
+    .footer ul li { margin-bottom: 8px; }
+    .footer ul a { color: #94a3b8; font-size: 14px; }
+    .footer ul a:hover { color: var(--green); }
+    .footer-contact p { color: #94a3b8; font-size: 14px; margin-bottom: 4px; }
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        color: #94a3b8;  /* was #64748b: 3.81:1 on the dark footer */
+    }
+    /* 24x24 minimum target (WCAG 2.5.8); these were 16px tall. */
+    .footer-bottom a {
+        color: #94a3b8;  /* was #64748b: 3.81:1 on the dark footer */
+        display: inline-block;
+        padding: 6px 4px;
+    }
+    .footer-bottom a:hover { color: var(--green); }
+    .footer-grid ul a {
+        display: inline-block;
+        padding: 5px 0;
+    }
+    /* ── Hamburger Menu ── */
+    .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        gap: 5px;
+        /* 44x44 minimum tap target (WCAG 2.5.5); the bars stay 28px wide. */
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 11px 8px;
+        z-index: 10102;
+        pointer-events: auto;
+    }
+    .nav-hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #f1f5f9;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+    /* Bars are 2px with 5px gaps, so each outer bar is 7px off centre. */
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-menu.open {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(11,22,40,0.98);
+        padding: 20px 24px;
+        gap: 16px;
+        z-index: 10101;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        pointer-events: auto;
+    }
+    /* Legacy names some page rules still use, mapped onto the index tokens. */
+    :root {
+        --primary-blue: #0b1628;
+        --innovation-green: var(--green);
+        --pure-white: #ffffff;
+        --dark-gray: var(--gray);
+        --medium-gray: var(--border);
+        --border-radius: var(--radius-sm);
+        --border-radius-large: var(--radius);
+        --font-primary: var(--font);
+        --transition: all .25s;
+        --shadow-primary: rgba(15, 23, 42, .18);
+    }
+    .nav-menu.open { align-items: flex-start; }
+    .page-hero {
+        background: linear-gradient(135deg, #0F4C8A 0%, #1560B2 35%, #2F6F98 70%, #2F7A73 100%);
+        color: #f1f5f9;
+        padding: 140px 0 64px;
+        text-align: center;
+    }
+    .page-hero :focus-visible { outline-color: #fff; }
+    .page-hero h1 { color: #fff; font-size: clamp(30px, 5vw, 46px); font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+    .page-hero p { color: rgba(255,255,255,.92); max-width: 640px; margin: 0 auto; font-size: 18px; }
+    @media (max-width: 920px) {
+        .nav-menu { display: none; }
+        .nav-hamburger { display: flex; }
+        .nav-mobile-lang { display: inline-flex; }
+        .nav-menu .lang-switch { display: none; }
+        .nav-menu.open .nav-link,
+        .nav-menu.open .nav-cta { display: block; padding: 12px 0; }
+        .nav-menu.open .nav-cta { padding: 10px 16px; }
+        .footer-grid { grid-template-columns: 1fr; }
+        .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+        .section { padding: 64px 0; }
+        .page-hero { padding: 112px 0 48px; }
+    }
+    /* startup-script.js paints the navbar white on scroll via inline style;
+       keep the index navy regardless. */
+    .navbar { background: rgba(11,22,40,0.95) !important; }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+    .btn-light { background: #fff; color: #0b1628; }
+    .btn-light:hover { color: #0b1628; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(15,23,42,.18); }
+    .growth-steps { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+    .growth-box {
+        width: 100%; height: 100%; min-height: 120px;
+        display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+        text-align: left; padding: 20px; cursor: pointer;
+        background: var(--bg-card); border: 1px solid var(--border); border-top: 2px solid var(--green);
+        border-radius: var(--radius-sm); font: inherit; color: var(--white);
+        transition: border-color .2s, transform .2s;
+    }
+    .growth-box:hover { border-color: var(--green); transform: translateY(-2px); }
+    .growth-box strong { font-size: 17px; line-height: 1.3; }
+    .growth-num { font-size: 14px; font-weight: 700; color: var(--green); font-variant-numeric: tabular-nums; }
+    .growth-modal { display: none; position: fixed; inset: 0; z-index: 10300; background: rgba(11,22,40,.7); padding: 16px; overflow-y: auto; }
+    .growth-modal-content {
+        background: #fff; margin: 6vh auto; padding: 32px; border-radius: var(--radius);
+        max-width: 600px; position: relative; max-height: 84vh; overflow-y: auto;
+        box-shadow: 0 18px 40px rgba(15,23,42,.25);
+    }
+    .growth-close { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; color: var(--gray); }
+    .growth-close:hover { color: var(--green); }
+    #growth-modal-title { margin-bottom: 20px; font-size: 22px; font-weight: 700; padding-right: 44px; line-height: 1.3; }
+    #growth-modal-text { color: var(--gray); line-height: 1.6; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; margin-top: 40px; }
+    .feature-icon { display: block; color: var(--green); margin-bottom: 12px; line-height: 0; }
+    .feature-icon svg { width: 30px; height: 30px; }
+    .feature-item h3 { font-size: 20px; margin-bottom: 6px; }
+    .feature-item p { color: var(--gray); }
+    /* Cookie consent, driven by startup-script.js */
+    .cookie-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; background: #0b1628; color: #f1f5f9; padding: 16px 20px; border-top: 1px solid rgba(255,255,255,.08); }
+    .cookie-banner__inner { max-width: var(--max-w); margin: 0 auto; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .cookie-banner__text { flex: 1 1 360px; font-size: 14px; }
+    .cookie-banner__text strong { display: block; margin-bottom: 4px; }
+    .cookie-banner__text p { color: #cbd5e1; }
+    .cookie-banner__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cookie-banner .btn, .cookie-modal .btn { padding: 10px 18px; font-size: 14px; }
+    .btn-secondary { background: #1e293b; color: #f1f5f9; border: 1px solid rgba(255,255,255,.2); }
+    .btn-secondary:hover { color: #fff; border-color: #fff; }
+    .btn-outline { background: transparent; color: #f1f5f9; border: 1px solid rgba(255,255,255,.35); }
+    .btn-outline:hover { color: #fff; border-color: #fff; }
+    .link-like { background: none; border: none; color: var(--gray); text-decoration: underline; cursor: pointer; padding: 6px 4px; min-height: 24px; font: inherit; font-size: 14px; }
+    .link-like:hover { color: var(--green); }
+    .cookie-settings-entry { display: flex; justify-content: flex-end; max-width: var(--max-w); margin: 12px auto; padding: 0 24px; }
+    .cookie-modal { display: none; position: fixed; inset: 0; z-index: 10300; }
+    .cookie-modal.open { display: block; }
+    .cookie-modal__backdrop { position: absolute; inset: 0; background: rgba(11,22,40,.6); }
+    .cookie-modal__dialog { position: relative; z-index: 1; max-width: 560px; margin: 10vh auto; background: #fff; border-radius: var(--radius); width: calc(100% - 32px); }
+    .cookie-modal__header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+    .cookie-modal__body { padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; font-size: 14px; color: var(--gray); }
+    .cookie-modal__body strong { color: var(--white); }
+    .cookie-modal__footer { padding: 16px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; }
+    .modal-close { background: none; border: none; font-size: 24px; line-height: 1; cursor: pointer; min-width: 44px; min-height: 44px; color: var(--gray); }
+    .cookie-toggle { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .switch input[type="checkbox"] { width: 44px; height: 24px; appearance: none; background: var(--border); border-radius: 999px; position: relative; cursor: pointer; transition: background .2s; }
+    .switch input[type="checkbox"]::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: left .2s; }
+    .switch input[type="checkbox"]:checked { background: var(--green); }
+    .switch input[type="checkbox"]:checked::after { left: 22px; }
+    .switch.disabled { opacity: .6; }
+    @media (max-width: 920px) {
+        .growth-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .features-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 520px) { .growth-steps { grid-template-columns: 1fr; } .growth-box { min-height: 0; } }
+    </style>
 
     <!-- Google Analytics Consent Stub -->
     <script>
@@ -39,21 +513,29 @@
 </head>
 <body>
     <a href="#main" class="skip-link" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Skip to content</a>
-    <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Main">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html" aria-label="GF Innovative Solutions, Startseite / home"><img width="340" height="72" src="images/opt/gf-logo.webp" alt="GF Innovative Solutions" class="logo"></a>
+                <a href="index.html" aria-label="GF Innovative Solutions, home">
+                    <img src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" width="340" height="72" fetchpriority="high" style="height:36px; width:auto;">
+                </a>
             </div>
-            <button class="nav-toggle" type="button" aria-label="Menü öffnen / Toggle menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-mobile-lang">
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                </div>
+            </div>
+            <button class="nav-hamburger" type="button" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
             </button>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link" data-en="Home" data-de="Startseite" data-es="Inicio">Home</a>
-                <a href="#growth-journey" class="nav-link" data-en="Growth Journey" data-de="Wachstumsreise" data-es="Recorrido de crecimiento">Growth Journey</a>
-                <a href="#contact" class="nav-link" data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#services" class="nav-link" data-en="Services" data-de="Leistungen" data-es="Servicios">Services</a>
+                <a href="index.html#how" class="nav-link" data-en="How we work" data-de="So arbeiten wir" data-es="Cómo trabajamos">How we work</a>
+                <a href="marketing.html" class="nav-link" data-en="AI Marketing" data-de="KI-Marketing" data-es="Marketing con IA">AI Marketing</a>
+                <a href="index.html#team" class="nav-link" data-en="Team" data-de="Team" data-es="Equipo">Team</a>
+                <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
                 <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
                     <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
                     <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
@@ -63,70 +545,32 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="main" tabindex="-1" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title" data-en="From Idea to Scale-Up" data-de="Von der Idee zum Scale-Up" data-es="De la idea al scale-up">
-                    From Idea to Scale-Up
-                </h1>
-                <p class="hero-subtitle" data-en="Navigate your startup journey with AI-powered insights and German engineering precision." data-de="Navigieren Sie Ihre Startup-Reise mit KI-gestützten Erkenntnissen und deutscher Ingenieursgenauigkeit." data-es="Recorra el camino de su startup con análisis impulsados por IA y la precisión de la ingeniería alemana.">
-                    Navigate your startup journey with AI-powered insights and German engineering precision.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#growth-journey" class="btn btn-primary" data-en="Start Your Journey" data-de="Beginnen Sie Ihre Reise" data-es="Comenzar el recorrido">
-                        Start Your Journey
-                    </a>
-                    <a href="#contact" class="btn btn-secondary" data-en="Book Consultation" data-de="Beratung buchen" data-es="Reservar consultoría">
-                        Book Consultation
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="startup-graphic">
-                    <div class="rocket-element"></div>
-                    <div class="orbit-element orbit-1"></div>
-                    <div class="orbit-element orbit-2"></div>
-                    <div class="orbit-element orbit-3"></div>
-                </div>
+    <section id="main" tabindex="-1" class="page-hero">
+        <div class="container">
+            <h1 data-en="From Idea to Scale-Up" data-de="Von der Idee zum Scale-Up" data-es="De la idea al scale-up">From Idea to Scale-Up</h1>
+            <p data-en="Strategy, product fit and an AI roadmap for early-stage startups." data-de="Strategie, Product-Market-Fit und eine KI-Roadmap für junge Startups." data-es="Estrategia, encaje de producto y una hoja de ruta de IA para startups en fase temprana.">Strategy, product fit and an AI roadmap for early-stage startups.</p>
+            <div class="hero-buttons">
+                <a href="#growth-journey" class="btn btn-primary" data-en="See the stages" data-de="Phasen ansehen" data-es="Ver las etapas">See the stages</a>
+                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-light" target="_blank" rel="noopener" data-en="Book a call" data-de="Gespräch buchen" data-es="Reservar llamada">Book a call</a>
             </div>
         </div>
     </section>
 
-    <!-- Growth Journey Section -->
-    <section id="growth-journey" class="section-primary" style="background: url('images/opt/bg-consulting-4.webp') no-repeat center center/cover;">
+    <section id="growth-journey" class="section">
         <div class="container">
-            <h2 class="section-title" data-en="Your Startup Growth Journey" data-de="Ihre Startup-Wachstumsreise" data-es="El recorrido de crecimiento de su startup" style="margin-bottom: 24px;">Your Startup Growth Journey</h2>
-            <p class="section-description" data-en="Click on each stage to explore the strategic elements that will accelerate your startup's growth." data-de="Klicken Sie auf jede Phase, um die strategischen Elemente zu erkunden, die das Wachstum Ihres Startups beschleunigen werden." data-es="Haga clic en cada etapa para explorar los elementos estratégicos que acelerarán el crecimiento de su startup." style="margin-bottom: 40px; font-size: 1.2rem;">
-                Click on each stage to explore the strategic elements that will accelerate your startup's growth.
-            </p>
+            <h2 class="section-title" data-en="Your growth journey" data-de="Ihr Wachstumsweg" data-es="Su camino de crecimiento">Your growth journey</h2>
+            <p class="section-subtitle" data-en="Five stages. Open one to see what we work on." data-de="Fünf Phasen. Öffnen Sie eine, um zu sehen, woran wir arbeiten." data-es="Cinco etapas. Abra una para ver en qué trabajamos.">Five stages. Open one to see what we work on.</p>
+            <ol class="growth-steps">
+                <li><button type="button" class="growth-box" data-step="startup-clarity"><span class="growth-num">1</span><strong data-en="Startup Clarity" data-de="Startup-Klarheit" data-es="Claridad de startup">Startup Clarity</strong></button></li>
+                <li><button type="button" class="growth-box" data-step="revenue-engine"><span class="growth-num">2</span><strong data-en="Revenue Engine" data-de="Umsatzmotor" data-es="Motor de ingresos">Revenue Engine</strong></button></li>
+                <li><button type="button" class="growth-box" data-step="sales-boost"><span class="growth-num">3</span><strong data-en="Sales Boost" data-de="Vertrieb stärken" data-es="Impulso comercial">Sales Boost</strong></button></li>
+                <li><button type="button" class="growth-box" data-step="growth-capabilities"><span class="growth-num">4</span><strong data-en="Growth Capabilities" data-de="Wachstumsfähigkeiten" data-es="Capacidades de crecimiento">Growth Capabilities</strong></button></li>
+                <li><button type="button" class="growth-box" data-step="scale-strategy"><span class="growth-num">5</span><strong data-en="Scale Strategy" data-de="Skalierungsstrategie" data-es="Estrategia de escalado">Scale Strategy</strong></button></li>
+            </ol>
 
-            <!-- Growth Journey Packages floating over the background.
-                 The absolute left/top offsets are the desktop staircase; under
-                 768px .growth-stage collapses to a plain stack, because a
-                 220px box at left:45% pushed the page 16px past a 375px screen. -->
-            <div class="growth-stage" style="position:relative; min-height: 700px; width:100%;">
-                <div class="growth-box" data-step="startup-clarity" style="position:absolute;left:5%;top:600px;width:220px;cursor:pointer;">
-                    <strong data-en="Startup Clarity" data-de="Startup-Klarheit" data-es="Claridad de startup">Startup Clarity</strong>
-                </div>
-                <div class="growth-box" data-step="revenue-engine" style="position:absolute;left:15%;top:530px;width:220px;cursor:pointer;">
-                    <strong data-en="Revenue Engine" data-de="Umsatzmotor" data-es="Motor de ingresos">Revenue Engine</strong>
-                </div>
-                <div class="growth-box" data-step="sales-boost" style="position:absolute;left:25%;top:460px;width:220px;cursor:pointer;">
-                    <strong data-en="Sales Boost" data-de="Verkaufssteigerung" data-es="Impulso comercial">Sales Boost</strong>
-                </div>
-                <div class="growth-box" data-step="growth-capabilities" style="position:absolute;left:35%;top:390px;width:220px;cursor:pointer;">
-                    <strong data-en="Growth Capabilities" data-de="Wachstumsfähigkeiten" data-es="Capacidades de crecimiento">Growth Capabilities</strong>
-                </div>
-                <div class="growth-box" data-step="scale-strategy" style="position:absolute;left:45%;top:320px;width:220px;cursor:pointer;">
-                    <strong data-en="Scale Strategy" data-de="Skalierungsstrategie" data-es="Estrategia de escalado">Scale Strategy</strong>
-                </div>
-            </div>
-
-            <!-- Growth Journey Modal -->
             <div id="growth-modal" class="growth-modal">
-                <div class="growth-modal-content">
-                    <span class="growth-close">&times;</span>
+                <div class="growth-modal-content" role="dialog" aria-modal="true" aria-labelledby="growth-modal-title">
+                    <button type="button" class="growth-close" aria-label="Close"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" ><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button>
                     <h3 id="growth-modal-title"></h3>
                     <div id="growth-modal-text"></div>
                 </div>
@@ -134,93 +578,72 @@
         </div>
     </section>
 
-    <!-- Why Choose GF Section -->
-    <section class="section-secondary">
+    <section class="section section--darker">
         <div class="container">
-            <h2 class="section-title" data-en="Why Startups Choose GF" data-de="Warum Startups GF wählen" data-es="Por qué las startups eligen GF">Why Startups Choose GF</h2>
+            <h2 class="section-title" data-en="Why startups work with us" data-de="Warum Startups mit uns arbeiten" data-es="Por qué las startups trabajan con nosotros">Why startups work with us</h2>
             <div class="features-grid">
                 <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                        </svg>
-                    </div>
+                    <span class="feature-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 21h4l13 -13a1.5 1.5 0 0 0 -4 -4l-13 13v4" /><path d="M14.5 5.5l4 4" /><path d="M12 8l-5 -5l-4 4l5 5" /><path d="M7 8l-1.5 1.5" /><path d="M16 12l5 5l-4 4l-5 -5" /><path d="M16 17l-1.5 1.5" /></svg></span>
                     <h3 data-en="Rapid Prototyping" data-de="Rapid Prototyping" data-es="Prototipado rápido">Rapid Prototyping</h3>
-                    <p data-en="From concept to MVP in weeks, not months." data-de="Vom Konzept zum MVP in Wochen, nicht Monaten." data-es="Del concepto al MVP en semanas, no en meses.">From concept to MVP in weeks, not months.</p>
+                    <p data-en="From concept to MVP in weeks." data-de="Vom Konzept zum MVP in Wochen." data-es="Del concepto al MVP en semanas.">From concept to MVP in weeks.</p>
                 </div>
-                
                 <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
-                        </svg>
-                    </div>
+                    <span class="feature-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 5m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" /><path d="M9 9h6v6h-6z" /><path d="M3 10h2" /><path d="M3 14h2" /><path d="M10 3v2" /><path d="M14 3v2" /><path d="M21 10h-2" /><path d="M21 14h-2" /><path d="M14 21v-2" /><path d="M10 21v-2" /></svg></span>
                     <h3 data-en="AI Integration" data-de="KI-Integration" data-es="Integración de IA">AI Integration</h3>
-                    <p data-en="Smart automation from day one." data-de="Intelligente Automatisierung von Tag eins." data-es="Automatización inteligente desde el primer día.">Smart automation from day one.</p>
+                    <p data-en="Automation from day one." data-de="Automatisierung ab dem ersten Tag." data-es="Automatización desde el primer día.">Automation from day one.</p>
                 </div>
-                
                 <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
-                    <h3 data-en="Investor Ready" data-de="Investor-bereit" data-es="Listos para inversores">Investor Ready</h3>
-                    <p data-en="Pitch decks that secure funding." data-de="Pitch Decks, die Finanzierung sichern." data-es="Presentaciones que consiguen financiación.">Pitch decks that secure funding.</p>
+                    <span class="feature-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" ><path d="M9 12v-4" /><path d="M15 12v-2" /><path d="M12 12v-1" /><path d="M3 4h18" /><path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10" /><path d="M12 16v4" /><path d="M9 20h6" /></svg></span>
+                    <h3 data-en="Investor Ready" data-de="Bereit für Investoren" data-es="Listos para inversores">Investor Ready</h3>
+                    <p data-en="Pitch decks built to raise funding." data-de="Pitch Decks für Ihre Finanzierungsrunde." data-es="Presentaciones pensadas para conseguir financiación.">Pitch decks built to raise funding.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-cta">
+    <section id="contact" class="section text-center">
         <div class="container">
-            <h2 class="section-title" data-en="Ready to Scale Your Startup?" data-de="Bereit, Ihr Startup zu skalieren?" data-es="¿Listo para escalar su startup?">Ready to Scale Your Startup?</h2>
-            <p class="cta-description" data-en="Let's discuss your vision and create a roadmap for success." data-de="Lassen Sie uns über Ihre Vision sprechen und eine Roadmap für den Erfolg erstellen." data-es="Hablemos de su visión y creemos una hoja de ruta hacia el éxito.">
-                Let's discuss your vision and create a roadmap for success.
-            </p>
-            
-            <div class="calendly-container">
-                <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary btn-large" target="_blank" data-en="Book Your Strategy Call" data-de="Buchen Sie Ihr Strategiegespräch" data-es="Reserve su llamada de estrategia">
-                    Book Your Strategy Call
-                </a>
-            </div>
+            <h2 class="section-title" data-en="Ready to scale?" data-de="Bereit zu skalieren?" data-es="¿Listo para escalar?">Ready to scale?</h2>
+            <p class="section-subtitle mx-auto" data-en="Tell us your vision. We draft the roadmap." data-de="Erzählen Sie uns Ihre Vision. Wir entwerfen die Roadmap." data-es="Cuéntenos su visión. Nosotros trazamos la hoja de ruta.">Tell us your vision. We draft the roadmap.</p>
+            <a href="https://calendly.com/gfinnov-info/30min" class="btn btn-primary" target="_blank" rel="noopener" data-en="Book your strategy call" data-de="Strategiegespräch buchen" data-es="Reservar llamada de estrategia">Book your strategy call</a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img loading="lazy" decoding="async" width="340" height="72" src="./images/opt/gf-logo-white.webp" alt="GF Innovative Solutions" class="footer-logo">
-                    <p data-en="Guided by tech, powered by people." data-de="Von Technologie geleitet, von Menschen angetrieben." data-es="Guiados por la tecnología, impulsados por las personas.">Guided by tech, powered by people.</p>
                 </div>
-                <div class="footer-section">
-                    <h2 data-en="For Startups" data-de="Für Startups" data-es="Para startups">For Startups</h2>
-                    <ul>
-                        <li><a href="#" data-en="MVP Development" data-de="MVP-Entwicklung" data-es="Desarrollo de MVP">MVP Development</a></li>
-                        <li><a href="#" data-en="AI Integration" data-de="KI-Integration" data-es="Integración de IA">AI Integration</a></li>
-                        <li><a href="#" data-en="Investor Preparation" data-de="Investor-Vorbereitung" data-es="Preparación para inversores">Investor Preparation</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h2 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h2>
-                    <p>info@gfinnov.com</p>
+                <div class="footer-contact">
+                    <h4 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h4>
+                    <p>info@gf-innovative.com</p>
                     <p>+49 172 95 123 76</p>
                     <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 GF Innovative Solutions. <span data-en="All rights reserved." data-de="Alle Rechte vorbehalten." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
-                <div class="footer-links">
-                    <a href="imprint.html" data-en="Imprint" data-de="Impressum" data-es="Aviso legal">Impressum</a> | 
-                    <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutzerklärung" data-es="Política de privacidad">Privacy Policy</a>
+                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten." data-es="&copy; 2026 GF Innovative Solutions. Todos los derechos reservados.">&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div>
+                    <a href="imprint.html">Impressum</a> | <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutz" data-es="Privacidad">Privacy Policy</a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="cookie-banner__inner">
+            <div class="cookie-banner__text">
+                <strong data-en="We value your privacy" data-de="Wir schätzen Ihre Privatsphäre" data-es="Valoramos su privacidad">We value your privacy</strong>
+                <p data-en="This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept." data-de="Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern und Analysen bereitzustellen. Sie können auswählen, welche Cookies Sie akzeptieren möchten." data-es="Este sitio web utiliza cookies para mejorar su experiencia y ofrecer análisis. Puede elegir qué cookies acepta.">This website uses cookies to enhance your experience and provide analytics. You can choose which cookies to accept.</p>
+            </div>
+            <div class="cookie-banner__actions">
+                <button id="cookie-accept" class="btn btn-primary" data-en="Accept All" data-de="Alle akzeptieren" data-es="Aceptar todas">Accept All</button>
+                <button id="cookie-reject" class="btn btn-ghost" data-en="Essential Only" data-de="Nur essenzielle" data-es="Solo esenciales">Essential Only</button>
+                <button id="cookie-customize" class="btn btn-outline" data-en="Customize" data-de="Anpassen" data-es="Personalizar">Customize</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Settings Entry Point -->
+    <div class="cookie-settings-entry">
+        <button id="cookie-settings" class="link-like" data-en="Cookie Settings" data-de="Cookie-Einstellungen" data-es="Configuración de cookies">Cookie Settings</button>
 
     <!-- Cookie Consent Banner -->
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
@@ -245,7 +668,7 @@
     <!-- Cookie Modal -->
     <div id="cookie-modal" class="cookie-modal" aria-hidden="true">
         <div class="cookie-modal__backdrop" onclick="closeModal()"></div>
-        <div class="cookie-modal__dialog">
+        <div class="cookie-modal__dialog" role="dialog" aria-modal="true">
             <div class="cookie-modal__header">
                 <h3 data-en="Cookie Preferences" data-de="Cookie-Einstellungen" data-es="Preferencias de cookies">Cookie Preferences</h3>
                 <button id="cookie-close" class="modal-close" aria-label="Close">&times;</button>
@@ -279,6 +702,68 @@
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img loading="lazy" decoding="async" width="340" height="72" src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" style="height:36px; width:auto;">
+                    <p class="footer-tagline" data-en="Guided by people, powered by tech." data-de="Geleitet von Menschen, angetrieben von Technologie." data-es="Guiados por personas, impulsados por la tecnología.">Guided by people, powered by tech.</p>
+                </div>
+                <div>
+                    <h4 data-en="Explore" data-de="Entdecken" data-es="Explorar">Explore</h4>
+                    <ul>
+                        <li><a href="index.html#services" data-en="Our Services" data-de="Unsere Leistungen" data-es="Nuestros servicios">Our Services</a></li>
+                        <li><a href="marketing.html" data-en="AI Marketing Platform" data-de="KI-Marketing-Plattform" data-es="Plataforma de marketing con IA">AI Marketing Platform</a></li>
+                        <li><a href="how-we-work.html" data-en="How We Work" data-de="Wie wir arbeiten" data-es="Cómo trabajamos">How We Work</a></li>
+                        <li><a href="use-cases.html" data-en="Use Cases" data-de="Anwendungsfälle" data-es="Casos de uso">Use Cases</a></li>
+                        <li><a href="process-screening.html" data-en="Process Screening" data-de="Prozess-Screening" data-es="Diagnóstico de procesos">Process Screening</a></li>
+                        <li><a href="openclawd-agents.html" data-en="Local Agents" data-de="Lokale Agenten" data-es="Agentes locales">Local Agents</a></li>
+                        <li><a href="resources.html" data-en="Resources" data-de="Ressourcen" data-es="Recursos">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 data-en="Contact" data-de="Kontakt" data-es="Contacto">Contact</h4>
+                    <p>info@gf-innovative.com</p>
+                    <p>+49 172 95 123 76</p>
+                    <p>Wiesbadener Straße 41<br>D-70372 Stuttgart<br>Germany</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="&copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten." data-es="&copy; 2026 GF Innovative Solutions. Todos los derechos reservados.">&copy; 2026 GF Innovative Solutions. All rights reserved.</p>
+                <div>
+                    <a href="imprint.html">Impressum</a> | <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutz" data-es="Privacidad">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script src="startup-script.js"></script>
+    <!-- Mobile navigation, same behaviour as index.html. -->
+    <script>
+    (function () {
+        var hamburger = document.getElementById('nav-hamburger');
+        var navMenu = document.getElementById('nav-menu');
+        if (!hamburger || !navMenu) return;
+        function closeMenu() {
+            hamburger.classList.remove('open');
+            navMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('open');
+            navMenu.classList.toggle('open');
+            this.setAttribute('aria-expanded', navMenu.classList.contains('open'));
+        });
+        navMenu.querySelectorAll('a, button').forEach(function (el) {
+            el.addEventListener('click', closeMenu);
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+                closeMenu();
+                hamburger.focus();
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
