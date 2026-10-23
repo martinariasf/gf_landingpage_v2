@@ -56,7 +56,7 @@
         if (isLang(stored)) return [stored, false];
 
         // A page that pins its own default ignores the browser language.
-        if (window.GF_DEFAULT_LANG) return [FALLBACK, false];
+        if (isLang(window.GF_DEFAULT_LANG)) return [FALLBACK, false];
 
         var prefs = navigator.languages || [navigator.language || ''];
         for (var i = 0; i < prefs.length; i++) {
