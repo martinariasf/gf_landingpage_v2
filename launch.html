@@ -78,10 +78,12 @@
     .offer { background: #fff; color: var(--ink); border-radius: 20px; padding: 32px; box-shadow: 0 24px 60px rgba(0,0,0,.35); }
     .offer-badge { display: inline-block; background: #dcfce7; color: #14532d; font-weight: 700; font-size: 13px; padding: 4px 12px; border-radius: 999px; }
     .offer h2 { font-size: 20px; margin-top: 14px; }
-    .offer-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; margin: 8px 0 4px; }
-    .offer-amount { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+    .offer-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px 12px; margin: 8px 0 0; }
+    .offer-amount { font-size: 56px; color: var(--ink); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
     .offer-per { color: var(--gray); font-size: 16px; }
-    .offer-regular { color: var(--gray); font-size: 18px; }
+    .offer-regular { color: #4b5563; font-size: 28px; font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+    .offer-regular s { text-decoration: line-through; text-decoration-color: #b91c1c; text-decoration-thickness: 3px; text-decoration-skip-ink: none; }
+    .price-save { display: inline-block; background: #dcfce7; color: #14532d; font-size: 14px; font-weight: 700; padding: 4px 12px; border-radius: 999px; margin: 6px 0 10px; }
     .offer-note { font-size: 13.5px; color: var(--gray); margin-bottom: 18px; }
     .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0 18px; }
     .countdown[hidden] { display: none; }
@@ -182,10 +184,11 @@
                 <span class="offer-badge" data-en="10 founder spots" data-de="10 Gründerplätze" data-es="10 plazas fundadoras">10 plazas fundadoras</span>
                 <h2 data-en="Founder plan" data-de="Founder-Plan" data-es="Plan Founder">Plan Founder</h2>
                 <p class="offer-price">
-                    <span class="offer-amount">$339</span>
-                    <span class="offer-per" data-en="USD per month" data-de="USD pro Monat" data-es="USD al mes">USD al mes</span>
                     <span class="offer-regular"><span class="visually-hidden" data-en="Regular price:" data-de="Regulärer Preis:" data-es="Precio regular:">Precio regular:</span> <s>$499</s></span>
+                    <span class="offer-amount"><span class="visually-hidden" data-en="Founder price:" data-de="Founder-Preis:" data-es="Precio Founder:">Precio Founder:</span> $339</span>
+                    <span class="offer-per" data-en="USD per month" data-de="USD pro Monat" data-es="USD al mes">USD al mes</span>
                 </p>
+                <p class="price-save" data-en="Save $160 per month" data-de="Spare $160 pro Monat" data-es="Ahorra $160 al mes">Ahorra $160 al mes</p>
                 <p class="offer-note" data-en="Prices in USD, excluding VAT. Offer valid until 30 November 2026, 23:59 (Central European Time)." data-de="Preise in USD, zzgl. MwSt. Angebot gültig bis 30. November 2026, 23:59 Uhr (MEZ)." data-es="Precios en USD, sin IVA. Oferta válida hasta el 30 de noviembre de 2026, 23:59 (hora de Europa central).">Precios en USD, sin IVA. Oferta válida hasta el 30 de noviembre de 2026, 23:59 (hora de Europa central).</p>
 
                 <div id="countdown" class="countdown" data-deadline="2026-11-30T23:59:00+01:00" hidden role="timer" data-en="Time left on the offer" data-de="Verbleibende Zeit des Angebots" data-es="Tiempo restante de la oferta" data-i18n-attr="aria-label" aria-label="Tiempo restante de la oferta">

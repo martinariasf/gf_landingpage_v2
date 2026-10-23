@@ -799,7 +799,9 @@
     .cur-switch button { font: inherit; font-size: 13.5px; font-weight: 600; color: var(--gray); background: none; border: 0; border-radius: 999px; padding: 7px 18px; cursor: pointer; }
     .cur-switch button[aria-pressed="true"] { background: var(--green); color: #fff; }
     .cur-switch button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
-    .plan__regular { font-size: 15px; color: var(--gray); }
+    .plan__regular { font-size: 22px; font-weight: 700; color: var(--gray); line-height: 1.1; }
+    .plan__regular s { text-decoration: line-through; text-decoration-color: #b91c1c; text-decoration-thickness: 3px; text-decoration-skip-ink: none; }
+    .plan__save { display: inline-block; align-self: flex-start; background: #dcfce7; color: #14532d; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 999px; margin: 8px 0 0; }
     .plan__list { list-style: none; margin: 0 0 24px; padding: 0; font-size: 14px; color: var(--gray); line-height: 1.5; }
     .plan__list li { padding: 5px 0 5px 20px; position: relative; }
     .plan__list li::before { content: ""; position: absolute; left: 2px; top: 11px; width: 5px; height: 9px; border: solid var(--green); border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-2px, -2px); }
@@ -1516,7 +1518,8 @@
                     <span class="plan-badge"><span id="founder-spots">10</span> <span data-en="founder spots" data-de="Gründerplätze" data-es="plazas fundadoras">founder spots</span></span>
                     <h3 class="plan__name">Founder</h3>
                     <p class="plan__who" data-en="Growing / launching businesses" data-de="Für wachsende und startende Unternehmen" data-es="Para negocios que crecen o lanzan su marca">Growing / launching businesses</p>
-                    <p class="plan__price"><span class="plan__amount money" data-usd="339"></span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span> <span class="plan__regular"><span class="visually-hidden" data-en="Regular price:" data-de="Regulärer Preis:" data-es="Precio regular:">Regular price:</span> <s class="money" data-usd="499"></s></span></p>
+                    <p class="plan__price"><span class="plan__regular"><span class="visually-hidden" data-en="Regular price:" data-de="Regulärer Preis:" data-es="Precio regular:">Regular price:</span> <s class="money" data-usd="499"></s></span> <span class="visually-hidden" data-en="Founder price:" data-de="Founder-Preis:" data-es="Precio Founder:">Founder price:</span> <span class="plan__amount money" data-usd="339"></span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
+                    <p class="plan__save"><span data-en="Save" data-de="Spare" data-es="Ahorra">Save</span> <span class="money" data-usd="160"></span> <span data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
                     <p class="plan__annual"><span data-fx-note hidden data-en="charged in USD" data-de="wird in USD abgerechnet" data-es="se cobra en USD">charged in USD</span></p>
                     <ul class="plan__list">
                         <li data-en="Platform with Viktor and credits" data-de="Plattform mit Viktor und Credits" data-es="Plataforma con Viktor y créditos">Platform with Viktor and credits</li>
