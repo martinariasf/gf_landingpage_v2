@@ -298,6 +298,21 @@
         height: 68px;
         position: relative;
     }
+    /* ── Launch announcement bar (sits inside the fixed navbar) ── */
+    :root { --launch-bar-h: 38px; }
+    .launch-bar {
+        display: flex; align-items: center; justify-content: center; gap: 8px 14px;
+        min-height: var(--launch-bar-h); padding: 6px 24px;
+        background: var(--green); color: #fff; font-size: 14px; font-weight: 600; line-height: 1.3; text-align: center;
+    }
+    .launch-bar:hover { background: #166534; color: #fff; }
+    .launch-bar[hidden] { display: none; }
+    .launch-bar__cta { display: inline-flex; align-items: center; gap: 4px; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+    .navbar .launch-bar:focus-visible { outline: 3px solid #fff; outline-offset: -4px; }
+    @media (max-width: 560px) {
+        .launch-bar { font-size: 13px; padding: 6px 16px; }
+        .launch-bar__details { display: none; }
+    }
     .nav-logo .logo {
         height: 36px;
         width: auto;
@@ -394,7 +409,7 @@
         align-items: center;
         position: relative;
         overflow: hidden;
-        padding-top: 68px;
+        padding-top: calc(68px + var(--launch-bar-h, 0px));
         /* Terminus pulled off green so the primary CTA has a field to stand on. */
         background: linear-gradient(135deg, #0F4C8A 0%, #1560B2 35%, #2F6F98 70%, #2F7A73 100%);
         color: #f1f5f9;
@@ -1371,6 +1386,10 @@
                 </div>
             </div>
         </div>
+        <a class="launch-bar" id="launch-bar" href="launch.html?lang=es">
+            <span><span data-en="Founder offer: $339/month" data-de="Founder-Angebot: $339/Monat" data-es="Oferta Founder: $339/mes">Oferta Founder: $339/mes</span><span class="launch-bar__details"><span data-en=", 10 spots, until 30 Nov" data-de=", 10 Plätze, bis 30.11." data-es=", 10 plazas, hasta el 30/11">, 10 plazas, hasta el 30/11</span></span></span>
+            <span class="launch-bar__cta"><span data-en="See the offer" data-de="Zum Angebot" data-es="Ver oferta">Ver oferta</span><span aria-hidden="true">→</span></span>
+        </a>
     </nav>
 
     <main id="main">
@@ -1897,5 +1916,30 @@
         }
     });
 </script>
+    <script>
+    /* Launch announcement bar: follows the language, hides itself after the offer deadline (same moment as the countdown on /launch). */
+    (function () {
+        var bar = document.getElementById('launch-bar');
+        if (!bar) return;
+        var end = Date.parse('2026-11-30T23:59:00+01:00');
+        function sync() {
+            var root = document.documentElement;
+            if (!isNaN(end) && Date.now() >= end) {
+                bar.hidden = true;
+                root.style.setProperty('--launch-bar-h', '0px');
+                return;
+            }
+            var l = root.getAttribute('lang') || 'es';
+            bar.setAttribute('href', 'launch.html?lang=' + l);
+            // The bar can wrap on narrow screens; keep the hero offset equal to its real height.
+            root.style.setProperty('--launch-bar-h', bar.offsetHeight + 'px');
+        }
+        window.addEventListener('resize', sync);
+        if (!isNaN(end) && end - Date.now() < 2147483647) setTimeout(sync, Math.max(0, end - Date.now()) + 500);
+        document.addEventListener('gf:langchange', sync);
+        document.addEventListener('DOMContentLoaded', sync);
+        sync();
+    })();
+    </script>
 </body>
 </html>
