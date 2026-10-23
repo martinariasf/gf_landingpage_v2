@@ -83,7 +83,6 @@
     .countdown div { background: var(--bg-light); border: 1px solid var(--border); border-radius: 10px; padding: 8px 4px; text-align: center; }
     .countdown strong { display: block; font-size: 26px; font-weight: 800; line-height: 1.2; font-variant-numeric: tabular-nums; }
     .countdown span { font-size: 12px; color: var(--gray); }
-    .offer-cap { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: #92400e; }
     .offer .btn { width: 100%; }
     .offer-fine { font-size: 12.5px; color: var(--gray); margin-top: 12px; text-align: center; }
 
@@ -98,7 +97,6 @@
     .cycle li::before { content: counter(step); display: block; font-weight: 800; font-size: 15px; color: var(--green); margin-bottom: 8px; font-variant-numeric: tabular-nums; }
     .cycle h3 { font-size: 18px; margin-bottom: 6px; }
     .cycle p { font-size: 15px; color: var(--gray); }
-    .cycle-back { margin-top: 18px; font-weight: 600; color: var(--teal); }
 
     .chat-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
     .chat-grid .section-lede { margin-bottom: 0; }
@@ -164,14 +162,14 @@
             </div>
 
             <aside class="offer" aria-label="Oferta de lanzamiento">
-                <span class="offer-badge"><span id="spots">10</span> plazas fundadoras</span>
+                <span class="offer-badge">10 plazas fundadoras</span>
                 <h2>Plan Founder</h2>
                 <p class="offer-price">
                     <span class="offer-amount">$339</span>
-                    <span class="offer-per">al mes</span>
+                    <span class="offer-per">USD al mes</span>
                     <span class="offer-regular"><span class="visually-hidden">Precio regular:</span> <s>$499</s></span>
                 </p>
-                <p class="offer-note">Precio en USD, sin IVA. Precio fundador mientras la oferta esté abierta.</p>
+                <p class="offer-note">Precios en USD, sin IVA. Oferta válida hasta el 30 de noviembre de 2026, 23:59 (hora de Europa central).</p>
 
                 <div id="countdown" class="countdown" data-deadline="2026-11-30T23:59:59+01:00" hidden role="timer" aria-label="Tiempo restante de la oferta">
                     <div><strong data-u="d">0</strong><span>días</span></div>
@@ -190,7 +188,7 @@
         <div class="container">
             <h2 class="section-title">Del plan a la publicación, y otra vez al plan.</h2>
             <p class="section-lede">Viktor lleva todo el trabajo de marketing, y cada resultado mejora el siguiente plan.</p>
-            <ol class="cycle">
+            <ol class="cycle" role="list">
                 <li><h3>Estrategia</h3><p>Fija tu mensaje, tu público y el calendario según lo que quieres lograr.</p></li>
                 <li><h3>Textos</h3><p>Escribe cada publicación con el tono de tu marca.</p></li>
                 <li><h3>Diseño</h3><p>Crea las imágenes y las retoca con el editor de imágenes de la plataforma.</p></li>
@@ -208,7 +206,7 @@
                     <h2 class="section-title">Se lo pides por chat, apruebas y queda programado.</h2>
             <p class="section-lede">Así es un día normal con Viktor.</p>
                 </div>
-                <div class="chat" role="group" aria-label="Ejemplo de conversación con Viktor: pides una publicación, recibes diseño y texto, apruebas y queda programada.">
+                <div class="chat" role="group" aria-label="Ejemplo de conversación con Viktor">
                     <span class="chat-label">Ejemplo ilustrativo</span>
                     <div class="msg msg--you"><b>Tú</b>Necesito una publicación para anunciar nuestra colección de fin de año.</div>
                     <div class="msg msg--viktor"><b>Viktor</b>Listo. Te dejo el texto y una imagen con los colores de tu marca. ¿Quieres que el tono sea más cercano o más formal?</div>
@@ -222,7 +220,7 @@
     <section class="section" id="incluye">
         <div class="container">
             <h2 class="section-title">Qué incluye la plaza fundadora</h2>
-            <ul class="included">
+            <ul class="included" role="list">
                 <li><h3>La plataforma</h3><p>Viktor, créditos incluidos, edición de imágenes y análisis de documentos.</p></li>
                 <li><h3>2 llamadas al mes con Pilar</h3><p>Sesiones de marketing de 30 a 40 minutos.</p></li>
                 <li><h3>1 llamada al mes con Martin</h3><p>Nuestro experto en IA te ayuda a sacarle partido a Viktor.</p></li>
@@ -233,7 +231,7 @@
     <section class="final" id="plaza">
         <div class="container">
             <h2>Hay 10 plazas a precio fundador.</h2>
-            <p>$339 al mes en lugar de $499 mientras la oferta esté abierta.</p>
+            <p>339 USD al mes en lugar de 499 USD mientras la oferta esté abierta.</p>
             <a class="btn btn-primary" href="https://marketing.gfinnov.com/signup?plan=founder">Quiero el precio Founder</a>
             <p class="others"><a href="marketing.html?lang=es#pricing">Ver otros planes</a></p>
         </div>
