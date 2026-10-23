@@ -204,32 +204,6 @@
         background: var(--bg);
     }
 
-    /* ── Pilot CTA band ── */
-    .pilot-band {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 32px;
-        flex-wrap: wrap;
-        background: var(--bg-card);
-        border: 1px solid var(--green);
-        border-radius: var(--radius);
-        padding: 32px 36px;
-    }
-    .pilot-band__copy { flex: 1 1 420px; }
-    .pilot-band__badge {
-        display: inline-block;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: var(--teal);
-        margin-bottom: 10px;
-    }
-    .pilot-band .section-title { font-size: clamp(24px, 3vw, 32px); }
-    .pilot-band p { color: var(--gray); margin-top: 6px; }
-    .pilot-band .btn { flex: 0 0 auto; }
-
     .gallery-feature {
         display: grid;
         grid-template-columns: 1.05fr 0.95fr;
@@ -297,6 +271,21 @@
         justify-content: space-between;
         height: 68px;
         position: relative;
+    }
+    /* ── Launch announcement bar (sits inside the fixed navbar) ── */
+    :root { --launch-bar-h: 38px; }
+    .launch-bar {
+        display: flex; align-items: center; justify-content: center; gap: 8px 14px;
+        min-height: var(--launch-bar-h); padding: 6px 24px;
+        background: var(--green); color: #fff; font-size: 14px; font-weight: 600; line-height: 1.3; text-align: center;
+    }
+    .launch-bar:hover { background: #166534; color: #fff; }
+    .launch-bar[hidden] { display: none; }
+    .launch-bar__cta { display: inline-flex; align-items: center; gap: 4px; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+    .navbar .launch-bar:focus-visible { outline: 3px solid #fff; outline-offset: -4px; }
+    @media (max-width: 560px) {
+        .launch-bar { font-size: 13px; padding: 6px 16px; }
+        .launch-bar__details { display: none; }
     }
     .nav-logo .logo {
         height: 36px;
@@ -394,7 +383,7 @@
         align-items: center;
         position: relative;
         overflow: hidden;
-        padding-top: 68px;
+        padding-top: calc(68px + var(--launch-bar-h, 0px));
         /* Terminus pulled off green so the primary CTA has a field to stand on. */
         background: linear-gradient(135deg, #0F4C8A 0%, #1560B2 35%, #2F6F98 70%, #2F7A73 100%);
         color: #f1f5f9;
@@ -1400,7 +1389,6 @@
                 <a href="index.html" class="nav-link" data-en="GF Home" data-de="GF Start" data-es="Inicio GF">GF Home</a>
                 <a href="#platform" class="nav-link" data-en="Platform" data-de="Plattform" data-es="Plataforma">Platform</a>
                 <a href="#pricing" class="nav-link" data-en="Pricing" data-de="Preise" data-es="Precios">Pricing</a>
-                <a href="#pilot" class="nav-link" data-en="Pilot" data-de="Pilot" data-es="Piloto">Pilot</a>
                 <a href="https://calendly.com/gfinnov-info/30min" class="nav-cta" target="_blank" rel="noopener" data-en="Free AI Assessment" data-de="Kostenloses KI-Assessment" data-es="Evaluación de IA gratuita">Free AI Assessment</a>
                 <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
                     <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
@@ -1409,6 +1397,10 @@
                 </div>
             </div>
         </div>
+        <a class="launch-bar" id="launch-bar" href="launch.html?lang=es">
+            <span><span data-en="Founder offer: $339/month" data-de="Founder-Angebot: $339/Monat" data-es="Oferta Founder: $339/mes">Oferta Founder: $339/mes</span><span class="launch-bar__details"><span data-en=", 10 spots, until 30 Nov" data-de=", 10 Plätze, bis 30.11." data-es=", 10 plazas, hasta el 30/11">, 10 plazas, hasta el 30/11</span></span></span>
+            <span class="launch-bar__cta"><span data-en="See the offer" data-de="Zum Angebot" data-es="Ver oferta">Ver oferta</span><span aria-hidden="true">→</span></span>
+        </a>
     </nav>
 
     <main id="main">
@@ -1419,7 +1411,7 @@
             <h1 data-en="Every client's posts in one calendar. Drafted by AI, approved by people." data-de="Alle Posts jedes Kunden in einem Kalender. Von KI entworfen, von Menschen freigegeben." data-es="Las publicaciones de cada cliente en un calendario. Redactadas por IA, aprobadas por personas.">Every client's posts in one calendar. Drafted by AI, approved by people.</h1>
             <p class="hero-sub" data-en="The marketing platform we run our own social media on. For small agencies and in-house teams." data-de="Die Marketing-Plattform, mit der wir unsere eigenen Social Media betreiben. Für kleine Agenturen und Inhouse-Teams." data-es="La plataforma de marketing con la que gestionamos nuestras propias redes. Para agencias pequeñas y equipos internos.">The marketing platform we run our own social media on. For small agencies and in-house teams.</p>
             <div class="hero-buttons">
-                <a href="pilot.html" class="btn btn-primary" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben" data-es="Postular al piloto">Apply for the Pilot</a>
+                <a href="https://marketing.gfinnov.com/signup" class="btn btn-primary" data-en="Start 14-day free trial" data-de="14 Tage kostenlos testen" data-es="Probar 14 días gratis">Start 14-day free trial</a>
                 <a href="#pricing" class="btn btn-ghost" data-en="See pricing" data-de="Preise ansehen" data-es="Ver precios">See pricing</a>
             </div>
         </div>
@@ -1512,7 +1504,7 @@
                     <p class="plan__who" data-en="Ideal for personal brand" data-de="Ideal für die Personenmarke" data-es="Ideal para marca personal">Ideal for personal brand</p>
                     <p class="plan__price"><span class="plan__amount money" data-eur="19" data-usd="19"></span> <span class="plan__per" data-en="per month" data-de="pro Monat" data-es="al mes">per month</span></p>
                     <p class="plan__annual" data-en="or <span class='money' data-eur='190' data-usd='190'></span> a year, two months free" data-de="oder <span class='money' data-eur='190' data-usd='190'></span> pro Jahr, zwei Monate gratis" data-es="o <span class='money' data-eur='190' data-usd='190'></span> al año, dos meses gratis">or <span class='money' data-eur='190' data-usd='190'></span> a year, two months free</p>
-                    <a href="pilot.html" class="btn btn-ghost" data-en="Apply for the Pilot" data-de="Für den Piloten bewerben" data-es="Postular al piloto">Apply for the Pilot</a>
+                    <a href="https://marketing.gfinnov.com/signup" class="btn btn-ghost" data-en="Get started with Solo" data-de="Mit Solo starten" data-es="Empezar con Solo">Get started with Solo</a>
                 </article>
                 <article class="plan plan--featured">
                     <span class="plan-badge"><span id="founder-spots">10</span> <span data-en="founder spots" data-de="Gründerplätze" data-es="plazas fundadoras">founder spots</span></span>
@@ -1525,7 +1517,7 @@
                         <li data-en="Platform with Viktor and credits" data-de="Plattform mit Viktor und Credits" data-es="Plataforma con Viktor y créditos">Platform with Viktor and credits</li>
                         <li data-en="2 calls per month with Pilar (marketing, 30 to 40 min)" data-de="2 Gespräche pro Monat mit Pilar (Marketing, 30 bis 40 Min.)" data-es="2 llamadas al mes con Pilar (marketing, 30 a 40 min)">2 calls per month with Pilar (marketing, 30 to 40 min)</li>
                         <li data-en="1 call per month with Martin (AI expert)" data-de="1 Gespräch pro Monat mit Martin (KI-Experte)" data-es="1 llamada al mes con Martin (experto en IA)">1 call per month with Martin (AI expert)</li>
-                        <li data-en="Chat agent and document parsing" data-de="Chat-Agent und Dokumentenanalyse" data-es="Agente de chat y análisis de documentos">Chat agent and document parsing</li>
+                        <li data-en="Agent that designs, schedules, executes" data-de="Agent, der gestaltet, plant, ausführt" data-es="Agente que diseña, programa, ejecuta">Agent that designs, schedules, executes</li>
                         <li data-en="Image editing" data-de="Bildbearbeitung" data-es="Edición de imágenes">Image editing</li>
                     </ul>
                     <a href="https://marketing.gfinnov.com/signup?plan=founder" class="btn btn-primary" data-en="Get Founder pricing" data-de="Founder-Preis sichern" data-es="Quiero el precio Founder">Get Founder pricing</a>
@@ -1550,7 +1542,7 @@
                         <tr><th scope="row" data-en="Client workspaces" data-de="Kunden-Workspaces" data-es="Espacios de cliente">Client workspaces</th><td data-plan="Solo"><span data-en="1" data-de="1" data-es="1">1</span></td><td data-plan="Founder"><span data-en="1" data-de="1" data-es="1">1</span></td><td data-plan="Agencies"><span data-en="5 or more included" data-de="5 oder mehr inklusive" data-es="5 o más incluidos">5 or more included</span></td></tr>
                         <tr><th scope="row" data-en="Team members" data-de="Teammitglieder" data-es="Miembros del equipo">Team members</th><td data-plan="Solo"><span data-en="1" data-de="1" data-es="1">1</span></td><td data-plan="Founder"><span data-en="3" data-de="3" data-es="3">3</span></td><td data-plan="Agencies"><span data-en="Unlimited" data-de="Unbegrenzt" data-es="Ilimitados">Unlimited</span></td></tr>
                         <tr><th scope="row" data-en="Approvals board" data-de="Freigabe-Board" data-es="Tablero de aprobaciones">Approvals board</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Founder"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Agencies"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td></tr>
-                        <tr><th scope="row" data-en="AI chat agent and document parsing" data-de="KI-Chat-Agent und Dokumentenanalyse" data-es="Agente de chat con IA y análisis de documentos">AI chat agent and document parsing</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Founder"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Agencies"><span data-en="Yes, dedicated agent" data-de="Ja, eigener Agent" data-es="Sí, agente dedicado">Yes, dedicated agent</span></td></tr>
+                        <tr><th scope="row" data-en="Agent that designs, schedules, executes" data-de="Agent, der gestaltet, plant, ausführt" data-es="Agente que diseña, programa, ejecuta">Agent that designs, schedules, executes</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Founder"><svg class="pt-yes" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="visually-hidden" data-en="Included" data-de="Enthalten" data-es="Incluido">Included</span></td><td data-plan="Agencies"><span data-en="Yes, dedicated agent" data-de="Ja, eigener Agent" data-es="Sí, agente dedicado">Yes, dedicated agent</span></td></tr>
                         <tr><th scope="row" data-en="Calls with the team" data-de="Gespräche mit dem Team" data-es="Llamadas con el equipo">Calls with the team</th><td data-plan="Solo"><span class="pt-no" data-en="No" data-de="Nein" data-es="No">No</span></td><td data-plan="Founder"><span data-en="2 with Pilar, 1 with Martin per month" data-de="2 mit Pilar, 1 mit Martin pro Monat" data-es="2 con Pilar y 1 con Martin al mes">2 with Pilar, 1 with Martin per month</span></td><td data-plan="Agencies"><span data-en="Onboarding" data-de="Onboarding" data-es="Onboarding">Onboarding</span></td></tr>
                         <tr><th scope="row" data-en="Free trial" data-de="Kostenlose Testphase" data-es="Prueba gratuita">Free trial</th><td data-plan="Solo"><span data-en="14 days, no card" data-de="14 Tage, ohne Karte" data-es="14 días, sin tarjeta">14 days, no card</span></td><td data-plan="Founder"><span data-en="-" data-de="-" data-es="-">-</span></td><td data-plan="Agencies"><span data-en="Demo and paid pilot" data-de="Demo und bezahlter Pilot" data-es="Demo y piloto de pago">Demo and paid pilot</span></td></tr>
                         <tr><th scope="row" data-en="Support" data-de="Support" data-es="Soporte">Support</th><td data-plan="Solo"><span data-en="Email" data-de="E-Mail" data-es="Correo">Email</span></td><td data-plan="Founder"><span data-en="Email and personal support" data-de="E-Mail und persönliche Betreuung" data-es="Correo y acompañamiento personal">Email and personal support</span></td><td data-plan="Agencies"><span data-en="Priority and onboarding" data-de="Priorisiert, mit Onboarding" data-es="Prioritario, con onboarding">Priority and onboarding</span></td></tr>
@@ -1558,24 +1550,11 @@
                 </table>
             </div>
 
-            <p class="plans-note" data-en="Pilot agencies get Founder features while we finish self-serve signup. Extra AI budget is billed at cost plus 20%." data-de="Pilot-Agenturen erhalten die Founder-Funktionen, bis die Selbstregistrierung fertig ist. Zusätzliches KI-Budget wird zu Kosten plus 20 % berechnet." data-es="Las agencias del piloto reciben las funciones de Founder hasta que terminemos el registro autónomo. El presupuesto de IA adicional se factura a coste más 20 %.">Pilot agencies get Founder features while we finish self-serve signup. Extra AI budget is billed at cost plus 20%.</p>
+            <p class="plans-note" data-en="Extra AI budget is billed at cost plus 20%." data-de="Zusätzliches KI-Budget wird zu Kosten plus 20 % berechnet." data-es="El presupuesto de IA adicional se factura a coste más 20 %.">Extra AI budget is billed at cost plus 20%.</p>
         </div>
     </section>
 
-        <!-- Pilot CTA Band -->
-    <section id="pilot" class="section section--darker">
-        <div class="container">
-            <div class="pilot-band">
-                <div class="pilot-band__copy">
-                    <h2 class="section-title" data-en="Pilot our AI marketing platform" data-de="Teste unsere KI-Marketing-Plattform" data-es="Prueba nuestra plataforma de marketing con IA">Pilot our AI marketing platform</h2>
-                    <p data-en="For marketing agencies: three weeks with one real client, free, in exchange for your feedback." data-de="Für Marketing-Agenturen: drei Wochen mit einem echten Kunden, kostenlos, im Austausch für dein Feedback." data-es="Para agencias de marketing: tres semanas con un cliente real, gratis, a cambio de tu feedback.">For marketing agencies: three weeks with one real client, free, in exchange for your feedback.</p>
-                </div>
-                <a href="pilot.html" class="btn btn-primary" data-en="Apply for a spot" data-de="Auf einen Platz bewerben" data-es="Postular a una plaza">Apply for a spot</a>
-            </div>
-        </div>
-    </section>
-
-        <!-- What clients say: add quotes from pilot agencies here once we have them. -->
+        <!-- What clients say: add customer quotes here once we have them. -->
 
     </main>
 
@@ -1792,5 +1771,30 @@
         }
     });
 </script>
+    <script>
+    /* Launch announcement bar: follows the language, hides itself after the offer deadline (same moment as the countdown on /launch). */
+    (function () {
+        var bar = document.getElementById('launch-bar');
+        if (!bar) return;
+        var end = Date.parse('2026-11-30T23:59:00+01:00');
+        function sync() {
+            var root = document.documentElement;
+            if (!isNaN(end) && Date.now() >= end) {
+                bar.hidden = true;
+                root.style.setProperty('--launch-bar-h', '0px');
+                return;
+            }
+            var l = root.getAttribute('lang') || 'es';
+            bar.setAttribute('href', 'launch.html?lang=' + l);
+            // The bar can wrap on narrow screens; keep the hero offset equal to its real height.
+            root.style.setProperty('--launch-bar-h', bar.offsetHeight + 'px');
+        }
+        window.addEventListener('resize', sync);
+        if (!isNaN(end) && end - Date.now() < 2147483647) setTimeout(sync, Math.max(0, end - Date.now()) + 500);
+        document.addEventListener('gf:langchange', sync);
+        document.addEventListener('DOMContentLoaded', sync);
+        sync();
+    })();
+    </script>
 </body>
 </html>
