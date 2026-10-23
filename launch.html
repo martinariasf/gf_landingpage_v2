@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oferta de lanzamiento: tu marketing en piloto automático | GF Innovative Solutions</title>
-    <meta name="description" content="Oferta fundadora de lanzamiento: 10 plazas a 339 USD al mes (precio regular 499 USD). Todo automatizado excepto lo que tiene que seguir siendo tuyo.">
+    <meta name="description" content="Oferta fundadora de lanzamiento: 10 plazas a 339 USD al mes (precio regular 499 USD). Casi todo está automatizado, menos lo que tiene que seguir siendo tuyo.">
     <link rel="canonical" href="https://www.gfinnov.com/launch">
 
     <meta property="og:type" content="website">
@@ -54,9 +54,14 @@
     .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 10000; background: rgba(11,22,40,0.95); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.08); }
     .nav-container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .nav-container img { height: 34px; width: auto; }
-    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links { display: flex; align-items: center; gap: 16px; }
     .nav-links a.other { color: #cbd5e1; font-size: 14px; }
     .nav-links a.other:hover { color: #fff; }
+    .lang-switch { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; }
+    .lang-switch .lang-opt { display: inline-flex; align-items: center; justify-content: center; color: #94a3b8; font-size: 13px; font-weight: 500; line-height: 1; padding: 6px 9px; border-radius: 5px; min-height: 32px; min-width: 32px; }
+    .lang-switch .lang-opt:hover { color: #f1f5f9; background: rgba(255,255,255,0.08); }
+    .lang-switch .lang-opt.active { color: var(--navy); background: #f1f5f9; font-weight: 700; cursor: default; }
+    @media (pointer: coarse) { .lang-switch .lang-opt { min-width: 44px; min-height: 44px; } }
 
     /* Buttons */
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 16px; font-family: inherit; min-height: 48px; text-align: center; }
@@ -134,20 +139,32 @@
         .offer-amount { font-size: 48px; }
         .nav-links a.other { display: none; }
     }
+    @media (max-width: 560px) {
+        .nav-links .nav-cta { display: none; }
+    }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
+    <!-- Shared EN/DE/ES switching (same mechanism and ?lang= param as marketing.html).
+         This page defaults to Spanish via GF_DEFAULT_LANG (see lang.js). -->
+    <script>window.GF_DEFAULT_LANG = 'es';</script>
+    <script src="lang.js"></script>
 </head>
 <body>
-    <a href="#main" class="skip-link">Ir al contenido</a>
+    <a class="skip-link" href="#main" data-en="Skip to content" data-de="Zum Inhalt springen" data-es="Ir al contenido">Ir al contenido</a>
 
-    <nav class="navbar" aria-label="Principal">
+    <nav class="navbar" data-en="Main" data-de="Hauptnavigation" data-es="Navegación principal" data-i18n-attr="aria-label" aria-label="Navegación principal">
         <div class="nav-container">
-            <a href="index.html" aria-label="GF Innovative Solutions, inicio">
+            <a href="index.html" data-en="GF Innovative Solutions, home" data-de="GF Innovative Solutions, Startseite" data-es="GF Innovative Solutions, inicio" data-i18n-attr="aria-label" aria-label="GF Innovative Solutions, inicio">
                 <img src="images/opt/gf-logo-nav.webp" alt="GF Innovative Solutions" width="340" height="72" fetchpriority="high">
             </a>
             <div class="nav-links">
-                <a class="other" href="marketing.html?lang=es#pricing">Ver otros planes</a>
-                <a class="btn btn-primary btn-small" href="https://marketing.gfinnov.com/signup?plan=founder">Quiero mi plaza</a>
+                <a class="other" id="other-plans-nav" href="marketing.html?lang=es#pricing" data-en="See other plans" data-de="Andere Pläne ansehen" data-es="Ver otros planes">Ver otros planes</a>
+                <div class="lang-switch" role="group" aria-label="Language / Sprache / Idioma">
+                    <a class="lang-opt" data-set-lang="es" lang="es" href="?lang=es" hreflang="es" title="Español">ES</a>
+                    <a class="lang-opt" data-set-lang="en" lang="en" href="?lang=en" hreflang="en" title="English">EN</a>
+                    <a class="lang-opt" data-set-lang="de" lang="de" href="?lang=de" hreflang="de" title="Deutsch">DE</a>
+                </div>
+                <a class="btn btn-primary btn-small nav-cta" href="https://marketing.gfinnov.com/signup?plan=founder" data-en="Claim my spot" data-de="Platz sichern" data-es="Quiero mi plaza">Quiero mi plaza</a>
             </div>
         </div>
     </nav>
@@ -157,44 +174,43 @@
     <section class="hero">
         <div class="container hero-grid">
             <div>
-                <h1>Lanza tu marca antes de las fiestas.</h1>
-                <p class="hero-sub">Todo está automatizado menos lo que tiene que seguir siendo tuyo. Viktor, tu asistente de marketing, escribe, diseña y programa; tú decides qué sale.</p>
+                <h1 data-en="Launch your brand before the holidays." data-de="Bring deine Marke vor den Feiertagen an den Start." data-es="Lanza tu marca antes de las fiestas.">Lanza tu marca antes de las fiestas.</h1>
+                <p class="hero-sub" data-en="Almost everything is automated, except what has to stay yours. Viktor, your marketing assistant, writes, designs and schedules. You decide what goes out." data-de="Fast alles läuft automatisch, nur das nicht, was deins bleiben muss. Viktor, dein Marketing-Assistent, schreibt, gestaltet und plant ein. Du entscheidest, was rausgeht." data-es="Casi todo está automatizado, menos lo que tiene que seguir siendo tuyo. Viktor, tu asistente de marketing, escribe, diseña y programa. Tú decides qué sale.">Casi todo está automatizado, menos lo que tiene que seguir siendo tuyo. Viktor, tu asistente de marketing, escribe, diseña y programa. Tú decides qué sale.</p>
             </div>
 
-            <aside class="offer" aria-label="Oferta de lanzamiento">
-                <span class="offer-badge">10 plazas fundadoras</span>
-                <h2>Plan Founder</h2>
+            <aside class="offer" data-en="Launch offer" data-de="Einführungsangebot" data-es="Oferta de lanzamiento" data-i18n-attr="aria-label" aria-label="Oferta de lanzamiento">
+                <span class="offer-badge" data-en="10 founder spots" data-de="10 Gründerplätze" data-es="10 plazas fundadoras">10 plazas fundadoras</span>
+                <h2 data-en="Founder plan" data-de="Founder-Plan" data-es="Plan Founder">Plan Founder</h2>
                 <p class="offer-price">
                     <span class="offer-amount">$339</span>
-                    <span class="offer-per">USD al mes</span>
-                    <span class="offer-regular"><span class="visually-hidden">Precio regular:</span> <s>$499</s></span>
+                    <span class="offer-per" data-en="USD per month" data-de="USD pro Monat" data-es="USD al mes">USD al mes</span>
+                    <span class="offer-regular"><span class="visually-hidden" data-en="Regular price:" data-de="Regulärer Preis:" data-es="Precio regular:">Precio regular:</span> <s>$499</s></span>
                 </p>
-                <p class="offer-note">Precios en USD, sin IVA. Oferta válida hasta el 30 de noviembre de 2026, 23:59 (hora de Europa central).</p>
+                <p class="offer-note" data-en="Prices in USD, excluding VAT. Offer valid until 30 November 2026, 23:59 (Central European Time)." data-de="Preise in USD, zzgl. MwSt. Angebot gültig bis 30. November 2026, 23:59 Uhr (MEZ)." data-es="Precios en USD, sin IVA. Oferta válida hasta el 30 de noviembre de 2026, 23:59 (hora de Europa central).">Precios en USD, sin IVA. Oferta válida hasta el 30 de noviembre de 2026, 23:59 (hora de Europa central).</p>
 
-                <div id="countdown" class="countdown" data-deadline="2026-11-30T23:59:59+01:00" hidden role="timer" aria-label="Tiempo restante de la oferta">
-                    <div><strong data-u="d">0</strong><span>días</span></div>
-                    <div><strong data-u="h">0</strong><span>horas</span></div>
-                    <div><strong data-u="m">0</strong><span>min</span></div>
-                    <div><strong data-u="s">0</strong><span>seg</span></div>
+                <div id="countdown" class="countdown" data-deadline="2026-11-30T23:59:00+01:00" hidden role="timer" data-en="Time left on the offer" data-de="Verbleibende Zeit des Angebots" data-es="Tiempo restante de la oferta" data-i18n-attr="aria-label" aria-label="Tiempo restante de la oferta">
+                    <div><strong data-u="d">0</strong><span data-en="days" data-de="Tage" data-es="días">días</span></div>
+                    <div><strong data-u="h">0</strong><span data-en="hours" data-de="Std." data-es="horas">horas</span></div>
+                    <div><strong data-u="m">0</strong><span data-en="min" data-de="Min." data-es="min">min</span></div>
+                    <div><strong data-u="s">0</strong><span data-en="sec" data-de="Sek." data-es="seg">seg</span></div>
                 </div>
 
-                <a class="btn btn-primary" href="https://marketing.gfinnov.com/signup?plan=founder">Quiero el precio Founder</a>
-                <p class="offer-fine">Solo 10 plazas. Después vuelve el precio regular.</p>
+                <a class="btn btn-primary" href="https://marketing.gfinnov.com/signup?plan=founder" data-en="Get Founder pricing" data-de="Founder-Preis sichern" data-es="Quiero el precio Founder">Quiero el precio Founder</a>
+                <p class="offer-fine" data-en="Only 10 spots. After that the regular price returns." data-de="Nur 10 Plätze. Danach gilt wieder der reguläre Preis." data-es="Solo 10 plazas. Después vuelve el precio regular.">Solo 10 plazas. Después vuelve el precio regular.</p>
             </aside>
         </div>
     </section>
 
     <section class="section" id="como">
         <div class="container">
-            <h2 class="section-title">Del plan a la publicación, y otra vez al plan.</h2>
-            <p class="section-lede">Viktor lleva todo el trabajo de marketing, y cada resultado mejora el siguiente plan.</p>
+            <h2 class="section-title" data-en="From plan to publication, and back to the plan." data-de="Vom Plan zur Veröffentlichung und wieder zurück zum Plan." data-es="Del plan a la publicación, y otra vez al plan.">Del plan a la publicación, y otra vez al plan.</h2>
             <ol class="cycle" role="list">
-                <li><h3>Estrategia</h3><p>Fija tu mensaje, tu público y el calendario según lo que quieres lograr.</p></li>
-                <li><h3>Textos</h3><p>Escribe cada publicación con el tono de tu marca.</p></li>
-                <li><h3>Diseño</h3><p>Crea las imágenes y las retoca con el editor de imágenes de la plataforma.</p></li>
-                <li><h3>Publicación y programación</h3><p>Tú apruebas y Viktor la programa en tus redes.</p></li>
-                <li><h3>Analítica</h3><p>Te dice qué funcionó y qué no, sin tecnicismos.</p></li>
-                <li><h3>Otra vez estrategia</h3><p>Los resultados alimentan el siguiente plan.</p></li>
+                <li><h3 data-en="Strategy" data-de="Strategie" data-es="Estrategia">Estrategia</h3><p data-en="Sets your message, your audience and the calendar around what you want to achieve." data-de="Legt deine Botschaft, deine Zielgruppe und den Kalender nach deinen Zielen fest." data-es="Fija tu mensaje, tu público y el calendario según lo que quieres lograr.">Fija tu mensaje, tu público y el calendario según lo que quieres lograr.</p></li>
+                <li><h3 data-en="Copywriting" data-de="Texte" data-es="Redacción">Redacción</h3><p data-en="Writes every post in your brand&#x27;s tone." data-de="Schreibt jeden Beitrag in deinem Markenton." data-es="Escribe cada publicación con el tono de tu marca.">Escribe cada publicación con el tono de tu marca.</p></li>
+                <li><h3 data-en="Design" data-de="Design" data-es="Diseño">Diseño</h3><p data-en="Creates the images and touches them up in the platform&#x27;s image editor." data-de="Erstellt die Bilder und bearbeitet sie im Bildeditor der Plattform." data-es="Crea las imágenes y las retoca con el editor de imágenes de la plataforma.">Crea las imágenes y las retoca con el editor de imágenes de la plataforma.</p></li>
+                <li><h3 data-en="Publishing and scheduling" data-de="Veröffentlichung und Planung" data-es="Publicación y programación">Publicación y programación</h3><p data-en="You approve and Viktor schedules it on your channels." data-de="Du gibst frei und Viktor plant den Beitrag in deinen Kanälen ein." data-es="Tú apruebas y Viktor la programa en tus redes.">Tú apruebas y Viktor la programa en tus redes.</p></li>
+                <li><h3 data-en="Analytics" data-de="Analyse" data-es="Analítica">Analítica</h3><p data-en="Tells you what worked and what didn&#x27;t, without jargon." data-de="Sagt dir, was funktioniert hat und was nicht, ohne Fachchinesisch." data-es="Te dice qué funcionó y qué no, sin tecnicismos.">Te dice qué funcionó y qué no, sin tecnicismos.</p></li>
+                <li><h3 data-en="Back to strategy" data-de="Zurück zur Strategie" data-es="Otra vez estrategia">Otra vez estrategia</h3><p data-en="Results feed the next plan." data-de="Die Ergebnisse fließen in den nächsten Plan ein." data-es="Los resultados alimentan el siguiente plan.">Los resultados alimentan el siguiente plan.</p></li>
             </ol>
         </div>
     </section>
@@ -203,15 +219,14 @@
         <div class="container">
             <div class="chat-grid">
                 <div>
-                    <h2 class="section-title">Se lo pides por chat, apruebas y queda programado.</h2>
-            <p class="section-lede">Así es un día normal con Viktor.</p>
+                    <h2 class="section-title" data-en="You ask in chat, approve, and it&#x27;s scheduled." data-de="Du fragst im Chat, gibst frei, und der Beitrag ist eingeplant." data-es="Se lo pides por chat, apruebas y queda programado.">Se lo pides por chat, apruebas y queda programado.</h2>
                 </div>
-                <div class="chat" role="group" aria-label="Ejemplo de conversación con Viktor">
-                    <span class="chat-label">Ejemplo ilustrativo</span>
-                    <div class="msg msg--you"><b>Tú</b>Necesito una publicación para anunciar nuestra colección de fin de año.</div>
-                    <div class="msg msg--viktor"><b>Viktor</b>Listo. Te dejo el texto y una imagen con los colores de tu marca. ¿Quieres que el tono sea más cercano o más formal?</div>
-                    <div class="msg msg--you"><b>Tú</b>Más cercano. Se ve bien, apruébala.</div>
-                    <div class="msg msg--viktor"><b>Viktor</b>Aprobada y programada para el jueves a las 10:00 en Instagram y LinkedIn.</div>
+                <div class="chat" role="group" data-en="Example conversation with Viktor" data-de="Beispielunterhaltung mit Viktor" data-es="Ejemplo de conversación con Viktor" data-i18n-attr="aria-label" aria-label="Ejemplo de conversación con Viktor">
+                    <span class="chat-label" data-en="Illustrative example" data-de="Illustratives Beispiel" data-es="Ejemplo ilustrativo">Ejemplo ilustrativo</span>
+                    <div class="msg msg--you"><b data-en="You" data-de="Du" data-es="Tú">Tú</b><span data-en="I need a post announcing our year-end collection." data-de="Ich brauche einen Beitrag, der unsere Jahresendkollektion ankündigt." data-es="Necesito una publicación para anunciar nuestra colección de fin de año.">Necesito una publicación para anunciar nuestra colección de fin de año.</span></div>
+                    <div class="msg msg--viktor"><b data-en="Viktor" data-de="Viktor" data-es="Viktor">Viktor</b><span data-en="Done. Here&#x27;s the text and an image in your brand colors. Do you want the tone friendlier or more formal?" data-de="Fertig. Hier sind Text und ein Bild in deinen Markenfarben. Soll der Ton lockerer oder förmlicher sein?" data-es="Listo. Te dejo el texto y una imagen con los colores de tu marca. ¿Quieres que el tono sea más cercano o más formal?">Listo. Te dejo el texto y una imagen con los colores de tu marca. ¿Quieres que el tono sea más cercano o más formal?</span></div>
+                    <div class="msg msg--you"><b data-en="You" data-de="Du" data-es="Tú">Tú</b><span data-en="Friendlier. Looks good, approve it." data-de="Lockerer. Sieht gut aus, gib ihn frei." data-es="Más cercano. Se ve bien, apruébala.">Más cercano. Se ve bien, apruébala.</span></div>
+                    <div class="msg msg--viktor"><b data-en="Viktor" data-de="Viktor" data-es="Viktor">Viktor</b><span data-en="Approved and scheduled for Thursday at 10:00 on Instagram and LinkedIn." data-de="Freigegeben und für Donnerstag um 10:00 Uhr auf Instagram und LinkedIn eingeplant." data-es="Aprobada y programada para el jueves a las 10:00 en Instagram y LinkedIn.">Aprobada y programada para el jueves a las 10:00 en Instagram y LinkedIn.</span></div>
                 </div>
             </div>
         </div>
@@ -219,21 +234,21 @@
 
     <section class="section" id="incluye">
         <div class="container">
-            <h2 class="section-title">Qué incluye la plaza fundadora</h2>
+            <h2 class="section-title" data-en="What the founder spot includes" data-de="Das ist im Gründerplatz enthalten" data-es="Qué incluye la plaza fundadora">Qué incluye la plaza fundadora</h2>
             <ul class="included" role="list">
-                <li><h3>La plataforma</h3><p>Viktor, créditos incluidos, edición de imágenes y análisis de documentos.</p></li>
-                <li><h3>2 llamadas al mes con Pilar</h3><p>Sesiones de marketing de 30 a 40 minutos.</p></li>
-                <li><h3>1 llamada al mes con Martin</h3><p>Nuestro experto en IA te ayuda a sacarle partido a Viktor.</p></li>
+                <li><h3 data-en="The platform" data-de="Die Plattform" data-es="La plataforma">La plataforma</h3><p data-en="Viktor, credits included, image editing and document analysis." data-de="Viktor, inklusive Credits, Bildbearbeitung und Dokumentenanalyse." data-es="Viktor, créditos incluidos, edición de imágenes y análisis de documentos.">Viktor, créditos incluidos, edición de imágenes y análisis de documentos.</p></li>
+                <li><h3 data-en="2 calls per month with Pilar" data-de="2 Gespräche pro Monat mit Pilar" data-es="2 llamadas al mes con Pilar">2 llamadas al mes con Pilar</h3><p data-en="Marketing sessions of 30 to 40 minutes." data-de="Marketing-Sessions von 30 bis 40 Minuten." data-es="Sesiones de marketing de 30 a 40 minutos.">Sesiones de marketing de 30 a 40 minutos.</p></li>
+                <li><h3 data-en="1 call per month with Martin" data-de="1 Gespräch pro Monat mit Martin" data-es="1 llamada al mes con Martin">1 llamada al mes con Martin</h3><p data-en="Our AI expert helps you get the most out of Viktor." data-de="Unser KI-Experte hilft dir, das Beste aus Viktor herauszuholen." data-es="Nuestro experto en IA te ayuda a sacarle partido a Viktor.">Nuestro experto en IA te ayuda a sacarle partido a Viktor.</p></li>
             </ul>
         </div>
     </section>
 
     <section class="final" id="plaza">
         <div class="container">
-            <h2>Hay 10 plazas a precio fundador.</h2>
-            <p>339 USD al mes en lugar de 499 USD mientras la oferta esté abierta.</p>
-            <a class="btn btn-primary" href="https://marketing.gfinnov.com/signup?plan=founder">Quiero el precio Founder</a>
-            <p class="others"><a href="marketing.html?lang=es#pricing">Ver otros planes</a></p>
+            <h2 data-en="There are 10 spots at the founder price." data-de="Es gibt 10 Plätze zum Gründerpreis." data-es="Hay 10 plazas a precio fundador.">Hay 10 plazas a precio fundador.</h2>
+            <p data-en="339 USD per month instead of 499 USD while the offer is open." data-de="339 USD pro Monat statt 499 USD, solange das Angebot läuft." data-es="339 USD al mes en lugar de 499 USD mientras la oferta esté abierta.">339 USD al mes en lugar de 499 USD mientras la oferta esté abierta.</p>
+            <a class="btn btn-primary" href="https://marketing.gfinnov.com/signup?plan=founder" data-en="Get Founder pricing" data-de="Founder-Preis sichern" data-es="Quiero el precio Founder">Quiero el precio Founder</a>
+            <p class="others"><a id="other-plans-final" href="marketing.html?lang=es#pricing" data-en="See other plans" data-de="Andere Pläne ansehen" data-es="Ver otros planes">Ver otros planes</a></p>
         </div>
     </section>
 
@@ -241,11 +256,33 @@
 
     <footer class="footer">
         <div class="container">
-            <span>&copy; 2026 GF Innovative Solutions. Todos los derechos reservados.</span>
-            <span><a href="imprint.html">Impressum</a> | <a href="privacy.html">Privacidad</a></span>
+            <span data-en="&amp;copy; 2026 GF Innovative Solutions. All rights reserved." data-de="&amp;copy; 2026 GF Innovative Solutions. Alle Rechte vorbehalten." data-es="&amp;copy; 2026 GF Innovative Solutions. Todos los derechos reservados.">&copy; 2026 GF Innovative Solutions. Todos los derechos reservados.</span>
+            <span><a href="imprint.html">Impressum</a> | <a href="privacy.html" data-en="Privacy Policy" data-de="Datenschutz" data-es="Privacidad">Privacidad</a></span>
         </div>
     </footer>
 
+    <script>
+    /* Page title, meta description and the "other plans" links follow the language. */
+    (function () {
+        var M = {
+            es: ['Oferta de lanzamiento: tu marketing en piloto automático | GF Innovative Solutions', 'Oferta fundadora de lanzamiento: 10 plazas a 339 USD al mes (precio regular 499 USD). Casi todo automatizado, menos lo que tiene que seguir siendo tuyo.', 'Lanza tu marca antes de las fiestas: oferta fundadora, 10 plazas', '339 USD al mes en lugar de 499 USD. Plataforma con Viktor, 2 llamadas al mes con Pilar y 1 con Martin.', 'es_ES'],
+            en: ['Launch offer: your marketing on autopilot | GF Innovative Solutions', 'Founder launch offer: 10 spots at 339 USD per month (regular price 499 USD). Almost everything automated, except what has to stay yours.', 'Launch your brand before the holidays: founder offer, 10 spots', '339 USD per month instead of 499 USD. Platform with Viktor, 2 calls per month with Pilar and 1 with Martin.', 'en_US'],
+            de: ['Einführungsangebot: dein Marketing auf Autopilot | GF Innovative Solutions', 'Gründer-Einführungsangebot: 10 Plätze für 339 USD pro Monat (regulärer Preis 499 USD). Fast alles automatisiert, nur nicht das, was deins bleiben muss.', 'Bring deine Marke vor den Feiertagen an den Start: Gründerangebot, 10 Plätze', '339 USD pro Monat statt 499 USD. Plattform mit Viktor, 2 Gespräche pro Monat mit Pilar und 1 mit Martin.', 'de_DE']
+        };
+        function set(sel, attr, v) { var n = document.querySelector(sel); if (n) n.setAttribute(attr, v); }
+        function paint() {
+            var l = document.documentElement.getAttribute('lang'); var m = M[l] || M.es;
+            document.title = m[0];
+            set('meta[name="description"]', 'content', m[1]);
+            set('meta[property="og:title"]', 'content', m[2]);
+            set('meta[property="og:description"]', 'content', m[3]);
+            set('meta[property="og:locale"]', 'content', m[4]);
+            ['other-plans-nav', 'other-plans-final'].forEach(function (id) { set('#' + id, 'href', 'marketing.html?lang=' + l + '#pricing'); });
+        }
+        document.addEventListener('gf:langchange', paint);
+        document.addEventListener('DOMContentLoaded', paint);
+    })();
+    </script>
     <script>
     (function () {
         var box = document.getElementById('countdown');

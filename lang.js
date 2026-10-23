@@ -27,7 +27,7 @@
 
     var LANGS = ['en', 'de', 'es'];
     var STORAGE_KEY = 'site-lang';
-    var FALLBACK = 'de'; // German SMEs are the primary audience
+    var FALLBACK = (window.GF_DEFAULT_LANG && LANGS.indexOf(window.GF_DEFAULT_LANG) !== -1) ? window.GF_DEFAULT_LANG : 'de'; // German SMEs are the primary audience; a page can pin its own default (launch.html: es)
     var current = FALLBACK;
 
     function read(key) {
@@ -54,6 +54,9 @@
 
         var stored = read(STORAGE_KEY);
         if (isLang(stored)) return [stored, false];
+
+        // A page that pins its own default ignores the browser language.
+        if (isLang(window.GF_DEFAULT_LANG)) return [FALLBACK, false];
 
         var prefs = navigator.languages || [navigator.language || ''];
         for (var i = 0; i < prefs.length; i++) {
